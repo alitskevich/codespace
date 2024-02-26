@@ -1,0 +1,21 @@
+<component id="Avatar">
+  <figure class="relative  bg-slate-500 rounded-full h-{@size ?? '10'} w-{@size ?? '10'}">
+
+    <div class="inline-flex overflow-hidden relative justify-center items-center rounded-full  
+      h-{@size ?? '10'} w-{@size ?? '10'}
+      " if="!@src">
+      <span class="font-medium uppercase " title="@alt" if="@initials">{@initials}</span>
+      <Icon type="user" if="!@initials" title="@alt" />
+    </div>
+
+    <img class="h-{@size ?? '10'} w-{@size ?? '10'} rounded-full" src="@src" alt="@alt" if="@src" />
+
+    <span class="bottom-0 left-7 absolute w-3.5 h-3.5 rounded-full text-xs
+      {@status} 
+      border-2 border-white dark:border-gray-800" if="@status"></span>
+
+    <span class="-top-1 -left-2 absolute w-3.5 h-3.5 
+      " if="@statusSymbol">{@statusSymbol}</span>
+
+  </figure>
+</component>

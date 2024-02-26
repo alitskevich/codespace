@@ -1,0 +1,13 @@
+<component id="App">
+  <ToastFacility>
+    <GreenAppFacility (...)="@@green">
+      <BrowserService ref="browser" title="@@name" />
+      <NavigationService ref="nav" />
+      <AuthenticatedFacility>
+        <ItemCollectionFacility>
+          <PageRouter (...)="<-nav@route" />
+        </ItemCollectionFacility>
+      </AuthenticatedFacility>
+    </GreenAppFacility>
+  </ToastFacility>
+</component>

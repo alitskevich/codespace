@@ -1,0 +1,160 @@
+<component id="MainPage">
+  <Meta>
+  <ImportRef id="items" />
+  </Meta>
+
+  <Connector data="<- items@info" change="-> ..." />
+  <StoredData name="viewMode" data="@viewMode" defaults="list" action="-> @viewMode" />
+  <StoredData ref="mainPageState" name="viewMode" data="@viewMode" defaults="list" action="-> @viewMode" />
+
+  <Container class="absolute" if="!@itemId">
+    <FAB tooltip="@@strings.add_a_new_item" action="-> newItem@showModal=true" />
+    <Modal if="<-newItem@showModal" mode="lg" opened="<-newItem@showModal" title="@@strings.add_a_new_item"
+      close="-> newItem@showModal=false">
+      <Forma meta="@@forms.newItem" data="<- newItem@data" change="-> newItem.change()" />
+
+      <ErrorMessage error="<- newItem@error" if="<- newItem@error" close="-> newItem@error=false" />
+      <Modal:footer>
+        <Btn icon="upload" title="Submit New" mode="primary" large action="-> newItem.submit()"
+          busy="<- newItem@busy" />
+      </Modal:footer>
+    </Modal>
+  </Container>
+
+  <div class="h-screen min-h-0 flex flex-col">
+    <Navbar caption="@@name" id="top">
+      <div class="pl-2 p-1 min-w-10 flex flex-no-wrap items-center gap-2">
+      </div>
+      <Navbar:right>
+        <ViewModeSelector options="@@forms.viewMode" value="@viewMode" change="-> @viewMode = data.value"
+          if="@data.length" />
+
+        <DarkModeService ref="dark" />
+        <DarkModeToggler value="<- dark@isDarkMode" on="-> dark.toggle()" />
+
+        <UserBar />
+      </Navbar:right>
+    </Navbar>
+    <div class="flex flex-auto  min-h-0 flex-col gap-4 pt-2">
+      <AsyncLoader isLoading="!@isLoaded" title="Loading data" subtitle="🚀 initial dataset" error="<- db@error"
+        onError="-> db.downstream()">
+
+        <Container class="w-full flex flex-no-wrap justify-between items-center gap-2" if="<- itemsSearch@data.length">
+          <div class="pl-2 flex flex-no-wrap items-center gap-2">
+            <ItemsFilter data="<- items@searchedData" class="min-w-0" value="<- items@filterBySignature">
+              <span class="{@@styles.badge}" if="@countsInfo">
+                {@countsInfo}
+              </span>
+            </ItemsFilter>
+
+            <!-- <Chips data="@tags" click="-> items.onTag(data)" class="min-w-0" /> -->
+          </div>
+          <div class="pl-2 flex flex-no-wrap items-center gap-2">
+            <SearchBar.Suggestions (...)="<- itemsSearch@info" />
+            <ListSortBy options="@@enums.sortBy" value="<- items@sortBy" dir="<- items@sortDir"
+              onChange="-> items.onSortBy(data)" onChangeDir="-> items.onSortDir(data)" if="@viewMode != 'pivot'" />
+            <DbLoadingIndicator isLoading="<- db@busy" action="-> db.downstream()" />
+          </div>
+        </Container>
+
+        <Fragment if="!@data.length">
+          <Then>
+            <Stub title="Empty data">
+              <Btn title="@@strings.add_a_new_item" icon="plus" tooltip="@@strings.add_a_new_item"
+                action="-> newItem@showModal=true" />
+            </Stub>
+          </Then>
+          <Else>
+            <MasterDetail data="@sortedData" itemId="@params.itemId" viewMode="@viewMode">
+              <Selector on="@viewMode">
+                <Case when="table">
+                  <Table class="flex-auto min-h-0" data="@sortedData" columns="@@forms.table ?? @@forms.item"
+                    cellChange="-> items.changeField(data)" />
+                </Case>
+
+                <Case when="list">
+                  <Container class="h-full sm:flex-1 min-h-0 overflow-y-auto" scrolledDown="-> items.showMore()"
+                    scroll="-> @showScrollToTopButton = data.value > 120">
+                    <ul role="list" class="w-full max-md:divide-y md:space-y-4  divide-gray-200 dark:divide-gray-700">
+                      <ListItem (...)="@item" item="@item" selectedId="@itemId" sortBy="@sortBy"
+                        each="item of @sortedData" />
+                      <li class="h-48"></li>
+                    </ul>
+                  </Container>
+                </Case>
+
+                <Case when="pivot">
+                  <StoredData name="pivot-rowId" data="@rowId" defaults="@@params.rowId ?? @@pivot.rowId"
+                    action="-> @rowId" />
+                  <StoredData name="pivot-colId" data="@colId" defaults="@@params.colId ?? @@pivot.colId"
+                    action="-> @colId" />
+                  <Container class="flex-col gap-4 py-2 overflow-auto">
+                    <PivotView data="@sortedData" rowId="@rowId" colId="@colId" form="@@forms.pivot ?? @@forms.item" />
+                  </Container>
+                </Case>
+              </Selector>
+            </MasterDetail>
+          </Else>
+        </Fragment>
+      </AsyncLoader>
+    </div>
+  </div>
+  <ScrollToTopButton if="@showScrollToTopButton" side="left" />
+</component>
+
+<component id="MasterDetail">
+
+  <Connector data="<- items@sortBy" change="-> @sortBy" />
+
+  <ItemController ref="controller" itemId="@itemId" all="<- db@dataItems" />
+  <Connector data="<- controller@item" change="-> @item" />
+
+  <div class="flex flex-auto min-h-0 gap-2 items-stretch">
+    <Slot />
+    <div if="@itemId"
+      class="h-full flex-1 min-h-0 min-w-96 gap-2 flex flex-col items-stretch border-t border-gray-200 dark:border-gray-700">
+      <header class="p-2 flex flex-no-wrap items-center min-w-0 gap-1" title="{@title}">
+        <h2 class="flex-1 text-lg text-truncate">{@item.title}</h2>
+        <Icon type="cross" size="3" class="rounded-lg text-slate-500 h-10 w-10 dark:text-gray-400" data-itemId=""
+          click="-> nav.onParams(data)" />
+      </header>
+      <div class="flex flex-col flex-1 px-2 overflow-y-auto">
+        <Forma meta="@@forms.item" data="@item" change="-> controller.onChange()" tabs="@@itemForm.tabs"
+          groups="@@itemForm.groups" />
+      </div>
+      <footer class="p-2">
+        <Container class="justify-between items-center">
+          <div>
+            <NavListCursor (...)="<-controller@itemNavInfo" href="#/main?itemId=" />
+          </div>
+          <Btn icon="upload" title="Submit" mode="primary" action="-> controller.onSave()" busy="<- db@isUploading"
+            disabled="<- controller@touched | not" />
+        </Container>
+      </footer>
+    </div>
+  </div>
+
+</component>
+
+<component id="ListItem">
+  <li class="list-item" title="{@title}">
+    <div class="flex items-center space-x-4">
+      <a href="#/main?itemId={@id}" class="block flex-shrink-0" title="{@title ?? '--'} {@subtitle}">
+        <Avatar src2="@@assets.person1" initials="@title | abbreviate" status="bg-green-400"
+          status="bg-{@@enums.status | find:@status | dot:style ?? 'gray'}-500" alt="{@title}" />
+      </a>
+      <div class="sm:flex-1 min-w-0 max-sm:{@selectedId?'hidden':''}">
+        <a href="#/main?itemId={@id}" class="text-normal font-medium text-gray-900 truncate dark:text-white flex">
+          <span class="truncate break-words">{@title ?? '--'}</span>
+        </a>
+        <p class="text text-gray-500 truncate dark:text-gray-300" if="@sortByValue">{@sortByValue}</p>
+        <p class="text-sm text-gray-500 truncate dark:text-gray-400 break-words">
+          {@subtitle}</p>
+        <p class="text-sm text-gray-400 truncate dark:text-gray-300" if="@tags">({@tags})</p>
+      </div>
+      <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" if="slot()">
+        <Slot />
+      </div>
+    </div>
+  </li>
+</component>

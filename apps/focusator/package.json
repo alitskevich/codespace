@@ -1,0 +1,26 @@
+{
+  "name": "focusator-app",
+  "version": "1.0.0",
+  "description": "Make learning process easy, fun and efficient for everyone",
+  "author": "alitskevich",
+  "license": "MIT",
+  "source": "index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "start": "parcel",
+    "build": "pnpm run clean && parcel build --no-scope-hoist",
+    "clean": "rm -fdr dist && rm -fdr dist ../../.parcel-cache",
+    "download:index": "curl -L https://script.google.com/macros/s/AKfycbybHHt-DetS7FP76QoXGkJNdBVE4_qeJVRc-J4GF5ZYNcQFk3kdDjPBeplMLNMVeBTZ0A/exec",
+    "download:concepts": "curl -L https://script.google.com/macros/s/AKfycbwk024DnRMUbZj_1gRGpbPR5BKFb3tjUv_Nf0CZar4/dev > ./data/concepts.json",
+    "download:idioms": "curl -L https://script.google.com/macros/s/AKfycbyhAm3M6jDcJGw2WRabpXyT4LLaGAzYZn7VAokHYwSk7fNzWjJKP-0arjo_l--n4If3/exec > ./data/idioms.json",
+    "download:ctest": "curl -L https://script.google.com/macros/s/AKfycbw4xNoL9WKm9z5rMw0qoCFdo1KhbDU1bmdZI12uKFmul1S-4AgvGZMmsXPPJ2H4eA1f/exec > ./data/ctest.json",
+    "deploy": "firebase deploy --project 998906531698 --only hosting"
+  },
+  "dependencies": {
+    "arrmatura-ui": "workspace:",
+    "arrmatura-web": "workspace:",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.3.3",
+    "ultimus": "^2.0.1"
+  }
+}

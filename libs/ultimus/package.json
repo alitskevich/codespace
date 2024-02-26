@@ -1,0 +1,16 @@
+{
+  "name": "ultimus",
+  "version": "2.1.9",
+  "description": "Ultimus is a TS library about manipulating with strings, objects, functions, arrays, dates, xml, urls, etc",
+  "author": "alitskevich@gmail.com",
+  "license": "ISC",
+  "type": "module",
+  "main": "./index.ts",
+  "files": [
+    "src",
+    "types.ts"
+  ],
+  "scripts": {
+    "pnpm:publish": "pnpm publish --no-git-checks"
+  }
+}

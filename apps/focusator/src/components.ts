@@ -1,0 +1,16 @@
+import ui from "arrmatura-ui";
+import branding from "./branding.xml";
+import main from "./main.xml";
+import app from "./app.xml";
+import mywords from "./mywords.xml";
+import idioms from "./idioms.xml";
+import text from "./text.xml";
+import quiz from "./quiz.xml";
+import stat from "./stat.xml";
+import atoms from "./atoms.xml";
+import ctest from "./ctest.xml";
+
+import { WordsStore } from "./WordsStore"
+import { QuizService } from "./QuizService"
+
+export const types = [WordsStore, QuizService, ...ui, app, atoms, ctest, branding, main, mywords, idioms, text, quiz, stat];

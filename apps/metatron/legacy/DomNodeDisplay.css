@@ -1,0 +1,102 @@
+.dom-display-grid {
+  display: grid;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  grid-template-rows: 40px 40px 40px 60px 40px 40px 40px;
+  grid-template-columns: 40px 40px 40px 1fr 40px 40px 40px;
+  grid-template-areas:
+    "ml mt mt mt mt mt mr"
+    "ml r1 bt bt bt r2 mr"
+    "ml bl pl pt pr br mr"
+    "ml bl pl wh pr br mr"
+    "ml bl pl pb pr br mr"
+    "ml r4 bb bb bb r3 mr"
+    "ml mb mb mb mb mb mr";
+}
+
+.dom-display-grid .chip {
+  @apply bg-slate-600 rounded-md border leading-3 m-1 text-slate-50 h-8 text-sm relative;
+}
+.dom-display-grid > .m {
+  position: relative;
+  vertical-align: middle;
+  background-color: yellow;
+}
+.dom-display-grid > .b {
+  position: relative;
+  vertical-align: middle;
+  background-color: rebeccapurple;
+}
+.dom-display-grid > .p {
+  position: relative;
+  vertical-align: middle;
+  background-color: aquamarine;
+}
+.dom-display-grid > .r {
+  position: relative;
+  background-color: red;
+}
+
+.dom-display-grid > .ml:before {
+  content: "";
+  border-top: 40px solid greenyellow;
+  border-right: 40px solid transparent;
+  width: 40px;
+  position: absolute;
+  top: -40px;
+  left: 0px;
+  transform: rotate(180deg);
+}
+
+.dom-display-grid > .ml {
+  grid-area: ml;
+}
+.dom-display-grid > .mr {
+  grid-area: mr;
+}
+.dom-display-grid > .mt {
+  grid-area: mt;
+}
+.dom-display-grid > .mb {
+  grid-area: mb;
+}
+
+.dom-display-grid > .pl {
+  grid-area: pl;
+}
+.dom-display-grid > .pr {
+  grid-area: pr;
+}
+.dom-display-grid > .pt {
+  grid-area: pt;
+}
+.dom-display-grid > .pb {
+  grid-area: pb;
+}
+
+.dom-display-grid > .bl {
+  grid-area: bl;
+}
+.dom-display-grid > .br {
+  grid-area: br;
+}
+.dom-display-grid > .bt {
+  grid-area: bt;
+}
+.dom-display-grid > .bb {
+  grid-area: bb;
+}
+
+.dom-display-grid > .r1 {
+  grid-area: r1;
+}
+.dom-display-grid > .r2 {
+  grid-area: r2;
+}
+.dom-display-grid > .r3 {
+  grid-area: r3;
+}
+.dom-display-grid > .r4 {
+  grid-area: r4;
+}

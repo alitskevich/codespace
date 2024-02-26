@@ -1,0 +1,39 @@
+<component id="SearchBar.Suggestions">
+  <div class="relative h-10">
+    <Icon type="search" class="rounded-full p-1
+    text-gray-500 dark:text-gray-300 
+    " click="-> @active=true" if="@active ?? @value | not" />
+    <div
+      class="flex relative flex-no-wrap w-max items-center {@active ?? @value ? 'w-24' : 'w-8 hidden'} transition duration-300 ease">
+      <input class="
+      h-10 py-1
+      input rounded-full pl-4 pr-7 w-full
+      " type="text" autofocus="true" placeholder="@@strings.kluq_poshuku" keypress="@input" value="@value"
+        focus="-> @opened=true" />
+
+      <div class="absolute h-10 w-10 right-0">
+        <Icon type="cross" size="4" class="
+          rounded-full text-slate-500 h-10 w-10 dark:text-gray-400
+          " click="@enter" data-value="" if="@value" />
+        <Icon type="cross" size="4" class="
+          rounded-full text-slate-500 h-10 w-10 dark:text-gray-400
+          " click="-> @active=false" if="!@value" />
+      </div>
+    </div>
+
+    <Fragment if="@opened && @active && @suggestions">
+      <!-- <div style="position:fixed; right:0; top:0; left:0; bottom:0;" click="-> @opened=false">
+      </div> -->
+      <ul class="absolute mt-1 w-full dropdown" style="min-width: 140px;max-height:16rem;overflow-y:auto;z-index:101;"
+        click="-> @opened=false">
+        <li class="px-2 py-1 cursor-pointer {@@styles.dropdown-item}" each="item of suggestions" data-value="@item.id"
+          click="@enter">
+          <div class="">{@item.name}</div>
+        </li>
+        <li class="px-2" if="!@suggestions.length">
+          <div class="">{@@strings.no_findings ?? 'no findings' }</div>
+        </li>
+      </ul>
+    </Fragment>
+  </div>
+</component>

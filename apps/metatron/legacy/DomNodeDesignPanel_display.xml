@@ -1,0 +1,118 @@
+<component id="DomNodeDesignPanel_borders">
+  <div class="px-4 py-2 flex gap-4">
+    <div
+      class="stack_panel_v4--gridLeft--7lvP1 stack_panel_v4--gridTop--ZuyAb variable_control--comboInputControl--sKYPx variable_control--comboInputControlWithBorder--RTX-T raw_components--borderFocusWithin--mSvWa">
+      <div class="variable_control--inputWrapper--LUhHu">
+        <label
+          class="scrubbable_control--containerBordered---60m8 raw_components--borderFocusWithin--mSvWa scrubbable_control--container--myvKL scrubbable_control--disableHoverBorder--cI9w0"
+          data-tooltip-type="text" data-tooltip="Left padding" aria-label="Left padding"
+          data-onboarding-key="scrubbable-control-left-padding">
+          <span
+            class="svg-container stack_panel_v4--inactiveLabel--CVF76 raw_components--iconInsideBorderFocusWithin--xyTeR"
+            id="stack-padding-input-icon-3">
+            <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+              <path fill="#fff" fill-opacity="1" fill-rule="evenodd" stroke="none"
+                d="M0 12V0h1v12H0zm3-9h6v6H3V3zm1 1v4h4V4H4z" class=""></path>
+            </svg>
+          </span>
+          <div role="textbox" class="tokenizable_input--container--81cdQ">
+            <div class="tokenizable_input--pills--koTYg"></div>
+            <div class="tokenizable_input--input--CP7RH">
+              <!-- <input autocomplete="new-password" spellcheck="false"
+                    class="raw_components--textInput--DZIFa raw_components--base--O8WhL raw_components--input--iFGv3 raw_components--singleRowHeight--r92RH stack_panel_v4--input--7ci7d raw_components--flushLeft--ZlY-6"
+                    dir="auto" value="0"> -->
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div
+      class="stack_panel_v4--gridLeft--7lvP1 stack_panel_v4--gridBottom--0rA1T variable_control--comboInputControl--sKYPx variable_control--comboInputControlWithBorder--RTX-T raw_components--borderFocusWithin--mSvWa">
+      <div class="variable_control--inputWrapper--LUhHu">
+        <label
+          class="scrubbable_control--containerBordered---60m8 raw_components--borderFocusWithin--mSvWa scrubbable_control--container--myvKL scrubbable_control--disableHoverBorder--cI9w0"
+          data-tooltip-type="text" data-tooltip="Right padding" aria-label="Right padding"
+          data-onboarding-key="scrubbable-control-right-padding">
+          <span
+            class="svg-container stack_panel_v4--inactiveLabel--CVF76 raw_components--iconInsideBorderFocusWithin--xyTeR"
+            id="stack-padding-input-icon-1">
+            <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+              <path fill="#fff" fill-opacity="1" fill-rule="evenodd" stroke="none"
+                d="M12 0v12h-1V0h1zM3 3h6v6H3V3zm1 1v4h4V4H4z" class=""></path>
+            </svg>
+          </span>
+          <div role="textbox" class="tokenizable_input--container--81cdQ">
+            <div class="tokenizable_input--pills--koTYg"></div>
+            <div class="tokenizable_input--input--CP7RH">
+              <!-- <input autocomplete="new-password" spellcheck="false"
+                    class="raw_components--textInput--DZIFa raw_components--base--O8WhL raw_components--input--iFGv3 raw_components--singleRowHeight--r92RH stack_panel_v4--input--7ci7d raw_components--flushLeft--ZlY-6"
+                    dir="auto" value="0"> -->
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div
+      class="stack_panel_v4--gridRight--y7ksk stack_panel_v4--gridTop--ZuyAb variable_control--comboInputControl--sKYPx variable_control--comboInputControlWithBorder--RTX-T raw_components--borderFocusWithin--mSvWa">
+      <div class="variable_control--inputWrapper--LUhHu">
+        <label
+          class="scrubbable_control--containerBordered---60m8 raw_components--borderFocusWithin--mSvWa scrubbable_control--container--myvKL scrubbable_control--disableHoverBorder--cI9w0"
+          data-tooltip-type="text" data-tooltip="Top padding" aria-label="Top padding"
+          data-onboarding-key="scrubbable-control-top-padding">
+          <span
+            class="svg-container stack_panel_v4--inactiveLabel--CVF76 raw_components--iconInsideBorderFocusWithin--xyTeR"
+            id="stack-padding-input-icon-0">
+            <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+              <path fill="#fff" fill-opacity="1" fill-rule="evenodd" stroke="none"
+                d="M0 0h12v1H0V0zm3 3h6v6H3V3zm1 1v4h4V4H4z" class=""></path>
+            </svg>
+          </span>
+          <div role="textbox" class="tokenizable_input--container--81cdQ">
+            <div class="tokenizable_input--pills--koTYg"></div>
+            <div class="tokenizable_input--input--CP7RH">
+              <!-- <input autocomplete="new-password" spellcheck="false"
+                    class="raw_components--textInput--DZIFa raw_components--base--O8WhL raw_components--input--iFGv3 raw_components--singleRowHeight--r92RH stack_panel_v4--input--7ci7d raw_components--flushLeft--ZlY-6"
+                    dir="auto" value="0"> -->
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div
+      class="stack_panel_v4--gridRight--y7ksk stack_panel_v4--gridBottom--0rA1T variable_control--comboInputControl--sKYPx variable_control--comboInputControlWithBorder--RTX-T raw_components--borderFocusWithin--mSvWa">
+      <div class="variable_control--inputWrapper--LUhHu">
+        <label
+          class="scrubbable_control--containerBordered---60m8 raw_components--borderFocusWithin--mSvWa scrubbable_control--container--myvKL scrubbable_control--disableHoverBorder--cI9w0"
+          data-tooltip-type="text" data-tooltip="Bottom padding" aria-label="Bottom padding"
+          data-onboarding-key="scrubbable-control-bottom-padding">
+          <span
+            class="svg-container stack_panel_v4--inactiveLabel--CVF76 raw_components--iconInsideBorderFocusWithin--xyTeR"
+            id="stack-padding-input-icon-2">
+            <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+              <path fill="#fff" fill-opacity="1" fill-rule="evenodd" stroke="none"
+                d="M3 3h6v6H3V3zm1 1v4h4V4H4zm8 8H0v-1h12v1z" class=""></path>
+            </svg>
+          </span>
+          <div role="textbox" class="tokenizable_input--container--81cdQ">
+            <div class="tokenizable_input--pills--koTYg"></div>
+            <div class="tokenizable_input--input--CP7RH">
+              <!-- <input autocomplete="new-password" spellcheck="false"
+                    class="raw_components--textInput--DZIFa raw_components--base--O8WhL raw_components--input--iFGv3 raw_components--singleRowHeight--r92RH stack_panel_v4--input--7ci7d raw_components--flushLeft--ZlY-6"
+                    dir="auto" value="0"> -->
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+    <button
+      class="option_button--toggled--hK8kl option_button--_optionButton--o6fJT stack_panel_v4--paddingControlsToggleIcon--iPCMG"
+      tabindex="0" data-tooltip-type="text" data-tooltip="Individual padding">
+      <span class="svg-container">
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="12" height="12">
+          <path fill="#000" fill-opacity=".8" fill-rule="evenodd" stroke="none"
+            d="M3 0h6v1H3V0zM0 3v6h1V3H0zm11 0v6h1V3h-1zm-8 9h6v-1H3v1z" class=""></path>
+        </svg>
+      </span>
+    </button>
+  </div>
+</component>

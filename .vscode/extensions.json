@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "mhutchie.git-graph",
+    "eamodio.gitlens",
+    "visualstudioexptteam.vscodeintellicode",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "tabnine.tabnine-vscode",
+    "ban.spellright",
+    "antfu.smart-clicks",
+    "ardevia.sculptui-vscode",
+    "unifiedjs.vscode-mdx",
+    "zainchen.json",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.azure-account"
+  ]
+}

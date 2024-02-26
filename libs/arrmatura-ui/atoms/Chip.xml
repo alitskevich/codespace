@@ -1,0 +1,16 @@
+<component id="Chip">
+  <span data="@data" click="@click" class="
+    {@@styles.chip} {@isSelected ? @@styles.chip-selected}
+    {@click ? cursor-pointer} 
+    {@class}
+    ">
+    <Icon type="@icon" if="@icon" size="4" />
+    <span class="mx-1" if="@title">{@title}</span>
+    <Slot />
+    <span if="@badge" class="inline-block py-0 px-1 ml-1 
+      leading-none text-center whitespace-nowrap align-baseline
+      text-sm rounded bg-slate-600 text-slate-100">
+      {@badge}
+    </span>
+  </span>
+</component>

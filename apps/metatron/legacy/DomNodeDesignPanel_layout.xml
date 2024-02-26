@@ -1,0 +1,123 @@
+<component id="ScreenOrintation">
+  <div
+    class="relative h-[30px] place-self-center overflow-hidden box-border bg-clip-padding inline-flex justify-center items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] col-[17_/_span_7] m-0 p-0 rounded-sm border-0">
+    <div
+      class="inline-flex justify-center items-center h-6 [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 rounded-sm border-0">
+      <div
+        class="flex-[0_0_24px] w-6 h-6 box-border flex items-center justify-center bg-clip-padding relative bg-[color:var(--color-bg-tertiary,rgba(0,0,0,0.1))] border-[color:var(--color-border,rgba(0,0,0,0.1))] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 rounded-sm border-0"
+        data-tooltip-type="text" data-tooltip="Portrait" aria-label="Portrait">
+        <span
+          class="text-[color:var(--color-icon,#000)] fill-[var(--color-icon,#000)] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+          <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14">
+            <path fill="#000" fill-opacity="1" fill-rule="evenodd" stroke="none" d="M7 1H1v12h6V1zM1 0H0v14h8V0H1z"
+              class=""></path>
+          </svg>
+        </span>
+      </div>
+      <div
+        class="flex-[0_0_24px] w-6 h-6 box-border flex items-center justify-center bg-clip-padding relative [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0"
+        data-tooltip-type="text" data-tooltip="Landscape" aria-label="Landscape">
+        <span
+          class="text-[color:var(--color-icon,#000)] fill-[var(--color-icon,#000)] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+          <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8">
+            <path fill="#000" fill-opacity="1" fill-rule="evenodd" stroke="none" d="M1 1v6h12V1H1zM0 7v1h14V0H0v7z"
+              class=""></path>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</component>
+
+<component id="DomNodeDesignPanel_layout">
+  <div>
+    <div
+      class="h-8 box-border grid grid-cols-[repeat(28,1fr)] items-center relative grid-rows-[32px] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 px-2 p-0 border-0"
+      data-testid="x-y-inputs-row">
+      <label
+        class="h-7 relative box-border w-full cursor-[inherit] select-none flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline col-end-[span_12] my-px m-0 p-0 rounded-sm border-0"
+        aria-label="X" data-onboarding-key="scrubbable-control-x">
+        <span
+          class="[font:inherit] align-top [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex [-webkit-font-smoothing:antialiased] normal-case items-center justify-center h-8 w-8 flex-[0_0_32px] leading-8 text-[11px] text-[color:var(--color-text-secondary,#b3b3b3)] fill-[var(--color-icon-secondary,#b3b3b3)] stroke-[color:var(--color-icon-secondary,#b3b3b3)] col-end-[span_4] text-center pointer-events-none -ml-px m-0 p-0 border-0">X</span>
+        <input autocomplete="new-password" spellcheck="false"
+          class="h-7 box-border bg-transparent w-full bg-clip-padding min-w-0 text-[color:var(--color-text,#333333)] fill-[var(--color-icon,#333333)] cursor-[inherit] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline m-0 p-0 rounded-sm border-0"
+          dir="auto" value="32987">
+      </label>
+      <label
+        class="h-7 relative box-border w-full cursor-[inherit] select-none flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline col-end-[span_12] my-px m-0 p-0 rounded-sm border-0"
+        aria-label="Y" data-onboarding-key="scrubbable-control-y">
+        <span
+          class="[font:inherit] align-top [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex [-webkit-font-smoothing:antialiased] normal-case items-center justify-center h-8 w-8 flex-[0_0_32px] leading-8 text-[11px] text-[color:var(--color-text-secondary,#b3b3b3)] fill-[var(--color-icon-secondary,#b3b3b3)] stroke-[color:var(--color-icon-secondary,#b3b3b3)] col-end-[span_4] text-center pointer-events-none -ml-px m-0 p-0 border-0">Y</span>
+        <input autocomplete="new-password" spellcheck="false"
+          class="h-7 box-border bg-transparent w-full bg-clip-padding min-w-0 text-[color:var(--color-text,#333333)] fill-[var(--color-icon,#333333)] cursor-[inherit] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline m-0 p-0 rounded-sm border-0"
+          dir="auto" value="5555">
+      </label>
+    </div>
+    <div
+      class="h-8 box-border grid grid-cols-[repeat(28,1fr)] items-center relative grid-rows-[32px] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 px-2 p-0 border-0"
+      data-testid="width-height-row">
+      <div
+        class="h-[unset] relative box-border w-full [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] col-end-[span_12] flex min-h-[28px] my-px m-0 p-0 rounded-sm border-0">
+        <div
+          class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] self-stretch flex grow -mr-0.5 -mb-0.5 m-0 p-0 border-0">
+          <label
+            class="h-7 relative box-border w-full cursor-[inherit] select-none flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline -ml-px -mt-px mb-px m-0 p-0 rounded-sm border-0"
+            aria-label="Width" data-onboarding-key="scrubbable-control-width">
+            <span
+              class="[font:inherit] align-top [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex [-webkit-font-smoothing:antialiased] normal-case items-center justify-center h-8 w-8 flex-[0_0_32px] leading-8 text-[11px] text-[color:var(--color-text-secondary,#b3b3b3)] fill-[var(--color-icon-secondary,#b3b3b3)] stroke-[color:var(--color-icon-secondary,#b3b3b3)] col-end-[span_4] text-center pointer-events-none -ml-px m-0 p-0 border-0">W</span>
+            <div role="textbox"
+              class="flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+              <div
+                class="flex-[1_0_auto] max-w-[44px] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+              </div>
+              <div
+                class="flex-auto [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+                <input autocomplete="new-password" spellcheck="false"
+                  class="h-7 box-border bg-transparent w-full bg-clip-padding min-w-0 text-[color:var(--color-text,#333333)] fill-[var(--color-icon,#333333)] cursor-[inherit] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline m-0 p-0 rounded-sm border-0"
+                  data-testid="transform-width" dir="auto" value="1443">
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div
+        class="h-[unset] relative box-border w-full [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] col-end-[span_12] col-start-13 flex min-h-[28px] my-px m-0 p-0 rounded-sm border-0">
+        <div
+          class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] self-stretch flex grow -mr-0.5 -mb-0.5 m-0 p-0 border-0">
+          <label
+            class="h-7 relative box-border w-full cursor-[inherit] select-none flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline -ml-px -mt-px mb-px m-0 p-0 rounded-sm border-0"
+            aria-label="Height" data-onboarding-key="scrubbable-control-height">
+            <span
+              class="[font:inherit] align-top [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex [-webkit-font-smoothing:antialiased] normal-case items-center justify-center h-8 w-8 flex-[0_0_32px] leading-8 text-[11px] text-[color:var(--color-text-secondary,#b3b3b3)] fill-[var(--color-icon-secondary,#b3b3b3)] stroke-[color:var(--color-icon-secondary,#b3b3b3)] col-end-[span_4] text-center pointer-events-none -ml-px m-0 p-0 border-0">H</span>
+            <div role="textbox"
+              class="flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+              <div
+                class="flex-[1_0_auto] max-w-[44px] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+              </div>
+              <div
+                class="flex-auto [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+                <input autocomplete="new-password" spellcheck="false"
+                  class="h-7 box-border bg-transparent w-full bg-clip-padding min-w-0 text-[color:var(--color-text,#333333)] fill-[var(--color-icon,#333333)] cursor-[inherit] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline m-0 p-0 rounded-sm border-0"
+                  data-testid="transform-height" dir="auto" value="2231">
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="h-8 box-border grid grid-cols-[repeat(28,1fr)] items-center relative grid-rows-[32px] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 px-2 p-0 border-0">
+      <label
+        class="select-none flex items-center cursor-[inherit] relative col-end-[span_4] justify-center flex-[0_0_32px] h-8 w-8 [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline place-self-center m-0 p-0 border-0">
+        <input id=":r3:" type="checkbox"
+          class="appearance-none w-3.5 h-3.5 flex [outline:none] justify-center items-center flex-[0_0_32px] [font:inherit] [vertical-align:inherit] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+      </label>
+      <label
+        class="text-[color:var(--color-text,#333333)] fill-[var(--color-icon,#333333)] cursor-[inherit] box-border bg-clip-padding select-none text-left leading-8 [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline col-end-[span_24] self-center m-0 p-0 rounded-sm border-0"
+        for=":r3:" dir="auto">Clip content</label>
+    </div>
+    <DomNodeDesignPanel_outline />
+
+  </div>
+</component>

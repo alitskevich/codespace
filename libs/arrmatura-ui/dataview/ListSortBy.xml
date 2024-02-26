@@ -1,0 +1,24 @@
+<component id="ListSortBy">
+  <div class="">
+
+    <Chip class="{@@styles.dropdown-trigger} dropdown-trigger
+    rounded-lg inline-flex items-center {@opened ? 'bg-gray-400':''}">
+
+      <Icon type="sortAsc" class="rounded-lg p-1" click="-> @opened=!@opened" if="!@value" />
+
+      <Icon type="@dir == '-' ? 'sortDesc' : 'sortAsc'" class="
+        rounded-lg
+        cursor-pointer p-1
+        " data-value="@dir == '-' ? '' : '-'" click="@onChangeDir" if="@value" />
+
+      <span class="pr-2 p-1 capitalize" click="-> @opened=!@opened" if="@value">
+        {@options | find:@value | dot:'name' ?? 'unsorted'}
+      </span>
+    </Chip>
+    <div class="{@opened ? 'mt-3 relative' : ''}">
+      <DropdownOptionsList side="right" caption="Sort by" options="@options" itemClick="@onChange" value="@value"
+        close="-> @opened=false" if="@opened" />
+    </div>
+
+  </div>
+</component>

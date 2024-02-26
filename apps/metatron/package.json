@@ -1,0 +1,29 @@
+{
+  "name": "metatron",
+  "version": "2.0.0",
+  "description": "Metatron - Rapid Web applications development tool.",
+  "license": "ISC",
+  "source": [
+    "index.html"
+  ],
+  "scripts": {
+    "start": "parcel --https -p 3448",
+    "build": "rm -fdr dist && parcel build --no-scope-hoist",
+    "rebuildIndex": "cd src && bun run makeIndex.ts",
+    "deploy": "firebase deploy --project 373433080161 --only hosting",
+    "build:snippets": "cd ./__meta__ && ./snippets.sh && cd .. && prettier --check --ignore-path .gitignore --write ./lib/snippets"
+  },
+  "dependencies": {
+    "arrmatura": "workspace:^",
+    "arrmatura-ui": "workspace:^",
+    "arrmatura-web": "workspace:^",
+    "figmatron": "workspace:^",
+    "firebase": "^9.22.2",
+    "ultimus": "workspace:^",
+    "ultimus-fs": "workspace:^"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2"
+  }
+}

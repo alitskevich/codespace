@@ -1,0 +1,85 @@
+<component id="App.Chromext">
+  <ToastService ref="toaster" />
+  <BrowserService ref="browser" title="{@@itemId ?? ''} | {@@name}" />
+  <LocationHashService ref="hash" />
+
+  <EditorService ref="editor" body="@nextBody" nodeId="@elementId" />
+
+  <Connector ref="current" />
+  <Connector data="<- editor@nextBody" change="->@nextBody" />
+  <Connector data="<- editor@nextBody" change="-> current@body" />
+
+  <StoredData name="nextBody:{@@itemId}" defaults="@@item.body" data="<- editor@nextBody" action="->@nextBody" />
+
+  <Connector data="<- hash@data" change="-> @elementId" />
+
+  <Connector data="@@item.props | arrayToObject : 'id' : 'defaultValue'" change="-> current@props" trigger="@@item" />
+
+  <main class="h-screen flex flex-col">
+    <Nav>
+      <Nav:right>
+        <button class="ml-2 bg-gray-400 text-green-800 px-2 py-1 rounded">Submit</button>
+      </Nav:right>
+      <Nav:left>
+        <a class="ml-2 text-indigo-600 text-lg font-semibold" href="/project/{@@projectId}#{@@itemId}">{@@name ??
+          'Project'}</a>
+        <h5 class="mx-2 flex items-center space-x-2" if="@item">
+          <Dynamic as="ItemTypeIcon.{@@item.type??'File'}" />
+          <span>{@@item.name ?? @@itemId}</span>
+        </h5>
+      </Nav:left>
+    </Nav>
+    <div class="flex flex-1 min-h-0">
+      <div class="max-w-fit min-h-0 min-w-0 overflow-y-auto  py-2 px-2 bg-white dark:bg-gray-800">
+        <SidebarList data="@@componentsTree" />
+      </div>
+      <EditorStructurePanel currentId="@elementId" class="flex-1 min-w-0" />
+      <!-- <EditorPropertiesPanel item="@@item" currentNode="<- editor@currentNode" class="w-1/5  shrink-0" /> -->
+    </div>
+  </main>
+
+  <ToastList />
+
+</component>
+
+<component id="App.Editor">
+  <ToastService ref="toaster" />
+  <BrowserService ref="browser" title="{@@itemId ?? ''} | {@@name}" />
+  <LocationHashService ref="hash" />
+
+  <EditorService ref="editor" body="@nextBody" nodeId="@elementId" />
+
+  <Connector ref="current" />
+  <Connector data="<- editor@nextBody" change="->@nextBody" />
+  <Connector data="<- editor@nextBody" change="-> current@body" />
+
+  <StoredData name="nextBody:{@@itemId}" defaults="@@item.body" data="<- editor@nextBody" action="->@nextBody" />
+
+  <Connector data="<- hash@data" change="-> @elementId" />
+
+  <Connector data="@@item.props | arrayToObject : 'id' : 'defaultValue'" change="-> current@props" trigger="@@item" />
+
+  <main class="h-screen flex flex-col">
+    <Nav>
+      <Nav:right>
+        <button class="ml-2 bg-gray-400 text-green-800 px-2 py-1 rounded">Submit</button>
+      </Nav:right>
+      <Nav:left>
+        <a class="ml-2 text-indigo-600 text-lg font-semibold" href="/project/{@@projectId}#{@@itemId}">{@@name ??
+          'Project'}</a>
+        <h5 class="mx-2 flex items-center space-x-2" if="@item">
+          <Dynamic as="ItemTypeIcon.{@@item.type??'File'}" />
+          <span>{@@item.name ?? @@itemId}</span>
+        </h5>
+      </Nav:left>
+    </Nav>
+    <div class="flex flex-1 min-h-0">
+      <EditorPreviewPanel elementId="@elementId" class="" />
+      <EditorStructurePanel currentId="@elementId" class="flex-1 min-w-0" />
+      <!-- <EditorPropertiesPanel item="@@item" currentNode="<- editor@currentNode" class="w-1/5  shrink-0" /> -->
+    </div>
+  </main>
+
+  <ToastList />
+
+</component>

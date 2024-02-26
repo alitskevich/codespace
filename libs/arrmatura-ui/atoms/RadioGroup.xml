@@ -1,0 +1,10 @@
+<component id="RadioGroup">
+  <div class="flex flex-wrap w-full items-center pt-2 gap-2 {@class}" role="group">
+    <label class=" {@@styles.chip}
+     {@option.id == @value ? @@styles.chip-selected' : '' }" each="option of @options">
+      <input type="radio" name="@name" value="@option.id" checked="@option.id == @value" change="@change" data="@data"
+        disabled="@disabled" />
+      <span class="text-sm">{@option.name}</span>
+    </label>
+  </div>
+</component>

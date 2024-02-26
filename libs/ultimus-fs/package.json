@@ -1,0 +1,19 @@
+{
+  "name": "ultimus-fs",
+  "version": "1.0.14",
+  "description": "Ultimus-fs is a library of utilities arond files, streams, http calls, etc",
+  "author": "alitskevich@gmail.com",
+  "license": "ISC",
+  "type": "module",
+  "main": "./index.ts",
+  "files": [
+    "src",
+    "types.ts"
+  ],
+  "scripts": {
+    "pnpm:publish": "pnpm publish --no-git-checks"
+  },
+  "dependencies": {
+    "ultimus": "workspace:*"
+  }
+}

@@ -1,0 +1,25 @@
+<component id="Field.City">
+
+  <Connector data-country="@data|dot:@typeSpec" change="-> ..." />
+
+  <Connector data-value="@@enums.city|find:@value|dot:'type' ?? @country " change="@onChangeFor|dot:@typeSpec" />
+
+  <Connector data-citiesByCountry="@@enums.city|filter:'type':@country" change="-> ..." />
+
+  <TagsValueController ref="ctrl" value="@value" options="@citiesByCountry.length ? @citiesByCountry : @@enums.city"
+    change="@onChange" disabled="@disabled" />
+
+  <FieldItem caption="@caption" error="@error" required="@required" hint="@hint" disabled="@disabled">
+
+    <FieldPrefix>
+      <Dropdown options="@@enums.country" value="@data|dot:@typeSpec" change="@onChangeFor|dot:@typeSpec"
+        disabled="@disabled ?? @value|truthy" />
+    </FieldPrefix>
+
+    <FieldSuggestion.Input caption="@caption" class="rounded-r-lg" value="@value" kliuq="<- ctrl@kliuq"
+      tags="<- ctrl@selectedOptions" placeholder="@placeholder" options="<- ctrl@availableOptions" disabled="@disabled"
+      toggleOption="-> ctrl@toggleAndClearKliuq" />
+
+  </FieldItem>
+
+</component>

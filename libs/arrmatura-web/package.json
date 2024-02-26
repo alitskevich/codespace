@@ -1,0 +1,20 @@
+{
+  "name": "arrmatura-web",
+  "version": "6.2.2",
+  "description": "Web client platform built on Arrmatura runtime",
+  "author": "alitskevich@gmail.com",
+  "license": "ISC",
+  "type": "module",
+  "module": "index.ts",
+  "files": [
+    "src/**/*"
+  ],
+  "scripts": {
+    "pnpm:publish": "pnpm publish --no-git-checks",
+    "run:todo": "cd samples/todo && parcel"
+  },
+  "dependencies": {
+    "arrmatura": "workspace:*",
+    "ultimus": "workspace:^2.0.0"
+  }
+}

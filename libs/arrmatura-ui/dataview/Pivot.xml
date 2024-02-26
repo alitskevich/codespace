@@ -1,0 +1,111 @@
+<component id="Pivot">
+  <table class="w-full" style="position: relative">
+    <thead class="w-full" style="position: sticky; top: -1">
+      <tr class="bg-slate-500 dark:bg-gray-700 text-black dark:text-white">
+        <td class="p-2 cursor-pointer" click="@openConfig"><span>{@title}</span>
+        </td>
+        <td class="p-2" each="col of @columns">
+          <span>{@col.name || '-'}</span>
+        </td>
+        <td class="p-2" if="@totalCount"><span>Σ</span></td>
+      </tr>
+    </thead>
+    <tbody class="">
+      <PivotRow row="@row" onCell="@onCell" each="row of @rows" />
+      <tr class="bg-slate-500 dark:bg-gray-700 text-black dark:text-white" style="" if="@totalCount">
+        <td class="p-2">
+          <span>Σ</span>
+        </td>
+        <td class="p-2 {@col.items.length ? 'bg-slate-500 cursor-pointer'}" each="col of @columns" data="@col"
+          click="@onCell">
+          <span>{@col.value}</span>
+        </td>
+        <td class="p-2">
+          <span>{@totalCount}</span>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</component>
+
+<component id="PivotRow">
+  <tr class="bg-slate-300 dark:bg-slate-600" style="">
+    <td class="p-2">
+      <span>{@row.name || '-'}</span>
+    </td>
+    <td
+      class="p-2 {@cell.items.length ? 'bg-gray-400 dark:bg-slate-700 cursor-pointer'} {@cellDetails.id == @cell.id ? 'border bg-slate-500': ''}"
+      each="cell of @row.columns" data="@cellDetails.items.length ? false : @cell" click="-> @cellDetails">
+      <span>{@cell.value || '-'}</span>
+    </td>
+    <td
+      class="p-2 {@row.items.length ? 'bg-slate-600 cursor-pointer'} {@cellDetails.id == @row.id ? 'border bg-slate-800': ''}"
+      data="@cellDetails.items.length ? false : @row" click="-> @cellDetails">
+      <span>{@row.value}</span>
+    </td>
+  </tr>
+  <tr class="gradient from-slate-500 to-transparent" if="@cellDetails.items.length">
+    <td class="py-2" colspan="{@row.columns.length|increment:2}">
+      <div opened="@cellDetails" title="@cellDetails.name" close="">
+        <header class="p-2 flex flex-no-wrap items-center min-w-0 gap-1">
+          <h2 class="flex-1 text-lg text-truncate">{@cellDetails.name}</h2>
+          <Icon type="cross" size="3" class="rounded-lg text-slate-500 h-10 w-10 dark:text-gray-400" data-itemId=""
+            click="-> @cellDetails=false" />
+        </header>
+        <ul role="list" class="flex flex-col md:gap-2 w-full divide-y divide-gray-200 dark:divide-gray-700">
+          <li data="{@field}" class="p-2 list-item" each="item of @cellDetails.items">
+            <a href="#/main?itemId={@item.id}"
+              class="text-normal font-medium text-gray-900 truncate dark:text-white flex">
+              <span class="truncate break-words">{@item.title ?? '-'}</span>
+            </a>
+            <p class="text-sm text-gray-500 truncate dark:text-gray-400 break-words">
+              {@item.subtitle}</p>
+            <p class="text-sm text-gray-400 truncate dark:text-gray-300" if="@item.tags">({@item.tags})</p>
+          </li>
+        </ul>
+      </div>
+    </td>
+  </tr>
+</component>
+
+<component id="PivotView">
+  <div role="list" class="w-full mt-2 max-md:divide-y md:space-y-4  divide-gray-200 dark:divide-gray-700">
+    <Pivot (...)="@data|pivotData:@rowId:@colId:@@enums:@form" openConfig="-> @showConfig=true" rowId="@rowId"
+      colId="@colId" form="@form" />
+    <div class="h-48"></div>
+  </div>
+  <Modal if="@showConfig" opened="@showConfig" title="Choose rows and columns..." close="-> @showConfig=false">
+    <div style="overflow-y: auto;height:25rem;margin:0.5rem 0;">
+      <div class="flex">
+        <ul role="list" class="m-1">
+          <li click="->nav.onParams(data)" data-rowId="@field.id"
+            class="p-2 {@field.id==@rowId ? @@styles.chip-selected}" each="field of @form">
+            {@field.name}</li>
+        </ul>
+        <!-- <div>x</div> -->
+        <ul role="list" class="m-1">
+          <li click="->nav.onParams(data)" data-colId="@field.id"
+            class="p-2 {@field.id==@colId ? @@styles.chip-selected}" each="field of @form">
+            {@field.name}</li>
+          <li click="->nav.onParams(data)" data-colId="" class="p-2 {!@colId ? @@styles.chip-selected}">NONE</li>
+        </ul>
+      </div>
+    </div>
+    <Modal:footer>
+      <Btn title="Close" mode="primary" large="true" action="-> @showConfig=false" />
+    </Modal:footer>
+  </Modal>
+</component>
+
+
+<component id="ViewModeSelector">
+  <div class="flex flex-no-wrap items-center mt-1 gap-0 px-2 rounded-md" role="group">
+    <label class="py-1 px-2
+    first:rounded-l-lg last:rounded-r-lg  
+    {@option.id == @value ? @@styles.chip-selected : 'bg-slate-600' } 
+    text-gray-100 dark:text-white" data-value="@option.id" click="@change" each="option of @options">
+      <span class="text-sm">{@option.name}</span>
+    </label>
+  </div>
+</component>

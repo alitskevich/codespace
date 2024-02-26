@@ -1,0 +1,11 @@
+<component id="Icon">
+  <span class="
+        flex items-center justify-center 
+        {@click ? @@styles.clickable} 
+        {@class}
+        " title="{@title ?? @type}" data="@data" click="@click">
+
+    <Dynamic as="{@ns??'Svg'}.{@type|capitalize}" class="h-{@size ?? '6'} w-{@size ?? '6'} m-1 @iconClass" />
+    <span class="sr-only">{@title ?? @type}</span>
+  </span>
+</component>

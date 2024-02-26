@@ -1,0 +1,14 @@
+<component id="AuthenticatedFacility">
+  <AuthService ref="auth" (...)="@@auth" persistence="@@auth.persistence" afterSignedOut="-> browser.reload()" />
+  <SignInPage if="<- auth@isAuthorized | not">
+    <Else>
+      <ApiEndpoint ref="api" (...)="@@api" token="<- auth@token" onUnauthorized="-> auth.invalidateToken()" />
+      <UserProfileService ref="user" persistence="@@auth.persistence" invokeApi="<- api@invoke" />
+      <AsyncLoader isLoading="<- user@isLoading" title="@@strings.app_load_user_profile"
+        subtitle="@@strings.app_load_user_profile_subtitle">
+        <Slot />
+      </AsyncLoader>
+      <UserProfileModal if="<- user@showProfile" />
+    </Else>
+  </SignInPage>
+</component>

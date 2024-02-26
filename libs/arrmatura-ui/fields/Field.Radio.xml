@@ -1,0 +1,6 @@
+<component id="Field.Radio">
+  <FieldItem caption="@caption" class="@class" error="@error" required="@required" hint="@hint">
+    <RadioGroup name="@id" change="@onChange" value="@value ?? @defaultValue" options="@@enums|dot:@typeSpec"
+      disabled="@disabled" class="input rounded-lg" />
+  </FieldItem>
+</component>

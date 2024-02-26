@@ -1,0 +1,20 @@
+{
+  "name": "figmatron",
+  "version": "1.0.1",
+  "description": "Figmatron: HTML/Tailwind components generator based on Figma REST API (v.1)",
+  "author": "alitskevich@gmail.com",
+  "license": "ISC",
+  "type": "module",
+  "main": "./index.ts",
+  "files": [
+    "src",
+    "types.ts",
+    "ast-types.ts"
+  ],
+  "scripts": {
+    "pnpm:publish": "pnpm publish --no-git-checks"
+  },
+  "dependencies": {
+    "ultimus": "workspace:*"
+  }
+}

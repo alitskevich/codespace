@@ -1,0 +1,12 @@
+<component id="Auth2Facility">
+  <Auth2Service ref="auth" authUrl="@@auth.url" persistence="@@auth.persistence" afterSignedOut="-> browser.reload()" />
+  <Fragment if="<- auth@isAuthorized">
+    <ApiEndpoint ref="api" url="@@api.url" token="<- auth@token" onUnauthorized="-> auth.invalidateToken()" />
+    <UserProfileService ref="user" persistence="@@auth.persistence" invokeApi="<- api@invoke" />
+    <AsyncLoader isLoading="<- user@isLoading" title="@@strings.app_load_user_profile"
+      subtitle="@@strings.app_load_user_profile_subtitle">
+      <Slot />
+    </AsyncLoader>
+    <UserProfileModal if="<- user@showProfile" />
+  </Fragment>
+</component>

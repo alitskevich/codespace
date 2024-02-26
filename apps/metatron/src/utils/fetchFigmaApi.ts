@@ -1,6 +1,3 @@
-// const fileKey = "HJZ2n7avAOMFJnyh9TYAuO";
-// const token = "figd_QZYjtGLxkwtXCtACS4fCyb1esKY4u9L_1E67ROeC";
-
 import { urlParse } from "ultimus";
 
 export async function fetchFigmaApi(path: string) {
@@ -10,8 +7,7 @@ export async function fetchFigmaApi(path: string) {
 
   const {
     // file: fileKey = "bXt9NPqRZ82YO4IUCIdrpO", // my test
-    // figma_token = "figd_QZYjtGLxkwtXCtACS4fCyb1esKY4u9L_1E67ROeC",
-    figma_token = "figd_mYOOCbB09rPHMKpxIDGSimPhqKATx2ls-OUmjGzT",
+    figma_token,
   } = params;
 
   if (figma_token) {

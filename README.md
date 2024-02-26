@@ -1,11 +1,9 @@
-#Main workspace
+#Active workspace.
 
 ## Stack
 
-- HTML5, CSS3, TypeScript, Arrmatura
-- pNpm, Parcel
-- Tailwind, Flowbite
-- Vercel, Firebase, NPM
+- HTML5, CSS3, TypeScript, Tailwind, Arrmatura
+- pNpm, Parcel, Firebase
 
 ## Readings
 

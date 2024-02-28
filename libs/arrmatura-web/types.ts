@@ -32,7 +32,7 @@ export type MyTouchEvent = TouchEvent & {
 
 export type LaunchWebOptions = {
   template?: string;
-  types?: any[];
+  components?: any[];
   plugins?: any[];
   functions?: Record<string, (...args: any[]) => any>;
   resources?: any;

@@ -20,7 +20,7 @@ const green = { url: `https://script.google.com/macros/s/${apiKey}/exec?action=m
 
 const config = {
   resources: { ...defaults, assets, params, green },
-  types: [...ui, templates]
+  components: [...ui, templates]
 };
 
 launchWeb(config);

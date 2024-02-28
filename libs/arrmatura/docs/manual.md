@@ -225,12 +225,14 @@ Inner content could be multiple-part and thus, distributed separately inside com
 
 There is a [Component] class that could be used an base ancestor for custom components.
 
-It allows
+While designing custom components you can
 
 - to define life-cycle hooks;
 - to add getters/setter for its properties;
-- to define action handlers;
-- to use context methods like `up()`, `emit()`, `defer()`.
+- to define `__getProperty(propName)` to return value of any property by its name
+- to define `__setProperty(propName, value)` to set value of any property by its name
+- to define action handlers like `doSomethig(data: any): object`, which may return a delta object for updating a component state;
+- to use context methods like `up(delta)`, `emit('ref-target', data)`, `defer(fn)`.
 
 ```typescript
 class MyService extends Component {
@@ -295,7 +297,7 @@ class MyService extends Component {
 
     toast (message) {
       // emit action event
-      this.emit('toasters.onSend()', { message });
+      this.emit('toasters.onSend(data)', { message });
     };
 }
 ```

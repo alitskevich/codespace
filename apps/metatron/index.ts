@@ -13,11 +13,12 @@ const apiKey = "AKfycbwLdEiWXYDr5WESB7hI-zmwr4NEqx-6yhMhzi2uYk4OraJCvyWryvMGhYnz
 const { params, path } = lib.urlParse(window.location.href);
 const pageId = window.pageId ?? path[0] ?? "home";
 const projectsUrl = `https://script.google.com/macros/s/${apiKey}/exec`;
+const metatronUrl = `https://script.google.com/macros/s/AKfycbz9KNZSQr71Hg2seKmQvohsFQYNC7JRsrhN674j_XSIKQVyWvHELExJrzHoQLK7ObRt/exec`;
 
 let root: IArrmatron | null = null;
 
 const reload = (meta: any, projects: any, params = {}, resetUI?: lib.Fn, Platform?: any) => {
-  const types = [...commonUiTypes, ...typesRegistry, ...(meta?.templates ?? [])];
+  const components = [...commonUiTypes, ...typesRegistry, ...(meta?.templates ?? [])];
 
   const resources = {
     ...appResources,
@@ -30,7 +31,7 @@ const reload = (meta: any, projects: any, params = {}, resetUI?: lib.Fn, Platfor
   };
   const template = "<App." + capitalize(pageId) + " />";
   root?.done();
-  root = launchWeb({ template, types, resources, Platform });
+  root = launchWeb({ template, components, resources, Platform });
 };
 
 function main() {

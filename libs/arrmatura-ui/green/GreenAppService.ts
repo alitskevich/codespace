@@ -1,5 +1,12 @@
 import { Component } from "arrmatura";
 import { ClientStorage, loadJson } from "../support";
+import { arrayGroupBy, arrayToObject } from "ultimus";
+
+const resourceBundlesAdapter = (data) => Object.values(arrayGroupBy(data, ({ id }) => id.split('.')[0]))
+  .reduce((acc, { id, items }) => {
+    acc[id] = items.map((e: any) => ({ ...e, id: e.id?.split('.')[1] }));
+    return acc
+  }, {});
 
 export class GreenAppService extends Component {
   url = "";
@@ -17,10 +24,10 @@ export class GreenAppService extends Component {
 
   init() {
     const ts = this.storage.get("$ts");
-    const stale = ts && Number(ts) + this.ttl > Date.now();
+    const stale = ts && Number(ts) + this.ttl <= Date.now();
 
-    if (stale) {
-      this.platform.updateResources(this.storedResources);
+    if (!stale) {
+      this.updateResources();
       return {};
     }
 
@@ -29,7 +36,19 @@ export class GreenAppService extends Component {
 
   reload() {
     const R = this.storedResources;
-    return { isLoading: !R, isFetching: true, "...": this.fetch(R?.version) }
+    return { isLoading: true, isFetching: true, error: null, "...": this.fetch(R?.version) }
+  }
+
+  updateResources() {
+    const { config, forms, structs, enums, strings, styles, mocks, ...res } = this.storedResources ?? {};
+    res.strings = arrayToObject(strings, 'id', 'value');
+    res.styles = arrayToObject(styles, 'id', 'value');
+    res.enums = resourceBundlesAdapter(enums);
+    res.forms = resourceBundlesAdapter(forms);
+    res.structs = resourceBundlesAdapter(structs);
+    res.mocks = resourceBundlesAdapter(mocks);
+
+    this.platform.updateResources({ ...config, ...res });
   }
 
   fetch(version = undefined) {
@@ -39,7 +58,7 @@ export class GreenAppService extends Component {
         const isSameVersion = version && res?.version && version == res?.version;
         if (!isSameVersion) {
           this.storage.set("$R", res);
-          this.platform.updateResources(res);
+          this.updateResources();
         }
         return { isOutdated: version && !isSameVersion, error: null };
       })

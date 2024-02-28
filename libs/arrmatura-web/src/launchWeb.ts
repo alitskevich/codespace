@@ -17,7 +17,7 @@ import { draggingPlugin } from "./plugins/draggingPlugin";
  * @returns root node
  */
 export function launchWeb(config?: LaunchWebOptions) {
-  const { rootElement, functions, plugins = [], types = [], template = "<App/>", resources = {}, Platform = WebPlatform } = config ?? window as LaunchWebOptions;
+  const { rootElement, functions, plugins = [], components = [], template = "<App/>", resources = {}, Platform = WebPlatform } = config ?? window as LaunchWebOptions;
 
   const $fn = { ...lib, ...resources?.functions, ...functions };
 
@@ -26,7 +26,7 @@ export function launchWeb(config?: LaunchWebOptions) {
     functions: $fn,
   }, [popoversPlugin, portalsPlugin, dropdownPlugin, draggingPlugin, ...plugins]);
 
-  platform.registerTypes(types);
+  platform.registerTypes(components);
   platform.registerTypes(resources?.types);
 
   platform.init();

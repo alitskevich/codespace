@@ -13,4 +13,4 @@ import ctest from "./ctest.xml";
 import { WordsStore } from "./WordsStore"
 import { QuizService } from "./QuizService"
 
-export const types = [WordsStore, QuizService, ...ui, app, atoms, ctest, branding, main, mywords, idioms, text, quiz, stat];
+export const components = [WordsStore, QuizService, ...ui, app, atoms, ctest, branding, main, mywords, idioms, text, quiz, stat];

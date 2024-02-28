@@ -94,15 +94,19 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
   }
 
   private stateChanged(changes: Map<string, unknown>) {
-    if (this.$component.stateChanged) {
-      this.$component.stateChanged(changes);
+    const impl = this.$component;
+
+    if (impl.stateChanged) {
+      impl.stateChanged(changes);
     } else {
       changes.forEach((v, k) => {
-        const setter = this.$component[`set${capitalize(k)}`];
+        const setter = impl[`set${capitalize(k)}`];
         if (typeof setter === "function") {
           setter.call(this.$component, v);
+        } else if (impl.__setProperty) {
+          (impl.__setProperty as (p: string, val: any) => unknown)(k, v);
         } else {
-          this.$component[k] = v;
+          impl[k] = v;
         }
       });
     }
@@ -137,6 +141,8 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
     if (instant && typeof instant === "function") {
       const bound = instant.bind(impl);
       fn = () => bound;
+    } else if (impl.__getProperty) {
+      fn = () => (impl.__getProperty as (p: string) => unknown)(propId);
     } else {
       const [pk, ...path] = propId.split(".");
       if (pk[0] === "@") {

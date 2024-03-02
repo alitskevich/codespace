@@ -10,7 +10,7 @@
 
     <IndexedDbService ref="db" (...)="@@db" />
 
-    <WordsStore ref="words" acquired="<- db@dataAcquired" idiomsHash="" concepts="<- db@dataConcepts"
+    <WordsStore ref="words" concepts="<- db@dataConcepts" interview="<- db@dataInterview"
       acquired="<- db@dataAcquired|arrayToObject" />
 
     <Connector data="<- nav@route" change="-> @route" />

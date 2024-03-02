@@ -16,7 +16,7 @@ while (!apiKey) {
 
 window.localStorage.setItem('apiKey:crud', apiKey)
 
-const green = { url: `https://script.google.com/macros/s/${apiKey}/exec?action=metadata` }
+const green = { name: 'domovod-meta', url: `https://script.google.com/macros/s/${apiKey}/exec?action=metadata` }
 
 const config = {
   resources: { ...defaults, assets, params, green },

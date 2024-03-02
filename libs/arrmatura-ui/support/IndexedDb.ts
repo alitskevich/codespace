@@ -1,4 +1,4 @@
-import { Hash, mapEntries } from "ultimus";
+import { Hash, arrayToObject, mapEntries } from "ultimus";
 
 /**
  * IndexedDb wrapper
@@ -116,6 +116,16 @@ export class IndexedDb {
           txn.commit();
         };
       },
+      bulkUpdate: function (data, coll, callback) {
+        db.transaction(coll).objectStore(coll).getAll().onsuccess = function (event) {
+          const items = arrayToObject(event.target.result, 'id');
+          const txn = db.transaction(coll, 'readwrite');
+          txn.oncomplete = callback
+          data.forEach(obj => txn.objectStore(coll).put({ ...items[obj.id], ...obj }));
+          console.log('Indexed object updated', data)
+          txn.commit();
+        };
+      },
       delete: function (key, coll, callback) {
         db.transaction(coll, 'readwrite').objectStore(coll).delete(key).onsuccess = callback;
       },
@@ -157,6 +167,10 @@ export class IndexedDb {
 
   update(obj: object, coll = 's') {
     return this.invoke((cb) => this.ldb.update(obj, coll, cb));
+  }
+
+  bulkUpdate(data: object, coll) {
+    return this.invoke((cb) => this.ldb.bulkUpdate(data, coll, cb));
   }
 
   delete(key: string, coll = 's') {

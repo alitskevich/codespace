@@ -18,6 +18,7 @@
               <PanelRecall />
               <PanelWords />
               <PanelCTests />
+              <PanelInterview />
             </div>
           </div>
 
@@ -61,6 +62,14 @@
   <Panel caption="Train until automatism.">
     <div class="flex items-center justify-around gap-4">
       <Btn mode="primary" class="px-4 py-4 text-xl" title="Practice" data="ctest" action="-> nav@page" />
+    </div>
+  </Panel>
+</component>
+
+<component id="PanelInterview">
+  <Panel caption="Prepare for tech interview.">
+    <div class="flex items-center justify-around gap-4">
+      <Btn mode="primary" class="px-4 py-4 text-xl" title="Ynterview" data="interview" action="-> nav@page" />
     </div>
   </Panel>
 </component>

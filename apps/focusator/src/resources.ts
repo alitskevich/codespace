@@ -44,6 +44,7 @@ export const resources = {
       idioms: 'id',
       acquired: 'id',
       ctest: 'id',
+      interview: 'id',
     },
     initialData
   },

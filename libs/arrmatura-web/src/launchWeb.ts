@@ -27,7 +27,6 @@ export function launchWeb(config?: LaunchWebOptions) {
   }, [popoversPlugin, portalsPlugin, dropdownPlugin, draggingPlugin, ...plugins]);
 
   platform.registerTypes(components);
-  platform.registerTypes(resources?.types);
 
   platform.init();
 

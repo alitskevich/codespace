@@ -51,7 +51,11 @@ export class WebPlatform implements IWebPlatform {
   registerTypes(types?: any[]) {
     if (!types) return;
 
-    const register = (ctr: IComponentDescriptor) => this.typeRegistry.set(String(ctr.tag), ctr);
+    const register = (ctr: IComponentDescriptor) => {
+      const tag = String(ctr.tag);
+      this.compiledTemplates.delete(tag);
+      this.typeRegistry.set(tag, ctr);
+    }
 
     const registerType = (ctr) => {
       if (typeof ctr === "string") {
@@ -59,8 +63,10 @@ export class WebPlatform implements IWebPlatform {
           register({ tag, template: template.trim() });
           return "";
         });
+      } else if (typeof ctr === "function") {
+        register({ Ctor: ctr, tag: ctr.name ?? fnName(ctr) });
       } else {
-        register(typeof ctr === "function" ? { Ctor: ctr, tag: ctr.name ?? fnName(ctr) } : ctr);
+        register({ ...ctr, tag: ctr.tag ?? ctr.id });
       }
     };
 
@@ -138,6 +144,10 @@ export class WebPlatform implements IWebPlatform {
   updateResources(delta: any) {
     mapEntries(delta, (key, value) => {
       if (key[0] === "$") return;
+      if (key === "components") {
+        this.registerTypes(value);
+        return;
+      }
       const keys = key.split(".");
       if (keys.length > 1) {
         const last = keys.pop() ?? '-';

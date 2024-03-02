@@ -10,6 +10,7 @@ export class WordsStore extends StoredData {
   text = ''
   parsequence = []
   concepts?: any[]
+  interview?: any[]
   idiomsHash?: any
   acquired?: any
 
@@ -51,6 +52,16 @@ export class WordsStore extends StoredData {
       // idioms: this.idiomsHash?.[stemm(e.id).id] ?? []
     }))
   }
+  get acquiredInterview() {
+    const acquired = (this.acquired);
+    // const maxLevel = Number(this.level) || 100
+    return this.interview?.map((e, index, all) => ({
+      ...e,
+      nextId: all[index + 1]?.id ?? null,
+      acquired: acquired?.[e.id]?.acquired ?? 0,
+      // idioms: this.idiomsHash?.[stemm(e.id).id] ?? []
+    }))
+  }
 
   get tree() {
     const acquired = (this.acquired);
@@ -70,6 +81,25 @@ export class WordsStore extends StoredData {
 
     return tree
   }
+
+  get treeInterview() {
+    const acquired = (this.acquired);
+    const tree: any = {}
+    this.interview?.forEach((e) => {
+      const { type: kind, topic, id, ...info } = e;
+
+      const domainElt = tree[kind] ?? (tree[kind] = { id: kind, name: kind, items: {} })
+      const topicElt = domainElt.items[topic] ?? (domainElt.items[topic] = { id: topic, name: topic, domain: kind, items: {} })
+      topicElt.items[id] = ({
+        ...info,
+        id,
+        acquired: acquired?.[id]?.acquired ?? 0,
+      })
+    });
+
+    return tree
+  }
+
   get quiz() {
     const list = Object.values<any>(this.data);
     // const maxLevel = Number(this.level) || 100

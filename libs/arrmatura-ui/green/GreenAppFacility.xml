@@ -1,5 +1,5 @@
 <component id="GreenAppFacility">
-  <GreenAppService ref="green" url="@url" />
+  <GreenAppService ref="green" url="@url" name="@name" />
   <AsyncLoader isLoading="<- green@isLoading" title="@@strings.app_install_title"
     subtitle="@@strings.app_install_subtitle">
     <Slot />

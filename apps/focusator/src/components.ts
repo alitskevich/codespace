@@ -9,8 +9,9 @@ import quiz from "./quiz.xml";
 import stat from "./stat.xml";
 import atoms from "./atoms.xml";
 import ctest from "./ctest.xml";
+import interview from "./interview.xml";
 
 import { WordsStore } from "./WordsStore"
 import { QuizService } from "./QuizService"
 
-export const components = [WordsStore, QuizService, ...ui, app, atoms, ctest, branding, main, mywords, idioms, text, quiz, stat];
+export const components = [WordsStore, QuizService, ...ui, app, atoms, ctest, interview, branding, main, mywords, idioms, text, quiz, stat];

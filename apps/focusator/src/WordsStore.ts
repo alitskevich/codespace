@@ -86,7 +86,7 @@ export class WordsStore extends StoredData {
     const acquired = (this.acquired);
     const tree: any = {}
     this.interview?.forEach((e) => {
-      const { type: kind, topic, id, ...info } = e;
+      const { kind, topic = 'common', id, ...info } = e;
 
       const domainElt = tree[kind] ?? (tree[kind] = { id: kind, name: kind, items: {} })
       const topicElt = domainElt.items[topic] ?? (domainElt.items[topic] = { id: topic, name: topic, domain: kind, items: {} })

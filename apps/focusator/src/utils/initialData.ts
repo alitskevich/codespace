@@ -24,7 +24,7 @@ function prepareInterview() {
     const reWord = /[ñáéóü\w]+/gi
     const s = str(`${item.id}:${item.en}`)
     item.stems = [];
-    item.name = `${item.prefix}\n${item.subject}`
+    item.name = `${item.prefix ?? ''}\n${item.subject}`
     for (let e = reWord.exec(s); e; e = reWord.exec(s)) {
       item.stems.push(stemm(e[0]).id)
     }

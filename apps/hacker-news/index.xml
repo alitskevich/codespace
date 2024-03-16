@@ -3,7 +3,7 @@
     <BrowserService ref="browser" title="@@name" />
     <NavigationService ref="nav" />
     <ItemCollectionFacility>
-      <PageRouter (...)="<-nav@route" />
+      <PageRouter (...)="<-nav@route|log:'route'" />
     </ItemCollectionFacility>
   </ToastFacility>
 </component>
@@ -12,205 +12,192 @@
   <header class="header">
     <nav class="inner" role="navigation">
       <a href="/" class="">
-        <img class="logo" src="/assets/logo.svg" alt="logo">
+        <img class="logo" src="@@assets.logo" alt="logo">
       </a>
-
-      <a href="/news" class="">News</a>
-      <a href="/newest" class="">Newest</a>
-      <a href="/ask" class="">Ask</a>
-      <a href="/show" class="">Show</a>
-      <a href="/jobs" class="active">Jobs</a>
+      <a href="#/{@link.id}" class="{@link.id==@page?'active':''}" each="link of @@enums.feedsInfo">{@link.title}</a>
       <span class="github">
-        <a href="https://github.com/nuxt/hackernews" target="_blank" rel="noopener banner"> Open on GitHub </a>
+        <ExternalLink href="https://github.com/nuxt/hackernews" text="Open on GitHub" />
       </span>
     </nav>
   </header>
 </component>
-
-<component id="Pagination">
+<component id="ItemListNav">
   <div class="news-list-nav">
-    <span class="disabled">&lt; prev</span>
-    <span class="page">1 / 1</span>
-    <span class="disabled">more &gt;</span>
-  </div>
-</component>
-<template>
-  <div class="news-list-nav">
-    <NuxtLink v-if="page > 1" :to="`/${feed}/${page - 1}`">
+    <NuxtLink to="`/{@feed}/{@page|increment:-1}" disabled="@page|less:1">
       &lt; prev
     </NuxtLink>
-    <span v-else class="disabled">&lt; prev</span>
-    <span class="page">{{ page }} / {{ maxPage }}</span>
-    <NuxtLink v-if="hasMore" :to="`/${feed}/${page + 1}`">
+    <span class="page">{@page} / {@maxPage}</span>
+    <NuxtLink disabled="!@hasMore" to="`/{@feed}/{@page|increment:1}">
       more &gt;
     </NuxtLink>
-    <span v-else class="disabled">more &gt;</span>
   </div>
-</template>
-
-<component id="ListItem">
-  <li class="news-item">
-    <span class="score" title="Score">1</span>
-    <span class="title">
-      <a href="https://www.ycombinator.com/companies/fern/jobs/6J4HE6G-deployed-engineer" target="_blank"
-        rel="noopener">Fern (YC W23) is hiring a deployed engineer in NYC</a>
-      <span class="host">
-        (ycombinator.com)</span>
-    </span>
-    <br>
-    <span class="meta"> <span class="time">4 hours ago </span> |</span>
-  </li>
 </component>
 
+<component id="Page.News">
+  <Header page="@page" />
+</component>
+<component id="Page.Newest">
+  <Header page="@page" />
+</component>
+<component id="Page.Ask">
+  <Header page="@page" />
+</component>
+<component id="Page.Jobs">
+  <Header page="@page" />
+</component>
+<component id="Page.Show">
+  <Header page="@page" />
+</component>
 
-<component id="MainPage">
-  <Header />
+<component id="Page.Main">
+  <Header page="@page" />
   <div class="view">
-    <Pagination />
     <div class="news-list">
-      <ul>
-        <ListItem />
-      </ul>
-      <Pagination />
+      <div class="spinner" if="@loading">
+        <Else>
+          <ItemListNav (...)="@params" />
+          <ul>
+            <PostItem each="item of @@enums.feedsInfo" item="@item" />
+          </ul>
+          <ItemListNav (...)="@params" />
+        </Else>
+      </div>
     </div>
   </div>
 </component>
 
-<template>
-  <div class="view">
-    <ItemListNav :feed="feed" :page="page" :max-page="maxPage" />
-
-    <div :key="displayedPage" class="news-list">
-      <LoadSpinner v-if="loading" />
-      <template v-else>
-        <ul>
-          <PostItem v-for="item in items" :key="item.id" :item="item" />
-        </ul>
-        <ItemListNav :feed="feed" :page="page" :max-page="maxPage" />
-      </template>
-    </div>
+<component id="LoadingWrapper">
+  <div if="@loading" style="text-align:center">
+    <div class="spinner" />
+    <Else>
+      <Slot />
+    </Else>
   </div>
-</template>
-
-<component id="LoadSpinner">
-  <div class="spinner" />
 </component>
 
-<template id="LoadingWrapper">
-  <div v-if="loading" style="text-align:center">
-    <LoadSpinner />
-  </div>
-  <slot v-else />
-</template>
-
-<template id="PostItem">
+<component id="PostItem">
   <li class="news-item">
-    <span class="score" title="Score">{{ item.points }}</span>
+    <span class="score" title="Score">{@item.points}</span>
     <span class="title">
-      <template v-if="isAbsolute(item.url)">
-        <a :href="item.url" target="_blank" rel="noopener">{{ item.title }}</a>
-        <span class="host"> ({{ host(item.url) }})</span>
-      </template>
-      <template v-else>
-        <NuxtLink :to="'/item/' + item.id">{{ item.title }}</NuxtLink>
-      </template>
+      <Fragment if="@item.url | isAbsolute">
+        <a href="@item.url" target="_blank" rel="noopener">{@item.title}</a>
+        <span class="host"> ({@item.url|host})</span>
+        <Else>
+          <NuxtLink to="'/item/' + item.id">{@item.title}</NuxtLink>
+        </Else>
+      </Fragment>
     </span>
     <br>
     <span class="meta">
-      <span v-if="item.type !== 'job'" class="by">
+      <span if="@item.user" class="by">
         by
-        <NuxtLink :to="'/user/' + item.user">{{ item.user }}</NuxtLink>
+        <NuxtLink to="/user/{@item.user}">{@item.user}</NuxtLink>
       </span>
       <span class="time">
-        {{ timeAgo(item.time) }} ago
+        {@item.time|timeAgo} ago
       </span>
       |
-      <span v-if="item.type !== 'job'" class="comments-link">
-        <NuxtLink :to="'/item/' + item.id">{{ item.comments_count }} comments</NuxtLink>
+      <span if="@item.type !== 'job'" class="comments-link">
+        <NuxtLink to="/item/{@item.id}">{@item.comments_count} comment{@item.comments_count|pluralize}</NuxtLink>
       </span>
     </span>
   </li>
-</template>
+</component>
 
-<template id="PostComment">
-  <li v-if="comment && comment.user" class="comment">
+<component id="PostComment">
+  <li if="comment && comment.user" class="comment">
     <div class="by">
-      <NuxtLink :to="'/user/' + comment.user">
-        {{ comment.user }}
+      <NuxtLink to="'/user/' + comment.user">
+        {@comment.user}
       </NuxtLink>
-      {{ timeAgo(comment.time) }} ago
+      {@timeAgo(comment.time)} ago
     </div>
     <div class="text" v-html="comment.content" />
-    <div v-if="comment.comments && comment.comments.length" :class="{ open }" class="toggle">
-      <a @click="open = !open">{{ open ? '[-]' : '[+] ' + pluralize(comment.comments.length) + ' collapsed' }}
+    <div if="@comment.comments.length" class="{@open}" class="toggle">
+      <a click="open = !open">{@open ? '[-]' : '[+]'} pluralize(comment.comments.length) + ' collapsed'}
       </a>
     </div>
     <ul v-show="open" class="comment-children">
-      <PostComment v-for="childComment in comment.comments" :key="childComment.id" :comment="childComment" />
+      <PostComment each="childComment in comment.comments" key="childComment.id" comment="childComment" />
     </ul>
   </li>
-</template>
+</component>
 
-<template id="ItemPage">
+<component id="ItemPage">
   <div class="item-view view">
-    <div v-if="!item?.url && !item?.title" class="item-view-header">
+    <div if="!item?.url && !item?.title" class="item-view-header">
       <h1>Page not found</h1>
     </div>
-    <template v-else>
+    <component v-else>
       <div class="item-view-header">
-        <template v-if="item.url && isAbsolute(item.url)">
-          <a :href="item.url" target="_blank" rel="noopener">
+        <component if="item.url && isAbsolute(item.url)">
+          <a href="item.url" target="_blank" rel="noopener">
             <h1 v-text="item.title" />
           </a>
-          <span class="host"> ({{ host(item.url) }})</span>
-        </template>
-        <template v-else>
+          <span class="host"> ({@host(item.url)})</span>
+        </component>
+        <component v-else>
           <h1 v-text="item.title" />
-          <div v-if="item.content" class="content" v-html="item.content" />
-        </template>
+          <div if="item.content" class="content" v-html="item.content" />
+        </component>
         <p class="meta">
-          {{ item.points }} points | by
-          <NuxtLink :to="'/user/' + item.user">
-            {{ item.user }}
+          {@item.points} points | by
+          <NuxtLink to="'/user/' + item.user">
+            {@item.user}
           </NuxtLink>
-          {{ timeAgo(+item.time) }} ago
+          {@timeAgo(+item.time)} ago
         </p>
       </div>
       <div class="item-view-comments">
-        <LoadingWrapper :loading="commentsLoading">
+        <LoadingWrapper loading="@commentsLoading">
           <p class="item-view-comments-header">
-            {{ comments ? comments.length + ' comments' : 'No comments yet.' }}
+            {@comments ? comments.length + ' comments' : 'No comments yet.'}
           </p>
           <ul class="comment-children">
-            <PostComment v-for="comment in comments" :key="comment.id" :comment="comment" />
+            <PostComment each="comment in comments" key="comment.id" comment="comment" />
           </ul>
         </LoadingWrapper>
       </div>
-    </template>
+    </component>
   </div>
-</template>
+</component>
 
-<template id="UserPage">
+<component id="UserPage">
   <div class="user-view view">
-    <LoadSpinner v-if="loading" />
-    <template v-else-if="user">
-      <h1>User: {{ user.id }}</h1>
+    <div class="spinner" if="loading" />
+    <component v-else-if="user">
+      <h1>User: {@user.id}</h1>
       <ul class="meta">
         <li>
-          <span class="label">Created:</span> {{ timeAgo(new Date(user.created_time)) }} ago
+          <span class="label">Created:</span> {@timeAgo(new Date(user.created_time))} ago
         </li>
         <li>
-          <span class="label">Karma:</span> {{ user.karma || '-' }}
+          <span class="label">Karma:</span> {@user.karma || '-'}
         </li>
-        <li v-if="user.about" class="about" v-html="user.about" />
+        <li if="user.about" class="about" v-html="user.about" />
       </ul>
       <p class="links">
-        <a :href="'https://news.ycombinator.com/submitted?id=' + user.id">submissions</a> |
-        <a :href="'https://news.ycombinator.com/threads?id=' + user.id">comments</a>
+        <ExternalLink href="'https://news.ycombinator.com/submitted?id=' + user.id" title="submissions" /> |
+        <ExternalLink href="'https://news.ycombinator.com/threads?id=' + user.id" title="comments" />
       </p>
-    </template>
-    <template v-else>
+    </component>
+    <component v-else>
       <h1>User not found.</h1>
-    </template>
+    </component>
   </div>
-</template>
+</component>
+
+<component id="ExternalLink">
+  <a href="@href" class="{@class}" target="_blank" rel="noopener banner">
+    {@text}
+  </a>
+</component>
+
+<component id="NuxtLink">
+  <a href="@to" class="{@class} {@disabled ? 'disabled' : ''}" click="@onClick" if="@disabled">
+    <Slot />
+  </a>
+  <span class="{@class} {@disabled ? 'disabled' : ''}" if="!@disabled">
+    <Slot />
+  </span>
+</component>

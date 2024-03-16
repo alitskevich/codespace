@@ -1,4 +1,4 @@
-<component id="MainPage">
+<component id="Page.Main">
   <Meta>
   <ImportRef id="items" />
   </Meta>

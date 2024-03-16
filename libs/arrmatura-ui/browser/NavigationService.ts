@@ -15,10 +15,10 @@ export class NavigationService extends Component {
   hashchange() {
     const hash = window.location.hash.slice(1);
     if (hash[0] === "/" && hash !== this.prevHash) {
-      void this.emit('@hash', hash);
+      void this.emit('@hash', hash as any);
       this.prevHash = hash;
     } else if (!this.prevHash) {
-      void this.emit('@hash', "/main");
+      void this.emit('@hash', "/main" as any);
     }
   }
 

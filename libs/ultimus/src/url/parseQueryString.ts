@@ -6,7 +6,7 @@ import { StringHash } from "../../types";
 export const parseQueryString = (s: string, r: StringHash = {}): StringHash => {
   s.split("&").forEach((param: string) => {
     const [key, value] = param.split("=");
-    if (value || value === '') {
+    if (value) {
       r[decodeURIComponent(key)] = value === "false" ? "" : decodeURIComponent(value);
     }
   });

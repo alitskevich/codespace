@@ -1,9 +1,12 @@
-import { Obj, Fn } from "../../types";
+import { Obj } from "../../types";
 import { strEnhance } from "../string";
 
 export * from "./isEmpty";
 export * from "./mergeObject";
 export * from "./defineObjectRef";
+export * from "./gettus";
+export * from "./settus";
+export * from "./reduceEntries";
 
 const DEFAULT_ENTRY_HANDLER = (id: string, n: any): any => ({ id, value: n });
 
@@ -38,22 +41,6 @@ export const isValuable = (x: any): boolean => {
   return true;
 };
 
-export const reduceEntries = <T extends object = any>(
-  target: T,
-  o: object | null | undefined,
-  fn: (key: string, value: any) => T
-): null | T => {
-  return !o
-    ? null
-    : Object.entries(o).reduce((acc, [key, value]: any) => {
-      const res = fn(key, value);
-      if (res?.[0]) {
-        acc[res[0]] = res[1];
-      }
-      return acc;
-    }, target ?? ({} as T));
-};
-
 export const assignFirstArgKeyValue =
   (fn: (...args: unknown[]) => unknown, key: string, val: unknown) =>
     (x: object, ...args: unknown[]) =>
@@ -63,34 +50,4 @@ export const pack = (x?: unknown, key = "value"): object => {
   return { [key]: x };
 };
 
-export const gettus = (o: Obj, key: Fn | string | string[] | ((e: Obj) => unknown)): unknown => {
-  if (!o || !key || typeof o !== "object") return undefined;
-  if (typeof key === "function") return key(o);
-  if (typeof key === "string") {
-    if (!key.includes(".")) return o[key];
-    key = key.split(".");
-  }
-  return key.reduce<Obj | undefined>((r, e) => (r ? (r[e] as Obj) : undefined), o);
-};
-
-export const settus = (
-  o: Obj,
-  key: Fn | string | string[] | ((e: Obj, v: unknown) => unknown),
-  value: unknown
-): void => {
-  if (!o || !key || typeof o !== "object") return;
-
-  if (typeof key === "function") {
-    key(o, value);
-  } else {
-    const keys = typeof key === "string" ? key.split(".") : key;
-    if (keys.length) {
-      const last = keys.pop();
-      const target = keys.reduce<Obj | undefined>((r, e) => (r ? (r[e] as Obj) : undefined), o);
-      if (last && target && typeof o === "object") {
-        target[last] = value;
-      }
-    }
-  }
-};
 

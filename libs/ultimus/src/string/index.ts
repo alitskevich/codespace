@@ -8,7 +8,7 @@ export function stringifyJson(x: unknown, indent = 2) {
 }
 
 export function capitalize(x: unknown) {
-  const s = str(x);
+  const s = x == null ? "" : String(x);
   return s.length ? s[0].toUpperCase() + s.slice(1) : "";
 }
 export function strLowerize(x: unknown) {
@@ -69,11 +69,11 @@ export const abbreviate = (x: string, sep = " ") =>
   !x
     ? ""
     : str(x)
-        .split(sep)
-        .map((s) => s[0])
-        .slice(0, 2)
-        .join("")
-        .toUpperCase();
+      .split(sep)
+      .map((s) => s[0])
+      .slice(0, 2)
+      .join("")
+      .toUpperCase();
 
 export const mirror = (x: string) =>
   str(x)

@@ -3,13 +3,14 @@ import templates from "./index.xml";
 import ui from "arrmatura-ui";
 import defaults from "arrmatura-ui/resources";
 import assets from "./assets";
+import * as utils from "./utils";
 import { urlParse } from "ultimus";
 
 const { params } = urlParse(window.location.href);
 
 export const baseURL = 'https://hacker-news.firebaseio.com/v0'
 
-export const feedsInfo = {
+const feedsInfo = {
   news: { title: 'News', pages: 10 },
   newest: { title: 'Newest', pages: 12 },
   ask: { title: 'Ask', pages: 2 },
@@ -17,10 +18,15 @@ export const feedsInfo = {
   jobs: { title: 'Jobs', pages: 1 }
 }
 
+const enums = {
+  feedsInfo
+}
+
 export const validFeeds = Object.keys(feedsInfo)
 
 const config = {
-  resources: { ...defaults, assets, params },
+  resources: { ...defaults, assets, enums, params, },
+  functions: { ...utils },
   components: [...ui, templates]
 };
 

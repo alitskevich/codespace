@@ -1,4 +1,4 @@
-import { XmlNode, Hash, StringHash, settus, mapEntries, entriesOf } from "ultimus";
+import { XmlNode, Hash } from "ultimus";
 import { resolveNodeTypeBytag } from "../utils/resolveNodeTypeBytag";
 
 export class UINode implements XmlNode {

@@ -5,7 +5,7 @@
 </component>
 
 <component id="PageRouter">
-  <Dynamic as="{@page ?? 'main' | capitalize}Page" path="@path" (...)="@params" params="@params" />
+  <Dynamic as="Page.{@page ?? 'main' | capitalize}" path="@path" page="@page" (...)="@params" params="@params" />
 </component>
 
 <component id="NavTree">

@@ -1,4 +1,4 @@
-import { gettus } from "../object";
+import { gettus } from "../object/gettus";
 import { Hash, Obj, Fn } from "../../types";
 
 type GroupOf<T> = {

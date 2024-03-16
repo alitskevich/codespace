@@ -10,7 +10,7 @@ describe('parseQueryString', () => {
 
   it('should handle empty values', () => {
     const result = parseQueryString('key1=');
-    expect(result).toEqual({ key1: '' });
+    expect(result).toEqual({});
   });
 
   it('should handle special characters in key and value', () => {

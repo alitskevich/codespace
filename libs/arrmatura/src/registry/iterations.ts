@@ -3,6 +3,7 @@ import { Arrmatron } from "../core/Arrmatron";
 import type { Datum, Delta, Hash, Uid, XmlNode } from "ultimus/types";
 import type { EContent, IManifestNode, IPlatform } from "arrmatura/types";
 import { compilePlaceholder } from "../utils/compileExpression";
+import { mapEntries } from "ultimus";
 
 const narrowData = (data: any) => {
   if (!data) {
@@ -11,7 +12,7 @@ const narrowData = (data: any) => {
   if (Array.isArray(data)) return data;
   if (typeof data[Symbol.iterator] === 'function') return [...data];
   if (typeof data === "string") return data.split(',').map(id => ({ id, name: id }));
-  if (typeof data === "object") return Object.values(data);
+  if (typeof data === "object") return mapEntries(data, (key, value) => ({ ...value, id: key }));
   return [{ id: String(data), name: String(data) }];
 }
 

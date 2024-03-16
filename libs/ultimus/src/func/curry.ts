@@ -1,11 +1,20 @@
 type Fx<S> = (...args: unknown[]) => Fxx<S>;
 type Fxx<S> = S | ((...args: unknown[]) => S | Fx<S>);
 
-const _curry = <S>(fn: Fx<S>, args0: unknown[], lengthLimit: number): Fxx<S> => {
-  const fx = (args: unknown[]): Fxx<S> =>
-    args.length >= lengthLimit ? fn(...args) : _curry(fn, args, lengthLimit - args.length);
+/**
+ * Curries a function by returning a new function that accepts partial arguments until all arguments are provided, then it invokes the original function.
+ *
+ * @param {Fx<S>} fn - The original function to be curried.
+ * @param {...unknown[]} args - Additional arguments to be partially applied.
+ * @return {Fxx<S>} The curried function.
+ */
+export function curry<S>(fn0: Fx<S>, ...args0: unknown[]): Fxx<S> {
+  const accArgs = [...args0];
 
-  return (...args: unknown[]) => fx([...args0, ...args]);
-};
+  const fn = (...args: unknown[]): Fxx<S> => {
+    accArgs.push(...args);
+    return (accArgs.length >= fn0.length) ? fn0(...accArgs) : fn;
+  }
 
-export const curry = <S>(fn: Fx<S>, ...args: unknown[]): Fxx<S> => _curry<S>(fn, args, fn.length);
+  return fn
+} 

@@ -46,11 +46,6 @@ export const fnCall = (fn: () => unknown, ...args: []) => fn.call(null, ...args)
 
 export const fnSwapArgs = (fn: Fn) => (a: unknown, b: unknown) => fn(b, a);
 
-export const fnCompose =
-  (...ff: Array<(e: unknown) => unknown>) =>
-    (x0: unknown) =>
-      ff.reduceRight((x: unknown, fn) => fn(x), x0);
-
 export const assert = (b: unknown, error: string | Error, ErrorType = Error) => {
   if (!b) {
     throw typeof error === "string" ? new ErrorType(error) : error;

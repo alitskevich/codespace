@@ -1,3 +1,5 @@
+import { parseJson } from "./parseJson";
+
 /* eslint-disable no-undef */
 describe("parseJson", () => {
   it("should parse valid JSON string", () => {

@@ -48,5 +48,8 @@ export const scalarParse = (s?: string): Scalar | null => {
   if (s === "null") {
     return null;
   }
+  if (s === "undefined") {
+    return undefined;
+  }
   return s;
 };

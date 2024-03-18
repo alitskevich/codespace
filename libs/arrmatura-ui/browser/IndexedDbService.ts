@@ -54,7 +54,7 @@ export class IndexedDbService extends Component {
     this.storage.set(`since`, s || 0);
   }
 
-  invokeApi({ action = 'downstream', since = 0, data }: { action: 'downstream' | 'upsert' | 'upstream', since?: number, data?: any }): Promise<any> {
+  invokeApi({ action = 'realtime.downstream', since = 0, data }: { action: 'realtime.downstream' | 'realtime.upsert' | 'realtime.upstream', since?: number, data?: any }): Promise<any> {
     return Promise.resolve({
       ok: true,
       action,
@@ -71,7 +71,7 @@ export class IndexedDbService extends Component {
       error: null,
       "...upstream": this.db.getAll('upstream')
         .then(async (data) => {
-          return data?.length ? this.invokeApi({ action: 'upstream', data }) : { ok: false }
+          return data?.length ? this.invokeApi({ action: 'realtime.upstream', data }) : { ok: false }
         })
         .then(async ({ ok }) => {
           if (ok) {
@@ -92,9 +92,12 @@ export class IndexedDbService extends Component {
       ...opts,
       busy: true,
       error: null,
-      "...downstream": this.invokeApi({ action: 'downstream', since: this.since })
+      "...downstream": this.invokeApi({ action: 'realtime.downstream', since: this.since })
         .then(async ({ data, since }) => {
-          await Promise.all(data?.map(({ $collection = "items", ...rest }) => this.db.put(rest, $collection)) ?? []);
+          await Promise.all(data?.map(({ $collection = "items", ...rest }) => {
+            this.counters[$collection] = (this.counters[$collection] ?? 0) + 1
+            return this.db.put(rest, $collection)
+          }) ?? []);
 
           return {
             since
@@ -133,12 +136,12 @@ export class IndexedDbService extends Component {
       hasUploaded: false,
       isUploading: true,
       uploadError: null,
-      "...upsert": this.invokeApi({ action: 'upsert', data: { ...payload, $collection: collection } })
+      "...upsert": this.invokeApi({ action: 'realtime.upsert', data: { ...payload, $collection: collection } })
         .then(async ({ item }) => {
           const { $collection = collection, ...payload } = item
           await this.db.put(payload, $collection)
           this.log(`upsert ${this.name}`, item);
-          await $callback?.({})
+          await $callback?.({ item })
           this.counters[collection] = (this.counters[collection] ?? 0) + 1
           return { busy: false, isUploading: false, isOutdated: false, hasUploaded: true };
         })

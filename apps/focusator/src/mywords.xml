@@ -1,4 +1,5 @@
 <component id="Page.Mywords">
+  <Header />
   <div class=" flex-1 flex flex-col items-stretch gap-4">
     <Tabs items="@@enums.marks" change="-> words@mark" value="<- words@mark" />
     <ResultList data="<- words@textWords" />

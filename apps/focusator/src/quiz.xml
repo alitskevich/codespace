@@ -3,6 +3,7 @@
     <Connector data="<- words@quiz" change="-> @quiz" />
     <QuizService ref="quiz" quiz="@quiz" />
     <Connector data="<- quiz@step" change="-> @step" />
+    <Header />
     <main class="flex flex-col">
       <div class="h-10 flex flex-row justify-between items-center">
         <Nav step="@step" quiz="@quiz" />

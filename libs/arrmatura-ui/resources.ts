@@ -47,10 +47,11 @@ export default {
       { id: "pivot", name: "Pivot" },
     ],
     signIn: [
-      { id: "username", name: "User name" },
+      { id: "email", name: "User email" },
       { id: "password", name: "Password", type: "password" },
     ],
     signUp: [
+      { id: "email", name: "Email" },
       { id: "username", name: "User name" },
       { id: "password", name: "Password", type: "password" },
       { id: "password2", name: "Retype Password", type: "password" },

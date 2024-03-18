@@ -2,8 +2,10 @@ import { objectFingerprint } from './objectFingerprint';
 
 describe('objectFingerprint', () => {
   it('should return 0 for null or undefined input', () => {
-    expect(objectFingerprint(null)).toBe(0);
-    expect(objectFingerprint(undefined)).toBe(0);
+    expect(objectFingerprint(null)).toBe(null);
+    expect(objectFingerprint(undefined)).toBe(undefined);
+    expect(objectFingerprint(0)).toBe(0);
+    expect(objectFingerprint("")).toBe("");
   });
 
   it('should return the same hash value for the same input string, regardless of the case of its characters', () => {

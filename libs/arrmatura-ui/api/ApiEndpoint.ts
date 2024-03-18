@@ -8,7 +8,9 @@ export class ApiEndpoint extends Component {
   onUnauthorized?: Proc;
 
   invoke(data) {
-    return loadJson(this.url, { ...data, token: this.token })
+    return loadJson(this.url, { ...data, token: this.token }, {
+      headers: { 'Authorization': `Bearer ${this.token}` }
+    })
       .catch((error) => {
         if (error.code == 401) {
           this.onUnauthorized?.();

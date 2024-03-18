@@ -5,7 +5,6 @@
       <NavigationService ref="nav" />
       <AuthenticatedFacility>
         <ItemCollectionFacility>
-          <Btn1 title="test button 1" />
           <PageRouter (...)="<-nav@route" />
         </ItemCollectionFacility>
       </AuthenticatedFacility>

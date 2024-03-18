@@ -4,6 +4,7 @@
     <StoredData name="state" data="@state" defaults="@@defaultState" action="-> @state" />
     <CTestService ref="quiz" state="@state" quiz="<- db@ctest" />
     <Connector data="<- quiz@step" change="-> @step" />
+    <Header />
     <main class="flex flex-col bg-slate-800 text-white">
       <div class=" flex flex-row justify-between items-center py-2 px-2">
         <Nav step="@step" />

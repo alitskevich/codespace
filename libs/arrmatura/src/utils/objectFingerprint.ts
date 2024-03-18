@@ -1,13 +1,28 @@
 const CACHE = new WeakMap();
 export const objectFingerprint = (x: any): any => {
-  let r = '';
+  let r = 0;
 
-  if (x == null) return 0;
+  if (x == null) return x;
+
+  if (typeof x !== "object") return x;
+
+  if (Object.isFrozen(x)) return x;
+
+  if (x.$hash) return x.$hash;
 
   const path = new Set();
   const cache = (typeof x === "object") ? (CACHE.has(x) ? CACHE.get(x) : CACHE.set(x, new Map()).get(x)) : null;
 
-  const upString = x => {
+  const upNumber = n => {
+    r = ((r << 5) - r) + n;
+    r &= r;
+    return r;
+  }
+
+  const upString = x => upNumber(stringHash(x))
+
+
+  const stringHash = x => {
     let h = 0;
     if (cache?.has(x)) {
       h = cache.get(x)
@@ -19,16 +34,11 @@ export const objectFingerprint = (x: any): any => {
       }
       cache?.set(x, h);
     }
-    r += h;
-  }
-
-  const up = n => {
-    r += n
-    return r;
+    return h;
   }
 
   const upObject = x => {
-    if (x instanceof Date) return up(x.getTime());
+    if (x instanceof Date) return upNumber(x.getTime());
 
     if (path.size > 4) {
       return;
@@ -39,59 +49,49 @@ export const objectFingerprint = (x: any): any => {
     path.add(x);
 
     if (x instanceof Map) {
-      up("$$$Map$$${");
+      upString("$$$Map$$$");
       x.forEach((v, k) => {
         upString(k);
-        up(":");
-        inner(v);
+        upString(":");
+        upAny(v);
       })
-      up('}')
     } else if (x instanceof Set) {
-      up("$$$Set$$${");
+      upString("$$$Set$$$");
       x.forEach((v) => {
-        inner(v);
+        upAny(v);
       })
-      up('}')
     } else if (Array.isArray(x)) {
-      up("[");
+      upString("$$$Array$$$");
       x.forEach((v) => {
-        inner(v);
+        upAny(v);
       })
-      up("]");
     } else {
-      up("{");
+      upString("$$$Object$$$");
       for (const k in x) {
         if (Object.prototype.hasOwnProperty.call(x, k) && k[0] !== '$') {
           upString(k)
-          up(":");
-          inner(x[k]);
+          upString(":");
+          upAny(x[k]);
         }
       }
-      up('}')
     }
 
     return r;
   }
-  const inner = (x: any): void => {
+  const upAny = (x: any): void => {
 
-    if (x == null) return x;
-
-    switch (typeof x) {
-      case "object":
-        upObject(x)
-        break;
-      case "string":
-        upString(x)
-        break;
-      case "function":
-        upString(String(x))
-        break;
-      default:
-        r += String(x)
-        break;
+    if (x == null) {
+      upString(String(x));
+    } else if (typeof x === 'object') {
+      upObject(x);
+    } else if (typeof x === 'string') {
+      upString(x);
+    } else {
+      upString(String(x))
     }
   }
 
-  inner(x);
+  upObject(x);
+
   return r;
 }

@@ -51,10 +51,10 @@ export class NewItemController extends Component {
 
 
   // event handlers:
-  change(delta: Hash, { data }) {
+  change(delta: Hash) {
     return {
       touched: true,
-      data: { ...data, ...delta },
+      data: { ...this.data, ...delta },
     };
   };
 }

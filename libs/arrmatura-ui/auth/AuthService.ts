@@ -37,7 +37,7 @@ export class AuthService extends Component {
     const { username, password } = data || {};
     return {
       busy: true,
-      "...": loadJson(this.url, { action: "signin", creds: `${username}:${password}`, credentials: data, data })
+      "...": loadJson(this.url, { action: "user.signin", creds: `${username}:${password}`, credentials: data, data })
         .catch((error: Error) => {
           this.toast({ id: 'error:sign-in', level: "error", message: `Unable to sign in: ${error.message}` });
           return { error };
@@ -49,7 +49,7 @@ export class AuthService extends Component {
   signUp(data: Hash) {
     return !this.isSignUpAllowed ? null : {
       busy: true,
-      "...": loadJson(this.url, { action: "signup", data })
+      "...": loadJson(this.url, { action: "user.signup", data })
         .catch((error: Error) => {
           this.toast({ id: 'error:sign-up', level: "error", message: `Unable to sign up: ${error.message}` });
           return null;

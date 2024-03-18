@@ -2,9 +2,11 @@
   <ToastFacility>
     <BrowserService ref="browser" title="@@name" />
     <NavigationService ref="nav" />
-    <ItemCollectionFacility>
-      <PageRouter (...)="<-nav@route|log:'route'" />
-    </ItemCollectionFacility>
+    <AuthenticatedFacility>
+      <ItemCollectionFacility>
+        <PageRouter (...)="<-nav@route|log:'route'" />
+      </ItemCollectionFacility>
+    </AuthenticatedFacility>
   </ToastFacility>
 </component>
 
@@ -114,7 +116,7 @@
     </div>
     <div class="text" v-html="comment.content" />
     <div if="@comment.comments.length" class="{@open}" class="toggle">
-      <a click="open = !open">{@open ? '[-]' : '[+]'} pluralize(comment.comments.length) + ' collapsed'}
+      <a click="@open = !@open">{@open ? '[-]' : '[+]'} {@comment.comments.length|pluralize} collapsed
       </a>
     </div>
     <ul v-show="open" class="comment-children">

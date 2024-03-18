@@ -32,7 +32,7 @@ export class UserProfileService extends Component {
     return {
       isLoading: true,
       error: null,
-      "...": this.invokeApi({ action: "user", data })
+      "...": this.invokeApi({ action: "user.sync", data })
         .catch((error) => {
           const message = String(error?.message ?? error ?? "unknown");
           if (message !== "NOT_SIGNED") {

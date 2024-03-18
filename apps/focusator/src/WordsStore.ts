@@ -101,7 +101,7 @@ export class WordsStore extends StoredData {
   }
 
   get quiz() {
-    const list = Object.values<any>(this.data);
+    const list = Object.values<any>(this.data ?? {});
     // const maxLevel = Number(this.level) || 100
     return list
       .filter(({ acquired }) => acquired == 2)

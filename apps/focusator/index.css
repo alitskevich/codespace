@@ -47,3 +47,14 @@ body {
   background: radial-gradient(circle, rgba(255, 255, 255, 0) 60%, rgba(0, 0, 0, 0.5) 100%);
   position: relative;
 }
+
+.loadscreen {
+  background-color: #c3cbdc;
+  background-image: linear-gradient(147deg, #c3cbdc 0%, #edf1f4 74%);
+}
+.loadscreen-text {
+  font-size: 72px;
+  background: radial-gradient(#1ebeff, #ff00af);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

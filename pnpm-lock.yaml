@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
@@ -93,25 +97,6 @@ importers:
         version: 5.1.6
 
   apps/any-data:
-    dependencies:
-      arrmatura-ui:
-        specifier: workspace:^1.0.2
-        version: link:../../libs/arrmatura-ui
-      arrmatura-web:
-        specifier: workspace:^6.2.0
-        version: link:../../libs/arrmatura-web
-      ultimus:
-        specifier: workspace:^2.0.1
-        version: link:../../libs/ultimus
-    devDependencies:
-      postcss:
-        specifier: ^8.4.35
-        version: 8.4.35
-      tailwindcss:
-        specifier: ^3.4.1
-        version: 3.4.1
-
-  apps/crud:
     dependencies:
       arrmatura-ui:
         specifier: workspace:^1.0.2
@@ -8181,7 +8166,3 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

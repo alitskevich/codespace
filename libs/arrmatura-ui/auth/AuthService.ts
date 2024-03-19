@@ -40,7 +40,7 @@ export class AuthService extends Component {
       "...": loadJson(this.url, { action: "user.signin", creds: `${username}:${password}`, credentials: data, data })
         .catch((error: Error) => {
           this.toast({ id: 'error:sign-in', level: "error", message: `Unable to sign in: ${error.message}` });
-          return { error };
+          return { busy: false, error };
         })
         .then((info) => ({ busy: false, ...info })),
     };
@@ -52,7 +52,7 @@ export class AuthService extends Component {
       "...": loadJson(this.url, { action: "user.signup", data })
         .catch((error: Error) => {
           this.toast({ id: 'error:sign-up', level: "error", message: `Unable to sign up: ${error.message}` });
-          return null;
+          return { busy: false, error };
         })
         .then((info) => ({ busy: false, ...info })),
     };

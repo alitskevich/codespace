@@ -22,7 +22,7 @@ export class GreenAppService extends Component {
     components: 'id',
     mocks: 'id',
   };
-
+  isLoading = true;
   ttl = 10 * 3600000;
   local?: ClientStorage;
   db = new IndexedDb()
@@ -71,11 +71,11 @@ export class GreenAppService extends Component {
         const { version: newVersion = null } = res
         const isSameVersion = version && newVersion && version == newVersion;
         if (!isSameVersion) {
-          this.storage.set("ts", Date.now());
           this.storage.set("version", newVersion);
           await this.storeData(res);
-          await this.updateResources();
         }
+        this.storage.set("ts", Date.now());
+        await this.updateResources();
         return { isOutdated: version && !isSameVersion, error: null };
       })
       .catch((error) => {

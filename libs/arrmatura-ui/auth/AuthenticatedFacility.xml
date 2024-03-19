@@ -1,5 +1,5 @@
 <component id="AuthenticatedFacility">
-  <AuthService ref="auth" (...)="@@auth" persistence="@@auth.persistence" afterSignedOut="-> browser.reload()" />
+  <AuthService ref="auth" (...)="@@auth" afterSignedOut="-> browser.reload()" />
   <SignInPage if="<- auth@isAuthorized | not">
     <Else>
       <ApiEndpoint ref="api" (...)="@@api" token="<- auth@token" onUnauthorized="-> auth.invalidateToken()" />

@@ -20,7 +20,7 @@
     {@hidden ? 'hidden'}
     w-full px-4 py-2 overflow-x-hidden overflow-y-auto md:inset-0 h-modal h-full" portal="modal">
     <Backdrop click="@close" opened="!@hidden" class="" />
-    <div class="relative w-full m-auto max-w-2xl md:h-auto">
+    <div class="relative w-full m-auto max-w-2xl md:h-auto {@class}">
       <!-- Modal content -->
       <div class="relative bg-gray-100 rounded-lg shadow dark:bg-gray-700">
         <Icon type="cross" size="4" click="@close"

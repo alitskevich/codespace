@@ -4,45 +4,6 @@ body {
   @apply bg-white text-gray-800 antialiased dark:bg-gray-900 dark:text-gray-300;
 }
 
-/* Tooltip text */
-.tooltip .tooltiphint {
-  visibility: hidden;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  padding: 5px 5px;
-  border-radius: 6px;
-
-  /* Position the tooltip text */
-  position: absolute;
-  z-index: 1;
-  width: 120px;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -60px;
-
-  /* Fade in tooltip */
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-/* Tooltip arrow */
-.tooltip .tooltiphint::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiphint {
-  visibility: visible;
-  opacity: 1;
-}
 .radial-gradient {
   background: radial-gradient(circle, rgba(255, 255, 255, 0) 60%, rgba(0, 0, 0, 0.5) 100%);
   position: relative;
@@ -52,8 +13,8 @@ body {
   background-color: #c3cbdc;
   background-image: linear-gradient(147deg, #c3cbdc 0%, #edf1f4 74%);
 }
-.loadscreen-text {
-  font-size: 72px;
+.loadscreen-text,
+.logo {
   background: radial-gradient(#1ebeff, #ff00af);
   background-clip: text;
   -webkit-text-fill-color: transparent;

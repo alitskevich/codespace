@@ -114,10 +114,12 @@
 
   <component id="LoadScreen">
     <div class="loadscreen fixed inset-0 z-50 flex items-center justify-center bg-white">
-      <div class="flex flex-col items-center justify-center">
-        <div class="loadscreen-text">tenacious</div>
-      </div>
+        <div class="loadscreen-text select-none text-7xl">tenacious</div>
     </div>
+  </component>
+
+  <component id="Logo">
+    <div class="logo select-none m-4 font-bold	text-lg">focusator</div>
   </component>
 
 </components>

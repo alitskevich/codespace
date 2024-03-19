@@ -33,4 +33,7 @@ export class BrowserService extends Component {
     copyToClipboard(data, (t) => this.toast(t));
   }
 
+  get fromClipboard() {
+    return navigator.clipboard.readText()
+  }
 }

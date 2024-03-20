@@ -143,6 +143,8 @@ Right arrow creates a function, that
 
 - `action="-> ref.submit(data)"` invokes `upperScopes[ref].submit(data)` action with an `data` object as parameter.
 
+- `action="-> ref.submit(@prop1)"` invokes `upperScopes[ref].submit(data)` action with a value of property `prop1` as parameter.
+
 - `action="-> ref@prop1"` updates container state for given key `upperScopes[ref].up({ prop1: data })`.
 
 > `action="-> ref.action(data | prepare)` pipes will be applied on `data`-object before it passed to the action.
@@ -155,7 +157,7 @@ Right arrow creates a function, that
 
 Often, it is shorter to pass payload inline instead of using `data` property.
 
-- `click="-> ...="@data | assignKeyValue:key:@value"` updates a scope properties with `data` object.
+- `click="-> ...= @data | assignKeyValue:key:@value"` updates a scope properties with `data` object.
 - `click="-> @prop" data="@data"` updates a given scope property of owner with `data` object.
 - `click="-> @prop='literalValue'"` updates a given scope property of owner with literal.
 

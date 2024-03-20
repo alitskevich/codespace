@@ -5,11 +5,11 @@ export class AddTextStore {
   opened = false
   value = ""
 
-  onOpen = () => { return }
+  fromClipboard = () => { return '' }
   parser = (_: string) => { return }
 
   open() {
-    return { opened: true, value: this.onOpen() }
+    return { opened: true, value: this.fromClipboard() }
   }
 
   submit() {

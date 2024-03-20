@@ -8,7 +8,7 @@ const auxHash = arrayToObject(aux, e => e);
 
 export const parseText = (_s: string, stemms: any = {}) => {
   const result: BaseWord[] = []
-  const reWord = /[ñáéóüäß\w]+/gi
+  const reWord = /([ñáéóüäß]|[^\d\W])+/gi
   const s = str(_s)
   let count = 0
   let lastIndex = 0;
@@ -24,7 +24,8 @@ export const parseText = (_s: string, stemms: any = {}) => {
       let stemm = cachedStemm(key);
       if (stemms[stemm.id]) {
         stemm = stemms[stemm.id];
-        stemms[stemm.id] = { ...stemm, names: { ...stemm.names, [key]: 1 } }
+        count = stemm?.count ? stemm.count + 1 : 1
+        stemms[stemm.id] = { ...stemm, names: { ...stemm.names, [key]: 1 }, count }
       } else {
         stemms[stemm.id] = stemm;
       }

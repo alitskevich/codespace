@@ -8,13 +8,18 @@
     <AddText />
   </header>
 
+  <Connector data="<- words@word" change="-> @value" />
 
   <div class="w-full flex flex-col flex-1">
     <div class="prev-item flex items-center justify-center text-2xl">
       <span>pre</span>
     </div>
     <div class="cur-item flex flex-1 items-center justify-center text-4xl">
-      <span>current</span>
+      <div class="flex items-center justify-center">
+        <span class="pr-2" each="w of @value.names">{@w.id}</span>
+      </div>
+
+      <button class="ml-4 flex-end" click="-> words.determineWord()">next</button>
     </div>
     <div class="next-item flex items-center justify-center text-2xl">
       <span>next</span>

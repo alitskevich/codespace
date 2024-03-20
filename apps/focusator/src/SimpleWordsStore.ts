@@ -1,22 +1,25 @@
 import { StoredData } from "arrmatura-ui/browser/StoredData";
 import { parseText } from "./utils/parser";
 import { arraySortBy } from "ultimus";
+import { Stemm } from "./types";
 
 // service component
 export class SimpleWordsStore extends StoredData {
+  defaults = {}
   name = 'focusator'
-  mark = 'all'
-  level = 500
-  text = ''
-  parsequence = []
-  concepts?: any[]
-  interview?: any[]
-  idiomsHash?: any
-  acquired?: any
+  list: Stemm[] = arraySortBy(Object.values<any>(this.data), 'count', -1);
+  listIterator = this.getListIterator()
+  word: Stemm = this.listIterator.next().value ?? { id: 'none', names: {} }
+
 
   uploadText(text) {
     const parsequence = parseText(String(text ?? ""), this.data)
-    return { data: { ...this.data }, text, parsequence }
+    // have to explicitly reasign data to trigger the setter
+    this.data = { ...this.data }
+    this.list = arraySortBy(Object.values<any>(this.data), 'count', -1);
+    this.listIterator = this.getListIterator()
+
+    return { text, parsequence }
   }
 
   // updateStemmAcquitance({ id, acquired }) {
@@ -26,15 +29,17 @@ export class SimpleWordsStore extends StoredData {
   //   const newParsequence = (parsequence as any)?.map((st: any) => ({ ...st, stemm: newData[st.stemm?.id] }));
   //   return { data: newData, parsequence: newParsequence }
   // }
-
-  get textWords() {
-    const list = arraySortBy(Object.values<any>(this.data), 'id');
-    // const maxLevel = Number(this.level) || 100
-
-    return list
-    //   && (frequency ? frequency <= maxLevel : true)
-    //   && (words.includes(id))).slice(0, 50) ?? []
+  determineWord() {
+    return { word: this.listIterator.next().value }
   }
+
+  *getListIterator() {
+    for (const word of this.list) {
+      yield word
+    }
+  }
+
+
 
 
 

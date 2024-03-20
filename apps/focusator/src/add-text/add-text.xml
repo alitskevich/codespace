@@ -1,13 +1,13 @@
 <components>
   <component id="AddText">
     <Btn class="add-text-btn w-8 h-8 flex-end select-none" mode="primary" title="+" action="-> store.open()" />
-    <AddTextStore ref="store" onOpen="<- browser@fromClipboard" parser="<- words@uploadText" />
+    <AddTextStore ref="store" fromClipboard="<- browser@fromClipboard" parser="<- words@uploadText" />
 
     <Modal open="<- store@opened" if="<- store@opened" close="-> store.close()" class="top-12">
       <Modal:header>
         <h3 class="text-xl font-semibold text-sky-500">Add new text</h3>
       </Modal:header>
-      <textarea autofocus class="input px-2 w-full" style="min-height:16rem;" keypress="-> store@value"
+      <textarea autofocus class="input px-2 w-full" style="min-height:16rem;" change="-> store@value=data.value"
         value="<- store@value"></textarea>
       <Modal:footer>
         <div class="flex justify-between w-full">

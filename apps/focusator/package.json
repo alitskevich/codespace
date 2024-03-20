@@ -10,7 +10,7 @@
     "start": "parcel --https",
     "build": "pnpm run clean && parcel build --no-scope-hoist",
     "clean": "rm -fdr dist && rm -fdr dist ../../.parcel-cache",
-    "download:index": "curl -L https://script.google.com/macros/s/AKfycbybHHt-DetS7FP76QoXGkJNdBVE4_qeJVRc-J4GF5ZYNcQFk3kdDjPBeplMLNMVeBTZ0A/exec  > ./data/index.json",
+    "download:index": "curl -L https://script.google.com/macros/s/AKfycbxAjtppX_5PozyjJBwiK8Fc5gqtaqvE6KPlmMsvR_FEvOlf6nRhqdt75e4YiHZTZ8h3Yw/exec  > ./data/index.json",
     "download:concepts": "curl -L https://script.google.com/macros/s/AKfycbwk024DnRMUbZj_1gRGpbPR5BKFb3tjUv_Nf0CZar4/dev > ./data/concepts.json",
     "download:idioms": "curl -L https://script.google.com/macros/s/AKfycbyhAm3M6jDcJGw2WRabpXyT4LLaGAzYZn7VAokHYwSk7fNzWjJKP-0arjo_l--n4If3/exec > ./data/idioms.json",
     "download:ctest": "curl -L https://script.google.com/macros/s/AKfycbw4xNoL9WKm9z5rMw0qoCFdo1KhbDU1bmdZI12uKFmul1S-4AgvGZMmsXPPJ2H4eA1f/exec > ./data/ctest.json",

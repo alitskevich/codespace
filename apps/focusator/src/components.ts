@@ -10,8 +10,11 @@ import stat from "./stat.xml";
 import atoms from "./atoms.xml";
 import ctest from "./ctest.xml";
 import interview from "./interview.xml";
+import addText from "./add-text/add-text.xml";
 
 import { WordsStore } from "./WordsStore"
+import { SimpleWordsStore } from "./SimpleWordsStore"
 import { QuizService } from "./QuizService"
+import { AddTextStore } from "./add-text/AddTextStore";
 
-export const components = [WordsStore, QuizService, ...ui, app, atoms, ctest, interview, branding, main, mywords, idioms, text, quiz, stat];
+export const components = [SimpleWordsStore, AddTextStore, WordsStore, QuizService, ...ui, app, addText, atoms, ctest, interview, branding, main, mywords, idioms, text, quiz, stat];

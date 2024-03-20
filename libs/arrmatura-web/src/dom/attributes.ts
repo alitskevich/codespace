@@ -22,6 +22,7 @@ export const ATTR_SETTERS: Hash<($: IElement, e: DomNode, v: unknown) => void> =
   selected: (_, e, v) => (e.selected = v ? true : null),
   value: (_, e, v) => (e.value = v == null ? "" : v),
   checked: (_, e, v) => (e.checked = !!v),
+  autofocus: (_, e, v) => { if (v) setTimeout(() => e.focus(), 10); },
 
   ...LISTENERS,
 };

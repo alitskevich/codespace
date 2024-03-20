@@ -2,6 +2,23 @@
 
 body {
   @apply bg-white text-gray-800 antialiased dark:bg-gray-900 dark:text-gray-300;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.prev-item,
+.next-item {
+  color: rgba(100, 100, 100, 0.8);
+  padding: 8px 0;
+}
+.prev-item {
+  background: linear-gradient(0deg, #fff, #c7cfd6 13%, #fff);
+  transform: rotate3d(1, 0, 0, 25deg);
+}
+.next-item {
+  background: linear-gradient(180deg, #fff, #c7cfd6 13%, #fff);
+  transform: rotate3d(1, 0, 0, -25deg);
 }
 
 .radial-gradient {

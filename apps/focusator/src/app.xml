@@ -15,11 +15,14 @@
       <span>pre</span>
     </div>
     <div class="cur-item flex flex-1 items-center justify-center text-4xl">
-      <div class="flex items-center justify-center">
+      <div class="flex-start" click="-> words.determineWord()">
+        -</div>
+      <div class="flex items-center justify-center flex-1">
         <span class="pr-2" each="w of @value.names">{@w.id}</span>
       </div>
 
-      <button class="ml-4 flex-end" click="-> words.determineWord()">next</button>
+      <div class="flex-end" click="-> words.determineWord()">+
+      </div>
     </div>
     <div class="next-item flex items-center justify-center text-2xl">
       <span>next</span>

@@ -11,6 +11,17 @@ export class SimpleWordsStore extends StoredData {
   listIterator = this.getListIterator()
   word: Stemm = this.listIterator.next().value ?? { id: 'none', names: {} }
 
+  init() {
+    super.init()
+    window.document.body.addEventListener('keydown', (e) => {
+      console.log(e);
+
+      if (e.key === 'ArrowRight') {
+        this.determineWord()
+      }
+    })
+    return null
+  }
 
   uploadText(text) {
     const parsequence = parseText(String(text ?? ""), this.data)
@@ -30,7 +41,12 @@ export class SimpleWordsStore extends StoredData {
   //   return { data: newData, parsequence: newParsequence }
   // }
   determineWord() {
-    return { word: this.listIterator.next().value }
+    console.log(this.word);
+    const word = this.listIterator.next().value;
+    if (word) {
+      this.word = word
+    }
+    return { word }
   }
 
   *getListIterator() {
@@ -38,7 +54,6 @@ export class SimpleWordsStore extends StoredData {
       yield word
     }
   }
-
 
 
 

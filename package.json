@@ -5,15 +5,10 @@
   "author": "alitskevich@gmail.com",
   "license": "ISC",
   "scripts": {
-    "start": "parcel",
-    "crud:run": "cd apps/crud && pnpm start",
-    "deploy:todo": "vercel --cwd apps/todo",
     "lint": "eslint ./libs/**/*.ts ./apps/**/*.ts",
     "tsc": "tsc",
     "test": "jest",
-    "test:tdd": "jest  --watch",
-    "format": "prettier --check --ignore-path .gitignore --write .",
-    "glib:pull": "./extras/glib-pull.sh"
+    "format": "prettier --check --ignore-path .gitignore --write ."
   },
   "devDependencies": {
     "@figma/plugin-typings": "^1.69.0",

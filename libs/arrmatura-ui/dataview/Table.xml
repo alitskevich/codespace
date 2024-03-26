@@ -18,9 +18,9 @@
 
 <component id="Table">
   <Connector data="@columns|slice:1" change="-> @cols" />
-  <div class="grid auto-rows-min auto-cols-auto
-      overflow-auto {@class}"
-    style="display: grid; grid-template-columns: 2rem minmax(12rem, 1fr) repeat({@cols.length}, minmax(9rem, 1fr));">
+  <div class="grid auto-rows-min auto-cols-auto overflow-auto {@class}" style="display: grid; 
+    grid-template-columns: 2rem minmax(12rem, 1fr) repeat({@cols.length}, minmax(9rem, 10rem));
+    " scrolledDown="@scrolledDown">
 
     <div class="grid grid-cols-subgrid gap-0 col-span-full col-row-full order-1">
       <TableRow each="item of @data" data="@item" selected="@item.selected" col1="@columns.0" cols="@cols" kind="@kind"
@@ -31,8 +31,8 @@
       <div class=" p-2 snap-start sticky  left-0 z-50 bg-gray-300 dark:bg-gray-700 flex items-start p-2 justify-center">
         <input type="checkbox" />
       </div>
-      <div class="border p-2 max-w-64 snap-start sticky z-50 left-8  bg-gray-200 dark:bg-gray-800">--</div>
-      <div class="border p-2 max-w-40 snap-start p-2 top-0 z-20 bg-gray-200 dark:bg-gray-800" each="item of @cols">
+      <div class="border p-2 snap-start sticky z-50 left-8  bg-gray-200 dark:bg-gray-800">--</div>
+      <div class="border p-2 snap-start p-2 top-0 z-20 bg-gray-200 dark:bg-gray-800" each="item of @cols">
         <span>{@item.name ?? @item.id}</span>
         <div class="table-column-sorter" if="@item.sortable && @doSort">
           <span class="table-column-sorter-up off" title="↑" data-id="-{@item.id}" click="@doSort">
@@ -46,7 +46,7 @@
 </component>
 
 <component id="TableRow">
-  <div class="grid grid-cols-subgrid gap-0 col-span-full">
+  <div class="grid grid-cols-subgrid gap-0 col-span-full max-h-14">
     <div class="border border-dotted border-gray-400
       sticky left-0 bg-gray-300 dark:bg-gray-700 snap-start flex items-start p-2 justify-center" click="-> ...">
       <input type="checkbox" />

@@ -1,4 +1,5 @@
 import { Url } from "../../types";
+import { encodus, stringifyUrlParams } from "./stringifyUrlParams";
 
 /**
  *  Represents an Url object as a string
@@ -23,16 +24,14 @@ export const urlStringify = (r: Partial<Url> | null): string => {
   const { params } = r;
 
   if (params) {
-    const keys = Object.keys(params).filter((key) => key && params[key] != null);
-    if (keys.length) {
-      result += `?${keys
-        .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-        .join("&")}`.replace(/ /g, "+");
+    const sparams = stringifyUrlParams(params);
+    if (sparams) {
+      result += `?${sparams}`
     }
   }
 
   if (r.hash) {
-    result += `${r.hash[0] === "#" ? "" : "#"}${encodeURIComponent(r.hash)}`;
+    result += `${r.hash[0] === "#" ? "" : "#"}${encodus(r.hash)}`;
   }
 
   return result;

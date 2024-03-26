@@ -76,6 +76,8 @@ export const objectFingerprint = (x: any): any => {
       }
     }
 
+    path.delete(x);
+
     return r;
   }
   const upAny = (x: any): void => {
@@ -86,6 +88,10 @@ export const objectFingerprint = (x: any): any => {
       upObject(x);
     } else if (typeof x === 'string') {
       upString(x);
+    } else if (typeof x === 'boolean') {
+      upString(`$$$Boolean$$$${x}`);
+    } else if (typeof x === 'function') {
+      upString(`$$$Function$$$${x}`);
     } else {
       upString(String(x))
     }

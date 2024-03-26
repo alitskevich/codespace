@@ -8,7 +8,6 @@
   <StoredData ref="mainPageState" name="viewMode" data="@viewMode" defaults="list" action="-> @viewMode" />
 
   <Container class="absolute" if="!@itemId">
-    <FAB tooltip="@@strings.add_a_new_item" action="-> newItem@showModal=true" />
     <Modal if="<-newItem@showModal" mode="lg" opened="<-newItem@showModal" title="@@strings.add_a_new_item"
       close="-> newItem@showModal=false">
       <Forma meta="@@forms.newItem" data="<- newItem@data" change="-> newItem.change()" />
@@ -23,10 +22,14 @@
 
   <div class="h-screen min-h-0 flex flex-col">
     <Navbar caption="@@name" id="top">
-      <div class="pl-2 p-1 min-w-10 flex flex-no-wrap items-center gap-2">
+      <div class="p-1 min-w-10 {@@styles.fline}">
+        <div class="{@@styles.badge} px-2" if="@countsInfo">
+          {@countsInfo}
+        </div>
+        <DbLoadingIndicator isLoading="<- db@busy" action="-> db.downstream()" />
       </div>
       <Navbar:right>
-        <ViewModeSelector options="@@forms.viewMode" value="@viewMode" change="-> @viewMode = data.value"
+        <ViewModeSelector options="@@enums.viewMode" value="@viewMode" change="-> @viewMode = data.value"
           if="@data.length" />
 
         <DarkModeService ref="dark" />
@@ -39,21 +42,16 @@
       <AsyncLoader isLoading="!@isLoaded" title="Loading data" subtitle="🚀 initial dataset" error="<- db@error"
         onError="-> db.downstream()">
 
-        <Container class="w-full flex flex-no-wrap justify-between items-center gap-2" if="<- itemsSearch@data.length">
-          <div class="pl-2 flex flex-no-wrap items-center gap-2">
-            <ItemsFilter data="<- items@searchedData" class="min-w-0" value="<- items@filterBySignature">
-              <span class="{@@styles.badge}" if="@countsInfo">
-                {@countsInfo}
-              </span>
-            </ItemsFilter>
+        <Container class="w-full flex flex-no-wrap justify-between items-start gap-2" if="<- itemsSearch@data.length">
+          <div class="pl-2 {@@styles.fline}">
+            <ItemsFilter data="<- items@searchedData" class="min-w-0" value="<- items@filterBySignature" />
 
             <!-- <Chips data="@tags" click="-> items.onTag(data)" class="min-w-0" /> -->
           </div>
-          <div class="pl-2 flex flex-no-wrap items-center gap-2">
+          <div class="pl-2 {@@styles.fline}">
             <SearchBar.Suggestions (...)="<- itemsSearch@info" />
             <ListSortBy options="@@enums.sortBy" value="<- items@sortBy" dir="<- items@sortDir"
               onChange="-> items.onSortBy(data)" onChangeDir="-> items.onSortDir(data)" if="@viewMode != 'pivot'" />
-            <DbLoadingIndicator isLoading="<- db@busy" action="-> db.downstream()" />
           </div>
         </Container>
 
@@ -68,8 +66,8 @@
             <MasterDetail data="@sortedData" itemId="@params.itemId" viewMode="@viewMode">
               <Selector on="@viewMode">
                 <Case when="table">
-                  <Table class="flex-auto min-h-0" data="@sortedData" columns="@@forms.table ?? @@forms.item"
-                    cellChange="-> items.changeField(data)" />
+                  <Table class="flex-auto min-h-0" data="@shownData" columns="@@forms.itemsTable ?? @@forms.item"
+                    scrolledDown="-> items.showMore()" cellChange="-> items.changeField(data)" />
                 </Case>
 
                 <Case when="list">
@@ -77,7 +75,7 @@
                     scroll="-> @showScrollToTopButton = data.value > 120">
                     <ul role="list" class="w-full max-md:divide-y md:space-y-4  divide-gray-200 dark:divide-gray-700">
                       <ListItem (...)="@item" item="@item" selectedId="@itemId" sortBy="@sortBy"
-                        each="item of @sortedData" />
+                        each="item of @shownData" />
                       <li class="h-48"></li>
                     </ul>
                   </Container>
@@ -89,7 +87,7 @@
                   <StoredData name="pivot-colId" data="@colId" defaults="@@params.colId ?? @@pivot.colId"
                     action="-> @colId" />
                   <Container class="flex-col gap-4 py-2 overflow-auto">
-                    <PivotView data="@sortedData" rowId="@rowId" colId="@colId" form="@@forms.pivot ?? @@forms.item" />
+                    <PivotView data="@data" rowId="@rowId" colId="@colId" form="@@forms.pivot ?? @@forms.item" />
                   </Container>
                 </Case>
               </Selector>
@@ -100,6 +98,7 @@
     </div>
   </div>
   <ScrollToTopButton if="@showScrollToTopButton" side="left" />
+  <FAB tooltip="@@strings.add_a_new_item" action="-> newItem@showModal=true" />
 </component>
 
 <component id="MasterDetail">
@@ -111,8 +110,9 @@
 
   <div class="flex flex-auto min-h-0 gap-2 items-stretch">
     <Slot />
-    <div if="@itemId"
-      class="h-full flex-1 min-h-0 min-w-96 gap-2 flex flex-col items-stretch border-t border-gray-200 dark:border-gray-700">
+    <div if="@itemId" class="h-full flex-1 min-h-0 min-w-96 gap-2 flex flex-col items-stretch 
+      bg-gradient-to-r from-gray-300  dark:from-purple-900/50 to-40%
+      border-t border-gray-200 dark:border-gray-700">
       <header class="p-2 flex flex-no-wrap items-center min-w-0 gap-1" title="{@title}">
         <h2 class="flex-1 text-lg text-truncate">{@item.title}</h2>
         <Icon type="cross" size="3" class="rounded-lg text-slate-500 h-10 w-10 dark:text-gray-400" data-itemId=""

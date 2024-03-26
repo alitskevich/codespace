@@ -54,7 +54,7 @@ export class IndexedDbService extends Component {
     this.storage.set(`since`, s || 0);
   }
 
-  invokeApi({ action = 'realtime.downstream', since = 0, data }: { action: 'realtime.downstream' | 'realtime.upsert' | 'realtime.upstream', since?: number, data?: any }): Promise<any> {
+  invokeApi({ action = 'realtime.downstream', since = 0, data }: { action: 'realtime.downstream' | 'realtime.upsert' | 'realtime.upstream', since?: number, data?: any, next?: any }): Promise<any> {
     return Promise.resolve({
       ok: true,
       action,
@@ -92,12 +92,16 @@ export class IndexedDbService extends Component {
       ...opts,
       busy: true,
       error: null,
-      "...downstream": this.invokeApi({ action: 'realtime.downstream', since: this.since })
-        .then(async ({ data, since }) => {
+      "...downstream": this.invokeApi({ action: 'realtime.downstream', data: { since: this.since }, next: opts?.next })
+        .then(async ({ data, since, next }) => {
           await Promise.all(data?.map(({ $collection = "items", ...rest }) => {
             this.counters[$collection] = (this.counters[$collection] ?? 0) + 1
             return this.db.put(rest, $collection)
           }) ?? []);
+
+          if (next) {
+            await this.downstream({ next })
+          }
 
           return {
             since
@@ -117,8 +121,8 @@ export class IndexedDbService extends Component {
   async upsertOptimistic(data: Delta) {
     const now = Date.now();
     const { id = `${now}`, $collection = "items", $callback, ...payload } = data;
-    const item = { ...payload, id, updatedAt: now };
-    await this.db.put({ ...payload, id, $collection, updatedAt: now }, 'upstream')
+    const item = { ...payload, id, ts: now };
+    await this.db.put({ ...payload, id, $collection, ts: now }, 'upstream')
     await this.db.update(item, $collection);
     this.counters[$collection] = (this.counters[$collection] ?? 0) + 1
     $callback?.({})

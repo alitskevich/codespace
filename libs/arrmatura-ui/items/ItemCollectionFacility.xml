@@ -9,10 +9,8 @@
 
   <ItemSearchController ref="itemsSearch" data="<- db@dataItems" />
 
-  <ItemsFilterController ref="itemsFilter" meta="@@forms.filter" data="<- itemsSearch@actualData"
-    value="<- nav@params.filter" />
-
-  <Connector data="<- itemsFilter@value" change="-> nav.onParams(data | pack:'filter')" />
+  <ItemsFilterController ref="itemsFilter" meta="@@forms.itemsFilter" data="<- itemsSearch@actualData"
+    value="<- nav@params" change="-> nav.onParams(data)" />
 
   <ItemCollectionController ref="items" data="<- itemsFilter@actualData" isLoaded="<- db@isLoaded" />
 

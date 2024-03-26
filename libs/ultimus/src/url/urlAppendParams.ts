@@ -1,4 +1,5 @@
 import { UrlParams } from "../../types";
+import { stringifyUrlParams } from "./stringifyUrlParams";
 
 
 /**
@@ -9,9 +10,7 @@ import { UrlParams } from "../../types";
  * @return {string} The updated URL with the appended query parameters.
  */
 export const urlAppendParams = (url = "", params: UrlParams = {}): string => {
-  const queryString = Object.entries(params)
-    ?.map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
-    .join("&");
+  const queryString = stringifyUrlParams(params);
 
   return [url, queryString].filter(Boolean).join(url.includes("?") ? "&" : "?");
 };

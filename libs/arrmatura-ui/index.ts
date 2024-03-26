@@ -56,11 +56,11 @@ import Table from "./dataview/Table.xml";
 import Tabs from "./atoms/Tabs.xml";
 import ToastFacility from "./toast/ToastFacility.xml";
 import ToastList from "./toast/ToastList.xml";
-import UserProfileModal from "./user/UserProfileModal.xml";
+import UserProfileModal from "./auth/UserProfileModal.xml";
 import fab from "./atoms/fab.xml";
 import navigation from "./atoms/navigation.xml";
 import svg from "./atoms/svg.xml";
-import user from "./user/user.xml";
+import user from "./auth/user.xml";
 import { ApiEndpoint } from "./api/ApiEndpoint";
 import { AuthService } from "./auth/AuthService";
 import { Auth2Service } from "./auth/Auth2Service";
@@ -91,7 +91,7 @@ import { StoredData } from "./browser/StoredData";
 import { TagsValueController } from "./fields/TagsValueController";
 import { TgWebAppService } from "./integration/TgWebAppService";
 import { ToastService } from "./toast/ToastService";
-import { UserProfileService } from "./user/UserProfileService"
+import { UserProfileService } from "./auth/UserProfileService"
 
 // all componets types:
 export default [

@@ -8,7 +8,7 @@ import { Component } from "arrmatura";
 
 export class ItemCollectionController extends Component {
   selection: Hash<boolean> = {};
-  shownLimit = 40;
+  shownLimit = 50;
   sortBy = "";
   sortByName = "";
   sortDir = "";
@@ -30,19 +30,15 @@ export class ItemCollectionController extends Component {
     const data = this.data;
     if (!data) return null;
 
-    this.tags = [];
-    const actualData = analyzeDataByTags(
-      data,
-      this.selection,
-      this.initials,
-      this.tags,
-      this.labelsFields
-    ) as unknown as StringHash[];
-    return applyNavInfo(
-      arraySortBy(actualData, this.sortBy, this.sortDir === "-" ? -1 : 1) as unknown as Item[],
-      this.sortBy,
-      this.sortByName
-    );
+    // this.tags = [];
+    // const actualData = analyzeDataByTags(
+    //   data,
+    //   this.selection,
+    //   this.initials,
+    //   this.tags,
+    //   this.labelsFields
+    // ) as unknown as StringHash[];
+    return arraySortBy(data, this.sortBy, this.sortDir === "-" ? -1 : 1) as unknown as Item[];
   }
 
   getInfo() {
@@ -56,12 +52,13 @@ export class ItemCollectionController extends Component {
       hasMore: this.shownLimit < data.length,
     };
     return {
-      sortedData: data,
       isLoaded: this.isLoaded,
       sortBy: this.sortBy,
       sortDir: this.sortDir,
 
-      data: data.slice(0, this.shownLimit),
+      data: data,
+      sortedData: data,
+      shownData: data.slice(0, this.shownLimit),
 
       tags: this.tags,
       selection: Object.entries(this.selection)

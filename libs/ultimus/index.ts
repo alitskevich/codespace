@@ -8,7 +8,6 @@ export * from "./src/func/fx";
 export * from "./src/object";
 export * from "./src/string";
 export * from "./src/scalar/scalarParse";
-export * from "./src/parsing/codus";
 export * from "./src/parsing/predicat";
 export * from "./src/json/parseJson";
 export * from "./src/url";

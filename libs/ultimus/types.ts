@@ -25,7 +25,7 @@ export type Fn = (...args: any[]) => any;
 export type Predicat<T = unknown> = (e: T) => boolean;
 export type Constructor = new (...args: unknown[]) => unknown;
 
-export type UrlParams = StringHash;
+export type UrlParams = Hash;
 
 export type Url = {
   protocol?: string;

@@ -2,7 +2,7 @@
   <section class="w-full flex 
     md:container md:mx-auto lg:max-w-6xl 
     px-2 sm:px-6 lg:px-8
-    {@class}">
+    {@class}" scroll="@scroll" scrolledDown="@scrolledDown">
     <Slot />
   </section>
 </component>

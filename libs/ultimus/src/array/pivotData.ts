@@ -87,7 +87,7 @@ export const pivotData = (
   return {
     title: `${rField.name ?? rowId}${cTitle}`,
     rows,
-    columns: Object.values(colhash),
+    columns: columnsKeys.map((cId) => colhash[String(cId)] ?? { id: cId, value: '-' }),
     totalCount: cellCount === totalCount ? cellCount : `${cellCount} / ${totalCount}`,
   };
 };

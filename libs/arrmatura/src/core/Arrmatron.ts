@@ -357,10 +357,11 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
           return ref.subscribe(async (source: Arrmatron) => {
             try {
               const val = await source.get(sourcePropName);
+              const fingerprint = objectFingerprint(val);
 
-              if (popre !== undefined && popre === val) return;
+              if (popre !== undefined && popre === fingerprint) return;
 
-              popre = val;
+              popre = fingerprint;
               const r = applicator(pipes(this, val));
               this.up(r as Delta);
             } catch (ex) {

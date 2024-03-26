@@ -1,8 +1,22 @@
 <component id="ListSortBy">
   <div class="">
 
-    <Chip class="{@@styles.dropdown-trigger} dropdown-trigger
-    rounded-lg inline-flex items-center {@opened ? 'bg-gray-400':''}">
+    <div class="
+    h-10
+    inline-flex gap-1 items-center
+        px-2 py-2 
+        rounded-lg
+        font-semibold text-sm
+        transition duration-300
+        hover:bg-slate-300 dark:hover:bg-slate-700
+        min-w-10 max-w-40 overflow-hidden
+        bg-gray-500 dark:bg-gray-500 
+        
+    hover:bg-slate-300 dark:hover:bg-slate-700
+    max-w-40 min-w-40 overflow-hidden
+    rounded-lg inline-flex items-center 
+    {@value ? 'text-gray-200' : 'text-gray-600'} 
+    {@opened ? 'bg-slate-400':'bg-gray-500'}">
 
       <Icon type="sortAsc" class="rounded-lg p-1" click="-> @opened=!@opened" if="!@value" />
 
@@ -11,10 +25,11 @@
         cursor-pointer p-1
         " data-value="@dir == '-' ? '' : '-'" click="@onChangeDir" if="@value" />
 
-      <span class="pr-2 p-1 capitalize" click="-> @opened=!@opened" if="@value">
+      <span class="pr-2 p-1 capitalize truncate" click="-> @opened=!@opened" if="@value">
         {@options | find:@value | dot:'name' ?? 'unsorted'}
       </span>
-    </Chip>
+    </div>
+
     <div class="{@opened ? 'mt-3 relative' : ''}">
       <DropdownOptionsList side="right" caption="Sort by" options="@options" itemClick="@onChange" value="@value"
         close="-> @opened=false" if="@opened" />

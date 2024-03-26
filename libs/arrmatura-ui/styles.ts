@@ -1,21 +1,14 @@
 export default {
   clickable: `cursor-pointer hover:bg-slate-400  hover:text-gray-50`,
 
+  fline: `flex flex-no-wrap items-center gap-2`,
+
   dropdown: `border border-slate-300 dark:border-slate-700 rounded-lg 
   bg-gradient-to-r from-gray-300  dark:from-gray-800 to-40%
   text-gray-700 bg-slate-100 dark:bg-slate-600 dark:text-gray-200`,
-  "dropdown-trigger": `hover:bg-slate-300 dark:hover:bg-slate-700`,
+
   "dropdown-item": `hover:bg-slate-300 dark:hover:bg-slate-700`,
   'dropdown-item-selected': `bg-slate-400 dark:bg-slate-800;`,
-
-  chip: `inline-flex gap-1 items-center
-          px-2 py-2 h-10
-          rounded-lg
-          font-semibold text-sm
-          transition duration-300
-          bg-slate-200  text-gray-800
-          dark:bg-gray-300 dark:text-gray-600`,
-  "chip-selected": `bg-purple-600 text-white dark:bg-purple-600 dark:text-white`,
 
   "input": ` 
     w-full px-2 py-1
@@ -62,11 +55,11 @@ export default {
         border-gray-600 dark:border-gray-500
 `,
 
-  "card": `p-6 bg-white
+  card: `p-6 bg-white
         border-y sm:border-x border-gray-200 sm:rounded-lg
         hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700
 `,
-  "badge": `inline-block py-1 px-1.5 leading-none 
+  badge: `inline-block py-1 px-1.5 leading-none 
               text-center whitespace-nowrap align-baseline
               font-bold rounded ml-2 
               bg-gray-200 text-gray-600

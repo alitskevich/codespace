@@ -1,7 +1,17 @@
 <component id="RadioGroup">
   <div class="flex flex-wrap w-full items-center pt-2 gap-2 {@class}" role="group">
-    <label class=" {@@styles.chip}
-     {@option.id == @value ? @@styles.chip-selected' : '' }" each="option of @options">
+    <label class=" inline-flex gap-1 items-center
+          px-2 py-2 
+          rounded-lg
+          font-semibold text-sm
+          transition duration-300
+          hover:bg-slate-300 dark:hover:bg-slate-700
+          min-w-10 overflow-hidden
+          bg-gray-500 text-gray-800
+          dark:bg-gray-500 dark:text-gray-600
+
+     {@option.id == @value ? 'bg-purple-600 text-white dark:bg-purple-600 dark:text-white' : '' }"
+      each="option of @options">
       <input type="radio" name="@name" value="@option.id" checked="@option.id == @value" change="@change" data="@data"
         disabled="@disabled" />
       <span class="text-sm">{@option.name}</span>

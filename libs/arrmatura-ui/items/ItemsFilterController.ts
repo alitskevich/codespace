@@ -1,6 +1,4 @@
 import { Component } from "arrmatura";
-
-import { parseJson } from "ultimus";
 import type { IArrmatron } from "arrmatura/types";
 import type { Hash } from "ultimus/types";
 import { arraySortBy, arrayToObject } from "ultimus";
@@ -32,7 +30,7 @@ class FilterField {
   toggleOption: (id: any) => void;
   settleOption: (id: any) => void;
   setIsSelected: (v: boolean) => void;
-  histo?: any[];
+  $histo?: any[];
   isMultiType: any;
   isDateType: any;
 
@@ -130,20 +128,20 @@ class FilterField {
     const histo: any[] = Object.entries(hash).filter(([key, count]) => key !== OPT_EMPTY && key !== OPT_NON_EMPTY && count > 0)
       .map(([id, count]) => ({ id, name: names?.[id] ?? id, count, isSelected: !!selections[id] }));
 
-    this.histo = [
+    this.$histo = [
       { ...OPT_NAMES[OPT_EMPTY], count: hash[OPT_EMPTY] ?? 0, isSelected: !!selections[OPT_EMPTY] },
       { ...OPT_NAMES[OPT_NON_EMPTY], count: hash[OPT_NON_EMPTY] ?? 0, isSelected: !!selections[OPT_NON_EMPTY] },
       ...arraySortBy(histo, "name")
     ]
 
-    return this.histo;
+    return this.$histo;
   }
 }
 
 export class ItemsFilterController extends Component {
   selectedFieldsIds: string[] = [];
   fields: any[];
-  changed?: (data: any) => void;
+  change?: (data: any) => void;
   data: Hash[] = [];
 
   constructor(initials: Hash<unknown>, ctx: IArrmatron) {
@@ -155,14 +153,6 @@ export class ItemsFilterController extends Component {
 
   }
 
-  getValue() {
-    const value = {}
-    this.fields.filter(e => e.isSelected).forEach((ff) => {
-      value[ff.id] = ff.selections;
-    });
-    return JSON.stringify(value);
-  }
-
   get actualData() {
     return this.data?.filter((item: Hash) => {
       for (const fields of this.fields) {
@@ -172,12 +162,27 @@ export class ItemsFilterController extends Component {
     }) ?? null;
   }
 
-  setValue(str = "{}") {
-    this.value = str;
+  touch() {
 
-    const parsed = parseJson(str);
+    const fingerprint = this.fields.reduce((value, ff) => {
+      return Object.assign(value, { [`filter_${ff.id}`]: ff.isSelected ? ff.selections : undefined });
+    }, {});
+
+    const sfingerprint = JSON.stringify(fingerprint)
+
+    if (this.fingerprint !== sfingerprint) {
+      super.touch();
+
+      this.fingerprint = sfingerprint;
+      this.change?.(fingerprint);
+    };
+  }
+
+  setValue(value = {}) {
+    this.value = value;
+
     this.fields.forEach((ff) => {
-      const selections = Object.keys(parsed[ff.id] ?? {});
+      const selections = Object.keys(value?.[`filter_${ff.id}`] ?? {});
       ff.settleOption(selections);
       ff.setIsSelected(ff.isSelected || selections.length > 0);
     });

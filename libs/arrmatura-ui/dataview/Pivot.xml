@@ -48,11 +48,11 @@
   <tr class="gradient from-slate-500 to-transparent" if="@cellDetails.items.length">
     <td class="py-2" colspan="{@row.columns.length|increment:2}">
       <div opened="@cellDetails" title="@cellDetails.name" close="">
-        <header class="p-2 flex flex-no-wrap items-center min-w-0 gap-1">
+        <!-- <header class="p-2 flex flex-no-wrap items-center min-w-0 gap-1">
           <h2 class="flex-1 text-lg text-truncate">{@cellDetails.name}</h2>
           <Icon type="cross" size="3" class="rounded-lg text-slate-500 h-10 w-10 dark:text-gray-400" data-itemId=""
             click="-> @cellDetails=false" />
-        </header>
+        </header> -->
         <ul role="list" class="flex flex-col md:gap-2 w-full divide-y divide-gray-200 dark:divide-gray-700">
           <li data="{@field}" class="p-2 list-item" each="item of @cellDetails.items">
             <a href="#/main?itemId={@item.id}"
@@ -80,15 +80,18 @@
       <div class="flex">
         <ul role="list" class="m-1">
           <li click="->nav.onParams(data)" data-rowId="@field.id"
-            class="p-2 {@field.id==@rowId ? @@styles.chip-selected}" each="field of @form">
+            class="p-2 {@field.id==@rowId ? 'bg-purple-600 text-white dark:bg-purple-600 dark:text-white'}"
+            each="field of @form">
             {@field.name}</li>
         </ul>
         <!-- <div>x</div> -->
         <ul role="list" class="m-1">
           <li click="->nav.onParams(data)" data-colId="@field.id"
-            class="p-2 {@field.id==@colId ? @@styles.chip-selected}" each="field of @form">
+            class="p-2 {@field.id==@colId ? 'bg-purple-600 text-white dark:bg-purple-600 dark:text-white'}"
+            each="field of @form">
             {@field.name}</li>
-          <li click="->nav.onParams(data)" data-colId="" class="p-2 {!@colId ? @@styles.chip-selected}">NONE</li>
+          <li click="->nav.onParams(data)" data-colId=""
+            class="p-2 {!@colId ? 'bg-purple-600 text-white dark:bg-purple-600 dark:text-white'}">NONE</li>
         </ul>
       </div>
     </div>
@@ -103,7 +106,7 @@
   <div class="flex flex-no-wrap items-center mt-1 gap-0 px-2 rounded-md" role="group">
     <label class="py-1 px-2
     first:rounded-l-lg last:rounded-r-lg  
-    {@option.id == @value ? @@styles.chip-selected : 'bg-slate-600' } 
+    {@option.id == @value ? 'bg-purple-600 text-white dark:bg-purple-600 dark:text-white' : 'bg-slate-600' } 
     text-gray-100 dark:text-white" data-value="@option.id" click="@change" each="option of @options">
       <span class="text-sm">{@option.name}</span>
     </label>

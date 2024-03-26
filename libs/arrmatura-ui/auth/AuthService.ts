@@ -34,7 +34,7 @@ export class AuthService extends Component {
   }
 
   signIn(data: StringHash) {
-    const { username, password } = data || {};
+    const { email, username = email, password } = data || {};
     return {
       busy: true,
       "...": loadJson(this.url, { action: "user.signin", creds: `${username}:${password}`, credentials: data, data })

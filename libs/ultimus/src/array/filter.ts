@@ -2,7 +2,7 @@
 
 import { Hash } from "../../types";
 
-export const filter = <T extends Hash<any>>(x: T[], key: string, val: unknown) => x?.filter?.((e: T) => e[key] == val);
+export const filter = <T extends Hash<any>>(x: T[], key = 'isSelected', val: unknown = true) => x?.filter?.((e: T) => e[key] == val);
 
 export const filterByKeyword = <T extends Hash<any>>(array: T[], kliuq: string, propName = "name") => {
   if (!kliuq || !array) return array;

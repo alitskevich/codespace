@@ -7,6 +7,7 @@ export class UserProfileService extends Component {
   url = "";
   persistence: PersistenceType = "session";
   local?: ClientStorage;
+  ttl = 10 * 3600000;
 
   get storage() {
     return this.local ?? (this.local = new ClientStorage(this.persistence, "$user"));
@@ -21,6 +22,15 @@ export class UserProfileService extends Component {
   }
 
   init() {
+
+    const ts = this.storage.get("ts");
+    const data = this.storage.get("profile");
+    const stale = !data || (ts && Number(ts) + this.ttl <= Date.now());
+
+    if (!stale) {
+      return { isLoading: false, isFetching: false, error: null, data };
+    }
+
     return this.data ? null : this.sync();
   }
 
@@ -42,6 +52,10 @@ export class UserProfileService extends Component {
         })
         .then(({ user, data = user }) => {
           this.log(`sync user`, data);
+          if (data) {
+            this.storage.set("profile", data);
+            this.storage.set("ts", Date.now());
+          }
           return { isLoading: false, data };
         }),
     };

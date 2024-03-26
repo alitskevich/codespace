@@ -24,6 +24,13 @@ export default {
   defaults: {
     newItem: { subject: "subject", description: "" },
   },
+  enums: {
+    viewMode: [
+      { id: "table", name: "Table" },
+      { id: "list", name: "List" },
+      { id: "pivot", name: "Pivot" },
+    ],
+  },
   forms: {
     newItem: [
       { id: "subject", name: "Subject", required: true },
@@ -40,11 +47,6 @@ export default {
     userProfile: [
       { id: "email", name: "Email", required: true },
       { id: "name", name: "Name", type: 'text' },
-    ],
-    viewMode: [
-      { id: "table", name: "Table" },
-      { id: "list", name: "List" },
-      { id: "pivot", name: "Pivot" },
     ],
     signIn: [
       { id: "email", name: "User email" },

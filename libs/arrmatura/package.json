@@ -1,0 +1,21 @@
+{
+  "name": "arrmatura",
+  "version": "6.3.1",
+  "description": "Arrmatura runtime engine",
+  "author": "alitskevich@gmail.com",
+  "license": "ISC",
+  "type": "module",
+  "main": "./index.ts",
+  "files": [
+    "src",
+    "types.ts",
+    "docs/**/*"
+  ],
+  "scripts": {
+    "pnpm:publish": "pnpm publish --no-git-checks"
+  },
+  "dependencies": {
+    "arrmatura": "workspace:*",
+    "ultimus": "workspace:*"
+  }
+}

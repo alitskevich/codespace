@@ -1,0 +1,10 @@
+<component id="Field.Boolean">
+  <FieldItem caption="{caption}" error="{error}" required="{required}" helper="{helper}" disabled="{disabled}"
+    value="{value}">
+    <div class="flex items-center">
+      <input name="{id}" type="checkbox" disabled="{disabled}" class="w-10 h-8 rounded-lg {error ? 'input-error'}"
+        checked="value | truthy" toggle="{onChange}" />
+      <div class="flex-1 ml-4 text-sm" If="hint">hint</div>
+    </div>
+  </FieldItem>
+</component>

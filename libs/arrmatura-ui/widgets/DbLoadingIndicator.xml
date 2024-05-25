@@ -1,0 +1,3 @@
+<component id="DbLoadingIndicator">
+  <Icon type="refresh" class="rounded-full p-1 {isLoading ? 'animate-spin' : ''}" click="{action}" data="{data}" />
+</component>

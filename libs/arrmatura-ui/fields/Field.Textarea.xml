@@ -1,0 +1,30 @@
+<component id="Field.Textarea">
+  <FieldItem caption="{caption}" error="{error}" required="{required}" disabled="{disabled}">
+    <Fragment If="disabled">
+      <Then>
+        <div class="{R.styles.input} px-2 rounded-lg text-gray-400"
+          style="height: auto;min-height:2.5rem;white-space: pre-wrap">
+          {value}
+        </div>
+      </Then>
+      <Else>
+        <div class="{R.styles.input} px-2 rounded-lg text-{value ? '' : 'gray-400'}" click="-> opened=true"
+          style="white-space: pre-wrap; min-height: 2.5rem; white-space: pre-line">{value ?? placeholder ?? ' '}</div>
+      </Else>
+    </Fragment>
+
+    <Modal open="{opened}" If="opened" close="-> opened=false">
+      <Modal:header>
+        <h6>{caption}</h6>
+      </Modal:header>
+      <textarea autofocus="true" class="{R.styles.input} px-2 w-full" style="min-height:16rem;" keypress="{onChange}"
+        value="{value}"></textarea>
+      <Modal:footer>
+        <div class="flex justify-between w-full">
+          <FieldHint class="mt-4 flex-1" value="{hint}" />
+          <Btn class="" mode="primary" title="OK" action="-> opened=false" />
+        </div>
+      </Modal:footer>
+    </Modal>
+  </FieldItem>
+</component>

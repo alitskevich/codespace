@@ -1,0 +1,58 @@
+<component id="UserBar">
+  <div class="relative">
+    <NoUserPanel If="<-auth.isAuthorized | not">
+      <Else>
+        <LoadingIndicator If="<-user.isLoading">
+          <Else>
+            <UserPanel (...)="<-user.data" />
+          </Else>
+        </LoadingIndicator>
+      </Else>
+    </NoUserPanel>
+  </div>
+</component>
+
+<component id="UserPanel">
+  <button type="button" click="-> opened=true" class="flex rounded-full bg-gray-800 text-sm 
+        focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+    id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+    <Avatar class="h-12 w-12 hover:bg-gray-700" src="{photo}" alt="{name}" initials="{name | abbreviate}" />
+  </button>
+  <div class="relative">
+    <div dropdown="-> opened=false" If="opened" class="{opened ? 'transform opacity-100 scale-100':'hidden transform opacity-0 scale-95'} 
+        transition ease-out duration-100 
+        absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md 
+        {R.styles.dropdown} py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu"
+      aria-orientation="vertical">
+
+      <h3 class="p-2 m-0 " title="{email}">{name ??username ?? id} ({role??'guest'})</h3>
+
+      <div class="border-t"></div>
+
+      <a click="-> user.showProfile | truthy" afterClick="-> opened=false"
+        class="block px-4 py-2 text-sm cursor-pointer {R.styles.dropdown-item}" role="menuitem" tabindex="-1"
+        id="user-menu-item-0">Profile</a>
+
+      <a click="-> auth.signOut()" If="<-auth.signOut"
+        class="block px-4 py-2 text-sm cursor-pointer  {R.styles.dropdown-item}" role="menuitem" tabindex="-1"
+        id="user-menu-item-2">Sign out</a>
+    </div>
+  </div>
+</component>
+
+<component id="NoUserPanel">
+  <div class="tile tile-centered">
+    <div class="tile-action">
+      <a class="btn btn-link dropdown-toggle" click="-> auth.signIn">
+        <Icon type="people" />
+      </a>
+      <div class="{R.styles.dropdown} dropdown-right">
+        <ul class="menu">
+          <li class="menu-item">
+            <a>▶️Vxod</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</component>

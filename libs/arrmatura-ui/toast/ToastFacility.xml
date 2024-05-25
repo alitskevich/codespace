@@ -1,0 +1,6 @@
+<component id="ToastFacility">
+
+  <ToastService Ref="toaster" />
+  <Slot />
+  <ToastList />
+</component>

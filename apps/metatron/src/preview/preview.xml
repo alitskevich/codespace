@@ -1,0 +1,15 @@
+<component id="ItemPreview">
+  <p class="p-4">Select component...</p>
+</component>
+
+<component id="App.Preview">
+  <PostMessageSender targetId="parent" eventType="previewReady" data="{true|now}" If="props|not" />
+
+  <PostMessageReceiver onMessage="-> props" eventType="props" />
+  <PostMessageReceiver onMessage="-> elementId|highlightElement" eventType="elementId" />
+  <PostMessageReceiver onMessage="-> body| resetComponentContent: {R.itemId}: {R.projectId}:{R.resetUI}"
+    eventType="body" />
+
+  <Dynamic As="ItemPreview.{R.itemId}" (...)="{props}" properties="{props}" />
+
+</component>

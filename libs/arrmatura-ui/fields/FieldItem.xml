@@ -1,0 +1,44 @@
+<component id="FieldHint">
+  <div class="{class} text-sm text-gray-500 dark:text-gray-400">
+    {value}</div>
+</component>
+
+<component id="FieldPrefix">
+  <div class="inline-flex flex-no-wrap items-center justify-center w-min-10 h-10
+    rounded-l-md border border-r-0 text-gray-900 bg-gray-200 border-gray-300 
+    dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+    <Slot />
+  </div>
+</component>
+
+<component id="FieldPostfix">
+  <div class="{click | then : cursor-pointer} text-gray-900 
+    bg-gray-200 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600
+    self-stretch h-10 w-10 rounded-r-lg flex justify-center items-center" data="{data}" click="{click}">
+    <div>{title}</div>
+  </div>
+</component>
+
+<component id="FieldItem">
+  <div class="grid-cols-1 {hidden | then : 'hidden'}">
+    <div class="flex flex-col {class} gap-1">
+      <div class="w-full flex sm:justify-start" If="caption">
+        <div class="block mt-1 mb-2 text-sm font-medium 
+          {disabled ? 'text-gray-600 dark:text-gray-100':'text-gray-900 dark:text-white'} 
+          text-start text-ellipsis capitalize" title="{caption}">{caption}</div>
+        <sup If="!disabled && required" class="text-sm text-red-500" style="font-size:0.6rem;">✱</sup>
+      </div>
+      <div class="w-full max-w-[36rem] flex items-center">
+        <Slot />
+        <div class="w-10 relative" If="hint">
+          <Popover icon="info" position="right-2 top-0">
+            <FieldHint value="{hint}" />
+          </Popover>
+        </div>
+      </div>
+    </div>
+    <div class="ml-48 mt-2 max-sm:ml-0 w-full" If="error">
+      <p class="text-orange-500 mb-1">{error}</p>
+    </div>
+  </div>
+</component>

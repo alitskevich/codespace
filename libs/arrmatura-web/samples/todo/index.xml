@@ -1,0 +1,97 @@
+<components>
+  <component id="App">
+    <TodoStore Ref="todo" />
+    <section class="todoapp">
+      <Caption title="{R.title}" />
+      <Fragment If="<-todo.notEmpty">
+        <Main />
+        <Filter current="<-todo.filterId">
+          <Countdown />
+          <Filter:right>
+            <button class="clear-completed" click="-> todo.purge()"
+              If="<-todo.hasCompleted">{R.clear_completed}</button>
+          </Filter:right>
+        </Filter>
+      </Fragment>
+    </section>
+    <Footer />
+  </component>
+
+  <component id="Countdown">
+    <Connector data="<-todo.itemsLeft" change="-> count" />
+
+    <span class="todo-count">
+      <strong>{count}</strong>
+      <span>{R.items_left}</span>
+    </span>
+  </component>
+
+  <component id="Footer">
+    <Connector data="<-todo.shownItemsCount" change="-> hasItems" timeout="1000" />
+
+    <Dynamic As="{hasItems ? 'Hint' : 'Attribution'}" />
+  </component>
+
+  <component id="Caption">
+    <header class="header">
+      <h1>{title | upper}</h1>
+      <input type="text" class="new-todo" placeholder="{R.new_todo_hint}" autofocus="true" enter="-> todo.add()" />
+    </header>
+  </component>
+
+  <component id="Main">
+    <Connector data="<-todo.shownItems" change="-> data" />
+
+    <section class="main">
+      <input id="toggle-all" class="toggle-all" type="checkbox" toggle="-> todo.toggle()" />
+      <label for="toggle-all" title="{R.mark_all_complete}"></label>
+      <ul class="todo-list">
+        <TodoItem (...)="{item}" Each="item of data" />
+      </ul>
+    </section>
+  </component>
+
+  <component id="Filter">
+    <footer class="footer">
+      <Slot />
+      <ul class="filters">
+        <li Each="filter of R.filters">
+          <a class="filter.id == current ? selected" id="{filter.id}" href="#{filter.id}">{filter.name}</a>
+        </li>
+      </ul>
+      <Slot Key="right" />
+    </footer>
+  </component>
+
+  <component id="Attribution">
+    <footer class="info">
+      <p>
+        <span>Created by </span>
+        <a style="padding:0.2rem" href="{R.authorUrl}">{R.author}</a>
+      </p>
+      <p>
+        <span>Part of </span>
+        <a style="padding:0.2rem" href="{R.todoMvcUrl}">{R.todoMvc}</a>
+      </p>
+    </footer>
+  </component>
+
+  <component id="Hint">
+    <footer class="info">
+      <p>{R.hint}</p>
+    </footer>
+  </component>
+
+  <component id="TodoItem">
+    <li class="{completed ? 'completed'} {editing ? 'editing'}">
+      <div class="view">
+        <input class="toggle" type="checkbox" checked="{completed}" data-id="{id}" click="-> todo.inverse()" />
+        <label dblclick="-> editing=true">{name | capitalize}</label>
+        <button If="completed" class="destroy" data-id="{id}" click="-> todo.rm()"></button>
+      </div>
+      <input type="text" class="edit" value="{name}" data-editing="false" data-id="{id}" enter="-> todo.save()"
+        blur="-> *" />
+    </li>
+  </component>
+
+</components>

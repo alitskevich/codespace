@@ -1,0 +1,22 @@
+<component id="App">
+  <DarkModeService Ref="dark" />
+  <ToastFacility>
+    <GreenAppFacility (...)="{R.green}">
+      <BrowserService Ref="browser" title="{R.name}" />
+      <NavigationService Ref="nav" />
+      <AuthService Ref="auth" (...)="{R.authLocal ?? R.auth}" afterSignedOut="-> browser.reload()" />
+      <SignInPage If="<-auth.isAuthorized | not">
+        <Else>
+          <ApiEndpoint Ref="api" (...)="{R.apiLocal ?? R.api}" token="<-auth.token"
+            onUnauthorized="-> auth.invalidateToken()" />
+          <UserProfileService Ref="user" persistence="{R.auth.persistence}" invokeApi="<-api.invoke" />
+          <AsyncLoader isLoading="<-user.isLoading" title="{R.strings.app_load_user_profile}"
+            subtitle="{R.strings.app_load_user_profile_subtitle}">
+            <PageRouter (...)="<-nav.route" />
+          </AsyncLoader>
+          <UserProfileModal If="<-user.showProfile" />
+        </Else>
+      </SignInPage>
+    </GreenAppFacility>
+  </ToastFacility>
+</component>

@@ -1,0 +1,5 @@
+<component id="Badge">
+  <span class="{R.styles.badge}">
+    {value}
+  </span>
+</component>

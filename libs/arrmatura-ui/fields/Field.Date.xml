@@ -1,0 +1,63 @@
+<component id="Field.Date">
+  <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}">
+    <Input type="date" disabled="{disabled}" placeholder="{placeholder}" value="{value}" change="{onChange}" />
+  </FieldItem>
+</component>
+
+<component id="Field.DateAndWorkingHours">
+  <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}">
+    <div class="flex">
+      <Input type="date" disabled="{disabled}" placeholder="{placeholder}" value="{value}" change="{onChange}" />
+      <Select class="form-select ml-2" disabled="{disabled}" change="onChange | assignFirstArgKeyValue:key:typeSpec"
+        emptyCaption="-" value="{data | dot:typeSpec}" options="{R.enums.workingHours}" />
+    </div>
+  </FieldItem>
+</component>
+
+<component id="Field.StartDateAndLength">
+  <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}" disabled="{disabled}">
+    <div class="w-full flex">
+      <Input class="w-32 rounded-r-none" type="date" disabled="{disabled}" placeholder="{placeholder}" value="{value}"
+        change="{onChange}" />
+      <Select class="w-16 rounded-r-lg" disabled="!value ?? disabled" required="true"
+        change="onChange | assignFirstArgKeyValue:key:typeSpec" emptyCaption="-" value="{data | dot:typeSpec}"
+        options="{R.enums.daysPeriod}" />
+    </div>
+  </FieldItem>
+</component>
+
+<component id="Field.DateAndTime">
+  <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}">
+    <div class="flex">
+      <Input type="date" class="input flex-1" disabled="{disabled}" placeholder="{placeholder}" value="{value}"
+        change="{onChange}" />
+      <input class="input flex-1 ml-2" disabled="!value ?? disabled" type="text" value="{data | dot:typeSpec}"
+        change="onChange | assignFirstArgKeyValue:key:typeSpec" />
+    </div>
+  </FieldItem>
+</component>
+
+<component id="Field.DatePeriod">
+  <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}">
+    <div class="grid grid-cols-2 gap-2">
+      <Input type="date" class="input" disabled="{disabled}" placeholder="{placeholder}" value="{value}"
+        change="{onChange}" />
+      <Input type="date" class="input" style="min-width: 6rem;" disabled="!value ?? disabled"
+        value="{data | dot:typeSpec}" change="onChange | assignFirstArgKeyValue:key:typeSpec" />
+    </div>
+  </FieldItem>
+</component>
+
+<component id="Field.DateTime">
+  <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}">
+    <Input type="datetime-local" class="input" disabled="{disabled}" placeholder="{placeholder}"
+      value="{value | dateFormat:'yyyy-MM-ddThh:mm'}" change="{onChange}" />
+  </FieldItem>
+</component>
+
+<component id="Field.Time">
+  <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}">
+    <Input type="text" class="input" disabled="{disabled}" placeholder="{placeholder}"
+      value="{ value | dateFormat : 'hh:mm' }" change="{onChange}" />
+  </FieldItem>
+</component>

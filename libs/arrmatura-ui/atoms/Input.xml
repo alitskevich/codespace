@@ -1,0 +1,4 @@
+<component id="Input">
+  <input name="{name}" type="{type ?? 'text'}" class="{R.styles.input}  {class}
+    " placeholder="{placeholder}" value="{value}" data="{data}" change="{change}" disabled="{disabled}" />
+</component>

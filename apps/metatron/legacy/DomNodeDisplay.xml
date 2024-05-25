@@ -1,0 +1,58 @@
+<component id="DomNodeDisplay">
+  <h1 class="ml-12 h-8 ">Bounds</h1>
+  <div style="position:relative;" class="dom-display-grid">
+    <div class="m mt flex justify-center gap-2">
+      <div class="chip !bg-yellow-600" data-key="m">m</div>
+      <div class="chip !bg-yellow-600" data-key="mt">mt</div>
+      <div class="chip !bg-yellow-600" data-key="my">my</div>
+    </div>
+    <div class="m ml flex flex-col justify-center gap-2">
+      <div class="chip !bg-yellow-600" data-key="ml">ml</div>
+      <div class="chip !bg-yellow-600 rotate-90" data-key="mx">mx-[20px]</div>
+    </div>
+    <div class="m mr flex flex-col justify-center gap-2">
+      <div class="chip" data-key="ml">mr</div>
+    </div>
+    <div class="m mb flex justify-center gap-2">
+      <div class="chip" data-key="mb">mb</div>
+    </div>
+
+    <div class="p pt flex justify-center gap-2">
+      <div class="chip !bg-cyan-600" data-key="pt" popoverRef="paddingEditor">pt</div>
+
+    </div>
+    <div class="p pl flex flex-col justify-center gap-2">
+      <div class="chip" data-key="pl" popoverRef="paddingEditor">pl</div>
+    </div>
+    <div class="p pr flex flex-col justify-center gap-2">
+      <div class="chip" data-key="pl" popoverRef="paddingEditor">pr</div>
+    </div>
+    <div class="p pb flex justify-center gap-2">
+      <div class="chip" data-key="pb" popoverRef="paddingEditor">pb</div>
+    </div>
+
+
+    <div class="r r1" popoverRef="radiusEditor">r1 </div>
+    <div class="r r2" popoverRef="radiusEditor">r2 </div>
+    <div class="r r3" popoverRef="radiusEditor">r3 </div>
+    <div class="r r4" popoverRef="radiusEditor">r4 </div>
+
+    <div class="b bt flex justify-center gap-2">
+
+      <div class="chip !bg-fuchsia-700" data-key="bt" popoverRef="borderEditor">bt</div>
+    </div>
+    <div class="b bl flex flex-col justify-center gap-2">
+      <div class="chip" data-key="bl" popoverRef="borderEditor">bl</div>
+    </div>
+    <div class="b br flex flex-col justify-center gap-2">
+      <div class="chip" data-key="bl" popoverRef="borderEditor">br</div>
+    </div>
+    <div class="b bb flex justify-center gap-2">
+      <div class="chip" data-key="bb" popoverRef="borderEditor">bb</div>
+    </div>
+
+    <div style="grid-area: wh; background-color: olivedrab">W * H </div>
+  </div>
+
+
+</component>

@@ -1,0 +1,17 @@
+<component id="Select">
+  <select class="w-full px-2  
+  text-lg 
+  border border-solid
+  bg-gray-50 text-gray-900 border-gray-300 placeholder-gray-400
+  focus:ring-blue-500 focus:border-blue-500
+  dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:placeholder-gray-400 
+  dark:focus:ring-blue-500  dark:focus:border-blue-500 
+  input 
+  {class}
+  " style="min-height:2.5rem;{style}
+  " change="{change}" multiple="{multiple}" disabled="{disabled}" data="{data}">
+    <option selected="{!value}" value="" If="!required ?? !value">{emptyCaption}
+    </option>
+    <option Each="option of options" selected="{option.id == value}" value="{option.id}">{option.name}</option>
+  </select>
+</component>

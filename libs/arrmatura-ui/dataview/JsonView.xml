@@ -1,0 +1,55 @@
+<component id="JsonAttrAndValue">
+  <span class="">
+    <span class="text-orange-200">"</span>
+    <span class="inline-block text-green-400 py-1 cursor-pointer" click="-> collapse=!collapse">{item.id}</span>
+    <span class="text-orange-200">":&space;</span>
+    <JsonAnyView data="{item.value}" collapsed="{collapse}" level="level|increment" />
+    <span class="text-orange-100">,</span>
+    <div class="text-orange-100"></div>
+  </span>
+</component>
+
+<component id="JsonAnyView">
+  <Selector On="{data|typeOf}{data|isValuable?'':'-empty'}">
+    <Case When="object">
+      <span class="text-orange-100">{</span>
+      <div class="ml-4 {collapsed ? 'hidden'}">
+        <JsonAttrAndValue item="{item}" Each="item of data|mapEntries" collapse="level > 2" level="{level}" />
+        <div class="-ml-4 text-orange-100">}</div>
+      </div>
+      <span class="text-orange-100 {!collapsed ? 'hidden'}">[object]</span>
+    </Case>
+    <Case When="object-empty">
+      <span class="text-red-200">{}</span>
+    </Case>
+    <Case When="array-empty">
+      <span class="text-red-200">[]</span>
+    </Case>
+    <Case When="array">
+      <span class="text-orange-100">[</span>
+      <div class="ml-4 {collapsed ? 'hidden'}">
+        <JsonAnyView Each="item of data" data="{item}" level="level|increment" />
+        <div class="text-orange-100">]</div>
+      </div>
+      <span class="text-orange-100 {!collapsed ? 'hidden'}">[array]</span>
+    </Case>
+    <Case When="nullable-empty">
+    </Case>
+    <Case When="string-empty">
+      <span class="text-red-200">""</span>
+    </Case>
+    <Case When="string">
+      <span class="text-orange-200">"</span>
+      <span class="text-orange-100 cursor-pointer">{data}</span>
+      <span class="text-orange-200">"</span>
+    </Case>
+    <Case When="default">
+      <span class="text-orange-100">{data}</span>
+    </Case>
+  </Selector>
+
+</component>
+
+<component id="JsonView">
+  <JsonAnyView data="{data}" level="1" />
+</component>

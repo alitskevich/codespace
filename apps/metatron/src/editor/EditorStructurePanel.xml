@@ -1,0 +1,23 @@
+<component id="EditorStructurePanel">
+  <div class="flex flex-col border-r border-r-gray-300 dark:border-r-gray-500 {class}">
+    <Line.between class="pl-2 h-8 items-center justify-between
+       bg-gray-100 dark:bg-gray-700 
+      border-b-[1px] border-gray-200 dark:border-gray-700">
+      <Line class="items-center gap-1">
+        <button
+          class="flex justify-start items-center gap-2 font-bold text-fuchsia-300 px-2 py-0 leading-5 border-red-950 border rounded-md bg-slate-800"
+          click="-> browser.hash=''">
+          <Svg2.File />
+          <span class="inline-block truncate">(main)</span>
+        </button>
+        <!-- <span class="font-bold">Structure</span> -->
+        <Dropdown value="..." caption="Variants:" change="-> append=data.value" options="{R.ide.treeRoots}" />
+        <Dropdown value="true" caption="Conditions:" change="-> append=data.value"
+          options="{R.ide.treeRootsConditions}" />
+      </Line>
+      <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Operations:"
+        change="-> append=data.value" options="{R.ide.treeOperations}" />
+    </Line.between>
+    <EditorStructree currentId="{currentId}" class="flex-1 min-h-0 overflow-y-auto" />
+  </div>
+</component>

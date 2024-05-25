@@ -1,0 +1,75 @@
+<component id="Pivot">
+  <table class="w-full" style="position: relative">
+    <thead class="w-full" style="position: sticky; top: -1">
+      <tr class="bg-slate-500 dark:bg-gray-700 text-black dark:text-white">
+        <td class="p-2 cursor-pointer" click="{openConfig}"><span>{title}</span>
+        </td>
+        <td class="p-2" Each="col of columns">
+          <span>{col.name || '-'}</span>
+        </td>
+        <td class="p-2" If="totalCount"><span>Σ</span></td>
+      </tr>
+    </thead>
+    <tbody class="">
+      <PivotRow row="{row}" onCell="{onCell}" rowFirstComponent="{rowFirstComponent}" Each="row of rows" />
+      <tr class="bg-slate-500 dark:bg-gray-700 text-black dark:text-white" style="" If="totalCount">
+        <td class="p-2">
+          <span>Σ</span>
+        </td>
+        <td class="p-2 {col.items.length ? 'bg-slate-500 cursor-pointer'}" Each="col of columns" data="{col}"
+          click="{onCell}">
+          <span>{col.value}</span>
+        </td>
+        <td class="p-2">
+          <span>{totalCount}</span>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</component>
+
+<component id="PivotRowFirstComponent">
+  <a href="#/items/{kind}?itemId={id}" class="text-normal font-medium text-gray-900 truncate dark:text-white flex">
+    <span class="truncate break-words">{value ?? name ?? '-'}</span>
+  </a>
+</component>
+
+<component id="PivotRow">
+  <tr class="bg-slate-300 dark:bg-slate-600" style="">
+    <td class="p-2">
+      <span>{row.name || '-'}</span>
+    </td>
+    <td
+      class="p-2 {cell.items.length ? 'bg-gray-400 dark:bg-slate-700 cursor-pointer'} {cellDetails.id == cell.id ? 'border bg-slate-500': ''}"
+      Each="cell of row.columns" data="{cellDetails.items.length ? false : cell}" click="-> cellDetails">
+      <span>{cell.value || '-'}</span>
+    </td>
+    <td
+      class="p-2 {row.items.length ? 'bg-slate-600 cursor-pointer'} {cellDetails.id == row.id ? 'border bg-slate-800': ''}"
+      data="{cellDetails.items.length ? false : row}" click="-> cellDetails">
+      <span>{row.value}</span>
+    </td>
+  </tr>
+  <tr class="gradient from-slate-500 to-transparent" If="cellDetails.items.length">
+    <td class="py-2" colspan="{row.columns.length|increment:2}">
+      <div opened="{cellDetails}" title="{cellDetails.name}" close="">
+        <!-- <header class="p-2 flex flex-no-wrap items-center min-w-0 gap-1">
+          <h2 class="flex-1 text-lg text-truncate">{cellDetails.name}</h2>
+          <Icon type="cross" size="3" class="rounded-lg text-slate-500 h-10 w-10 dark:text-gray-400" data-itemId=""
+            click="-> cellDetails=false" />
+        </header> -->
+        <ul role="list" class="flex flex-col md:gap-2 w-full divide-y divide-gray-200 dark:divide-gray-700">
+          <li data="{field}" class="p-2 list-item" Each="item of cellDetails.items">
+            <Dynamic As="{rowFirstComponent ?? 'PivotRowFirstComponent'}" (...)="{item}" value="{item | dot:col1.id}"
+              data="{item}" />
+
+            <p class="text-sm text-gray-500 truncate dark:text-gray-400 break-words">
+              {item.subtitle}</p>
+            <p class="text-sm text-gray-400 truncate dark:text-gray-300" If="item.tags">({item.tags})</p>
+          </li>
+        </ul>
+      </div>
+    </td>
+  </tr>
+</component>

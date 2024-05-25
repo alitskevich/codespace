@@ -1,0 +1,6 @@
+<component id="SvgIcon.{id}">
+  <svg style="{style}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+    stroke="currentColor" aria-hidden="true">
+    {children}
+  </svg>
+</component>

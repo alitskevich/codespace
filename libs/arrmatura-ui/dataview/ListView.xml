@@ -1,0 +1,30 @@
+<component id="ListView">
+  <Connector data="<-items.sortBy" change="-> sortBy" />
+  <ul role="list" class="w-full max-md:divide-y md:space-y-4  divide-gray-200 dark:divide-gray-700">
+    <ListItem (...)="{item}" item="{item}" sortBy="{sortBy}" Each="item of data" />
+    <li class="h-48"></li>
+  </ul>
+</component>
+
+<component id="ListItem">
+  <li class="list-item" title="{title}">
+    <div class="flex items-center space-x-4">
+      <div class="flex-shrink-0">
+        <Avatar src2="{R.assets.person1}" initials="{title | abbreviate}" status="bg-green-400"
+          status="bg-{R.enums.status | find:status | dot:style ?? 'gray'}-500" alt="{title}" />
+      </div>
+      <div class="flex-1 min-w-0">
+        <a href="#/item?itemId={id}" class="text-normal font-medium text-gray-900 truncate dark:text-white flex">
+          <span class="truncate break-words">{title ?? 'empty'}</span>
+        </a>
+        <p class="text text-gray-500 truncate dark:text-gray-300" If="sortByValue">{sortByValue}</p>
+        <p class="text-sm text-gray-500 truncate dark:text-gray-400 break-words">
+          {subtitle}</p>
+        <p class="text-sm text-gray-400 truncate dark:text-gray-300" If="tags">({tags})</p>
+      </div>
+      <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+        <Slot />
+      </div>
+    </div>
+  </li>
+</component>

@@ -1,0 +1,25 @@
+<component id="AsyncLoader">
+  <Fragment If="!error">
+    <Then>
+      <Fragment If="isLoading">
+        <Then>
+          <Container>
+            <Stub class="h100 mt-4" title="{title}" subtitle="{error ? '' : subtitle}" icon="{icon ?? 'download'}">
+              <LoadingIndicator title="{R.loading ?? 'Loading...'" />
+            </Stub>
+          </Container>
+        </Then>
+        <Else>
+          <Slot />
+        </Else>
+      </Fragment>
+    </Then>
+    <Else>
+      <Container>
+        <Stub class="h100 mt-4" title="Error" subtitle="{error}" icon="{icon ?? 'download'}">
+          <Btn action="{onError}" title="Retry" If="onError" />
+        </Stub>
+      </Container>
+    </Else>
+  </Fragment>
+</component>

@@ -1,0 +1,8 @@
+@import "npm:arrmatura-ui/index.css";
+body {
+  @apply bg-white text-gray-800 antialiased dark:bg-gray-900 dark:text-gray-300;
+}
+
+.highlight {
+  @apply !border-2 !border-red-500;
+}

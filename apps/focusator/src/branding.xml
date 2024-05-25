@@ -1,0 +1,125 @@
+<components>
+  <component id="Header">
+    <nav class="bg-gray-500  dark:bg-gray-800 block w-full " id="top">
+      <Container class="p-4 flex w-full">
+        <div class="flex flex-1 items-center justify-between">
+          <div class="flex items-center gap-4 justify-start">
+            <AppTitle2 />
+            <NavLinks />
+          </div>
+          <div class="flex items-center justify-end gap-4">
+            <DarkModeService Ref="dark" />
+            <DarkModeToggler value="<-dark.isDarkMode" on="-> dark.toggle()" />
+
+            <Dropdown options="{R.enums.languages}" change="data-> language.value=data.value"
+              value="<-language.value" />
+            <Dropdown options="<-speech.currentVoices" change="-> speech.voice=data.value" value="<-speech.voice.id" />
+            <Dropdown options="{R.enums.levels}" change="-> words.level= *|dot:'value'|log" value="<-words.level" />
+          </div>
+        </div>
+      </Container>
+    </nav>
+  </component>
+
+  <component id="AppTitle2">
+    <a href="#/main">
+      <h5 class="text-xl font-bold leading-none text-slate-100">
+        <span>{R.name}</span>
+      </h5>
+    </a>
+  </component>
+
+  <component id="NavLinks">
+    <div class="flex items-center gap-0 md:gap-2">
+      <NavLink id="text" name="Read" />
+      <NavLink id="quiz" name="Practice" />
+      <NavLink id="ctest" name="Train" />
+      <NavLink id="mywords" name="Review" />
+    </div>
+  </component>
+
+  <component id="NavLink">
+    <a href="#/{id}"
+      class="text-lg py-2 px-1 font-medium rounded-sm target:bg-slate-700 text-orange-600 hover:underline">{name}</a>
+  </component>
+
+  <component id="LegalAttribution">
+    <div class="items-center justify-center sm:flex py-2">
+      <div class="dark:border-gray-700 text-gray-600 dark:text-gray-400 sm:border-r sm:pr-6">{R.app.copy}</div>
+      <div class="flex items-center gap-6 sm:justify-center mt-3 sm:pl-6 sm:mt-0">
+        <a class="block sm:inline-block" href="/license">License</a>
+        <a class="block sm:inline-block" href="/privacy-policy">Privacy Policy</a>
+        <!-- <a aria-label="Facebook account" target="_blank" href="https://www.facebook.com/floatui">
+                                  <img alt="Facebook account" loading="lazy" width="35" height="35" decoding="async" data-nimg="1"
+                                    src="/images/fb-icon.svg" style="color: transparent;">
+                                </a>
+                                <a aria-label="Facebook account" target="_blank" href="https://twitter.com/float_ui?s=09">
+                                  <img alt="Twitter account" loading="lazy" width="40" height="40" decoding="async" data-nimg="1"
+                                    src="/images/tw-icon.svg" style="color: transparent;">
+                                </a> -->
+      </div>
+    </div>
+  </component>
+
+  <component id="Footer">
+    <footer class="relative mt-4  px-8 bg-gradient-to-b from-gray-800 to-40%">
+      <div class="pt-16  dark:border-gray-800 ">
+        <!-- <div class="absolute -top-[0.374rem] inset-x-0 mx-auto w-1/2 h-2 sm:w-1/3 dark:hidden"
+              style="border-width: 0px 0px 2.5px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: transparent; border-left-color: initial; border-image: radial-gradient(rgb(209, 213, 219), rgb(209, 213, 219), rgb(209, 213, 219), rgba(209, 213, 219, 0)) 1 / 1 / 0 stretch;">
+            </div>
+            <div class="absolute -top-[0.374rem] inset-x-0 mx-auto w-1/2 h-2 sm:w-1/3 hidden dark:block"
+              style="border-width: 0px 0px 2.5px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: transparent; border-left-color: initial; border-image: radial-gradient(rgb(55, 65, 81), rgb(55, 65, 81), rgb(55, 65, 81), rgba(55, 65, 81, 0)) 1 / 1 / 0 stretch;">
+            </div> -->
+        <div class="max-w-6xl mx-auto pb-6 gap-x-8 items-start justify-between flex-wrap sm:flex">
+          <div class="max-w-xs flex-1 flex flex-col items-center text-center">
+            <img alt="logo" loading="lazy" width="131" height="57" decoding="async" data-nimg="1" src="{R.app.logoUrl}"
+              style="color: transparent;">
+            <!-- <div>{R.app.overview}</div> -->
+
+          </div>
+          <div class="flex-1 mt-4 flex flex-wrap gap-4 sm:justify-end sm:mt-0">
+            <ul class="flex-grow max-w-[15rem] space-y-2">
+              <li class="text-gray-800 dark:text-gray-50 font-medium">Resources</li>
+              <li class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 duration-150">
+                <a class="block sm:inline-block" href="/demo">Demo</a>
+              </li>
+              <li class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 duration-150">
+                <a target="_source"></a>
+                <a class="block sm:inline-block" href="{R.app.lemmaUrl}">Lemma</a>
+
+              </li>
+
+              <li class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 duration-150">
+                <a class="block sm:inline-block" href="/blog">Blog</a>
+              </li>
+            </ul>
+            <ul class="space-y-2">
+              <li class="text-gray-800 dark:text-gray-50 font-medium">Other tools</li>
+              <li class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 duration-150">
+                <a target="_blank" class="block" href="https://www.npmjs.com/package/arrmatura">Platform</a>
+              </li>
+
+              <li class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 duration-150">
+                <a target="_blank" class="block" href="https://emojis-list.web.app/">Emojis</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="max-w-screen border-t dark:border-gray-800 py-6">
+          <LegalAttribution />
+        </div>
+      </div>
+    </footer>
+  </component>
+
+  <component id="LoadScreen">
+    <div class="loadscreen fixed inset-0 z-50 flex items-center justify-center bg-white">
+      <div class="loadscreen-text select-none text-7xl">tenacious</div>
+    </div>
+  </component>
+
+  <component id="Logo">
+    <div class="logo select-none m-4 font-bold	text-lg">focusator</div>
+  </component>
+
+</components>

@@ -1,0 +1,38 @@
+@import "npm:arrmatura-ui/index.css";
+
+body {
+  @apply bg-white text-gray-800 antialiased dark:bg-gray-900 dark:text-gray-300;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.prev-item,
+.next-item {
+  color: rgba(100, 100, 100, 0.8);
+  padding: 8px 0;
+}
+.prev-item {
+  background: linear-gradient(0deg, #fff, #c7cfd6 13%, #fff);
+  transform: rotate3d(1, 0, 0, 25deg);
+}
+.next-item {
+  background: linear-gradient(180deg, #fff, #c7cfd6 13%, #fff);
+  transform: rotate3d(1, 0, 0, -25deg);
+}
+
+.radial-gradient {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0) 60%, rgba(0, 0, 0, 0.5) 100%);
+  position: relative;
+}
+
+.loadscreen {
+  background-color: #c3cbdc;
+  background-image: linear-gradient(147deg, #c3cbdc 0%, #edf1f4 74%);
+}
+.loadscreen-text,
+.logo {
+  background: radial-gradient(#1ebeff, #ff00af);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

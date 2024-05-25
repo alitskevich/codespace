@@ -1,0 +1,32 @@
+<div class="titleWrapper_t3p7r61 titleWrapperSites_t1ih3ztb" title="Direction">
+  <div class="truncateWithEllipsis_t1295uka title_tkaasce titleSites_t1vx93q9">
+    <span class="translate">Direction</span>
+  </div>
+</div>
+<div class="segmentedControl_s12glelh segmentedControlSites_sv2ybzu" style="--height: 30px; grid-column: 2 / -1;">
+  <div class="segmentsWrapper_slpj8e7">
+    <div class="segmentedControlSegmentBackground_s1qqapws segmentedControlSegmentBackgroundSites_slvxlfg"
+      style="width: 50%; left: 50%;"></div>
+    <a title="Horizontal" class="segment_s1yv2vyw truncateWithEllipsis_t1295uka">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="">
+        <path d="M 2 7.75 L 14 7.75" fill="transparent" stroke-width="1.5" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" class=""></path>
+        <path d="M 4 5 L 1 7.75 L 4 10.5" fill="transparent" stroke-width="1.5" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" class=""></path>
+        <path d="M 12 5 L 15 7.75 L 12 10.5" fill="transparent" stroke-width="1.5" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" class=""></path>
+      </svg>
+    </a>
+    <div class="divider_d61xro3 hiddenDivider_hyiclh3"></div>
+    <a title="Vertical" class="segment_s1yv2vyw truncateWithEllipsis_t1295uka segmentSelected_s56pukx">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="">
+        <path d="M 7.75 3 L 7.75 13" fill="transparent" stroke-width="1.5" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" class=""></path>
+        <path d="M 10.5 5 L 7.75 2.5 L 5 5" fill="transparent" stroke-width="1.5" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" class=""></path>
+        <path d="M 10.5 11 L 7.75 13.5 L 5 11" fill="transparent" stroke-width="1.5" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" class=""></path>
+      </svg>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<component id="Icon">
+  <span class="
+        flex items-center justify-center 
+        {click ? 'cursor-pointer 
+          text-gray-800 dark:text-gray-400
+          hover:bg-gray-400 hover:text-gray-50
+          hover:dark:bg-slate-400 hover:dark:text-slate-50'} 
+        {class}
+        " title="{title ?? type}" data="{data}" click="{click}">
+
+    <Dynamic As="{ns??'Svg'}.{type|capitalize}" class="h-{size ?? '6'} w-{size ?? '6'} m-1 iconClass" />
+
+    <span class="sr-only">{title ?? type}</span>
+
+  </span>
+</component>

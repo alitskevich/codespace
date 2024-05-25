@@ -1,0 +1,36 @@
+<component id="FieldSuggestion.Input">
+  <div class="relative flex-1" style="">
+    <div class="w-full {R.styles.input} px-2 pt-1 {value ? '' : 'cursor-pointer'} {class}" style="min-height: 2.5rem;"
+      click="-> opened=!value">
+      <Chip class="py-1 mb-1" title="{tags | find:value | dot:name ?? value}" isSelected="true"
+        click="-> ctrl.doReset()" If="value">
+        <Icon type="cross" size="4" />
+      </Chip>
+    </div>
+
+    <DropdownOptionsList If="!disabled && opened" caption="{caption}" options="{options}" close="-> opened=false"
+      itemClick="{toggleOption}">
+      <div class="mx-2 my-2">
+        <input type="text" class="px-2 py-1 {R.styles.input} h-10 rounded-lg 
+        " placeholder="{placeholder}" keypress="-> ctrl.doKliuq()" />
+      </div>
+
+      <div class="{R.styles.dropdown-item} px-2 py-1" If="!options.length && kliuq" data-value="{kliuq}"
+        click="{toggleOption}" clickCapture="-> opened=false">
+        "{kliuq}"</div>
+    </DropdownOptionsList>
+  </div>
+</component>
+
+<component id="Field.Suggestion">
+
+  <TagsValueController Ref="ctrl" value="{value}" options="{R.enums|dot:typeSpec}" change="{onChange}"
+    disabled="{disabled}" />
+
+  <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}">
+
+    <FieldSuggestion.Input caption="{caption}" class="rounded-lg" value="{value}" kliuq="<-ctrl.kliuq"
+      disabled="{disabled}" tags="<-ctrl.selectedOptions" placeholder="{placeholder}" options="<-ctrl.availableOptions"
+      toggleOption="-> ctrl.doToggleAndClearKliuq()" />
+  </FieldItem>
+</component>

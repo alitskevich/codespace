@@ -1,0 +1,35 @@
+<component id="SearchBar.Suggestions">
+  <div class="relative h-10">
+    <Icon type="search" class="rounded-full p-1
+    text-gray-500 dark:text-gray-300 
+    " click="-> active=true" If="active ?? value | not" />
+    <div
+      class="flex relative flex-no-wrap w-max items-center {active ?? value ? 'w-24' : 'w-8 hidden'} transition duration-300 ease">
+      <input class="
+      h-10 py-1
+      input rounded-full pl-4 pr-7 w-full
+      " type="text" autofocus="true" placeholder="{R.strings.kluq_poshuku}" keypress="{input}" value="{value}"
+        focus="-> opened=true" />
+
+      <div class="absolute h-10 w-10 right-0">
+        <Icon type="cross" size="4" class="rounded-full h-10 w-10" click="{enter}" data-value="" If="value" />
+        <Icon type="cross" size="4" class="rounded-full h-10 w-10" click="-> active=false" If="!value" />
+      </div>
+    </div>
+
+    <Fragment If="opened && active && suggestions">
+      <!-- <div style="position:fixed; right:0; top:0; left:0; bottom:0;" click="-> opened=false">
+      </div> -->
+      <ul class="absolute mt-1 w-full {R.styles.dropdown}"
+        style="min-width: 140px;max-height:16rem;overflow-y:auto;z-index:101;" click="-> opened=false">
+        <li Each="item of suggestions" class="px-2 py-1 cursor-pointer {R.styles.dropdown-item}" data-value="{item.id}"
+          click="{enter}">
+          <div class="">{item.name}</div>
+        </li>
+        <li class="px-2" If="!suggestions.length">
+          <div class="">{R.strings.no_findings ?? 'no findings' }</div>
+        </li>
+      </ul>
+    </Fragment>
+  </div>
+</component>

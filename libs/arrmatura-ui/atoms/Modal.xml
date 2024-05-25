@@ -1,0 +1,50 @@
+<component id="Modal">
+  <!-- 
+  
+  Modal component:
+
+  Slots:
+    - header
+    - default
+    - footer
+
+  Properties:
+    - open: boolean
+    - close: procedure
+    - title: string
+    - mode: lg | sm
+
+  -->
+  <div aria-hidden="{hidden}" class="
+    fixed top-0 left-0 right-0 z-50 
+    {hidden ? 'hidden'}
+    w-full px-4 py-2 overflow-x-hidden overflow-y-auto md:inset-0 h-modal h-full" portal="modal">
+    <Backdrop click="{close}" opened="{!hidden}" class="" />
+    <div class="relative w-full m-auto max-w-2xl md:h-auto {class}">
+      <!-- Modal content -->
+      <div class="relative bg-gray-100 rounded-lg shadow dark:bg-gray-700">
+        <Icon type="cross" size="4" click="{close}"
+          class="absolute right-2 top-2 text-gray-400 bg-transparent rounded-lg" />
+        <!-- Modal header -->
+        <div class="px-4 py-2 pr-8 flex items-start border-b rounded-t dark:border-gray-600" If="title">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{title}</h3>
+        </div>
+        <div class="px-4 py-2 pr-8 flex items-start border-b rounded-t dark:border-gray-600" If="slot(header)">
+          <Slot Key="header" />
+        </div>
+
+        <!-- Modal body -->
+        <div class="px-4 py-2 flex flex-col">
+          <Slot />
+        </div>
+
+        <!-- Modal footer -->
+        <div class="
+          px-4 py-2 flex items-center justify-end space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+          <Slot Key="footer" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+</component>

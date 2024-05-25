@@ -1,0 +1,28 @@
+<component id="ListSortBy">
+  <div class="">
+    <div class="
+      min-w-10 max-w-40 overflow-hidden h-10 py-2 rounded-lg
+      inline-flex gap-1 items-center
+      font-semibold text-sm
+      hover:bg-slate-300 dark:hover:bg-gray-700
+      {value ? 'text-gray-200 px-2' : 'text-gray-600'} 
+      {opened ? 'bg-slate-400':''}">
+
+      <Icon type="sortAsc" class="rounded-lg p-1 transparent" click="-> opened=!opened" If="!value" />
+
+      <Icon type="{dir == '-' ? 'sortDesc' : 'sortAsc'}" class="
+        rounded-lg
+        cursor-pointer p-1
+        " data-value="{dir == '-' ? '' : '-'}" click="{onChangeDir}" If="value" />
+
+      <span class="pr-2 p-1 capitalize truncate" click="-> opened=!opened" If="value">
+        {options | find:value | dot:'name' ?? 'unsorted'}
+      </span>
+    </div>
+
+    <div class="{opened ? 'relative' : ''}">
+      <DropdownOptionsList side="right" caption="Sort by" options="{options}" itemClick="{onChange}" value="{value}"
+        close="-> opened=false" If="opened" />
+    </div>
+  </div>
+</component>

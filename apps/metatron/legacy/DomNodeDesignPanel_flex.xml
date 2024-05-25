@@ -1,0 +1,192 @@
+<component id="DomNodeDesignPanel_flex">
+  <div
+    class="h-8 box-border grid grid-cols-[repeat(28,1fr)] items-center relative grid-rows-[32px] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 px-2 p-0 border-0">
+    <div
+      class="w-full font-semibold self-center col-[1_/_span_10] col-end-[span_20] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 pl-2 p-0 border-0">
+      <div
+        class="text-[color:var(--color-text-secondary-hover,#333333)] h-8 flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+        Auto layout</div>
+    </div>
+    <div
+      class="col-[21_/_span_8] flex [justify-content:right] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0"
+      dir="auto">
+
+    </div>
+  </div>
+  <div
+    class="h-16 box-border grid grid-cols-[repeat(28,1fr)] items-center relative grid-rows-[repeat(2,32px)] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] my-1 m-0 px-2 p-0 border-0">
+    <div
+      class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] col-[1_/_span_10] m-0 p-0 border-0"
+      data-onboarding-key="stack-mode-control">
+      <input
+        class="absolute opacity-0 pointer-events-none [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+      <div
+        class="relative h-[30px] place-self-center overflow-hidden box-border bg-clip-padding inline-flex justify-center items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 rounded-sm border-0">
+        <div
+          class="inline-flex justify-center items-center h-6 [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 rounded-sm border-0">
+          <div
+            class="flex-[0_0_24px] w-6 h-6 box-border flex items-center justify-center bg-clip-padding relative bg-[color:var(--color-bg-tertiary,rgba(0,0,0,0.1))] border-[color:var(--color-border,rgba(0,0,0,0.1))] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 rounded-sm border-0"
+            data-tooltip-type="text" data-tooltip="Vertical layout" aria-label="Vertical layout">
+            <span
+              class="text-[color:var(--color-icon,#000)] fill-[var(--color-icon,#000)] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+              <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="8" height="11" viewBox="0 0 8 11">
+                <path fill="#000" fill-opacity="1" fill-rule="evenodd" stroke="none"
+                  d="M4 10.207.646 6.854l.708-.708L3.5 8.293V0h1v8.293l2.146-2.147.708.708L4 10.207z" class=""></path>
+              </svg>
+            </span>
+          </div>
+          <div
+            class="flex-[0_0_24px] w-6 h-6 box-border flex items-center justify-center bg-clip-padding relative [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0"
+            data-tooltip-type="text" data-tooltip="Horizontal layout" aria-label="Horizontal layout">
+            <span
+              class="text-[color:var(--color-icon,#000)] fill-[var(--color-icon,#000)] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+              <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="11" height="7" viewBox="0 0 11 7">
+                <path fill="#000" fill-opacity="1" fill-rule="evenodd" stroke="none"
+                  d="M10.707 3.5 7.354.146l-.708.708L8.793 3H.5v1h8.293L6.646 6.146l.708.708L10.707 3.5z" class="">
+                </path>
+              </svg>
+            </span>
+          </div>
+          <div
+            class="flex-[0_0_24px] w-6 h-6 box-border flex items-center justify-center bg-clip-padding relative [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0"
+            data-tooltip-type="text" data-tooltip="Wrap" aria-label="Wrap">
+            <span
+              class="text-[color:var(--color-icon,#000)] fill-[var(--color-icon,#000)] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+              <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                <path fill="#000" fill-opacity="1" fill-rule="evenodd" stroke="none"
+                  d="M8 3h2c1.933 0 3.5 1.567 3.5 3.5 0 1.933-1.567 3.5-3.5 3.5H4.707l2.147 2.146-.708.708-3-3-.353-.354.353-.354 3-3 .708.708L4.707 9H10c1.38 0 2.5-1.12 2.5-2.5C12.5 5.12 11.38 4 10 4H8V3z"
+                  class=""></path>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] [grid-area:1_/_13_/_3_/_span_12] m-0 pl-1 p-0 border-0">
+      <div
+        class="border border-[color:var(--color-border,#e5e5e5)] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] box-border relative w-16 h-16 text-[color:var(--color-icon-tertiary,rgba(0,0,0,0.3))] m-0 p-px rounded-sm border-solid"
+        tabindex="0">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="currentColor" class="">
+          <defs class="">
+            <pattern id="align-panel-dot" width="20" height="20" patternUnits="userSpaceOnUse" class="">
+              <circle cx="10" cy="10" r="1" class=""></circle>
+            </pattern>
+          </defs>
+          <rect width="60" height="60" y="0" fill="url(#align-panel-dot)" class=""></rect>
+        </svg>
+        <div class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] 
+          no-underline cursor-[inherit] absolute box-border grid grid-rows-[repeat(3,1fr)] 
+          grid-cols-[repeat(3,1fr)] m-0 p-0 border-0 inset-px">
+          <div data-x="0" data-y="0" data-tooltip-type="text" data-tooltip="Align top left"
+            data-tooltip-show-above="true"
+            class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] box-border m-0 p-0 border-0">
+          </div>
+          <div data-x="1" data-y="0" data-tooltip-type="text" data-tooltip="Align top center"
+            data-tooltip-show-above="true"
+            class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] box-border m-0 p-0 border-0">
+          </div>
+          <div data-x="2" data-y="0" data-tooltip-type="text" data-tooltip="Align top right"
+            data-tooltip-show-above="true"
+            class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] box-border m-0 p-0 border-0">
+          </div>
+          <div data-x="0" data-y="1" data-tooltip-type="text" data-tooltip="Align left" data-tooltip-show-above="true"
+            class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] box-border m-0 p-0 border-0">
+          </div>
+          <div data-x="1" data-y="1" data-tooltip-type="text" data-tooltip="Align center" data-tooltip-show-above="true"
+            class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] box-border m-0 p-0 border-0">
+          </div>
+          <div data-x="2" data-y="1" data-tooltip-type="text" data-tooltip="Align right" data-tooltip-show-above="true"
+            class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] box-border m-0 p-0 border-0">
+          </div>
+          <div data-x="0" data-y="2" data-tooltip-type="text" data-tooltip="Align bottom left"
+            class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] box-border m-0 p-0 border-0">
+          </div>
+          <div data-x="1" data-y="2" data-tooltip-type="text" data-tooltip="Align bottom center"
+            class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] box-border m-0 p-0 border-0">
+          </div>
+          <div data-x="2" data-y="2" data-tooltip-type="text" data-tooltip="Align bottom right"
+            class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] box-border m-0 p-0 border-0">
+          </div>
+        </div>
+        <div
+          class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] absolute box-border flex pointer-events-none flex-col justify-start items-start m-0 p-0 border-0 inset-px">
+          <div
+            class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] box-border w-5 h-5 [background:var(--color-bg,white)] flex justify-between flex-col items-start m-0 p-0.5 border-0">
+            <div
+              class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] box-border bg-[color:var(--color-icon-brand,#0d99ff)] h-1 m-0 p-0 rounded-[1px] border-0">
+            </div>
+            <div
+              class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] box-border bg-[color:var(--color-icon-brand,#0d99ff)] h-1 m-0 p-0 rounded-[1px] border-0">
+            </div>
+            <div
+              class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] box-border bg-[color:var(--color-icon-brand,#0d99ff)] h-1 m-0 p-0 rounded-[1px] border-0">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="flex items-center justify-center h-8 w-8 flex-[0_0_32px] leading-8 fill-[var(--color-icon,#333333)] text-[color:var(--color-icon,#333333)] box-border relative bg-clip-padding bg-[color:var(--color-bg,#fff)] col-end-[span_4] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] [grid-area:1_/_25_/_2_/_span_4] m-0 p-0 rounded-sm border-0"
+      tabindex="0" aria-label="Advanced auto layout settings" data-tooltip-type="text"
+      data-tooltip="Advanced auto layout settings">
+      <span
+        class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="16" height="6" viewBox="0 0 16 6">
+          <path fill="#000" fill-opacity="1" fill-rule="nonzero" stroke="none"
+            d="M3.5 3c0 .828-.672 1.5-1.5 1.5C1.172 4.5.5 3.828.5 3c0-.828.672-1.5 1.5-1.5.828 0 1.5.672 1.5 1.5zm6 0c0 .828-.672 1.5-1.5 1.5-.828 0-1.5-.672-1.5-1.5 0-.828.672-1.5 1.5-1.5.828 0 1.5.672 1.5 1.5zM14 4.5c.828 0 1.5-.672 1.5-1.5 0-.828-.672-1.5-1.5-1.5-.828 0-1.5.672-1.5 1.5 0 .828.672 1.5 1.5 1.5z"
+            class=""></path>
+        </svg>
+      </span>
+    </button>
+
+    <!-- <div
+      class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] [grid-area:2_/_1_/_3_/_span_12] m-0 p-0 border-0">
+      <div
+        class="h-8 box-border relative flex w-full [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0"
+        data-onboarding-key="stack-spacing-input">
+        <div
+          class="h-8 box-border flex absolute select-none items-center w-full bg-[color:var(--color-bg-selected-strong,#0d99ff)] text-[color:var(--color-text-onselected-strong,#fff)] fill-[var(--color-text-onselected-strong,#fff)] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] absolute opacity-0 pointer-events-none w-full h-full [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] whitespace-nowrap overflow-hidden text-ellipsis h-7 box-border bg-transparent w-full bg-clip-padding min-w-0 relative text-[color:var(--color-text,#333333)] fill-[var(--color-icon,#333333)] cursor-[inherit] flex items-center grow [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline flex items-center justify-center h-8 w-8 flex-[0_0_32px] leading-8 text-[color:var(--color-icon-secondary,#b3b3b3)] fill-[var(--color-icon-secondary,#b3b3b3)] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] block fill-inherit whitespace-nowrap overflow-hidden text-ellipsis max-w-[calc(100%_-_12px)] invisible [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] w-5 flex-[0_0_20px] h-full flex justify-center items-center relative text-[color:var(--fg-select-chevron)] fill-[var(--fg-select-chevron)] invisible box-border [border-image:initial] border-l-[color:var(--fg-border)] z-10 [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] block fill-inherit h-7 box-border bg-transparent w-full bg-clip-padding min-w-0 cursor-[inherit] select-none flex items-center absolute [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline w-[calc(100%_-_44px)] text-clip w-[calc(100%_-_44px)] text-clip w-[calc(100%_-_44px)] text-clip flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex-[1_0_auto] max-w-[44px] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex-auto [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] h-7 box-border bg-transparent w-full bg-clip-padding min-w-0 text-[color:var(--color-text,#333333)] fill-[var(--color-icon,#333333)] cursor-[inherit] [background:none] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline h-16 box-border grid grid-cols-[repeat(28,1fr)] items-center relative grid-rows-[repeat(2,32px)] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] h-[unset] relative box-border w-full [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex min-h-[28px] col-[1_/_span_12] row-[1_/_2] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] self-stretch flex grow h-7 relative box-border w-full cursor-[inherit] select-none flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex items-center justify-center h-8 w-8 flex-[0_0_32px] leading-8 text-[11px] text-[color:var(--color-icon-secondary,#b3b3b3)] fill-[var(--color-icon-secondary,#b3b3b3)] col-end-[span_4] pointer-events-none text-center block pointer-events-none fill-inherit flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex-[1_0_auto] max-w-[44px] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex-auto [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] h-7 box-border bg-transparent w-full bg-clip-padding min-w-0 text-[color:var(--color-text,#333333)] fill-[var(--color-icon,#333333)] cursor-[inherit] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline h-[unset] relative box-border w-full [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex min-h-[28px] col-[1_/_span_12] row-[2_/_3] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] self-stretch flex grow h-7 relative box-border w-full cursor-[inherit] select-none flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex items-center justify-center h-8 w-8 flex-[0_0_32px] leading-8 text-[11px] text-[color:var(--color-icon-secondary,#b3b3b3)] fill-[var(--color-icon-secondary,#b3b3b3)] col-end-[span_4] pointer-events-none text-center block pointer-events-none fill-inherit flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex-[1_0_auto] max-w-[44px] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex-auto [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] h-7 box-border bg-transparent w-full bg-clip-padding min-w-0 text-[color:var(--color-text,#333333)] fill-[var(--color-icon,#333333)] cursor-[inherit] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline h-[unset] relative box-border w-full [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex min-h-[28px] col-[13_/_span_12] row-[1_/_2] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] self-stretch flex grow h-7 relative box-border w-full cursor-[inherit] select-none flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex items-center justify-center h-8 w-8 flex-[0_0_32px] leading-8 text-[11px] text-[color:var(--color-icon-secondary,#b3b3b3)] fill-[var(--color-icon-secondary,#b3b3b3)] col-end-[span_4] pointer-events-none text-center block pointer-events-none fill-inherit flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex-[1_0_auto] max-w-[44px] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex-auto [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] h-7 box-border bg-transparent w-full bg-clip-padding min-w-0 text-[color:var(--color-text,#333333)] fill-[var(--color-icon,#333333)] cursor-[inherit] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline h-[unset] relative box-border w-full [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex min-h-[28px] col-[13_/_span_12] row-[2_/_3] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] self-stretch flex grow h-7 relative box-border w-full cursor-[inherit] select-none flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex items-center justify-center h-8 w-8 flex-[0_0_32px] leading-8 text-[11px] text-[color:var(--color-icon-secondary,#b3b3b3)] fill-[var(--color-icon-secondary,#b3b3b3)] col-end-[span_4] pointer-events-none text-center block pointer-events-none fill-inherit flex items-center [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex-[1_0_auto] max-w-[44px] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] flex-auto [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] h-7 box-border bg-transparent w-full bg-clip-padding min-w-0 text-[color:var(--color-text,#333333)] fill-[var(--color-icon,#333333)] cursor-[inherit] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline border [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] bg-[color:var(--color-bg,#fff)] flex items-center justify-center h-8 w-8 flex-[0_0_32px] leading-8 fill-[var(--color-icon,#333333)] text-[color:var(--color-icon,#333333)] box-border bg-clip-content relative col-[25_/_span_4] [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] block relative fill-inherit -ml-px -mr-0.5 -mt-px -mb-0.5 my-px m-0 pl-[30px] px-2 p-0 p-[3px] rounded-tr-none rounded-br-none rounded-sm border-0 border-t border-solid border-r border-b border-l border-transparent left-0 top-0 top-px">
+          <div aria-activedescendant="c2eee86d-4ce2-447b-965b-0cdaf3b52e61-0"
+            aria-owns="c2eee86d-4ce2-447b-965b-0cdaf3b52e61" aria-controls="c2eee86d-4ce2-447b-965b-0cdaf3b52e61"
+            tabindex="-1"
+            class="select--hiddenInput--X7O8y raw_components--selectHiddenInput--E3kLU select--safariVoiceover--aGr38">
+          </div>
+          <div
+            class="select--input--JqBqM raw_components--base--O8WhL raw_components--border--L9zIa raw_components--input--iFGv3 raw_components--singleRowHeight--r92RH ellipsis--ellipsis--70pHK select--inputWithSvg--BuSCE combo_box--selectInput--tdIrh"
+            aria-hidden="true">
+            <span class="svg-container select--inputSvg--vfg0V">
+              <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13">
+                <path fill="#000" fill-opacity="1" fill-rule="nonzero" stroke="none"
+                  d="M11 13v-2H1v2H0v-3h12v3h-1zm1-10H0V0h1v2h10V0h1v3zM9 7V6H3v1h6z" class=""></path>
+              </svg>
+            </span>
+            <span
+              class="select--inputText--gjYEq select--inputTextWrapper--vWurU select--inputTextTruncated--JZjo4 ellipsis--ellipsis--70pHK">0</span>
+            <span
+              class="svg-container select--chevron--5iHOa stack_apply_variable_combobox--chevron--jKxAT combo_box--smallChevronSizing--PHL9-">
+              <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="8" height="7" viewBox="0 0 8 7">
+                <path fill="#000" fill-opacity="1" fill-rule="evenodd" stroke="none"
+                  d="m3.646 5.354-3-3 .708-.708L4 4.293l2.646-2.647.708.708-3 3L4 5.707l-.354-.353z" class=""></path>
+              </svg>
+            </span>
+          </div>
+        </div>
+        <label id="stackSpacing"
+          class="combo_box--scrubbableControl--llXNm raw_components--input--iFGv3 raw_components--singleRowHeight--r92RH combo_box--withSvg--pZPOX combo_box--noBorderOnFocus--nBqwb scrubbable_control--container--myvKL"
+          data-tooltip-type="text" data-tooltip="Vertical gap between items" data-tooltip-max-width="200"
+          aria-label="Vertical gap between items" data-onboarding-key="scrubbable-control-vertical-gap between items">
+          <div role="textbox" class="tokenizable_input--container--81cdQ">
+            <div class="tokenizable_input--pills--koTYg"></div>
+            <div class="tokenizable_input--input--CP7RH">
+              <input autocomplete="new-password" spellcheck="false"
+                class="raw_components--textInput--DZIFa raw_components--base--O8WhL raw_components--input--iFGv3 raw_components--singleRowHeight--r92RH raw_components--noPlaceholderLine--WnFz-"
+                dir="auto" value="0">
+            </div>
+          </div>
+        </label>
+      </div>
+    </div> -->
+  </div>
+
+</component>

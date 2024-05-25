@@ -1,0 +1,32 @@
+<components>
+  <component id="Page.Stat">
+    <Congrats />
+
+    <component id="Congrats">
+
+      <div class="flex flex-col justify-center items-center flex-1">
+        <div class="flex flex-col justify-center items-center flex-1 revealed">
+          <img src="{R.assets.thumbsup}" width="60" height="60" />
+          <h3 class="my-2 text-center">Well done! Keep going</h3>
+          <hr class="w-full h-1 border-1 border-zinc-400" />
+          <ResultsReport data="<-quiz.report" />
+        </div>
+
+      </div>
+    </component>
+
+
+    <component id="ResultsReport">
+      <div class="flex flex-col gap-2 max-w-fit">
+        <div class="flex flex-row flex-1 min-w-fit justify-center" Each="option of data">
+          <div class="flex flex-row flex-1 p-1 md:p-2
+                text-center
+                " data-key="{id}" data-value="{option.id}" click="{changed}">
+            <p class="flex-1" title="{option.id|plus:1}"> <b class="capitalize">{option.id} </b><span>:
+                {option.name}</span></p>
+          </div>
+        </div>
+      </div>
+    </component>
+
+</components>

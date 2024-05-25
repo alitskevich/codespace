@@ -1,0 +1,43 @@
+<component id="BackButton">
+  <a class="mx-2" style="" href="{href}">
+    <Icon type="chevron" size="10" class="rotate-180" />
+  </a>
+</component>
+
+<component id="PageRouter">
+  <Dynamic As="Page.{page ?? 'main' | capitalize}.{subpage ?? 'default' | capitalize}" path="{path}" page="{page}"
+    subpage="{subpage}" (...)="{params}" params="{params}" />
+</component>
+
+<component id="NavTree">
+  <ul class="nav {class}">
+    <li class="nav-item {itemClass} {item.class}" Each="item of data">
+      <NavLink href="{item.id}">
+        <span>{item.name}</span>
+        <span If="item.label" class="label label-error">{item.label}</span>
+      </NavLink>
+      <NavTree If="item.subs}" data="{item.subs" />
+    </li>
+  </ul>
+</component>
+
+<component id="NavLink">
+  <a data="{href}" click="-> nav.hash" afterClick="{afterClick}" class="cursor-pointer {class}">
+    <Slot />
+  </a>
+</component>
+
+<component id="NavListCursor">
+  <div class="flex {class} items-center gap-1" style="min-width: 6rem;align-items: center;" If="total">
+    <span class="" If="!prev.id">
+      <Icon type="chevron" class="rotate-180 text-gray-400" />
+    </span>
+    <a class="" href="{href}{prev.id}" If="prev.id">
+      <Icon type="chevron" class="rotate-180" />
+    </a>
+    <span class="text-dark truncate text-bold">{index | plus:1}/{total}</span>
+    <a class="" href="{href}{next.id}" If="next.id">
+      <Icon type="chevron" />
+    </a>
+  </div>
+</component>

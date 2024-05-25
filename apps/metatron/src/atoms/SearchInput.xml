@@ -1,0 +1,14 @@
+<component id="SearchInput">
+  <div class="mantine-InputWrapper-root mantine-TextInput-root w-full mantine-p1nbg5">
+    <div class="mantine-Input-wrapper mantine-TextInput-wrapper mantine-12sbrde">
+      <div class="mantine-15pajxx mantine-Input-icon mantine-TextInput-icon">
+        <span>
+          <Svg2.MagnifyingGlass />
+        </span>
+      </div>
+      <input
+        class="mantine-Input-input mantine-TextInput-input mantine-Input-withIcon mantine-TextInput-withIcon mantine-1dkrvhk"
+        id="mantine-rmg" type="text" placeholder="Search ..." aria-invalid="false" value="">
+    </div>
+  </div>
+</component>

@@ -1,0 +1,53 @@
+<component id="App">
+  <BrowserService Ref="browser" title="{R.name}" />
+  <SimpleWordsStore Ref="words" />
+  <Header />
+  <header class="flex items-center mx-4">
+    <Logo />
+    <div class="flex-1"></div>
+    <AddText />
+  </header>
+
+  <Connector data="<-words.word" change="-> value" />
+
+  <div class="w-full flex flex-col flex-1">
+    <div class="prev-item flex items-center justify-center text-2xl">
+      <span>pre</span>
+    </div>
+    <div class="cur-item flex flex-1 items-center justify-center text-4xl">
+      <div class="flex-start" click="-> words.determineWord()">
+        -</div>
+      <div class="flex items-center justify-center flex-1">
+        <span class="pr-2" Each="w of value.names">{w.id}</span>
+      </div>
+
+      <div class="flex-end" click="-> words.determineWord()">+
+      </div>
+    </div>
+    <div class="next-item flex items-center justify-center text-2xl">
+      <span>next</span>
+    </div>
+  </div>
+
+  <!-- <ToastFacility>
+    <StoredValue Ref="language" defaultValue="en" />
+
+    <BrowserService Ref="browser" title="{R.name}" />
+
+    <SpeechService Ref="speech" />
+
+    <NavigationService Ref="nav" />
+
+    <IndexedDbService Ref="db" (...)="{R.db}" />
+
+    <WordsStore Ref="words" concepts="<-db.dataConcepts" interview="<-db.dataInterview"
+      acquired="<-db.dataAcquired|arrayToObject" />
+
+    <Connector data="<-nav.route" change="-> route" />
+
+    <Connector Ref="idiomsHash" data="<-db.dataIdioms|idiomsHash" />
+
+    <Dynamic As="Page.{route.page| capitalize}" (...)="{route}" />
+
+  </ToastFacility> -->
+</component>

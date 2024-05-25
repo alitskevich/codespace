@@ -1,0 +1,75 @@
+<component id="EditorPropertiesPanel">
+  <aside id="properties"
+    class="flex flex-col z-40 mmin-w-64 bg-gray-50 dark:bg-gray-800 border-l border-l-gray-300 dark:border-l-gray-500 {class}">
+    <Properties data="{item}" properties="<-current.props" change="-> current.props" If="!currentNode" />
+    <NodeProperties data="{currentNode}" If="currentNode" />
+  </aside>
+</component>
+
+<component id="NodeProperties">
+  <Connector data="<-editor.currentNode" change="-> node" />
+
+  <div class="pl-2 bg-gray-100 dark:bg-gray-700 h-8 flex flex-row items-center justify-between">
+    <div class="font-bold">{tab.name ?? R.ide.propsTabs.0.name | capitalize}</div>
+    <IconTabs data="{R.ide.propsTabs}" value="{tab.id ?? R.ide.propsTabs.0.id}" on="-> tab" />
+  </div>
+  <Stack class="flex-1 py-2 overflow-y-auto divide-slate-500 divide-y gap-2 bg-gray-50 dark:bg-gray-600">
+    <Stack>
+      <Line class="justify-between">
+        <NodeTypeProperty node="{node}" />
+        <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Common properties:"
+          change="-> append=data.value" options="{R.ide.nodeCommonProps}" />
+      </Line>
+      <FieldItem caption="If" If="append == 'if' || node.attrs.if">
+        <NodeInput id="if" />
+      </FieldItem>
+      <FieldItem caption="Each" If="append == 'each'  || node.attrs.each">
+        <NodeInput id="each" />
+      </FieldItem>
+      <FieldItem caption="Data" If="append == 'data'  || node.attrs.data">
+        <NodeInput id="data" />
+      </FieldItem>
+    </Stack>
+
+    <Dynamic As="DomNodeProperties{tab.id ?? R.ide.propsTabs.0.id | capitalize}" data="{data}" />
+  </Stack>
+</component>
+
+<component id="NodeDropdown">
+  <Dropdown value="<-editor.currentNode| dot:id" placeholder="{id}" change="-> editor.updateNode()" id="{id}"
+    options="{options}" />
+</component>
+
+<component id="NodeInput">
+  <Input value="<-editor.currentNode| dot:id" placeholder="{id}" change="-> editor.updateNode()" data-id="{id}" />
+</component>
+
+<component id="NodeTypeProperty">
+  <Line>
+    <NodeDropdown id="type" options="{R.enums.nodeType}" />
+    <NodeDropdown id="tag" options="{R.enums.tags}" If="node.type == 'html'" />
+    <NodeDropdown id="tag" options="{R.project.components}" If="node.type == 'component'" />
+    <NodeDropdown id="tag" options="{R.project.services}" If="node.type == 'service'" />
+    <FieldItem caption="as" If="node.type == 'dynamic'">
+      <NodeInput id="as" />
+    </FieldItem>
+    <FieldItem caption="Ref" If="node.type == 'component'">
+      <NodeInput id="ref" />
+    </FieldItem>
+    <FieldItem caption="Ref" If="node.type == 'service'">
+      <NodeInput id="ref" />
+    </FieldItem>
+    <FieldItem caption="ID" If="node.type == 'html'">
+      <NodeInput id="id" />
+    </FieldItem>
+  </Line>
+</component>
+
+<component id="IconTabs">
+  <Line class="gap-1 px-1">
+    <button click="{on|fnBind:item}" Each="item of data" title="{item.name}"
+      class="px-2 h-6 flex flex-row items-center gap-x-2 cursor-pointer hover:bg-gray-600 rounded-md {itemClass} {item.id == value ? 'bg-gray-500' : '' }">
+      <Dynamic As="{item.icon}" class="h-6 w-6" />
+    </button>
+  </Line>
+</component>

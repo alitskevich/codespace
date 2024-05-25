@@ -1,0 +1,12 @@
+<component id="ScrollToTopButton">
+  <a class="fixed mx-5 mb-5 inline-block p-4 
+    bg-gray-400 hover:bg-gray-700
+    text-white font-medium text-xs leading-tight uppercase rounded-full 
+    shadow-md  hover:shadow-lg 
+    active:bg-red-800 active:shadow-lg 
+    transition duration-150 ease-in-out 
+    bottom-0 {side ?? 'right'}-0 
+    " href="#top" data-mdb-ripple="true" data-mdb-ripple-color="light" id="btn-back-to-top">
+    <Icon type="arrowUp" />
+  </a>
+</component>

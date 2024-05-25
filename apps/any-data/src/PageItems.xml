@@ -1,0 +1,191 @@
+<component id="Page.Items">
+
+  <IndexedDbService Ref="db" (...)="{R.clientDb}" invokeApi="<-api.invoke" />
+
+  <IndexedDbQuery Ref="query" db="<-db.instance" index="kind" value="{subpage}" />
+
+  <ItemSearchController Ref="itemsSearch" data="<-query.data" />
+
+  <ItemsFilterController Ref="itemsFilter" meta="{R.forms.itemsFilter}" data="<-itemsSearch.actualData"
+    value="<-nav.params" change="-> nav.onParams()" />
+
+  <ItemCollectionController Ref="items" data="<-itemsFilter.actualData" isLoaded="<-db.isLoaded" />
+
+  <NewItemController Ref="newItem" initialData="{R.defaults.newItem}" />
+
+  <Connector data="<-items.info" change="-> *" />
+  <StoredData name="viewMode" data="{viewMode}" defaults="list" action="-> viewMode" />
+  <!-- <StoredData  data="{viewSidebar}" defaults="false" action="-> viewSidebar" /> -->
+  <StoredData Ref="mainPageState" name="viewMode" data="{viewMode}" defaults="list" action="-> viewMode" />
+
+  <Container class="absolute" If="!itemId">
+    <Modal If="<-newItem.showModal" mode="lg" opened="<-newItem.showModal" title="{R.strings.add_a_new_item}"
+      close="-> newItem.showModal=false">
+      <Forma meta="{R.forms.newItem ?? R.forms.item}" data="<-newItem.data" change="-> newItem.change()" />
+
+      <ErrorMessage error="<-newItem.error" If="<-newItem.error" close="-> newItem.error=false" />
+      <Modal:footer>
+        <Btn icon="upload" title="Submit New" mode="primary" large action="-> newItem.submit()" busy="<-newItem.busy" />
+      </Modal:footer>
+    </Modal>
+  </Container>
+
+  <div class="h-screen min-h-0 flex flex-col">
+
+    <nav class="{R.styles.nav} nav {class ?? 'sticky'}" id="top">
+      <Container class="relative flex flex-no-wrap h-16 gap-2 sm:gap-4 items-center">
+        <MenuButton click="-> viewSidebar=!viewSidebar" opened="{viewSidebar}" />
+
+        <a href="/#/main" class="flex flex-shrink-0 items-center">
+          <Logo />
+        </a>
+
+        <div class="flex flex-1 gap-2 items-center">
+          <h2 class="max-sm:hidden font-bold dark:text-white text-black truncate uppercase">{R.name}</h2>
+          <DbLoadingIndicator isLoading="<-db.busy" action="-> db.downstream()" />
+        </div>
+
+        <ViewModeSelector options="{R.enums| dot : subpage : '*ViewMode' ?? R.enums.viewMode}" value="{viewMode}"
+          change="-> viewMode | dot: 'value'" If="data.length" />
+
+        <DarkModeToggler value="<-dark.isDarkMode" on="-> dark.toggle()" />
+
+        <UserBar />
+      </Container>
+    </nav>
+
+    <div class="flex flex-auto  min-h-0 flex-col">
+      <AsyncLoader isLoading="<-db.isLoaded|not" title="Loading data" subtitle="🚀 initial dataset" error="<-db.error"
+        onError="-> db.downstream()">
+
+        <div class="bg-gray-200 dark:bg-gray-700  py-2">
+          <Container class="w-full flex flex-no-wrap justify-between items-center gap-2
+        " If="<-itemsSearch.data.length">
+            <div class=" min-w-10 {R.styles.fline}">
+              <h1 class="text-xl dark:text-white text-black truncate uppercase">{subpage ?? R.name}</h1>
+              <div class="{R.styles.badge} px-2" If="countsInfo">
+                {countsInfo}
+              </div>
+            </div>
+
+            <div class="{R.styles.fline}">
+              <SearchBar.Suggestions (...)="<-itemsSearch.info" />
+              <ListSortBy options="{R.enums.sortBy}" value="<-items.sortBy" dir="<-items.sortDir"
+                onChange="-> items.onSortBy()" onChangeDir="-> items.onSortDir()" If="viewMode != 'pivot'" />
+              <ItemsFilter data="<-items.searchedData" value="<-items.filterBySignature" />
+            </div>
+          </Container>
+        </div>
+
+        <Connector data="<-itemsFilter.fields|filter:'isSelected'" change="-> selectedFilterItems" />
+        <div class="bg-gray-200 dark:bg-gray-700 py-2" If="selectedFilterItems.length">
+          <Container class="flex flex-wrap space-x-2 px-2 items-center gap-2">
+            <ItemsFilter.Field field="{tag}" Each="tag of selectedFilterItems" />
+          </Container>
+        </div>
+
+        <Fragment If="!data.length">
+          <Then>
+            <Stub title="Empty data">
+              <Btn title="{R.strings.add_a_new_item}" icon="plus" tooltip="{R.strings.add_a_new_item}"
+                action="-> newItem.showModal=true" />
+            </Stub>
+          </Then>
+          <Else>
+            <MasterDetail data="{sortedData}" itemId="{params.itemId}" viewMode="{viewMode}" kind="{subpage}"
+              form="{R.forms | dot:subpage ?? R.forms.item}">
+              <Selector On="{viewMode}">
+                <Case When="table">
+                  <ItemsTableView data="{shownData}" id="itemsTable{subpage|capitalize}" />
+                </Case>
+
+                <Case When="list">
+                  <Container class="h-full pt-2 {itemId?'!pr-0 !pl-2':''} sm:flex-1 min-h-0 overflow-y-auto"
+                    scrolledDown="-> items.showMore()" scroll="-> showScrollToTopButton = data.value > 120">
+                    <ul role="list" class="w-full max-md:divide-y md:space-y-4  divide-gray-200 dark:divide-gray-700">
+                      <Dynamic As="ListItem.{subpage | capitalize}" (...)="{item}" data="{item}" kind="{subpage}"
+                        selectedId="{itemId}" sortBy="{sortBy}" Each="item of shownData" />
+                      <li class="h-48"></li>
+                    </ul>
+                  </Container>
+                </Case>
+
+                <Case When="pivot">
+                  <ItemsPivotView data="{data}" id="itemsPivot{subpage|capitalize}" />
+                </Case>
+              </Selector>
+            </MasterDetail>
+          </Else>
+        </Fragment>
+      </AsyncLoader>
+    </div>
+  </div>
+
+  <ScrollToTopButton If="showScrollToTopButton" side="left" />
+
+  <FAB tooltip="{R.strings.add_a_new_item}" action="-> newItem.showModal=true" If="!itemId" />
+
+  <div class="fixed inset-0 z-10  " style="bottom:0;left:0;right:0;top: 4rem;" If="viewSidebar"
+    click="-> viewSidebar=!viewSidebar">
+    <Container class="z-10 h-full" id="mobile-menu">
+      <div class="flex flex-col justify-start items-start gap-2 p-2  
+      min-w-96 max-w-96
+      bg-gray-400 dark:bg-gray-600 
+      border-1 rounded-sm border-gray-300 dark:border-slate-800
+      ">
+        <NavLink Each="item of R.enums.entities" href="/items/{item.id}?reset=true"
+          aria-current="subpage == item.id ? 'page'" class="
+            flex flex-row gap-2 items-center
+            font-medium text-lg px-3 py-2 rounded-md 
+            {subpage == item.id ? 'nav-item--active' : 'nav-item'}
+          ">
+          <span>{item.symbol}</span>
+          <span>{item.name}</span>
+        </NavLink>
+      </div>
+    </Container>
+  </div>
+</component>
+
+<component id="ItemsTableView">
+  <Table class="flex-auto min-h-0" data="{data}" columns="{R.forms | dot: id ?? R.forms.itemsTable ?? R.forms.item}"
+    rowFirstComponent="ItemTitle" scrolledDown="-> items.showMore()" cellChange="-> items.changeField()" />
+</component>
+
+<component id="ItemsPivotView">
+  <StoredData name="{id}-rowId" data="{rowId}" action="-> rowId" />
+  <StoredData name="{id}-colId" data="{colId}" action="-> colId" />
+  <Connector data="{R.forms | dot: id ?? R.forms.itemsPivot ?? R.forms.item}" change="-> form" />
+  <Container class="flex-col gap-4 p-2 overflow-auto">
+    <div role="list" class="w-full max-md:divide-y md:space-y-4  divide-gray-200 dark:divide-gray-700"
+      style="position: relative">
+      <Pivot (...)="{data|pivotData:rowId:colId:form}" openConfig="-> showConfig=true" rowId="{rowId}" colId="{colId}"
+        rowFirstComponent="ItemLink" form="{form}" />
+      <div class="h-48"></div>
+    </div>
+    <Modal If="showConfig" opened="{showConfig}" title="Choose rows and columns..." close="-> showConfig=false">
+      <div style="overflow-y: auto;height:25rem;margin:0.5rem 0;">
+        <div class="flex">
+          <ul role="list" class="m-1">
+            <li click="-> rowId=field.id"
+              class="p-2 {field.id==rowId ? 'bg-purple-600 text-white dark:bg-purple-600 dark:text-white'}"
+              Each="field of form">
+              {field.name}</li>
+          </ul>
+          <!-- <div>x</div> -->
+          <ul role="list" class="m-1">
+            <li click="-> colId=field.id"
+              class="p-2 {field.id==colId ? 'bg-purple-600 text-white dark:bg-purple-600 dark:text-white'}"
+              Each="field of form">
+              {field.name}</li>
+            <li click="-> colId=" class="p-2 {!colId ? 'bg-purple-600 text-white dark:bg-purple-600 dark:text-white'}">
+              NONE</li>
+          </ul>
+        </div>
+      </div>
+      <Modal:footer>
+        <Btn title="Close" mode="primary" large="true" action="-> showConfig=false" />
+      </Modal:footer>
+    </Modal>
+  </Container>
+</component>

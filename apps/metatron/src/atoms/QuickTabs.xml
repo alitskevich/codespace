@@ -1,0 +1,16 @@
+<component id="QuickTabs.Item">
+  <div click="{click}"
+    class="px-2 flex flex-row items-center gap-x-2 rounded cursor-pointer hover:bg-gray-600 {class} {active ? 'bg-gray-500' : '' }">
+    <span>
+      <Dynamic As="Svg2.{data.icon}" />
+    </span>
+    <span class="{!active ? 'hidden'}">{data.name}</span>
+  </div>
+</component>
+
+<component id="QuickTabs">
+  <div class="flex flex-row items-center {class}">
+    <QuickTabs.Item Each="item of data" data="{item}" active="item.id == value" class="{itemClass}"
+      click="{on|fnBind:item.id}" />
+  </div>
+</component>

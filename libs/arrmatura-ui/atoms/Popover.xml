@@ -1,0 +1,33 @@
+<component id="Popover">
+  <div class="relative">
+    <p class="flex gap-2 relative items-center cursor-pointer {triggerClass}
+  " data-opened="{!opened}" toggleClass="hidden in backdrop; invisible in content; opacity-0 in content">
+      <Icon type="{icon}" class="" If="icon" />
+      <span class="" If="caption">{caption}</span>
+      <Slot Key="trigger" />
+    </p>
+
+    <div Ref="backdrop" toggleClass="hidden; invisible in content; opacity-0 in content"
+      class="hidden fixed right-0 left-0 top-0 bottom-0 max-sm:bg-gray-500 max-sm:opacity-50 max-sm:blur-sm {backdropClass}">
+    </div>
+    <div class="relative z-50" dropdown="-> opened=false">
+      <div role="tooltip" Ref="content" class="absolute block 
+    text-sm font-light text-gray-500 
+     {position ?? 'right-0 top-0'} z-10 
+    invisible opacity-0  transition-opacity duration-300 
+    bg-white border border-gray-200 rounded-lg shadow-sm w-72
+     dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400">
+        <span class="flex items-center justify-center 
+              absolute right-0 top-0 rounded-full m-1 cursor-pointer
+              " toggleClass="hidden in backdrop; invisible in content; opacity-0 in content" title="{title ?? type}">
+          <Svg.Cross class="h-4 w-4 m-1" />
+          <span class="sr-only">Close</span>
+        </span>
+        <div class="p-3 space-y-2">
+          <Slot />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</component>

@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": false,
+
+    "strict": true,
+    "noEmit": true,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "checkJs": true,
+    "skipLibCheck": true,
+    "jsx": "react",
+    "paths": {
+      "*": ["./libs/*"]
+    },
+    "typeRoots": ["./node_modules/@types", "./node_modules/@figma"]
+  },
+  "exclude": ["node_modules", "tmp", "dist", "tools", "public", "vendor"],
+  "include": [
+    "declarations.d.ts",
+    "**/*.config.js",
+    "**/*.tsx",
+    "**/*.ts",
+    "**/*.js",
+    "**/*.mjs",
+    "**/*.xml",
+    "**/types.js",
+    "eslint.config.js",
+    "../expo-nativewind-app/scripts/config.ts",
+    "../expo-nativewind-app/scripts/main.ts"
+  ]
+}

@@ -1,0 +1,40 @@
+<component id="Icon.align_centers">
+  <svg class="{class}" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <path fill="currentFill" fill-opacity="1" fill-rule="evenodd" stroke="currentColor"
+      d="M16.5 9.5h-1v3h-5v2h5v3h-3v2h3v3h1v-3h3v-2h-3v-3h5v-2h-5v-3z" class=""></path>
+  </svg>
+</component>
+<component id="Icon.align_right">
+  <svg class="{class}" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <path fill="currentFill" fill-opacity="1" fill-rule="evenodd" stroke="currentColor"
+      d="M22 22.5h1v-13h-1v13zm-12-8h10v-2H10v2zm10 5h-6v-2h6v2z" class=""></path>
+  </svg>
+</component>
+
+<component id="Icon.align_left">
+  <svg class="{class}" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <path fill="currentFill" fill-opacity="1" fill-rule="evenodd" stroke="currentColor"
+      d="M10 22.5H9v-13h1v13zm12-8H12v-2h10v2zm-10 5h6v-2h-6v2z" class=""></path>
+  </svg>
+</component>
+
+<component id="IconSquareButton">
+  <button click="{action}" data="{id}" class="flex items-center justify-center h-8 w-8 flex-[0_0_32px] leading-8
+     fill-[var(--color-icon,#333333)] text-[color:var(--color-icon,#333333)]
+     box-border relative bg-clip-padding
+      bg-[color:var(--color-bg,#fff)] col-end-[span_4] 
+      [font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] 
+      no-underline cursor-[inherit] m-0 p-0 rounded-sm border-0" tabindex="0" aria-label="{name}"
+    aria-disabled="false">
+    <span
+      class="[font:inherit] [vertical-align:inherit] [outline:none] tracking-[inherit] no-underline cursor-[inherit] m-0 p-0 border-0">
+      <Dynamic As="Icon.{id}" class="{class}" />
+    </span>
+  </button>
+</component>
+
+<component id="IconSquareButtonGroup">
+  <div class="flex items-center gap-2">
+    <IconSquareButton (...)="{elt}" class="{itemClass}" action="{action}" Each="elt of options" />
+  </div>
+</component>

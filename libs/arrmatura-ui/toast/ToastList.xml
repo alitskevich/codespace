@@ -1,0 +1,22 @@
+<component id="ToastList">
+  <Connector data="<-toaster.items" change="-> items" />
+  <div class="fixed top-6 max-sm:left-4 sm:right-4 z-50 {class}" style="{style}" portal="toasts" If="items.length">
+    <div style="max-width: 600px;margin: auto;">
+      <ToastListItem (...)="{toast}" Each="toast of items" />
+    </div>
+  </div>
+</component>
+
+<component id="ToastListItem">
+  <div class=" {level=='error'?'text-red-800 bg-red-200 border-red-800':'text-gray-500 bg-gray-200 border-gray-400'} border 
+    flex gap-2 p-2 w-full max-w-xs rounded-lg shadow" role="alert">
+    <b If="counter" class="text-sm">[x{counter}]</b>
+    <div class="text-sm font-normal">
+      <span>{message}</span>
+      <a class="font-bold ml-2" href="{link}" If="link">link</a>
+    </div>
+    <div>
+      <Icon type="cross" size="4" class="rounded-sm" click="{close}" If="close" />
+    </div>
+  </div>
+</component>

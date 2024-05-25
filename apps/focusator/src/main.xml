@@ -1,0 +1,84 @@
+<component id="Page.Main">
+  <div class="flex flex-col h-screen">
+    <Header />
+    <div class="flex-1 flex flex-col overflow-y-auto">
+      <div class="flex-1 flex flex-col
+      ">
+        <div class=" flex-1 flex flex-col items-center gap-4">
+          <div class="w-full flex-1 flex flex-col items-center gap-4 pt-4
+        bg-gradient-to-b from-gray-500 dark:from-gray-800 to-40%">
+
+            <!-- <div class="text-small text-center max-w-prose mx-4 p-4">
+              <p class="text-gray-600 text-4xl text-center mt-2 dark:text-gray-400">{R.app.slogan}:</p>
+            </div> -->
+
+            <div class="flex-1 flex flex-wrap flex-col lg:flex-row items-stretch lg:justify-around gap-4
+          ">
+              <PanelTexts />
+              <PanelRecall />
+              <PanelWords />
+              <PanelCTests />
+              <PanelInterview />
+            </div>
+          </div>
+
+          <img class="mx-auto radial-gradient rounded-3xl hover:drop-shadow-2xl hover:backdrop-hue-rotate-30"
+            loading="lazy" height="400" decoding="async" data-nimg="1" src="{R.app.pictureUrl}"
+            style="color: transparent;" />
+
+        </div>
+        <Footer />
+      </div>
+    </div>
+  </div>
+</component>
+
+
+<component id="PanelTexts">
+  <Panel caption="Pick up new words while reading">
+    <div class="flex items-center justify-around gap-4">
+      <Btn mode="primary" class=" px-4 py-4 text-xl" title="Read" action="-> nav.hash='/text'" />
+    </div>
+  </Panel>
+</component>
+
+<component id="PanelWords">
+  <Panel caption="Revise well-known words.">
+    <div class="flex items-center justify-around gap-4">
+      <Btn mode="primary" class="px-4 py-4 text-xl" title="Idioms" action="-> nav.hash='/idioms'" />
+    </div>
+  </Panel>
+</component>
+
+<component id="PanelRecall">
+  <Panel caption="Practice until become confident.">
+    <div class="flex items-center justify-around gap-4">
+      <Btn mode="primary" class="px-4 py-4 text-xl" title="Practice" action="-> nav.hash='/quiz'" />
+    </div>
+  </Panel>
+</component>
+
+<component id="PanelCTests">
+  <Panel caption="Train until automatism.">
+    <div class="flex items-center justify-around gap-4">
+      <Btn mode="primary" class="px-4 py-4 text-xl" title="Train" action="-> nav.hash='/ctest'" />
+    </div>
+  </Panel>
+</component>
+
+<component id="PanelInterview">
+  <Panel caption="Prepare for tech interview.">
+    <div class="flex items-center justify-around gap-4">
+      <Btn mode="primary" class="px-4 py-4 text-xl" title="Ynterview" action="-> nav.hash='/interview'" />
+    </div>
+  </Panel>
+</component>
+
+<component id="PanelStat">
+  <Panel caption="4. Track your actual progress, and adjust your further efforts.">
+    <div class="flex items-center justify-around gap-4">
+      <Btn mode="primary" class="px-4 py-4" title="Track progress" action="-> nav.hash='/stat'" />
+    </div>
+  </Panel>
+
+</component>

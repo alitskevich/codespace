@@ -1,0 +1,16 @@
+<component id="Field.File">
+  <FieldFileController Ref="ctrl" value="{value}" field="{id}" change="{onChange}"
+    uploadFiles="-> formController.uploadFiles" />
+
+  <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}">
+    <div class="w-full flex-1 flex flex-col">
+      <input name="{name}" type="file" class="
+      input px-2 py-1 rounded-lg {class}
+      " placeholder="placeholder ?? ''" change="-> ctrl.appendFiles" disabled="{disabled}" multiple="true" />
+
+      <div class="w-full flex-1 flex flex-col">
+        <a class="p-2" target="_{file.id}" href="{file.objectUrl}" Each="file of <-ctrl.files">{file.name}</a>
+      </div>
+    </div>
+  </FieldItem>
+</component>

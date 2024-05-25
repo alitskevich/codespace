@@ -1,0 +1,11 @@
+<component id="ViewModeSelector">
+  <div class="flex flex-no-wrap items-center mt-1 gap-0 px-2 rounded-md" role="group">
+    <label Each="option of options" class="py-1 px-2
+    first:rounded-l-lg last:rounded-r-lg  
+    cursor-pointer
+    {option.id == value ? 'bg-purple-600 text-white dark:bg-purple-600 dark:text-white' : 'bg-slate-600' } 
+    text-gray-100 dark:text-white" data-value="{option.id}" click="{change}">
+      <span class="text-sm">{option.name}</span>
+    </label>
+  </div>
+</component>

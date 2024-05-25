@@ -1,0 +1,37 @@
+<component id="Field.Smartarea">
+  <SmartareaController Ref="ctrl" options="{R.enums|dot:typeSpec}" value="{value}" change="{onChange}" />
+
+  <FieldItem caption="{caption}" error="{error}" required="{required}">
+    <Fragment If="disabled">
+      <Then>
+        <div class="input w-full p-2 rounded-lg text-gray-400"
+          style="height: auto;min-height:1.5rem;white-space: pre-wrap">{value}
+        </div>
+      </Then>
+      <Else>
+        <div class="input w-full p-2 rounded-lg 
+        text-{value ? :gray-400}" click="-> opened=true" style="min-height: 2.5rem;white-space: pre-wrap; ">{value ??
+          placeholder}
+        </div>
+      </Else>
+    </Fragment>
+
+    <Modal open="{opened}" If="opened" close="-> opened=false">
+      <Modal:header>
+        <h6>{caption}</h6>
+      </Modal:header>
+      <textarea autofocus="true" class="input w-full px-2 rounded-lg h-48" keypress="-> ctrl.change" value="{value}" />
+      <div style="overflow-y: auto;height:10rem;margin:0.5rem 0;">
+        <div class="flex w-full flex-wrap gap-2">
+          <Chip title="{item.name}" Each="item of <-ctrl.smartOptions" data-value="{item.id}" click="-> ctrl.append" />
+        </div>
+      </div>
+      <Modal:footer>
+        <div class="flex justify-between w-full">
+          <FieldHint class="mt-4 flex-1" value="{hint}" />
+          <Btn class="" mode="primary" title="OK" action="-> opened=false" />
+        </div>
+      </Modal:footer>
+    </Modal>
+  </FieldItem>
+</component>

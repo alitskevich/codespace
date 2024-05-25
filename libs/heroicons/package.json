@@ -1,0 +1,31 @@
+{
+  "name": "heroicons-json",
+  "version": "1.0.4",
+  "description": "JSON file with metadata of Heroic Icons and some generators routines",
+  "keywords": [
+    "heroic icons",
+    "metadata",
+    "json"
+  ],
+  "author": "alitskevich@gmail.com",
+  "license": "ISC",
+  "type": "module",
+  "source": "index.html",
+  "files": [
+    "heroicons*.json",
+    "src/*"
+  ],
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build",
+    "npm:publish": "parcel build && npm publish",
+    "from:solid": "parcel watch src/fromSolid.mjs",
+    "gen:arrmatura": "parcel watch src/toArrmatura.mjs"
+  },
+  "dependencies": {
+    "arrmatura-web": "workspace:*",
+    "ultimus": "workspace:*",
+    "ultimus-fs": "workspace:*"
+  }
+}

@@ -1,0 +1,11 @@
+<component id="Chips">
+  <div class="flex flex-wrap items-center gap-2 py-2">
+    <Chip Each="tag of data" data-id="{tag.id}" click="{!tag.nonSelectable ? click}" isSelected="{tag.selected}"
+      title="{tag.name}" badge="{tag.count}">
+    </Chip>
+    <!-- <Chip icon="cross" click="{click | assignFirstArgKeyValue : 'id' : ''}" class="
+      rounded-full font-semibold 
+      text-gray-500 bg-gray-200 text-sm
+      {data | find:true:'selected' | not ? 'invisible'}" /> -->
+  </div>
+</component>

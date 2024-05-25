@@ -1,0 +1,48 @@
+<component id="DomNodePropertiesTypography">
+
+  <div class="px-2 py-2 flex flex-row items-center justify-between">
+    <NodeInput id="text" />
+  </div>
+
+  <div>
+    <div class="pl-2 h-8 flex flex-row items-center justify-between">
+      <Line>
+        <div class="font-bold">Font: </div>
+        <Dropdown value="{data.display}" change="{change}" id="display" placeholder="display"
+          options="{R.enums.display}" />
+        <Dropdown value="{data.position}" change="{change}" id="position" placeholder="position"
+          options="{R.enums.position}" />
+      </Line>
+      <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
+        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+    </div>
+  </div>
+
+  <div>
+    <div class="pl-2 h-8 flex flex-row items-center justify-between">
+      <Line>
+        <div class="font-bold">Sizing: </div>
+        <Dropdown value="{data.display}" change="{change}" id="display" placeholder="display"
+          options="{R.enums.display}" />
+        <Dropdown value="{data.position}" change="{change}" id="position" placeholder="position"
+          options="{R.enums.position}" />
+      </Line>
+      <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
+        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+    </div>
+  </div>
+
+  <div>
+    <div class="pl-2 h-8 flex flex-row items-center justify-between">
+      <Line>
+        <div class="font-bold">Decorations: </div>
+        <Dropdown value="{data.display}" change="{change}" id="display" placeholder="display"
+          options="{R.enums.display}" />
+        <Dropdown value="{data.position}" change="{change}" id="position" placeholder="position"
+          options="{R.enums.position}" />
+      </Line>
+      <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
+        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+    </div>
+  </div>
+</component>

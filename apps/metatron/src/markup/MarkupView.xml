@@ -1,0 +1,88 @@
+<component id="MarkupAttrsView">
+  <span>
+    <Dynamic As="MarkupAttr.{item.id}" (...)="{item}" Each="item of data" data="{item}" />
+  </span>
+</component>
+
+<component id="MarkupAttr">
+  <span class="block first:inline-block only:inline-block last:inline-block">
+    <span class="text-green-400">&space;{id}</span>
+    <span class="text-orange-100">="</span>
+    <span class="text-red-400">{value}</span>
+    <span class="text-orange-100">"</span>
+  </span>
+</component>
+
+<component id="MarkupAttr.class">
+  <span class="block">
+    <span class="text-green-400" title="{value}" click="-> collapsed=!collapsed">{id|strEnhance:' *'}</span>
+    <Fragment If="!collapsed">
+      <span class="text-orange-100">="</span>
+      <span class="text-orange-400">{value}</span>
+      <span class="text-orange-100">"</span>
+    </Fragment>
+  </span>
+</component>
+
+<component id="MarkupProp">
+  <div>
+    <Fragment If="item.nodes.length || item.text">
+      <Then>
+        <div>
+          <span class="text-orange-100">&lt;</span>
+          <span class="text-blue-400" click="-> collapsed=!collapsed">{item.tag}</span>
+
+          <MarkupAttrsView data="{item.attrs|entriesOf}" If="!collapsed" />
+          <span class="text-orange-100 {collapsed?'':'hidden'}" click="-> collapsed=!collapsed">...</span>
+          <span class="text-orange-100">&gt;</span>
+        </div>
+        <div class="{collapsed?'hidden':''}">
+          <div If="item.nodes.length">
+            <MarkupView data="{item.nodes}" />
+          </div>
+          <div class="ml-4 text-orange-600" If="item.text">{item.text}</div>
+          <div>
+            <span class="text-orange-100">&lt;/</span><span class="text-blue-400">{item.tag}</span>
+            <span class="text-orange-100">&gt;</span>
+          </div>
+        </div>
+      </Then>
+      <Else>
+        <div>
+          <span class="text-orange-100">&lt;</span>
+          <span class="text-blue-400">{item.tag}</span>
+          <MarkupAttrsView data="{item.attrs|entriesOf}" />
+          <span class="text-orange-100">/&gt;</span>
+        </div>
+      </Else>
+    </Fragment>
+  </div>
+</component>
+
+<component id="MarkupProperties">
+  <div class="flex-1 p-2 border-l border-l-gray-600 dark:border-l-gray-700">
+    <Fragment If="data.props.length">
+      <Then>
+        <h5>Properties: </h5>
+        <ul class="space-y-1 font-medium">
+          <li Each="item of data.props" data="{item}">
+            <a
+              class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <b class="ml-3">{item.name ?? item.id}</b>
+              <span class="ml-3">({item.type ?? 'text'})</span>
+            </a>
+          </li>
+        </ul>
+      </Then>
+      <Else>
+        <h5>No Properties.</h5>
+      </Else>
+    </Fragment>
+  </div>
+</component>
+
+<component id="MarkupView">
+  <pre class="ml-4 focus:ring-0 border-0">
+    <Dynamic As="MarkupProp.{item.tag}" Each="item of data" item="{item}" collapsed="item.tag == 'Meta'"/>
+  </pre>
+</component>

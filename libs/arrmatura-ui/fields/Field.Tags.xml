@@ -1,0 +1,16 @@
+<components>
+  <component id="FieldTags.UI">
+    <div class="flex-1 flex flex-wrap input min-h-max pt-2 px-2 space-x-2 rounded-lg">
+      <Chip title="{tag.name}" isSelected="{tag.isSelected}" data-value="{tag.id}" click="{click}" Each="tag of tags" />
+    </div>
+  </component>
+
+  <component id="Field.Tags">
+    <TagsValueController Ref="ctrl" value="{value}" options="{R.enums|dot:typeSpec}" change="{onChange}"
+      disabled="{disabled}" multi="true" />
+    <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}">
+      <FieldTags.UI tags="<-ctrl.evaluatedOptions" click="-> ctrl.toggle" />
+    </FieldItem>
+  </component>
+
+</components>

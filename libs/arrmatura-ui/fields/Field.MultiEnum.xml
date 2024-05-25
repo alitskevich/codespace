@@ -1,0 +1,49 @@
+<components>
+
+  <component id="FieldMultiEnum.Appender">
+    <div class="relative">
+      <Chip class="mb-1">
+        <div class="cursor-pointer px-1" data-opened="{!opened}" click="-> *">{opened ? '✖️':'➕'}</div>
+      </Chip>
+      <FieldMultiEnum.Options caption="{caption}" options="{options}" close="-> opened=false"
+        If="opened && options.length" />
+    </div>
+  </component>
+
+  <component id="FieldMultiEnum.Options">
+    <Connector data-filtered="{options | filterByKeyword:kliuq}" change="-> *" />
+    <DropdownOptionsList caption="{caption}" side="right" noBackdrop="true" options="{filtered}" close="{close}"
+      itemClick="-> ctrl.toggleAndClearKliuq" multiItemClick="-> ctrl.toggle">
+
+      <div class="mx-2 my-2">
+        <input type="text" class="input pl-4 py-1 h-10 w-16 rounded-lg" value="{kliuq}"
+          keypress="-> kliuq| dot:value| lowerCase" />
+      </div>
+
+      <div class="m-2" If="!filtered.length">No Options</div>
+    </DropdownOptionsList>
+  </component>
+
+  <component id="FieldMultiEnum.UI">
+    <div class="flex-1 flex flex-no-wrap input h-min-10 pt-1 pr-2 rounded-lg">
+      <div class="flex-1 flex flex-wrap space-x-2 px-2">
+        <Chip title="{tag.name}" class="mb-1" isSelected="true" data-value="{tag.id}" click="{click}"
+          Each="tag of tags">
+          <Icon type="cross" size="4" />
+        </Chip>
+      </div>
+      <Slot />
+    </div>
+  </component>
+
+  <component id="Field.MultiEnum">
+    <TagsValueController Ref="ctrl" value="{value}" options="{R.enums|dot:typeSpec}" change="{onChange}"
+      disabled="{disabled}" multi="true" />
+    <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}">
+      <FieldMultiEnum.UI tags="<-ctrl.selectedOptions" click="-> ctrl.toggle">
+        <FieldMultiEnum.Appender caption="➕ {caption}" placeholder="{placeholder}" options="<-ctrl.availableOptions"
+          opened="<-ctrl.opened" toggle="-> ctrl.toggleOpened" If="!disabled" />
+      </FieldMultiEnum.UI>
+    </FieldItem>
+  </component>
+</components>

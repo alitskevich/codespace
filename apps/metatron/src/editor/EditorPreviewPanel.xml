@@ -1,0 +1,29 @@
+<component id="EditorPreviewPanel">
+  <StoredData name="settings" defaults="{R.ide.defaultState}" data-darkMode="{darkMode}" data-locale="{locale}"
+    data-viewportSize="{viewportSize}" action="-> *" />
+
+  <PostMessageReceiver onMessage="-> current.entityReady" eventType="previewReady" />
+  <PostMessageReceiver onMessage="-> browser.hash" eventType="selectElement" />
+
+  <PostMessageSender targetId="previewFrame" eventType="props" on="<-current.entityReady" data="<-current.props" />
+  <PostMessageSender targetId="previewFrame" eventType="body" on="<-current.entityReady" data="<-current.body" />
+  <PostMessageSender targetId="previewFrame" eventType="elementId" data="{elementId}" />
+
+  <div class="flex flex-col bg-gray-800 {class}" style="width: {viewportSize}px; height: 100%;">
+    <div
+      class="px-2 bg-gray-100 dark:bg-gray-700 h-8 flex items-center justify-between  border-b-[1px] border-gray-200 dark:border-gray-700">
+      <h5 class="font-bold">Preview</h5>
+      <div class="flex flex-row  items-center">
+        <ViewportSizesSelector value="{viewportSize}" on="-> viewportSize=data.value" />
+        <DarkModeToggler value="{darkMode}" on="-> darkMode=!darkMode" />
+        <LanguageSelector value="{locale}" on="-> locale" class="rounded-none" />
+        <Dropdown value="{modifiers}" change="-> modifiers=data.value" id="modifiers" placeholder="modifiers"
+          options="{R.project.modifiers}" />
+      </div>
+    </div>
+
+    <iframe id="previewFrame" If="R.itemId"
+      src="/preview?projectId={R.projectId}&itemId={R.itemId}&darkMode={darkMode}&locale={locale}" class="mx-auto"
+      style="width: {viewportSize}px; height: 100%;"></iframe>
+  </div>
+</component>

@@ -1,0 +1,3 @@
+<component id="Img">
+  <img src="{src ?? default}" alt="{alt}" class="img {class}" style="{style}" />
+</component>

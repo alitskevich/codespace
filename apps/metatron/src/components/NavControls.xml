@@ -1,0 +1,26 @@
+<component id="LanguageSelector">
+  <div class="mx-2 flex items-center cursor-pointer dark:text-gray-800 rounded-md font-black {class}">
+    <span class="px-2 py-1 {value=='en' ? 'bg-violet-400' : 'bg-gray-300'}" data="en" click="{on}">EN</span>
+    <span class="px-2 py-1 {value=='ar' ? 'bg-violet-400' : 'bg-gray-300'}" data="ar" click="{on}">AR</span>
+  </div>
+</component>
+
+<component id="ShowHtmlTrigger">
+  <div class="space-x-2">
+    <button type="button" click="{on}" class="
+    px-2 py-1 text-sm rounded-md hover:bg-opacity-50 border-2 border-violet-300
+      {value?'bg-violet-400'} hover:bg-violet-400 font-black">&lt;/&gt;</button>
+  </div>
+</component>
+
+<component id="ViewportSizesSelector">
+  <Dropdown value="{value}" options="{R.enums.viewportSizes}" change="{on}" />
+</component>
+
+<component id="MarkupTypeSelector">
+  <div class="mx-2 w-32 inline-flex items-center p-0 cursor-pointer dark:text-gray-500 rounded-md  font-semibold">
+    <span class="px-1 py-1 {value=='json' ? 'bg-gray-300' : 'bg-gray-700'}" data="json" click="{on}">JSON</span>
+    <span class="px-1 py-1 {value=='html' ? 'bg-gray-300' : 'bg-gray-700'}" data="html" click="{on}">HTML</span>
+    <span class="px-1 py-1 {value=='react' ? 'bg-gray-300' : 'bg-gray-700'}" data="react" click="{on}">REACT</span>
+  </div>
+</component>

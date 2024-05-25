@@ -1,0 +1,3 @@
+<component id="StyledText">
+  <span class="truncate break-words {class}" style="{style}">{text ?? name ?? def}</span>
+</component>

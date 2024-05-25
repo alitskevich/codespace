@@ -1,0 +1,19 @@
+<component id="Tabs">
+  <div
+    class="flex flex-no-wrap items-center pr-2
+      border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+    <ul
+      class="flex flex-1 flex-wrap items-center -mb-px
+      text-sm font-medium text-center text-gray-500">
+      <li class="mr-2 c-hand" each="item of @items">
+        <a data-id="@item.id"
+          class="inline-block p-4 rounded-t-lg border-b-2 {@item.id == @value ? 'tab-active' : 'tab' }"
+          click="@change">
+          <Icon if="@item.icon" type="@item.icon" class="mx-2" />
+          <span>{@item.name ?? @item.id}</span>
+        </a>
+      </li>
+    </ul>
+    <Slot />
+  </div>
+</component>

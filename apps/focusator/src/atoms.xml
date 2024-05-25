@@ -1,0 +1,54 @@
+<components>
+
+  <component id="Panel">
+    <div class="{R.styles.card} lg:flex-1 flex flex-col items-stretch gap-4 min-h-max
+     border-neutral-500 bg-slate-900 rounded-md p-4">
+      <h3 class="text-lg flex-1 text-center">{caption}</h3>
+      <Slot />
+    </div>
+  </component>
+
+  <component id="IdiomView">
+    <div class="flex flex-col gap-1 {class}" data-text="{item|dot:language}" click="-> speech.textToSpeech()">
+      <h3 class="text-sm flex-1 text-left">{item.id}</h3>
+      <MarkedText data="{item|dot:language|parseText}" class="flex-1" />
+    </div>
+  </component>
+
+  <component id="MarkedText">
+    <div class="text-black bg-white dark:bg-slate-200 w-full rounded-lg p-2 {class}">
+      <Dynamic As="Token.{item.type}" item="{item}" Each="item of data" />
+    </div>
+  </component>
+
+  <component id="Token">
+    <span class="text-sm text-gray-500">{item.name} </span>
+  </component>
+
+  <component id="Token.word">
+    <div class="relative inline-block" click="-> expanded=!expanded">
+      <span data="{item}" class="border-dotted hover:border border-gray-500 p-1 
+        leading-8 rounded-md bg-neutral-200 
+        cursor-pointer
+        {item.type == 'word' ? 'word' :''} word-{item.acquired} text-{item.stemm.acquired|toColorText}-700">{item.name}
+      </span>
+      <Tooltip data="{item}" If="expanded" close="-> expanded=false" />
+    </div>
+  </component>
+
+  <component id="Tooltip">
+    <div class=" bg-slate-600 p-2 mt-6 max-w-[120px] rounded-lg" style="width: max-content;margin-top:2rem;"
+      dropdown="{close}">
+      <div class="flex items-center gap-2 justify-between ">
+        <div class="w-6 h-6 bg-{ack.id|toColor}-500 rounded-full z-10" Each="ack of R.enums.acknowledgements"
+          data-id="{data.stemm.id}" data-acquired="{ack.id}" click="-> words.updateStemmAcquitance()">
+        </div>
+      </div>
+    </div>
+  </component>
+
+  <component id="Hint">
+    <div class="text-sm h-8 rounded-lg dark:bg-slate-800 p-2">{text}</div>
+  </component>
+
+</components>

@@ -1,0 +1,75 @@
+<component id="EditorStructree">
+  <div class="{class} flex flex-col">
+
+    <Dynamic As="ContentTreeItem.{node.tag}" Each="node of <-editornodes" item="{node}" currentId="{currentId}" />
+  </div>
+</component>
+
+<component id="ContentTreeChildren">
+  <pre class="focus:ring-0 border-0 self-stretch">
+    <Dynamic As="ContentTreeItem.{item.tag}" Each="item of data" item="{item}" currentId="{currentId}"/>
+  </pre>
+</component>
+
+<component id="ContentTreeItem">
+  <Stack class="flex py-1 text-xs rounded-sm
+  {item.level >1 ? '' : 'border-t-slate-400 border-t'}
+  {item.id == currentId ? 'border text-sm' : ''}">
+    <Line>
+      <Line class="flex-1 items-start gap-1">
+        <button style="margin-left: {item.level|plus:-1}rem"
+          class="text-orange-100 w-6 px-1 {collapsed?'-rotate-90':''}" click="-> collapsed=!collapsed">
+          <Svg.CaretDown If="item.nodes.length" />
+        </button>
+        <button class="flex justify-start items-center gap-0 text-fuchsia-300 px-2 leading-5 rounded-md "
+          click="-> browser.hash=item.id">
+          <span class="text-fuchsia-500">&lt;</span>
+          <span class="inline-block truncate">{item.tag}#{item.attrs.key}</span>
+        </button>
+        <Stack If="item.id == currentId">
+          <ContentTreeItemClass value="{item.class}" />
+          <ContentTreeAttributes data="{item.attrs|entriesOf}" item="{item}" />
+        </Stack>
+        <span style="margin-left: 1rem" class="inline-block text-orange-600" If="item.text">text
+        </span>
+      </Line>
+      <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Operations:"
+        change="-> append=data.value" options="{R.ide.nodeOperations}" />
+    </Line>
+    <Fragment If="!collapsed && item.nodes.length">
+      <ContentTreeChildren data="{item.nodes}" currentId="{currentId}" />
+    </Fragment>
+  </Stack>
+
+</component>
+
+<component id="ContentTreeItemClass">
+  <div class="flex leading-5 relative" click="-> expanded=!expanded">
+    <span class="text-green-400 ">class</span>
+    <span class="text-green-600">="</span>
+    <div class="relative block border border-stone-500" contentEditable="-> edited|log:'edited">
+      <span style="max-width: {expanded ? 'auto' : '5rem'}" class="text-yellow-200 truncate ">{value}</span>
+      <div class="text-green-600" dropdown="-> expanded=false" If="expanded">123</div>
+    </div>
+    <span class="text-green-600">"</span>
+  </div>
+</component>
+
+<component id="ContentTreeAttributes">
+  <div class="block border-gray-300" If="data.length">
+    <Dynamic As="ContentTreeAttr.{item.id}" (...)="{item}" Each="item of data" data="{item}" />
+  </div>
+</component>
+
+<component id="ContentTreeAttr">
+  <div class=" block">
+    <span class="text-green-400 ">{id}</span>
+    <span class="text-green-600">=</span>
+    <span class="text-orange-400 truncate">{value}</span>
+    <span class="text-orange-100"></span>
+  </div>
+</component>
+
+<component id="ContentTreeAttr.styling"></component>
+<component id="ContentTreeAttr.key"></component>
+<component id="ContentTreeAttr.class"></component>

@@ -1,0 +1,26 @@
+<component id="Container">
+  <section class="w-full flex 
+    md:container md:mx-auto lg:max-w-6xl 
+    px-4 sm:px-6 lg:px-8
+    {class}" scroll="{scroll}" scrolledDown="{scrolledDown}">
+    <Slot />
+  </section>
+</component>
+
+<component id="Line">
+  <section class="flex flex-row justify-start {class ?? 'gap-2 items-center flex-nowrap'}">
+    <Slot />
+  </section>
+</component>
+
+<component id="Line.between">
+  <section class="flex flex-row justify-between {class ?? 'gap-2 items-center flex-nowrap'}">
+    <Slot />
+  </section>
+</component>
+
+<component id="Stack">
+  <section class="flex flex-col {class ?? 'gap-2 items-stretch'}">
+    <Slot />
+  </section>
+</component>

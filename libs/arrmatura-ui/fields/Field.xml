@@ -1,0 +1,43 @@
+<component id="Field">
+  <FieldItem caption="{caption}" error="{error}" required="{required}" helper="{helper}" disabled="{disabled}"
+    hint="{hint}" value="{value}">
+    <Input name="{id}" type="{inputType}" class="
+      {error ? 'border-red-600'} {helper ? 'rounded-l-none'}
+      " placeholder="{placeholder}" value="{value}" change="{onChange}" disabled="{disabled}" />
+  </FieldItem>
+</component>
+
+<component id="Field.Password">
+  <Field id="{id}" caption="{caption}" error="{error}" required="{required}" hint="{hint}" inputType="password"
+    disabled="{disabled}" placeholder="{placeholder ?? '••••••••'}" value="{value}" onChange="{onChange}" />
+</component>
+
+<component id="Field.Email">
+  <FieldItem caption="{caption}" error="{error}" required="{required}" helper="{helper}" disabled="{disabled}"
+    hint="{hint}" value="{value}">
+    <FieldPrefix>
+      <span class="w-10 text-center">{disabled|
+        then::'@'}</span>
+    </FieldPrefix>
+    <Input name="{id}" type="email" class="
+    {error ? 'border-red-600'} rounded-l-none
+    " placeholder="{placeholder ?? 'example@gmail.com'}" value="{value}" change="{onChange}" disabled="{disabled}" />
+  </FieldItem>
+</component>
+
+<component id="Field.Url">
+  <FieldItem caption="{caption}" error="{error}" required="{required}" helper="{helper}" disabled="{disabled}"
+    hint="{hint}" value="{value}">
+    <FieldPrefix>
+      <a class="w-10 text-center {value ? 'cursor-pointer'}" href="{value}" target="_blank">{'🔗'}</a>
+    </FieldPrefix>
+    <Input name="{id}" type="text" class="
+    {error ? 'border-red-600'} rounded-l-none
+    " placeholder="{placeholder ?? 'https://example.com'}" value="{value}" change="{onChange}" disabled="{disabled}" />
+  </FieldItem>
+</component>
+
+<component id="Field.Number">
+  <Field id="{id}" caption="{caption}" error="{error}" required="{required}" hint="{hint}" inputType="number"
+    disabled="{disabled}" placeholder="{placeholder}" value="{value}" onChange="{onChange}" />
+</component>

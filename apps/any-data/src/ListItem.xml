@@ -1,0 +1,46 @@
+<component id="ListItem">
+  <li class="list-item p-2 { selectedId == id ? 'bg-blue-800 border border-1':''}" title="{title}">
+    <div class="flex items-center space-x-4">
+      <div class="sm:flex-1 min-w-0 max-sm:{selectedId?'hidden':''}">
+        <NavLink href="/items/{kind}?itemId={id}"
+          class="text-normal font-medium text-gray-900 truncate dark:text-white flex">
+          <Dynamic As="ItemTitle.{kind | capitalize}" (...)="{data}" />
+        </NavLink>
+        <p class="text text-gray-500 truncate dark:text-gray-300" If="sortBy">{sortBy}:
+          {item|dot:sortBy}</p>
+        <p class="text-sm text-gray-500 truncate dark:text-gray-400 break-words">
+          {subtitle ?? type}</p>
+        <p class="text-sm text-gray-400 truncate dark:text-gray-300" If="tags">({tags})</p>
+      </div>
+      <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" If="slot()">
+        <Slot />
+      </div>
+    </div>
+  </li>
+</component>
+
+<component id="ListItem.Persons">
+  <li class="list-item p-2 { selectedId == id ? 'bg-blue-200 dark:bg-blue-900':''}" title="{title}">
+    <div class="flex items-center space-x-4">
+      <NavLink href="/items/{kind}?itemId={id}" class="block flex-shrink-0" title="{name ?? '--'} {subtitle}">
+        <Avatar src2="{R.assets.person1}" initials="{name | abbreviate}" class="bg-slate-500"
+          status="{R.enums.status | find:status | dot: 'style' ?? 'bg-gray-500'}" alt="{title}" />
+      </NavLink>
+      <div class="sm:flex-1 min-w-0 max-sm:{selectedId?'hidden':''}">
+        <NavLink href="/items/{kind}?itemId={id}"
+          class="text-normal  text-base font-semibold text-gray-900 dark:text-white truncate flex">
+          <ItemTitle.Persons (...)="{data}" />
+        </NavLink>
+        <p class="text text-gray-500 truncate dark:text-gray-300" If="sortBy != 'title' && sortBy">{sortBy}:
+          {item|dot:sortBy}</p>
+        <p class="text-sm text-gray-500 truncate dark:text-gray-400 break-words">
+          <RefTitle value="{data.place}" />
+        </p>
+        <p class="text-sm text-gray-400 truncate dark:text-gray-300" If="tags">({tags})</p>
+      </div>
+      <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" If="slot()">
+        <Slot />
+      </div>
+    </div>
+  </li>
+</component>

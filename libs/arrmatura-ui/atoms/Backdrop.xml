@@ -1,0 +1,9 @@
+<component id="Backdrop">
+  <div class="{opened ? '' : 'hidden'} 
+    fixed right-0 left-0 top-0 bottom-0 
+    overflow-scroll
+    max-sm:bg-gray-500 max-sm:opacity-50 max-sm:blur-sm {class}" click="{click}">
+    <Slot />
+    <div style="height:1000000px"></div>
+  </div>
+</component>

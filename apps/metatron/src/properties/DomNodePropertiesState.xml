@@ -1,0 +1,50 @@
+<component id="DomNodePropertiesState">
+  <div>
+    <div class="pl-2 h-8 flex flex-row items-center justify-between">
+      <Line>
+        <div class="font-bold">Properties </div>
+        <Dropdown value="{data.display}" change="{change}" id="display" placeholder="display"
+          options="{R.enums.display}" />
+        <Dropdown value="{data.position}" change="{change}" id="position" placeholder="position"
+          options="{R.enums.position}" />
+      </Line>
+      <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
+        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+    </div>
+  </div>
+
+  <div>
+    <div class="pl-2 h-8 flex flex-row items-center justify-between">
+      <Line>
+        <div class="font-bold">Dataset </div>
+        <Dropdown value="{data.display}" change="{change}" id="display" placeholder="display"
+          options="{R.enums.display}" />
+        <Dropdown value="{data.position}" change="{change}" id="position" placeholder="position"
+          options="{R.enums.position}" />
+      </Line>
+      <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
+        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+    </div>
+  </div>
+
+  <div>
+    <div class="pl-2 h-8 flex flex-row items-center justify-between">
+      <Line>
+        <div class="font-bold">Accessibility </div>
+        <Dropdown value="{data.display}" change="{change}" id="display" placeholder="display"
+          options="{R.enums.display}" />
+        <Dropdown value="{data.position}" change="{change}" id="position" placeholder="position"
+          options="{R.enums.position}" />
+      </Line>
+      <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
+        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+    </div>
+  </div>
+
+  <!-- <DomNodeDisplay click="-> result" /> -->
+  <div Each="group of data.appearance|log:'actiondom'">
+    <h5>{group.id}</h5>
+    <Forma meta="{group.value}" metaId="{group.id}" data="{data.appearanceValues|dot:group.id}"
+      change="{data.appearanceChanged}" />
+  </div>
+</component>

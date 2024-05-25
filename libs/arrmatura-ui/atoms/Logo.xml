@@ -1,0 +1,3 @@
+<component id="Logo">
+  <img class="h-{size ?? '10'} w-{size ?? '10'} rounded-full" src="{url ?? R.assets.logo}" title="{R.title}" />
+</component>

@@ -1,0 +1,41 @@
+<component id="Aside">
+  <aside id="aside" class=" w-64 pt-14 
+    relative
+                transition-transform max-md:-translate-x-full
+                 bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidenav">
+    <div class="overflow-y-auto py-2 px-2 h-full bg-white dark:bg-gray-800">
+      <Slot />
+    </div>
+    <Slot Key="bottom" />
+  </aside>
+</component>
+
+<component id="AsideToggleButton">
+  <button class="md:hidden menu  p-2 mr-2 text-gray-600 rounded-lg cursor-pointer
+                     hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 
+                     focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400
+                      dark:hover:bg-gray-700 dark:hover:text-white"
+    toggleClass="opened; max-md:-translate-x-full in aside" aria-label="Main Menu" aria-controls="drawer-navigation">
+    <svg width="32" height="32" viewBox="0 0 100 100">
+      <path class="line line1"
+        d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+      <path class="line line2" d="M 20,50 H 80" />
+      <path class="line line3"
+        d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+    </svg>
+    <span class="sr-only">Toggle sidebar</span>
+  </button>
+</component>
+
+<component id="AsideContentBottom">
+  <div class="absolute bottom-0 left-0 justify-center hidden w-full p-4 space-x-4 bg-white lg:flex dark:bg-gray-800">
+    <a href="#"
+      class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+      <Svg.Settings />
+    </a>
+    <a href="https://dashboard.vercel.app/settings/"
+      class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+      <Svg.Gears />
+    </a>
+  </div>
+</component>

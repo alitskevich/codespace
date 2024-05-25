@@ -1,0 +1,26 @@
+<component id="Stub">
+  <Container>
+    <div class="w-full gap-4 flex flex-col items-stretch text-center {class}">
+      <div class="mx-4">
+        <Icon type="{icon}" size="16" If="icon" />
+      </div>
+      <h2 class="font-mono text-xl" If="title">{title}</h2>
+      <h5 class="font-mono text-normal" If="subtitle">{subtitle}</h5>
+      <span class="m-4">
+        <Slot />
+      </span>
+    </div>
+  </Container>
+</component>
+
+<component id="ErrorMessage">
+  <div class="text-red-800 bg-red-200 border-red-800 border flex gap-2 p-2 rounded-lg shadow {class}" role="alert">
+    <div class="text-sm font-normal flex-1">
+      <span>{error.message ?? error}</span>
+      <a class="font-bold ml-2" href="{link}" If="link">open</a>
+    </div>
+    <div>
+      <Icon type="cross" size="4" class="rounded-sm" click="{close}" If="close" />
+    </div>
+  </div>
+</component>

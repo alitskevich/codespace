@@ -1,0 +1,11 @@
+<component id="GreenAppFacility">
+  <GreenAppService Ref="green" url="{url}" name="{name}" />
+  <AsyncLoader isLoading="<-green.isLoading" title="{R.strings.app_install_title}"
+    subtitle="{R.strings.app_install_subtitle}">
+    <Slot />
+  </AsyncLoader>
+  <div class="fixed right-4 bottom-8 inset-x-0 flex justify-center" If="<-green.isOutdated">
+    <Btn icon="refresh" class="!rounded-full bg-red-700" title="{R.strings.app_install_update}" mode="primary"
+      busy="<-green.isFetching" action="-> green.reload()" />
+  </div>
+</component>

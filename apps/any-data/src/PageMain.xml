@@ -1,0 +1,32 @@
+<component id="Page.Main">
+  <nav class="{R.styles.nav} nav {class ?? 'sticky'}" id="top">
+    <Container class="relative flex flex-no-wrap h-16 gap-2 sm:gap-4 items-center">
+      <NavLink href="/main" class=" flex flex-shrink-0 items-center">
+        <Logo />
+      </NavLink>
+
+      <h2 class="font-bold dark:text-white text-black truncate uppercase">{R.name}
+      </h2>
+      <div class="flex flex-1 gap-2 items-center"></div>
+
+      <DarkModeToggler value="<-dark.isDarkMode" on="-> dark.toggle()" />
+      <UserBar />
+    </Container>
+  </nav>
+
+  <Container class="" id="menu">
+    <div class="grid grid-cols-[repeat(3,minmax(5rem,1fr))] gap-2 p-2 w-full">
+      <NavLink href="/items/{item.id}?reset=true" aria-current="page" class="
+        flex flex-col items-center justify-center
+        font-medium text-xl uppercase
+        h-48 gap-2 px-3 py-2 rounded-md 
+        bg-gray-300 dark:bg-gray-600
+        border-1 border-gray-300 dark:border-slate-800
+        " Each="item of R.enums.entities">
+        <div class="w-24 h-24 text-gray-800 dark:text-gray-50 p-4" style="font-size:5rem;">{item.symbol}</div>
+        <span>{item.name}</span>
+      </NavLink>
+    </div>
+  </Container>
+
+</component>

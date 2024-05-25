@@ -1,0 +1,44 @@
+{
+  "name": "metatron",
+  "version": "2.0.0",
+  "description": "Metatron - Rapid Web applications development tool.",
+  "license": "ISC",
+  "type": "module",
+  "source": [
+    "index.html"
+  ],
+  "scripts": {
+    "start": "parcel --https -p 3448",
+    "gen": "bun --watch run  ./scripts/main.ts",
+    "build": "rm -fdr dist && parcel build --no-scope-hoist",
+    "rebuildIndex": "cd src && bun run makeIndex.ts",
+    "deploy": "firebase deploy --project 373433080161 --only hosting",
+    "build:snippets": "cd ./__meta__ && ./snippets.sh && cd .. && prettier --check --ignore-path .gitignore --write ./lib/snippets",
+    "build:meta": "esbuild ./build.ts --bundle --platform=node --outfile=./dist/build.js",
+    "build:watch": "esbuild ./build.ts --bundle --platform=node --watch=forever --outfile=./dist/build.js",
+    "fetch:contract": "bun run ./main.ts fetchContract",
+    "fetch:figma": "bun run  ./scripts/main.ts",
+    "generateContract": "node ./dist/build.js generateContract && pnpm run format",
+    "generateUiSpec": "node ./dist/build.js normalize,generateUiSpec",
+    "generateReact": "node ./dist/build.js generateSvg,generateReact && pnpm run format",
+    "generateSvg": "node ./dist/build.js generateSvg && pnpm run format",
+    "generateColors": "node ./dist/build.js generateColors ",
+    "versionUp": "pnpm run latestLogs && node ./dist/build.js versionUp",
+    "latestLogs": "git log -n 100 --pretty=%B > git.log",
+    "format": "cd ../.. && prettier --check --ignore-path .prettierignore --write ./lib && cd scripts/metatron",
+    "pnpm:up": "pnpm up ultimus ultimus-fs figmatron && pnpm run build && pnpm run generateUiSpec",
+    "open:figmaApiDocs": "open https://www.figma.com/developers/api"
+  },
+  "dependencies": {
+    "arrmatura": "workspace:^",
+    "arrmatura-ui": "workspace:^",
+    "arrmatura-web": "workspace:^",
+    "figmatron": "workspace:^",
+    "ultimus": "workspace:^",
+    "ultimus-fs": "workspace:^"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2"
+  }
+}

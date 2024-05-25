@@ -1,0 +1,6 @@
+<component id="IconPlusDropdownTrigger">
+  <button class="inline-flex items-center p-1 gap-0 rounded-md border border-transparent hover:border-gray-500"
+    data-opened="{!opened}" click="{disabled ? null : click}">
+    <Icon type="Menu" />
+  </button>
+</component>

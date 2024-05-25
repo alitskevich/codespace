@@ -1,0 +1,16 @@
+<component id="Tap">
+  <button click="{action}"
+    class="btn btn-ghost btn-sm !text-gray-700 btn-light py-0 text-sm bg-transparent border-0 
+        font-medium dark:!text-dark-50 dark:bg-dark-600 dark:bg-transparent dark:hover:!text-white dark:hover:bg-dark-500"
+    style="height: 24px;">
+    <span class="flex w-full flex-row items-center">
+      <span class="center w-full">
+        <span class="start gap-x-2">
+          <span>
+            <Dynamic As="Svg.{icon}" If="icon" />
+          </span If="title">{title}</span>
+      </span>
+    </span>
+  </button>
+
+</component>

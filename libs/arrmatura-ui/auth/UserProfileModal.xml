@@ -1,0 +1,9 @@
+<component id="UserProfileModal">
+  <Modal title="User profile" mode="lg" open="true" close="-> user.toggleShowProfile()">
+    <Forma meta="{R.forms.userProfile}" data="<-user.data" change="-> data" />
+    <Modal:footer>
+      <Btn icon="upload" title="Save profile" mode="primary" large action="-> user.save(data)"
+        busy="<-user.isLoading" />
+    </Modal:footer>
+  </Modal>
+</component>

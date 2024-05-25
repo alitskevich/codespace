@@ -1,0 +1,19 @@
+<component id="BtnUI">
+  <button type="button" class="btn {R.styles.btn}
+      {large ? 'w-full' : 'max-w-max'}
+      {class}
+      {disabled ? ' disabled cursor-not-allowed' : 'cursor-pointer'}
+    " data="{data}" disabled="{disabled}" click="{action}">
+    <Slot />
+    <span If="title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{title}</span>
+  </button>
+</component>
+
+<component id="Btn">
+  <BtnUI title="{title}" large="{large}" disabled="{disabled ?? busy ?? false}" class="
+      {!mode ? R.styles.btn-default : '' } {R.styles | dot : mode : 'btn-*' } {class}
+    " data="{data}" action="{action}">
+    <Svg.Spinner size="4" If="busy" />
+    <Icon type="{icon}" size="4" If="!busy && icon" />
+  </BtnUI>
+</component>

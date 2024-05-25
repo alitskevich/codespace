@@ -1,0 +1,33 @@
+<components>
+
+  <component id="SvgIcon">
+    <svg style="{style}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+      stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="{R.heroicons}[id][0]" />
+      <path stroke-linecap="round" stroke-linejoin="round" d="{R.heroicons}[id][1]" If="{R.heroicons}[id][1]" />
+    </svg>
+  </component>
+
+  <component id="App">
+    <section>
+      <div
+        style="display:flex;  flex-direction:row; align-items: center; justify-content: space-between; margin: 2rem 0 2rem 0;">
+        <h1><a href="https://heroicons.dev/">Heroic Icons</a></h1>
+        <div>
+          <input style="border-radius:0.25rem;" list="icons" value="{filterKey}" keypress="->filterKey|dot:'value'">
+          <button click="-> filterKey=''">x</button>
+          <datalist id="icons" If="filterKey.length > 2">
+            <option value="{item.id}" Each="item of R.heroicons|entriesOf" />
+          </datalist>
+        </div>
+      </div>
+      <div style="margin:auto; display: grid; grid-template-columns: repeat(6, 1fr); gap:1rem;">
+        <div style="height:6rem;padding: 1rem; border: 1px solid gray; border-radius:0.25rem;" align="center"
+          Each="svg of R.heroicons|entriesOf|filterByKeyword:filterKey:'id'|arraySortBy:'id'">
+          <SvgIcon id="{svg.id}" style="width:4rem;height:4rem" />
+          <div>{svg.id}</div>
+        </div>
+      </div>
+    </section>
+
+  </component>

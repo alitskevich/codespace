@@ -1,0 +1,24 @@
+<component id="DomNodeClassCell.ns">
+  <th Each="val of value">
+    <h5 class="rounded-md border px-2">{val.id}</h5>
+  </th>
+</component>
+
+<component id="DomNodeClassCell">
+  <h5>{value}</h5>
+</component>
+
+<component id="DomNodeClassTable">
+  <table class="w-full">
+    <tr>
+      <th Each="col of R.ide.classTableColumns">
+        <h5>{col.name}</h5>
+      </th>
+    </tr>
+    <tr Each="cl of data.classValues">
+      <td Each="col of R.ide.classTableColumns">
+        <Dynamic As="DomNodeClassCell.{col.id}" data="{cl}" value="{cl | dot: col.id}" />
+      </td>
+    </tr>
+  </table>
+</component>

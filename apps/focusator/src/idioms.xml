@@ -1,0 +1,218 @@
+<component id="Page.Idioms">
+
+  <ItemSearchController Ref="itemsSearch" data="<-words.tree" />
+
+  <ItemsFilterController Ref="itemsFilter" meta="{R.forms.filter}" data="<-itemsSearch.actualData"
+    value="<-nav.params.filter" />
+
+  <Connector data="<-itemsFilter.value" change="-> nav.onParams(* | pack:'filter')" />
+
+  <ItemCollectionController Ref="items" data="<-itemsFilter.actualData" isLoaded="<-db.isLoaded" />
+
+  <NewItemController Ref="newItem" initialData="{R.defaults.newItem}" />
+
+  <Connector data="<-items.info" change="-> *" />
+
+  <Container class="absolute" If="!itemId">
+    <FAB tooltip="{R.strings.add_a_new_item}" action="-> newItem.showModal=true" />
+    <Modal If="<-newItem.showModal" mode="lg" opened="<-newItem.showModal" title="{R.strings.add_a_new_item}"
+      close="-> newItem.showModal=false">
+      <Forma meta="{R.forms.newItem}" data="<-newItem.data" change="-> newItem.change()" />
+
+      <ErrorMessage error="<-newItem.error" If="<-newItem.error" close="-> newItem.error=false" />
+      <Modal:footer>
+        <Btn icon="upload" title="Submit New" mode="primary" large action="-> newItem.submit()" busy="<-newItem.busy" />
+      </Modal:footer>
+    </Modal>
+  </Container>
+
+  <div class="h-screen min-h-0 flex flex-col">
+    <Header />
+
+    <div class="flex flex-auto  min-h-0 flex-col gap-4 pt-2">
+      <AsyncLoader isLoading="{!isLoaded}" title="Loading data" subtitle="🚀 initial dataset" error="<-db.error"
+        onError="-> db.downstream()">
+
+        <Container class="w-full flex flex-no-wrap justify-between items-center gap-2" If="<-itemsSearch.data.length">
+          <div class="pl-2 flex flex-no-wrap items-center gap-2">
+            <ItemsFilter data="<-items.searchedData" class="min-w-0
+            " value="<-items.filterBySignature">
+              <span class="{R.styles.badge}" If="countsInfo">
+                {countsInfo}
+              </span>
+            </ItemsFilter>
+            <!-- <Chips data="{tags}" click="-> items.onTag()" class="min-w-0" /> -->
+          </div>
+          <div class="pl-2 flex flex-no-wrap items-center gap-2">
+            <SearchBar.Suggestions (...)="<-itemsSearch.info" />
+            <ListSortBy options="{R.enums.sortBy}" value="<-items.sortBy" dir="<-items.sortDir"
+              onChange="-> items.onSortBy()" onChangeDir="-> items.onSortDir()" If="viewMode != 'pivot'" />
+          </div>
+        </Container>
+
+        <Fragment If="!data.length">
+          <Then>
+            <Stub title="Empty data">
+              <Btn title="{R.strings.add_a_new_item}" icon="plus" tooltip="{R.strings.add_a_new_item}"
+                action="-> newItem.showModal=true" />
+            </Stub>
+          </Then>
+          <Else>
+            <MasterDetail data="{sortedData}" itemId="{params.itemId}" viewMode="{viewMode}">
+
+              <Container class="h-full sm:flex-1 min-h-0 overflow-y-auto" scrolledDown="-> items.showMore()"
+                scroll="-> showScrollToTopButton = data.value > 120">
+                <ul role="list" class="w-full flex flex-col gap-2">
+                  <DomainItem (...)="{item}" item="{item}" selectedId="{params.itemId}" sortBy="{sortBy}"
+                    Each="item of sortedData" />
+                  <li class="h-48"></li>
+                </ul>
+              </Container>
+
+            </MasterDetail>
+          </Else>
+        </Fragment>
+      </AsyncLoader>
+    </div>
+    <LegalAttribution />
+  </div>
+  <ScrollToTopButton If="showScrollToTopButton" side="left" />
+
+</component>
+
+<component id="MasterDetail">
+  <div class="flex flex-auto min-h-0 gap-2 items-stretch p-2">
+    <Slot />
+    <div If="itemId" class="h-full flex-1 min-h-0 min-w-96 gap-2 m
+      flex flex-col items-stretch 
+      bg-gradient-to-r from-gray-300  dark:from-purple-900/50 to-40%
+      rounded-md
+      border border-gray-200 dark:border-gray-700">
+
+      <ItemController Ref="controller" itemId="{itemId}" all="<-words.acquiredConcepts" />
+      <Connector data="<-controller.item" change="-> item" />
+
+      <Connector data="<-idiomsHash.data" trigger="{item.stem}" change="-> idioms|dot:item.stem" />
+
+      <header class="p-2 flex flex-no-wrap items-center min-w-0 gap-1" title="{title}">
+        <h2 class="flex-1 text-lg text-truncate">{item.title}</h2>
+        <Icon type="cross" size="3" class="rounded-lg text-slate-500 h-10 w-10 dark:text-gray-400" data-itemId=""
+          click="-> nav.onParams()" />
+      </header>
+      <div class="flex flex-col flex-1 px-4 gap-4 overflow-y-auto">
+        <div class="break-words text-{acquired|toColorText}-500" data-itemId="{id}" click="-> nav.onParams()">
+          {item.en}
+        </div>
+        <div class=" text-gray-500">
+          meaning: ({item.definition})
+        </div>
+        <div class=" text-gray-400">
+          categories: {item.domain} /{item.topic}/{item.tags}/{item.stem}
+        </div>
+        <div class=" text-gray-400">
+          alternatives: {item.alternate1} | {item.alternate2} | {item.alternate3} | {item.alternate4} |
+          {item.alternate5}
+        </div>
+
+        <IdiomView language="<-language.value" item="{idiom}" class="flex" Each="idiom of idioms" />
+
+        <div class="grid grid-cols-3 gap-2">
+          <div class="p-2 bg-{ack.id|toColor}-700 rounded-full mx-2" Each="ack of R.enums.acknowledgements"
+            data-id="{item.id}" data-acquired="{ack.id}" title="{ack.name}" click="-> words.updateSentenceAcquitance()">
+            {ack.name}</div>
+        </div>
+        <Forma meta="{R.forms.item}" data="{item}" change="-> controller.onChange()" tabs="{R.itemForm.tabs}"
+          groups="{R.itemForm.groups}" />
+      </div>
+      <footer class="p-2">
+        <Container class="justify-between items-center">
+          <div>
+            <NavListCursor (...)="<-controller.itemNavInfo" href="#/main?itemId=" />
+          </div>
+          <!-- <Btn icon="upload" title="Submit" mode="primary" action="-> controller.onSave()" busy="<-db.isUploading"
+            disabled="<-controller.touched | not" /> 
+          afterClick="-> nav.onParams(item.nextId|pack:'itemId')"
+          -->
+        </Container>
+      </footer>
+    </div>
+  </div>
+
+</component>
+
+<component id="ListItem2">
+  <li class="list-item" title="{title}">
+    <div class="flex items-center space-x-4">
+      <a href="#/main?itemId={id}" class="block flex-shrink-0" title="{title ?? '--'} {subtitle}">
+        <Avatar src2="{R.assets.person1}" initials="title | abbreviate" status="bg-green-400"
+          status="bg-{R.enums.status | find:status | dot:style ?? 'gray'}-500" alt="{title}" />
+      </a>
+      <div class="sm:flex-1 min-w-0 max-sm:{selectedId?'hidden':''}">
+        <a href="#/main?itemId={id}" class="text-normal font-medium text-gray-900 truncate dark:text-white flex">
+          <span class="truncate break-words">{title ?? '--'}</span>
+        </a>
+        <p class="text text-gray-500 truncate dark:text-gray-300" If="sortByValue">{sortByValue}</p>
+        <p class="text-sm text-gray-500 truncate dark:text-gray-400 break-words">
+          {subtitle}</p>
+        <p class="text-sm text-gray-400 truncate dark:text-gray-300" If="tags">({tags})</p>
+      </div>
+      <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" If="slot()">
+        <Slot />
+      </div>
+    </div>
+  </li>
+</component>
+
+<component id="ResultList">
+  <div class="flex-1 flex flex-col gap-2 max-w-7xl">
+    <div class="grid grid-cols-4 gap-2 w-full">
+      <ListItem (...)="{item}" Each="item of data|slice:0:10">
+        <div class="w-6 h-6 bg-{ack.id|toColor}-700 rounded-full mx-2" Each="ack of R.enums.acknowledgements"
+          data-id="{item.id}" data-acquired="{ack.id}" title="{ack.name}" click="-> words.updateStemmAcquitance()">
+        </div>
+      </ListItem>
+    </div>
+    <Fragment If="!data.length">
+      <span>No data.</span>
+    </Fragment>
+  </div>
+</component>
+
+<component id="TopicItem">
+  <div class="flex rounded-md border p-4">
+    <Slot />
+    <div class="flex-1 flex flex-wrap gap-2  text-{mark|toColor:'white'}">
+      <div class="break-words text-{acquired|toColorText}-500" click="-> opened=!opened">
+        {id}
+      </div>
+      <Fragment If="opened">
+        <WordItem (...)="{item}" item="{item}" selectedId="{selectedId}" sortBy="{sortBy}" Each="item of items" />
+      </Fragment>
+    </div>
+  </div>
+</component>
+
+<component id="DomainItem">
+  <div class="flex rounded-md border p-4">
+    <Slot />
+    <div class="flex-1 flex flex-col flex-wrap gap-2  text-{mark|toColor:'white'}">
+      <div class="break-words text-{acquired|toColorText}-500" click="-> opened=!opened">
+        {id}
+      </div>
+      <div class=" text-gray-300" If="opened">
+        <ul role="list" class=" flex flex-wrap gap-2 ">
+          <TopicItem (...)="{item}" item="{item}" selectedId="{selectedId}" sortBy="{sortBy}" Each="item of items" />
+        </ul>
+      </div>
+    </div>
+  </div>
+</component>
+
+<component id="WordItem">
+  <div class="rounded-full border p-1
+  {id == selectedId ? 'bg-gray-300  bg:from-gray-600':''}">
+    <div class="break-words text-{acquired|toColorText}-500" data-itemId="{id}" click="-> nav.onParams()">
+      {en}
+    </div>
+  </div>
+</component>

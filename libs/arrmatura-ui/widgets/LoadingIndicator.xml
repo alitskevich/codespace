@@ -1,0 +1,5 @@
+<component id="LoadingIndicator">
+  <div class="inline text-center {class}" role="status">
+    <Icon type="Spinner" title="{title ?? 'Loading...'}" />
+  </div>
+</component>

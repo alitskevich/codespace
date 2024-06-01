@@ -7,7 +7,7 @@
   "source": "index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
-    "start": "parcel --https",
+    "start": "parcel",
     "build": "pnpm run clean && parcel build --no-scope-hoist",
     "clean": "rm -fdr dist && rm -fdr dist ../../.parcel-cache",
     "download:index": "curl -L https://script.google.com/macros/s/AKfycbxAjtppX_5PozyjJBwiK8Fc5gqtaqvE6KPlmMsvR_FEvOlf6nRhqdt75e4YiHZTZ8h3Yw/exec  > ./data/index.json",

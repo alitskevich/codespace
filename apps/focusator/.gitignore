@@ -2,7 +2,6 @@ node_modules
 .*-cache
 .vercel
 dist
-data
 tmp
 .DS_Store
 *.log

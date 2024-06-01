@@ -37,7 +37,7 @@
 <component id="PanelTexts">
   <Panel caption="Pick up new words while reading">
     <div class="flex items-center justify-around gap-4">
-      <Btn mode="primary" class=" px-4 py-4 text-xl" title="Read" action="-> nav.hash='/text'" />
+      <Btn mode="primary" class=" px-4 py-4 text-xl" title="Read" action="-> nav.hash='/addText'" />
     </div>
   </Panel>
 </component>

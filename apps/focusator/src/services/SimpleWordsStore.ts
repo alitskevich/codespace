@@ -1,8 +1,8 @@
 import { StoredData } from "arrmatura-ui/commons/StoredData";
 import { arraySortBy } from "ultimus";
 
-import { Stemm } from "./types";
-import { parseText } from "./utils/parser";
+import { Stemm } from "../types";
+import { parseText } from "../utils/parser";
 
 // service component
 export class SimpleWordsStore extends StoredData {

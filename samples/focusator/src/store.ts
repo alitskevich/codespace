@@ -1,8 +1,9 @@
-import { Hash } from "ultimus";
 import { Component } from "arrmatura-web";
+import { Hash } from "ultimus";
+
 import { BaseWord, DictWord, Word } from "./types";
 
-type Action = Hash<string>;
+export type Action = Hash<string>;
 
 type State = {
   dict: Hash<DictWord>;

@@ -1,0 +1,23 @@
+<component id="App">
+  <ToastFacility>
+    <StoredValue Ref="language" defaultValue="en" />
+
+    <BrowserService Ref="browser" title="{R.name}" />
+
+    <SpeechService Ref="speech" />
+
+    <NavigationService Ref="nav" />
+
+    <IndexedDbService Ref="db" (...)="{R.db}" />
+
+    <WordsStore Ref="words" concepts="<-db.dataConcepts" interview="<-db.dataInterview"
+      acquired="<-db.dataAcquired|arrayToObject" />
+
+    <Connector data="<-nav.route" change="-> route" />
+
+    <Connector Ref="idiomsHash" data="<-db.dataIdioms|idiomsHash" />
+
+    <Dynamic As="Page.{route.page| capitalize}" (...)="{route}" />
+
+  </ToastFacility>
+</component>

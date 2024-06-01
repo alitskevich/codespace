@@ -1,7 +1,8 @@
-import { data } from "../index.json";
-import aux from "../aux.json";
 import { arraySortBy, arrayToObject } from "ultimus";
 import { Delta } from "ultimus/types";
+
+import aux from "../aux.json";
+import { data } from "../index.json";
 
 const hash = arrayToObject(data);
 aux.forEach((w) => {

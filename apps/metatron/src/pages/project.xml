@@ -41,7 +41,7 @@
 </component>
 
 <component id="Markup">
-  <StoredData name="markupState" defaults="{R.ide.markupDefaultState}" data-markupType="{markupType}" action="-> *" />
+  <StoredData name="markupState" defaults="{R.ide.markupDefaultState}" data-markupType="{markupType}" action="->" />
 
   <div class=" bg-slate-800 flex flex-col rounded-md h-72 border-t-2 border-gray-200 dark:border-gray-700">
     <div
@@ -97,7 +97,7 @@
   <BrowserService Ref="browser" title="{R.name ?? 'Project'}" />
   <LocationHashService Ref="hash" />
   <StoredData name="shellState" defaults="{R.ide.defaultState}" data-showHtml="{showHtml}" data-darkMode="{darkMode}"
-    data-locale="{locale}" data-viewportSize="{viewportSize}" action="-> *" />
+    data-locale="{locale}" data-viewportSize="{viewportSize}" action="->" />
 
   <Connector Ref="current" />
 

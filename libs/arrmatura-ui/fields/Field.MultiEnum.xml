@@ -3,7 +3,7 @@
   <component id="FieldMultiEnum.Appender">
     <div class="relative">
       <Chip class="mb-1">
-        <div class="cursor-pointer px-1" data-opened="{!opened}" click="-> *">{opened ? '✖️':'➕'}</div>
+        <div class="cursor-pointer px-1" data-opened="{!opened}" click="->">{opened ? '✖️':'➕'}</div>
       </Chip>
       <FieldMultiEnum.Options caption="{caption}" options="{options}" close="-> opened=false"
         If="opened && options.length" />
@@ -11,7 +11,7 @@
   </component>
 
   <component id="FieldMultiEnum.Options">
-    <Connector data-filtered="{options | filterByKeyword:kliuq}" change="-> *" />
+    <Connector data-filtered="{options | filterByKeyword:kliuq}" change="->" />
     <DropdownOptionsList caption="{caption}" side="right" noBackdrop="true" options="{filtered}" close="{close}"
       itemClick="-> ctrl.toggleAndClearKliuq" multiItemClick="-> ctrl.toggle">
 

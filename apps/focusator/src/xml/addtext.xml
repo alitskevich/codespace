@@ -1,0 +1,59 @@
+<components>
+  <component id="Page.AddText">
+    <BrowserService Ref="browser" title="{R.name}" />
+    <SimpleWordsStore Ref="words" />
+    <Header />
+
+    <Connector data="<-words.word" change="-> value" />
+
+    <div class="w-full flex flex-col flex-1 p-20 rounded-md pt-40 border-1 border-gray-200">
+      <div class="prev-item flex items-center justify-center text-2xl">
+        <span>pre</span>
+      </div>
+      <div class="cur-item flex flex-1 items-center justify-center text-4xl">
+        <Btn class="flex-start !text-5xl" title="🤔" action="-> words.determineWord()" />
+        <div class="flex items-center justify-center flex-1">
+          <span class="pr-2" Each="w of value.names">{w.id}</span>
+        </div>
+        <Btn class="flex-start !text-5xl" title="👍" action="-> words.determineWord()" />
+      </div>
+      <div class="next-item flex items-center justify-center text-2xl">
+        <span>next</span>
+      </div>
+    </div>
+
+    <AddText />
+
+  </component>
+
+  <component id="AddText">
+
+    <StoredValue Ref="text" defaultValue="{R.samples.text1}" />
+
+    <Connector trigger="{counter}" data="{R.samples.text1}" change="-> words.uploadText(data|log)" />
+    <Connector trigger="{counter}" change="-> opened=false" />
+
+    <StoredValue Ref="fromClipboard" defaultValue="<-browser.fromClipboard" persistence="inmemory" />
+
+    <FAB class="select-none" mode="primary" title="+" action="-> opened=true" />
+    <Modal open="{opened}" If="opened" close="-> opened=false" class="top-12">
+      <Modal:header>
+        <div class="flex justify-between items-center w-full pr-4">
+          <h3 class="text-xl font-semibold text-sky-500">Input a new text{counter}</h3>
+          <Btn title="Paste" action="-> text.value=fromClipboard.value" />
+        </div>
+      </Modal:header>
+      <div>
+        <textarea autofocus class="input px-2 w-full" style="min-height:16rem;" change="-> text.value=data.value"
+          value="<-text.value"></textarea>
+      </div>
+      <Modal:footer>
+        <div class="flex justify-between w-full">
+          <FieldHint class="mt-4 flex-1" value="{hint}" />
+          <Btn class="" mode="primary" title="OK" action="-> counter = 0 || counter | increment" />
+        </div>
+      </Modal:footer>
+    </Modal>
+  </component>
+
+</components>

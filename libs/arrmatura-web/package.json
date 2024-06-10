@@ -5,11 +5,18 @@
   "author": "alitskevich@gmail.com",
   "license": "ISC",
   "type": "module",
-  "module": "index.ts",
+  "exports": {
+    "import": "./index.ts",
+    "require": "./dist/index.js"
+  },
   "files": [
-    "src/**/*"
+    "src",
+    "dist",
+    "index.ts",
+    "types.ts"
   ],
   "scripts": {
+    "esbuild": "esbuild index.ts --bundle --outdir=./dist --platform=browser --format=esm --sourcemap --target=esnext --external:* --minify",
     "pnpm:publish": "pnpm publish --no-git-checks",
     "run:todo": "cd samples/todo && parcel"
   },

@@ -1,34 +1,30 @@
 import defaults from "arrmatura-ui/resources";
 
 import assets from "../assets";
-import pictureUrl from "../assets/jumbo3.webp";
-import logoUrl from "../assets/logo.svg";
 
-import { addNextIds } from "./utils/addNextIds";
-import { toColor, toColorText } from "./utils/color";
-import { idiomsHash } from "./utils/idiomsHash";
+import { functions } from "./utils/functions";
 import { initialData } from "./utils/initialData";
-import { parseText } from "./utils/parser";
-
-// resource bundle: strings, metadata, pipes functions
-const functions = {
-  toColor, toColorText, parseText, idiomsHash, addNextIds
-};
 
 export const resources = {
   ...defaults,
-  name: "Focusator",
+  name: "10ACE",
   app: {
     hint: "Paste here any text you want and tap red button.",
     hint2: "Enjoy reading and pick up unknown words. You can review all of them at once on the 'Review' page",
     lemmaUrl: "https://docs.google.com/spreadsheets/d/1JenJOLO0GJSPlpwl0sTeaU5xVBr8SMqBtMN1ehgjXLI/edit#gid=1464289509",
     dictionaryUrl: "https://www.merriam-webster.com/dictionary/",
-    copy: "© 2023, Arrmatura. All rights reserved.",
+    copy: "© 2024, 10ACE. All rights reserved.",
     slogan: "Learn as you go",
     overview: `Pick up a new words from any text, hone with your own vocabulary and see how well you progress!`,
-    logoUrl,
-    pictureUrl
+    logoUrl: assets.logo,
+    pictureUrl: assets.picture
   },
+  nav: [
+    { id: "addText", name: "Explore", caption: "Explore new words" },
+    { id: "quiz", name: "Practice", caption: "Practice until confident." },
+    { id: "ctest", name: "Train", caption: "Train until done." },
+    { id: "mywords", name: "Revise", caption: "Revise wordbank." },
+  ],
   functions,
   assets,
   strings: {
@@ -36,7 +32,10 @@ export const resources = {
     nextQuestion: "Next Question",
     congratTitle: "Your statistics",
     congratButtonTitle: "Submit",
-    textSample: `An element will only render something when a texture is defined. A texture is rendered as a background, and the children are rendered in front of it.
+  },
+  samples: {
+    text1: "Explore the impact of generative AI on software development methodologies, from traditional processes to the challenges and benefits of using AI tools. Dive into the evolution of roles in the AI space and the potential blending of roles with virtual agents. Discover practical AI applications, automation of routine tasks, and testing AI capabilities with different currencies. Learn about the importance of aligning organizational beliefs with client pitches and mastering wave two and three approaches for increased productivity. Join the discussion on workflow, collaboration, change management, and adoption of new tools, with a focus on empowering users and driving adoption and trust in tools. Don't miss out on this insightful exploration of the future of AI in software development.",
+    text2: `An element will only render something when a texture is defined. A texture is rendered as a background, and the children are rendered in front of it.
       The easiest way to define a texture is by specifying one of the following shorthand properties:`,
   },
   db: {

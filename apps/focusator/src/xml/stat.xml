@@ -11,10 +11,8 @@
           <hr class="w-full h-1 border-1 border-zinc-400" />
           <ResultsReport data="<-quiz.report" />
         </div>
-
       </div>
     </component>
-
 
     <component id="ResultsReport">
       <div class="flex flex-col gap-2 max-w-fit">

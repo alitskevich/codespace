@@ -57,7 +57,7 @@
 <component id="TableRow">
   <div class="grid grid-cols-subgrid gap-0 col-span-full">
     <div class="border border-dotted border-gray-400
-      sticky left-0 bg-gray-300 dark:bg-gray-700 snap-start flex items-start p-2 justify-center" click="-> *">
+      sticky left-0 bg-gray-300 dark:bg-gray-700 snap-start flex items-start p-2 justify-center" click="->">
       <input type="checkbox" />
     </div>
     <div class="border border-dotted 

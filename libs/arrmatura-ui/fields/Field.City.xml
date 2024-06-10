@@ -1,10 +1,10 @@
 <component id="Field.City">
 
-  <Connector data-country="{data|dot:typeSpec}" change="-> *" />
+  <Connector data-country="{data|dot:typeSpec}" change="->" />
 
   <Connector data-value="{R.enums.city|find:value|dot:'type' ?? country}" change="onChangeFor|dot:typeSpec" />
 
-  <Connector data-citiesByCountry="{R.enums.city|filter:'type': country}" change="-> *" />
+  <Connector data-citiesByCountry="{R.enums.city|filter:'type': country}" change="->" />
 
   <TagsValueController Ref="ctrl" value="{value}" options="citiesByCountry.length ? citiesByCountry : {R.enums.city}"
     change="{onChange}" disabled="{disabled}" />

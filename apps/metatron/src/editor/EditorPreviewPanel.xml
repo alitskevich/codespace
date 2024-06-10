@@ -1,6 +1,6 @@
 <component id="EditorPreviewPanel">
   <StoredData name="settings" defaults="{R.ide.defaultState}" data-darkMode="{darkMode}" data-locale="{locale}"
-    data-viewportSize="{viewportSize}" action="-> *" />
+    data-viewportSize="{viewportSize}" action="->" />
 
   <PostMessageReceiver onMessage="-> current.entityReady" eventType="previewReady" />
   <PostMessageReceiver onMessage="-> browser.hash" eventType="selectElement" />

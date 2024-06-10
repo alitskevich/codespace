@@ -1,6 +1,6 @@
 import { Component } from "arrmatura-web";
 
-export class QuizService extends Component {
+export class CTestService extends Component {
   #step = 0;
   state = {};
   quiz: any[] = [];

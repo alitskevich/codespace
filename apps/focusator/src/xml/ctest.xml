@@ -94,13 +94,6 @@
     </div>
   </component>
 
-  <component id="AppTitle">
-    <div class="flex flex-row centroid gap-2 h-8 text-lg">
-      <!-- <img src="{R.assets.football}" style="transform: rotate({step|multiply:180}deg); transition: transform 1s;" /> -->
-      <div>{R.name}</div>
-    </div>
-  </component>
-
   <component id="Nav">
     <div class="h-8 w-28 flex flex-row items-center">
       <Fragment If="step > -1">

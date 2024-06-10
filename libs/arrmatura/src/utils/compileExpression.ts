@@ -127,7 +127,7 @@ const compileArgument = (a: string, strings?: string[]) => {
 };
 
 const splitExpression = (v: ExpressionText) =>
-  v
+  v.trim()
     .replace(/(&&|!=|==|>|<|\[|\]|\|\||\?\??)/g, (_, s) => `${OP_SHORTCUTS[s]}`)
     .split("|")
     .map((s) => s.trim());
@@ -179,6 +179,10 @@ function withHardValue(hardValue: ExpressionText, pipec: PipeFn): PipeFn {
 
   if (hardValue.startsWith('*.')) {
     const propKey = hardValue.slice(2)
+    return (c: IArrmatron, ini: any) => pipec(c, gettus(ini, propKey));
+  }
+  if (hardValue.startsWith('data.')) {
+    const propKey = hardValue.slice(5)
     return (c: IArrmatron, ini: any) => pipec(c, gettus(ini, propKey));
   }
 

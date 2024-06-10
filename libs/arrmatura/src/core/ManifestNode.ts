@@ -124,7 +124,7 @@ export abstract class ManifestNode implements IManifestNode {
         if (v[0] === "<" && v[1] === "-") {
           this.addConnector(v.slice(2), k);
         } else if (v[0] === "-" && v[1] === ">") {
-          this.addEmitter(v.slice(2), k);
+          this.addEmitter(v.slice(2).trim() || "*", k);
         } else if (v[0] === "d" && v.startsWith("data->")) {
           this.addEmitter(v.slice(6), k);
         } else {

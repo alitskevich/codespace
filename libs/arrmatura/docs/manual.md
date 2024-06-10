@@ -144,15 +144,13 @@ Right arrow creates a function, that
 
 > `click="-> opened"` if `ref` is omitted, then a target will be a scope component `scope.up({opened:data})`
 
-> `click="-> *"` will spread data to state of a scope component `scope.up(data)`
+> `click="->"` spreads data to state of a scope component `scope.up(data)`
 
-#### Right arrows with inline payload
+- `click="data-> * = data | assignKeyValue:'key':value"` updates a scope properties with result of `assignKeyValue` function on `data` object and other args.
 
-Often, it is shorter to pass payload inline instead of using `data` property.
+- `click="-> prop" data="{data}"` updates a `prop` property with `data` object.
 
-- `click="data-> * = data | assignKeyValue:'key':value"` updates a scope properties with `data` object.
-- `click="-> prop" data="data"` updates a given scope property of owner with `data` object.
-- `click="-> prop='literalValue'"` updates a given scope property of owner with literal.
+- `click="-> prop='literalValue'"` updates a given scope property with literal.
 
 ## Connector
 

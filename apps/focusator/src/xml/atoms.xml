@@ -1,13 +1,5 @@
 <components>
 
-  <component id="Panel">
-    <div class="{R.styles.card} lg:flex-1 flex flex-col items-stretch gap-4 min-h-max
-     border-neutral-500 bg-slate-900 rounded-md p-4">
-      <h3 class="text-lg flex-1 text-center">{caption}</h3>
-      <Slot />
-    </div>
-  </component>
-
   <component id="IdiomView">
     <div class="flex flex-col gap-1 {class}" data-text="{item|dot:language}" click="-> speech.textToSpeech()">
       <h3 class="text-sm flex-1 text-left">{item.id}</h3>

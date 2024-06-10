@@ -11,7 +11,7 @@
 
   <NewItemController Ref="newItem" initialData="{R.defaults.newItem}" />
 
-  <Connector data="<-items.info" change="-> *" />
+  <Connector data="<-items.info" change="->" />
 
   <Container class="absolute" If="!itemId">
     <FAB tooltip="{R.strings.add_a_new_item}" action="-> newItem.showModal=true" />

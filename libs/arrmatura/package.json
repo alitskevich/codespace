@@ -1,17 +1,23 @@
 {
   "name": "arrmatura",
-  "version": "6.3.1",
+  "version": "6.3.2",
   "description": "Arrmatura runtime engine",
   "author": "alitskevich@gmail.com",
   "license": "ISC",
   "type": "module",
-  "main": "./index.ts",
+  "exports": {
+    "import": "./index.ts",
+    "require": "./dist/index.js"
+  },
   "files": [
     "src",
+    "dist",
+    "index.ts",
     "types.ts",
     "docs/**/*"
   ],
   "scripts": {
+    "esbuild": "esbuild index.ts --bundle --outdir=./dist --platform=browser --format=esm --sourcemap --target=esnext --external:* --minify",
     "pnpm:publish": "pnpm publish --no-git-checks"
   },
   "dependencies": {

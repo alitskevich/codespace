@@ -1,0 +1,33 @@
+<components>
+
+  <component id="Header">
+    <DarkModeService Ref="dark" />
+    <nav class="bg-gray-300 dark:bg-gray-800 block w-full absolute h-20 " id="top">
+      <Container class="p-4 flex w-full">
+        <div class="flex flex-1 items-center justify-between">
+          <div class="flex items-center gap-4 justify-start">
+            <a href="#/main">
+              <Logo />
+            </a>
+            <div class="flex items-center gap-2 md:block hidden">
+              <NavLink id="{nav.id}" name="{nav.name}" Each="nav of R.nav" />
+            </div>
+          </div>
+          <div class="flex items-center justify-end gap-4">
+            <DarkModeToggler value="<-dark.isDarkMode" on="-> dark.toggle()" />
+            <Dropdown options="{R.enums.languages}" change="data-> language.value=data.value"
+              value="<-language.value" />
+            <!-- <Dropdown options="<-speech.currentVoices" change="-> speech.voiceId=data.value" value="<-speech.voiceId" /> -->
+            <Dropdown options="{R.enums.levels}" change="-> level.value=data.value" value="<-level.value" />
+          </div>
+        </div>
+      </Container>
+    </nav>
+  </component>
+
+  <component id="NavLink">
+    <a href="#/{id}"
+      class="text-lg py-2 px-1 font-medium rounded-sm target:bg-slate-700 text-orange-600 hover:underline">{name}</a>
+  </component>
+
+</components>

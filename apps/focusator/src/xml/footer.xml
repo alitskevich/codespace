@@ -1,0 +1,44 @@
+<component id="Footer">
+  <footer class="relative mt-4  px-8 bg-gradient-to-b from-gray-200 dark:from-gray-800 to-40%">
+    <div class="pt-16  dark:border-gray-800 ">
+
+      <div class="max-w-6xl mx-auto pb-6 gap-x-8 items-start justify-between flex-wrap sm:flex">
+        <div class="max-w-xs flex-1 flex flex-col items-center text-center">
+          <div class="logo select-none m-4 font-bold text-5xl md:text-7xl">{R.name}</div>
+          <!-- <img alt="logo" loading="lazy" width="131" height="57" decoding="async" data-nimg="1" src="{R.app.logoUrl}"
+            style="color: transparent;"> -->
+        </div>
+        <div class="flex-1 mt-4 flex flex-wrap gap-4 sm:justify-end sm:mt-0">
+          <ul class="flex-grow max-w-[15rem] space-y-2">
+            <li class="text-gray-800 dark:text-gray-50 font-medium uppercase">Resources</li>
+            <li class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 duration-150">
+              <a class="block sm:inline-block" href="/demo">Demo</a>
+            </li>
+            <li class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 duration-150">
+              <a target="_source"></a>
+              <a class="block sm:inline-block" href="{R.app.lemmaUrl}">Lemma</a>
+
+            </li>
+
+            <li class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 duration-150">
+              <a class="block sm:inline-block" href="/blog">Blog</a>
+            </li>
+          </ul>
+          <ul class="space-y-2">
+            <li class="text-gray-800 dark:text-gray-50 font-medium uppercase">Tools</li>
+            <li class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 duration-150">
+              <a target="_blank" class="block" href="https://www.npmjs.com/package/arrmatura">Platform</a>
+            </li>
+
+            <li class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 duration-150">
+              <a target="_blank" class="block" href="https://emojis-list.web.app/">Emojis</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="max-w-screen border-t dark:border-gray-800 py-6">
+        <LegalAttribution />
+      </div>
+    </div>
+  </footer>
+</component>

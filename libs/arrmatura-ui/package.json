@@ -5,9 +5,20 @@
   "author": "alitskevich",
   "license": "MIT",
   "type": "module",
-  "main": "index.ts",
+  "exports": {
+    "import": "./index.ts",
+    "default": "./dist/index.js"
+  },
+  "files": [
+    "src",
+    "dist",
+    "index.ts",
+    "types.ts",
+    "docs/**/*"
+  ],
   "scripts": {
-    "build:index": "bun --watch run makeIndex.ts"
+    "esbuild": "parcel build",
+    "pnpm:publish": "pnpm publish --no-git-checks"
   },
   "dependencies": {
     "arrmatura": "workspace:*",

@@ -90,7 +90,7 @@
         <button If="completed" class="destroy" data-id="{id}" click="-> todo.rm()"></button>
       </div>
       <input type="text" class="edit" value="{name}" data-editing="false" data-id="{id}" enter="-> todo.save()"
-        blur="-> *" />
+        blur="->" />
     </li>
   </component>
 

@@ -1,16 +1,23 @@
 {
   "name": "ultimus",
-  "version": "2.1.9",
-  "description": "Ultimus is a TS library about manipulating with strings, objects, functions, arrays, dates, xml, urls, etc",
+  "version": "2.1.10",
+  "description": "Ultimus is an general-purpose utility library to manipulate with common primitives",
   "author": "alitskevich@gmail.com",
   "license": "ISC",
   "type": "module",
   "main": "./index.ts",
+  "exports": {
+    "import": "./index.ts",
+    "require": "./dist/index.js"
+  },
   "files": [
     "src",
+    "dist",
+    "index.ts",
     "types.ts"
   ],
   "scripts": {
+    "esbuild": "esbuild index.ts --bundle --outdir=./dist --platform=browser --format=esm --sourcemap --target=esnext --external:* --minify",
     "pnpm:publish": "pnpm publish --no-git-checks"
   }
 }

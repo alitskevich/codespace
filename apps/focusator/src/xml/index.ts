@@ -12,6 +12,6 @@ import main from "./main.xml";
 import mywords from "./mywords.xml";
 import quiz from "./quiz.xml";
 // import stat from "./stat.xml";
-// import text from "./text.xml";
+import text from "./text.xml";
 
-export const templates = [app, addText, atoms, ctest, interview, branding, header, footer, main, mywords, idioms, quiz];
+export const templates = [app, addText, text, atoms, ctest, interview, branding, header, footer, main, mywords, idioms, quiz];

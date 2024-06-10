@@ -1,6 +1,7 @@
 
 export type Stemm = {
   id: string,
+  name: string,
   names: Record<string, number>,
 }
 

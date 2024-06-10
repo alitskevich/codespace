@@ -38,6 +38,10 @@ export class DomElement implements IComponent, IElement {
     this.$element?.parentElement?.removeChild(this.$element);
   }
 
+  defer(fn) {
+    this.$.defer(fn);
+  }
+
   __stateChanged(changes: Map<string, any>) {
     changes.forEach((value, key) => {
       if (key[0] === "$") return;

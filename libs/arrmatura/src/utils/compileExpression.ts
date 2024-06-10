@@ -175,7 +175,7 @@ function withPipes(pipes: string[]) {
 }
 
 function withHardValue(hardValue: ExpressionText, pipec: PipeFn): PipeFn {
-  if (!hardValue || hardValue === '*') return pipec;
+  if (!hardValue || hardValue === '*' || hardValue === 'data') return pipec;
 
   if (hardValue.startsWith('*.')) {
     const propKey = hardValue.slice(2)

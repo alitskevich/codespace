@@ -1,7 +1,6 @@
 import ui from "arrmatura-ui";
 
-import { services } from "./services";
+import * as services from "./services";
 import { templates } from "./xml";
 
-
-export const components = [...ui, ...templates, ...services];
+export const components = [...ui, ...templates, ...Object.values(services)];

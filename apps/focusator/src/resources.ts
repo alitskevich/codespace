@@ -2,7 +2,7 @@ import defaults from "arrmatura-ui/resources";
 
 import assets from "../assets";
 
-import { functions } from "./utils/functions";
+import * as functions from "./utils/functions";
 import { initialData } from "./utils/initialData";
 
 export const resources = {
@@ -20,8 +20,8 @@ export const resources = {
     pictureUrl: assets.picture
   },
   nav: [
-    { id: "addText", name: "Explore", caption: "Explore new words" },
-    { id: "quiz", name: "Practice", caption: "Practice until confident." },
+    { id: "addText", name: "Upload", caption: "Add a new text" },
+    { id: "quiz", name: "Quiz", caption: "Practice until confident." },
     { id: "ctest", name: "Train", caption: "Train until done." },
     { id: "mywords", name: "Revise", caption: "Revise wordbank." },
   ],

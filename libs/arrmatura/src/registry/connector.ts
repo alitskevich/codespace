@@ -7,8 +7,6 @@ import { objectFingerprint } from "../utils/FingerprintMashine";
 class Connector extends Arrmatron<ConnectorNode> {
   prevkey: any;
 
-  counter = 0;
-
   /**
    * Triggers an with changes after a specified timeout.
    *

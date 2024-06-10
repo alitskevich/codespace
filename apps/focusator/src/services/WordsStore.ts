@@ -1,7 +1,7 @@
 import { StoredData } from "arrmatura-ui/commons/StoredData";
 import { arraySortBy } from "ultimus";
 
-import { parseText } from "../utils/parser";
+import { parseText } from "../utils/parseText";
 
 // service component
 export class WordsStore extends StoredData {

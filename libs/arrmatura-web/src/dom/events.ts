@@ -1,3 +1,4 @@
+import { debounce } from "ultimus";
 import type { Hash } from "ultimus/types";
 
 import type { DomNode, IElement, MyTouchEvent } from "../../types";
@@ -30,20 +31,12 @@ export const LISTENERS: Hash<($: IElement, e: DomNode, v: unknown) => void> = {
       { capture: true }
     ),
   contentEditable: ($, e) => {
-    // editable.addEventListener("DOMNodeInserted", listener, false);
-    // editable.addEventListener("DOMNodeRemoved", listener, false);
-    // editable.addEventListener("DOMCharacterDataModified", listener, false);
     e.contentEditable = "true";
-    setEventListener($, "contentEditable:input", (domEvent: Event) => {
-      $.contentEditable?.({ ...e.$dataset, domEvent, value: e.innerHTML });
+    setEventListener($, "contentEditable:input", debounce((domEvent: Event) => {
+      $.contentEditable?.({ ...e.$dataset, domEvent, value: e.innerHTML, text: e.innerText });
       domEvent.preventDefault();
       return false;
-    });
-    setEventListener($, "contentEditable:click", (domEvent: Event) => {
-      $.contentEditable?.({ ...e.$dataset, domEvent, value: e.innerHTML });
-      domEvent.preventDefault();
-      return false;
-    });
+    }, 330));
   },
   toggleClass: ($, e) =>
     setEventListener(

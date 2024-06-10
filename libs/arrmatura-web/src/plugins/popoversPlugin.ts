@@ -55,8 +55,8 @@ export const popoversPlugin = {
       return false;
     }
 
-    document.addEventListener("touchstart", debounce(handlerIn, 50), true)
-    document.addEventListener("mousedown", debounce(handlerIn, 50), true)
+    document.addEventListener("touchstart", debounce(handlerIn, 10), true)
+    document.addEventListener("mousedown", debounce(handlerIn, 10), true)
   }
 
 }

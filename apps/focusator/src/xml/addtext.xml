@@ -1,36 +1,47 @@
 <components>
   <component id="Page.AddText">
     <BrowserService Ref="browser" title="{R.name}" />
-    <SimpleWordsStore Ref="words" />
+    <UploaderService Ref="uploader" />
     <Header />
 
-    <Connector data="<-words.word" change="-> value" />
+    <Connector data="{R.samples.text1}" change="data-> uploader.uploadText(data)" />
 
-    <div class="w-full flex flex-col flex-1 p-20 rounded-md pt-40 border-1 border-gray-200">
-      <div class="prev-item flex items-center justify-center text-2xl">
-        <span>pre</span>
+    <!-- <Connector data="<-uploader.word" change="-> value" /> -->
+
+    <div class="w-full h-full flex items-stretch p-4 gap-4 pt-[6rem]">
+      <div class="{R.styles.card} flex flex-wrap text-2xl w-[20rem] overflow-y-auto h-full gap-2 space-y-2">
+        <Word Each="item of <-uploader.list" item="{item}" />
       </div>
-      <div class="cur-item flex flex-1 items-center justify-center text-4xl">
-        <Btn class="flex-start !text-5xl" title="🤔" action="-> words.determineWord()" />
-        <div class="flex items-center justify-center flex-1">
-          <span class="pr-2" Each="w of value.names">{w.id}</span>
-        </div>
-        <Btn class="flex-start !text-5xl" title="👍" action="-> words.determineWord()" />
+      <!-- <Btn class="flex-start !text-xl" title="🤔" action="-> uploader.determineWord()" /> -->
+      <div class="flex-1">
+        <MarkedText data="<-uploader.parsequence" class="flex-1 overflow-y-auto !text-xl" />
+        <!-- <Word item="{word}" Each="word of <-uploader.parsequence" /> -->
       </div>
+      <!-- <Btn class="flex-start !text-5xl" title="👍" action="-> uploader.determineWord()" /> -->
       <div class="next-item flex items-center justify-center text-2xl">
-        <span>next</span>
+        <!-- <span>next</span> -->
       </div>
     </div>
-
     <AddText />
 
   </component>
 
+  <component id="Word">
+    <div class="relative inline-block" click="-> expanded=!expanded">
+      <span data="{item}"
+        class="border-dotted hover:border border-gray-500 p-1 
+          leading-8 rounded-md bg-neutral-200
+          cursor-pointer
+          {item.type == 'word' ? 'word' :''} word-{item.acquired} text-{item.stemm.acquired|toColorText}-700">{item.name}
+      </span>
+      <Tooltip data="{item}" If="expanded" close="-> expanded=false" />
+    </div>
+  </component>
   <component id="AddText">
 
     <StoredValue Ref="text" defaultValue="{R.samples.text1}" />
 
-    <Connector trigger="{counter}" data="{R.samples.text1}" change="-> words.uploadText(data|log)" />
+    <Connector trigger="{counter}" data="<-text.value" change="data-> uploader.uploadText(data)" />
     <Connector trigger="{counter}" change="-> opened=false" />
 
     <StoredValue Ref="fromClipboard" defaultValue="<-browser.fromClipboard" persistence="inmemory" />
@@ -39,7 +50,7 @@
     <Modal open="{opened}" If="opened" close="-> opened=false" class="top-12">
       <Modal:header>
         <div class="flex justify-between items-center w-full pr-4">
-          <h3 class="text-xl font-semibold text-sky-500">Input a new text{counter}</h3>
+          <h3 class="text-xl font-semibold text-sky-500">Input a new text</h3>
           <Btn title="Paste" action="-> text.value=fromClipboard.value" />
         </div>
       </Modal:header>
@@ -50,7 +61,7 @@
       <Modal:footer>
         <div class="flex justify-between w-full">
           <FieldHint class="mt-4 flex-1" value="{hint}" />
-          <Btn class="" mode="primary" title="OK" action="-> counter = 0 || counter | increment" />
+          <Btn class="" mode="primary" title="OK" action="-> counter = counter ?? 0 | increment" />
         </div>
       </Modal:footer>
     </Modal>

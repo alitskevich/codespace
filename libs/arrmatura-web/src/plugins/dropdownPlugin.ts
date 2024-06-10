@@ -30,6 +30,8 @@ function syncDropdownPosition() {
   }
   popStyle.position = 'fixed';
   popStyle.zIndex = '100';
+
+  setTimeout(() => requestAnimationFrame(syncDropdownPosition), 10);
 }
 
 const dropdown = ($: IElement, element: DomNode): void => {
@@ -47,8 +49,6 @@ const dropdown = ($: IElement, element: DomNode): void => {
     if (portal === element.parentElement) return;
     if (currentDropdown?.$.uid === $.$.uid) return;
 
-    // currentDropdown?.dropdown();
-
     currentDropdown = $;
     currentDropdown.originalParent = parent;
     if (portal !== element.parentElement) {
@@ -60,7 +60,7 @@ const dropdown = ($: IElement, element: DomNode): void => {
     popStyle.left = '-10000px';
     popStyle.top = '-10000px';
     popStyle.display = 'block';
-    syncDropdownPosition()
+    syncDropdownPosition();
   };
 };
 
@@ -76,19 +76,16 @@ function autoCloseCurrentDropdownOnClickOutside(event) {
 }
 
 const handler = debounce(autoCloseCurrentDropdownOnClickOutside, 10);
-let timer;
 
 export const dropdownPlugin = {
+
   init(platform: IWebPlatform) {
-    platform.addElementAttributeSetters({ dropdown })
+    platform.addElementAttributeSetters({ dropdown });
     document.addEventListener("touchstart", handler, { capture: true })
     document.addEventListener("mousedown", handler, { capture: true })
-    timer = setInterval(syncDropdownPosition, 500);
   },
   done() {
     document.removeEventListener("touchstart", handler)
     document.removeEventListener("mousedown", handler)
-
-    clearInterval(timer);
-  }
+  },
 }

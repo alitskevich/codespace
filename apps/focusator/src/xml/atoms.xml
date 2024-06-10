@@ -8,7 +8,8 @@
   </component>
 
   <component id="MarkedText">
-    <div class="text-black bg-white dark:bg-slate-200 w-full rounded-lg p-2 {class}">
+    <div contentEditable="data-> editedText=data.text|log"
+      class="text-black bg-white dark:bg-slate-200 w-full rounded-lg p-2 {class}">
       <Dynamic As="Token.{item.type}" item="{item}" Each="item of data" />
     </div>
   </component>
@@ -29,7 +30,7 @@
   </component>
 
   <component id="Tooltip">
-    <div class=" bg-slate-600 p-2 mt-6 max-w-[120px] rounded-lg" style="width: max-content;margin-top:2rem;"
+    <div class=" bg-slate-600 p-2 mt-12 max-w-[120px] rounded-lg" style="width: max-content;margin-top:2rem;"
       dropdown="{close}">
       <div class="flex items-center gap-2 justify-between ">
         <div class="w-6 h-6 bg-{ack.id|toColor}-500 rounded-full z-10" Each="ack of R.enums.acknowledgements"

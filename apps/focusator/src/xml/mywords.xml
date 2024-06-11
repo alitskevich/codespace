@@ -1,20 +1,20 @@
 <component id="Page.Mywords">
   <Header />
-  <div class=" flex-1 flex flex-col items-stretch gap-4">
+  <div class=" flex-1 flex flex-col items-stretch gap-4 pt-20">
     <Tabs items="{R.enums.marks}" change="-> words.mark" value="<-words.mark" />
-    <ResultList data="<-words.textWords" />
+    <MResultList data="<-words.textWords" />
   </div>
   <LegalAttribution />
 </component>
 
-<component id="ResultList">
+<component id="MResultList">
   <div class="flex-1 flex flex-col gap-2 max-w-5xl">
     <div class="grid grid-cols-5 gap-2 max-w-5xl">
-      <ListItem (...)="{item}" Each="item of data">
+      <WListItem (...)="{item}" Each="item of data">
         <div class="w-6 h-6 bg-{ack.id|toColor}-700 rounded-full mx-2" Each="ack of R.enums.acquired"
           data-id="{item.id}" data-acquired="{ack.id}" title="{ack.name}" click="-> words.updateStemmAcquitance()">
         </div>
-      </ListItem>
+      </WListItem>
     </div>
     <Fragment If="!data.length">
       <span>No data.</span>
@@ -22,7 +22,7 @@
   </div>
 </component>
 
-<component id="ListItem">
+<component id="WListItem">
   <div class="w-40 flex">
     <Slot />
   </div>

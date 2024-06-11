@@ -1,4 +1,4 @@
-const colors = ['sky', 'red', 'amber', 'green']
+const colors = ['sky', 'red', 'gray', 'gray']
 export const toColor = (mark: number | string, def = 'black') => {
   return colors[Number(mark) + 2] ?? def
 }

@@ -10,7 +10,7 @@ const auxHash = arrayToObject(aux, e => e);
 
 export const parseText = (_s: string, stemms) => {
   const result: BaseWord[] = []
-  const reWord = /([ñáéóüäß]|[^\d\W])+/gi
+  const reWord = /[a-z]([ñáéóüäß']|[^\d\W])+/gi
   const s = str(_s)
   let nextId = 0
   let lastIndex = 0;

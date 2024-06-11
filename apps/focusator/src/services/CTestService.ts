@@ -1,5 +1,7 @@
 import { Component } from "arrmatura-web";
 
+import { shuffleArray } from "../utils/shuffleArray";
+
 export class CTestService extends Component {
   #step = 0;
   state = {};
@@ -7,6 +9,17 @@ export class CTestService extends Component {
 
   get count() {
     return Number(this.quiz?.length || 0);
+  }
+
+  setData(data) {
+    this.data = data;
+    this.quiz = shuffleArray(data).map((quiz, order) => {
+      const { answer1, answer2, answer3, answer4, ...rest } = quiz;
+      const options = [answer1, answer2, answer3, answer4]
+        .filter(Boolean)
+        .map((name, id) => ({ id: id + 1, name }));
+      return { options, order, ...rest };
+    })
   }
 
   get current() {

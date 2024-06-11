@@ -5,7 +5,6 @@ import ctest from "../../data/ctest.json";
 import idioms from "../../data/idioms.json";
 import interview from "../../data/interview.json";
 
-import { shuffleArray } from "./shuffleArray";
 import { stemm } from "./stemm";
 
 function prepareIdioms() {
@@ -47,11 +46,5 @@ export const initialData = {
   idioms: prepareIdioms,
   concepts: prepareConcepts,
   interview: prepareInterview,
-  ctest: () => shuffleArray(ctest).map((quiz, order) => {
-    const { answer1, answer2, answer3, answer4, ...rest } = quiz;
-    const options = [answer1, answer2, answer3, answer4]
-      .filter(Boolean)
-      .map((name, id) => ({ id: id + 1, name }));
-    return { options, order, ...rest };
-  }),
+  ctest
 }

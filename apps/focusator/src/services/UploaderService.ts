@@ -1,7 +1,7 @@
 import { StoredData } from "arrmatura-ui/commons/StoredData";
 import { arraySortBy } from "ultimus";
 
-import { Stemm } from "../types";
+import { BaseWord, Stemm } from "../types";
 import { parseText } from "../utils/parseText";
 
 // service component
@@ -30,6 +30,15 @@ export class UploaderService extends StoredData {
     // this.listIterator = this.getListIterator()
 
     return { data, text, parsequence }
+  }
+
+  get parsedText(): BaseWord[] {
+    return this.parsequence?.map((e, index, all) => ({
+      ...e,
+      nextId: all[index + 1]?.id ?? null,
+      acquired: this.acquired?.[e.stemm?.id ?? '']?.acquired ?? 0,
+      // idioms: this.idiomsHash?.[stemm(e.id).id] ?? []
+    }));
   }
 
   get list(): Stemm[] {

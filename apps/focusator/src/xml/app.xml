@@ -19,7 +19,7 @@
 
     <Connector Ref="idiomsHash" data="<-db.allIdioms|idiomsHash" />
 
-    <Dynamic As="Page.{route.page| capitalize}" (...)="{route}" />
+    <Dynamic As="Page.{route.page ?? 'Loading' | capitalize}" (...)="{route}" />
 
   </ToastFacility>
 </component>

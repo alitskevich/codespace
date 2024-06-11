@@ -8,7 +8,7 @@
   </component>
 
   <component id="MarkedText">
-    <div contentEditable="data-> editedText=data.text|log"
+    <div contentEditable="data-> editedText=data.text"
       class="text-black bg-white dark:bg-slate-200 w-full rounded-lg p-2 {class}">
       <Dynamic As="Token.{item.type}" item="{item}" Each="item of data" />
     </div>
@@ -21,7 +21,7 @@
   <component id="Token.word">
     <div class="relative inline-block" click="-> expanded=!expanded">
       <span data="{item}"
-        class="border-dotted border hover:border-gray-500 p-1 
+        class="border-dotted border hover:border-gray-500 p-1 -m-1 
         leading-8 rounded-md bg-neutral-200 
         cursor-pointer
         {item.type == 'word' ? 'word' :''} word-{item.acquired} text-{item.stemm.acquired ?? item.acquired|toColorText}-700">{item.name}

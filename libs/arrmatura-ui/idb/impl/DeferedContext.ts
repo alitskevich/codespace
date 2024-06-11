@@ -16,7 +16,11 @@ export class DeferedContext {
       try {
         const r = await fn(this.ctx, resolve, reject);
         if (r !== undefined) {
-          resolve(r);
+          if (r instanceof Promise) {
+            r.then(resolve).catch(reject);
+          } else {
+            resolve(r);
+          }
         }
       } catch (error) {
         reject(error)

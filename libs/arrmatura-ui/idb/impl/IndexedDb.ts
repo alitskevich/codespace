@@ -1,6 +1,6 @@
 import { Hash, mapEntries } from "ultimus";
-import { DeferedContext } from "ultimus/src/exec/DeferedContext";
 
+import { DeferedContext } from "./DeferedContext";
 import { IDB } from "./IDB";
 
 /**
@@ -52,15 +52,15 @@ export class IndexedDb {
             db = request.result;
 
             if (isVersionUpgraded && options.initialData) {
-              await Promise.all(mapEntries(options.stores, async (store) => {
+              mapEntries(options.stores, async (store) => {
                 const ini: any = options.initialData[store];
                 const data = typeof ini === 'function' ? await ini() : ini;
 
                 return this.bulkPut(data, store)
-              }))
+              })
             }
 
-            this.defered.setContext(db);
+            await this.defered.setContext(db);
 
             success({ db, isVersionUpgraded });
           },

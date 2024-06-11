@@ -21,7 +21,7 @@
     </main>
   </component>
 
-  <component id="StepsList">
+  <component id="QStepsList">
     <Progress step="{step}" />
     <div class="flex flex-col flex-1 op" style="position: relative;">
       <QuizItem (...)="{item}" />
@@ -32,7 +32,7 @@
     </div>
   </component>
 
-  <component id="QuizItem">
+  <component id="QQuizItem">
     <div class="p-2 flex flex-col flex-1 quiz revealed">
       <h5 class="hidden text-bold mt-2 p-4 bg-emerald-800 rounded-md" id="explanation" If="explanation">
         <b>💡</b><span class="ml-2">{explanation}</span>
@@ -47,7 +47,7 @@
     </div>
   </component>
 
-  <component id="Input">
+  <component id="QInput">
     <div class="flex flex-col m-2 justify-center items-center">
       <div class="flex flex-row w100 my-2">
         <div class="flex flex-col m-2 flex-1" style="align-items:center;">
@@ -63,7 +63,7 @@
     </div>
   </component>
 
-  <component id="Input.Select">
+  <component id="QInput.Select">
     <div class="flex flex-row gap-3 flex-wrap">
       <div class="flex flex-row flex-1 min-w-fit" Each="option of options">
         <div class="flex flex-row flex-1 p-1 md:p-2 border-2 

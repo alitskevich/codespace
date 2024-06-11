@@ -10,7 +10,7 @@
 
     <div class="w-full h-full grid grid-cols-3 p-4 gap-4 pt-[6rem]">
       <div class="col-span-3">
-        <MarkedText data="<-uploader.parsequence" class="flex-1 overflow-y-auto !text-xl" />
+        <MarkedText data="<-uploader.parsedText" class="flex-1 overflow-y-auto !text-xl" />
       </div>
       <div class="{R.styles.card} overflow-y-auto ">
         <div class="flex items-start flex-wrap text-2xl gap-2">

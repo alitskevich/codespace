@@ -20,10 +20,11 @@
 
   <component id="Token.word">
     <div class="relative inline-block" click="-> expanded=!expanded">
-      <span data="{item}" class="border-dotted hover:border border-gray-500 p-1 
+      <span data="{item}"
+        class="border-dotted border hover:border-gray-500 p-1 
         leading-8 rounded-md bg-neutral-200 
         cursor-pointer
-        {item.type == 'word' ? 'word' :''} word-{item.acquired} text-{item.stemm.acquired|toColorText}-700">{item.name}
+        {item.type == 'word' ? 'word' :''} word-{item.acquired} text-{item.stemm.acquired ?? item.acquired|toColorText}-700">{item.name}
       </span>
       <Tooltip data="{item}" If="expanded" close="-> expanded=false" />
     </div>
@@ -33,8 +34,8 @@
     <div class=" bg-slate-600 p-2 mt-12 max-w-[120px] rounded-lg" style="width: max-content;margin-top:2rem;"
       dropdown="{close}">
       <div class="flex items-center gap-2 justify-between ">
-        <div class="w-6 h-6 bg-{ack.id|toColor}-500 rounded-full z-10" Each="ack of R.enums.acknowledgements"
-          data-id="{data.stemm.id}" data-acquired="{ack.id}" click="-> words.updateStemmAcquitance()">
+        <div class="w-6 h-6 bg-{ack.id|toColor}-500 rounded-full z-10" Each="ack of R.enums.acquired"
+          data-id="{data.stemm.id ?? data.id}" data-acquired="{ack.id}" click="-> words.updateStemmAcquitance()">
         </div>
       </div>
     </div>

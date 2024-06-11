@@ -1,5 +1,7 @@
-import type { DomNode, IElement, IWebPlatform } from "../../types";
-import { setEventListener } from "../utils/setEventListener";
+import { Component } from "arrmatura/src/core/Component";
+
+import { setEventListener } from "../../arrmatura-web/src/utils/setEventListener";
+import type { DomNode, IElement, IWebPlatform } from "../../arrmatura-web/types";
 
 const attrs = {
   draggable: function ($: IElement, elt: DomNode, val) {
@@ -66,8 +68,13 @@ const attrs = {
   },
 };
 
-export const draggingPlugin = {
-  init(platform: IWebPlatform) {
+export class DragPlugin extends Component {
+
+  constructor(ini, $ctx) {
+
+    super(ini, $ctx);
+
+    const platform: IWebPlatform = $ctx.platform;
     platform.addElementAttributeSetters(attrs)
   }
 }

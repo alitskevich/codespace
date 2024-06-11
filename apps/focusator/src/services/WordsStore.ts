@@ -24,12 +24,14 @@ export class WordsStore extends StoredData {
     const { data, parsequence } = this;
     const newWord = { ...data[id], acquired };
     const newData = { ...data, [id]: newWord }
+    this.emit(`db.upsertOptimistic()`, { store: 'acquired', id, acquired })
+
     const newParsequence = (parsequence as any)?.map((st: any) => ({ ...st, stemm: newData[st.stemm?.id] }));
     return { data: newData, parsequence: newParsequence }
   }
 
   updateSentenceAcquitance({ id, acquired }) {
-    this.emit('db.upsert()', { collection: 'acquired', id, acquired })
+    this.emit('db.upsertOptimistic()', { store: 'acquired', id, acquired })
   }
 
   get textWords() {

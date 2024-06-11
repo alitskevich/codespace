@@ -80,6 +80,7 @@ import { MapaelService } from "./map/MapaelService";
 import { LocationHashService } from "./nav/LocationHashService";
 import { NavigationService } from "./nav/NavigationService";
 import navigation from "./nav/navigation.xml";
+import * as commonWebTypes from "./plugins";
 import { Item } from "./support/Item";
 import ToastFacility from "./toast/ToastFacility.xml";
 import ToastList from "./toast/ToastList.xml";
@@ -94,6 +95,7 @@ import ViewModeSelector from "./widgets/ViewModeSelector.xml";
 
 // all componets types:
 export default [
+  ...Object.values(commonWebTypes),
   typography,
   ApiEndpoint,
   AsyncLoader,

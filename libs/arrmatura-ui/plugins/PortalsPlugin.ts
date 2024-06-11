@@ -1,4 +1,6 @@
-import type { DomNode, IElement, IWebPlatform } from "../../types";
+import { Component } from "arrmatura/src/core/Component";
+
+import type { DomNode, IElement, IWebPlatform } from "../../arrmatura-web/types";
 
 const portal = ($: IElement, element: DomNode, portalId: unknown): void => {
   if ($.portal) return;
@@ -19,8 +21,13 @@ const portal = ($: IElement, element: DomNode, portalId: unknown): void => {
   };
 };
 
-export const portalsPlugin = {
-  init(platform: IWebPlatform) {
+export class PortalsPlugin extends Component {
+
+  constructor(ini, $ctx) {
+
+    super(ini, $ctx);
+
+    const platform: IWebPlatform = $ctx.platform;
     platform.addElementAttributeSetters({ portal })
   }
 }

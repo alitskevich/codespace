@@ -1,6 +1,6 @@
 const colors = ['sky', 'red', 'amber', 'green']
 export const toColor = (mark: number | string, def = 'black') => {
-  return colors[Number(mark)] ?? def
+  return colors[Number(mark) + 2] ?? def
 }
 
 export const toColorText = (mark: number | string, def = 'black') => {

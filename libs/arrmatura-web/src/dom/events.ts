@@ -1,9 +1,10 @@
 import { debounce } from "ultimus";
 import type { Hash } from "ultimus/types";
 
-import type { DomNode, IElement, MyTouchEvent } from "../../types";
+import type { DomNode, IElement } from "../../types";
+import { isEltEnabled } from "../utils/isEltEnabled";
 import { setEventListener } from "../utils/setEventListener";
-const isEltEnabled = e => !e.disabled && !e.getAttribute('aria-disabled') && !e.classList.contains("disabled")
+
 export const LISTENERS: Hash<($: IElement, e: DomNode, v: unknown) => void> = {
   click: ($, e) =>
     setEventListener($, "click", (domEvent: Event) => {
@@ -86,20 +87,7 @@ export const LISTENERS: Hash<($: IElement, e: DomNode, v: unknown) => void> = {
       }
       return false;
     }),
-  hover: ($, e) => {
-    setEventListener($, "hover:touchstart", (domEvent: Event) => {
-      if (isEltEnabled(e)) {
-        $.hover?.(e.$dataset ?? {}, domEvent);
-      }
-      return false;
-    });
-    setEventListener($, "hover:mouseover", (domEvent: Event) => {
-      if (isEltEnabled(e)) {
-        $.hover?.(e.$dataset ?? {}, domEvent);
-      }
-      return false;
-    })
-  },
+
 
   keypress: ($, e) =>
     setEventListener($, "keypress:keyup", (ev: KeyboardEvent) => {
@@ -145,44 +133,4 @@ export const LISTENERS: Hash<($: IElement, e: DomNode, v: unknown) => void> = {
         $.scrolledDown?.({ offset }, ev);
       }
     }),
-  mousedown: ($, e) =>
-    setEventListener($, "mousedown", (ev: Event) => {
-      $.mousedown?.({ ...e.$dataset }, ev);
-      return false;
-    }),
-  mouseup: ($, e) =>
-    setEventListener($, "mouseup", (ev: Event) => {
-      $.mouseup?.({ ...e.$dataset }, ev);
-      return false;
-    }),
-  touch: function ($, e) {
-    const data: any = {};
-
-    const h = (stop = false) => {
-      return (ev: MyTouchEvent) => {
-        const xx = ev.pageX || ev.changedTouches?.[0]?.screenX || 0;
-        const yy = ev.pageY || ev.changedTouches?.[0]?.screenY || 0;
-        const dx = data.xx ? data.xx - (data.x || 0) : 0;
-        const dy = data.yy ? data.yy - (data.y || 0) : 0;
-
-        $.touch?.(Object.assign(data, {
-          ...ev,
-          ...e.$dataset,
-          active: !stop,
-          xx,
-          yy,
-          dx,
-          dy,
-        }));
-        return false;
-      };
-    };
-    setEventListener($, "touch:touchstart", h());
-    setEventListener($, "touch:mousedown", h());
-    setEventListener($, "touch:touchcancel", h(true));
-    setEventListener($, "touch:touchend", h(true));
-    setEventListener($, "touch:mouseup", h(true));
-    setEventListener($, "touch:touchmove", h());
-    setEventListener($, "touch:mousemove", h());
-  }
 };

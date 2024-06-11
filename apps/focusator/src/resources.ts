@@ -40,7 +40,7 @@ export const resources = {
   },
   db: {
     name: 'focusator',
-    collections: {
+    stores: {
       concepts: 'id',
       idioms: 'id',
       acquired: 'id',
@@ -57,15 +57,10 @@ export const resources = {
       { id: "4", name: "4" },
       { id: "5", name: "5" },
     ],
-    acknowledgements: [
-      { id: "3", name: "Confident!" },
-      { id: "2", name: "In progress" },
-      { id: "1", name: "Incognito" },
-    ],
     acquired: [
-      { id: "3", name: "Confident!" },
-      { id: "2", name: "In progress" },
-      { id: "1", name: "Incognito" },
+      { id: "-1", name: "Incognito" },
+      { id: "0", name: "In progress" },
+      { id: "1", name: "Confident!" },
     ],
     languages: [
       { id: "en", name: "English" },

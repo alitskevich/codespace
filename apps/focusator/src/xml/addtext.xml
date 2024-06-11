@@ -1,42 +1,49 @@
 <components>
   <component id="Page.AddText">
     <BrowserService Ref="browser" title="{R.name}" />
-    <UploaderService Ref="uploader" />
+    <UploaderService Ref="uploader" acquired="<-db.allAcquired|arrayToObject" />
     <Header />
 
     <Connector data="{R.samples.text1}" change="data-> uploader.uploadText(data)" />
 
     <!-- <Connector data="<-uploader.word" change="-> value" /> -->
 
-    <div class="w-full h-full flex items-stretch p-4 gap-4 pt-[6rem]">
-      <div class="{R.styles.card} flex flex-wrap text-2xl w-[20rem] overflow-y-auto h-full gap-2 space-y-2">
-        <Word Each="item of <-uploader.list" item="{item}" />
-      </div>
-      <!-- <Btn class="flex-start !text-xl" title="🤔" action="-> uploader.determineWord()" /> -->
-      <div class="flex-1">
+    <div class="w-full h-full grid grid-cols-3 p-4 gap-4 pt-[6rem]">
+      <div class="col-span-3">
         <MarkedText data="<-uploader.parsequence" class="flex-1 overflow-y-auto !text-xl" />
-        <!-- <Word item="{word}" Each="word of <-uploader.parsequence" /> -->
       </div>
-      <!-- <Btn class="flex-start !text-5xl" title="👍" action="-> uploader.determineWord()" /> -->
-      <div class="next-item flex items-center justify-center text-2xl">
-        <!-- <span>next</span> -->
+      <div class="{R.styles.card} overflow-y-auto ">
+        <div class="flex items-start flex-wrap text-2xl gap-2">
+          <Word Each="item of <-uploader.list|filter:'acquired':-1" item="{item}" />
+        </div>
+      </div>
+      <div class="{R.styles.card} overflow-y-auto ">
+        <div class="flex items-start flex-wrap text-2xl gap-2">
+          <Word Each="item of <-uploader.list|filter:'acquired':0" item="{item}" />
+        </div>
+      </div>
+      <div class="{R.styles.card} overflow-y-auto ">
+        <div class="flex items-start flex-wrap text-2xl gap-2">
+          <Word Each="item of <-uploader.list|filter:'acquired':1" item="{item}" />
+        </div>
       </div>
     </div>
-    <AddText />
 
+    <AddText />
   </component>
 
   <component id="Word">
-    <div class="relative inline-block" click="-> expanded=!expanded">
-      <span data="{item}"
-        class="border-dotted hover:border border-gray-500 p-1 
+    <div class="relative inline-block mb-2" click="-> expanded=true">
+      <span data="{item}" class="border-dotted border hover:border-gray-500 p-1 
           leading-8 rounded-md bg-neutral-200
           cursor-pointer
-          {item.type == 'word' ? 'word' :''} word-{item.acquired} text-{item.stemm.acquired|toColorText}-700">{item.name}
+          {item.type == 'word' ? 'word' :''} word-{item.acquired} text-{item.acquired|toColorText}-700">{item.name}
       </span>
       <Tooltip data="{item}" If="expanded" close="-> expanded=false" />
     </div>
   </component>
+
+
   <component id="AddText">
 
     <StoredValue Ref="text" defaultValue="{R.samples.text1}" />

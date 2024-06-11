@@ -27,27 +27,13 @@ export class WebPlatform implements IWebPlatform {
   compiledTemplates = new Map<string | XmlNode | XmlNode[], IManifestNode | Map<Uid, IManifestNode>>();
   private readonly resources: Hash<any> = {}
 
-  constructor(root: ShadowRoot | HTMLElement | string = "root", resources: Hash<any> = {}, private readonly plugins?: Array<any>) {
+  constructor(root: ShadowRoot | HTMLElement | string = "root", resources: Hash<any> = {}) {
     if (typeof root === "string") {
       root = document.getElementById(root) ?? window.document.body;
     }
     this.rootElement = root || window.document.body;
 
     this.updateResources(resources);
-  }
-
-  eachPlugin(key: string, value?: any) {
-    this.plugins?.forEach((plugin) => {
-      plugin[key]?.(this, value);
-    });
-  }
-
-  init() {
-    this.eachPlugin('init');
-  }
-
-  done() {
-    this.eachPlugin('done');
   }
 
   registerTypes(types?: any[]) {

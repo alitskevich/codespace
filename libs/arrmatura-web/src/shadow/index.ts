@@ -3,7 +3,7 @@ import { IArrmatron } from "arrmatura/types";
 import * as lib from "ultimus";
 
 import { LaunchWebOptions } from "../../types";
-import { WebPlatform } from "../platform";
+import { WebPlatform } from "../WebPlatform";
 
 export function defineCustomElement(
   config: LaunchWebOptions & {

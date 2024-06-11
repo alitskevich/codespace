@@ -1,4 +1,5 @@
 <component id="App">
+  <DropdownsPlugin />
   <ToastFacility>
     <StoredValue Ref="language" defaultValue="en" />
     <StoredValue Ref="level" defaultValue="500" />
@@ -11,12 +12,12 @@
 
     <IndexedDbService Ref="db" (...)="{R.db}" />
 
-    <WordsStore Ref="words" concepts="<-db.dataConcepts" interview="<-db.dataInterview" level="<-level.value"
-      acquired="<-db.dataAcquired|arrayToObject" />
+    <WordsStore Ref="words" concepts="<-db.allConcepts" interview="<-db.allInterview" level="<-level.value"
+      acquired="<-db.allAcquired|arrayToObject" />
 
     <Connector data="<-nav.route" change="-> route" />
 
-    <Connector Ref="idiomsHash" data="<-db.dataIdioms|idiomsHash" />
+    <Connector Ref="idiomsHash" data="<-db.allIdioms|idiomsHash" />
 
     <Dynamic As="Page.{route.page| capitalize}" (...)="{route}" />
 

@@ -1,10 +1,16 @@
+import { Component } from "arrmatura/src/core/Component";
 import { debounce } from "ultimus";
 
-import { DomNode } from "../../types";
-import { findParentElement } from "../utils/findParentElement";
+import { findParentElement } from "../../arrmatura-web/src/utils/findParentElement";
+import { DomNode } from "../../arrmatura-web/types";
 
-export const popoversPlugin = {
-  init() {
+export class PopoversPlugin extends Component {
+
+  constructor(ini, $ctx) {
+
+    super(ini, $ctx);
+
+    // const platform: IWebPlatform = $ctx.platform;
 
     let currentPopover: DomNode | null = null;
 

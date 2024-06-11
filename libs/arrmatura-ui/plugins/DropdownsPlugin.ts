@@ -1,8 +1,9 @@
+import { Component } from "arrmatura/src/core/Component";
 import { debounce } from "ultimus";
 
 // import { findParentElement } from "../utils/findParentElement";
-import type { DomNode, IElement, IWebPlatform } from "../../types";
-import { findParentElement } from "../utils/findParentElement";
+import { findParentElement } from "../../arrmatura-web/src/utils/findParentElement";
+import type { DomNode, IElement, IWebPlatform } from "../../arrmatura-web/types";
 
 let currentDropdown
 function syncDropdownPosition() {
@@ -38,29 +39,32 @@ const dropdown = ($: IElement, element: DomNode): void => {
   if ($.dropdown) return;
 
   $.attachToParent = (parent) => {
-    const portalId = 'dropdown';
-    const portals: any = $.platform.portals ?? ($.platform.portals = {});
-    let portal = portals[`${portalId}`];
-    if (!portal) {
-      (portals[`${portalId}`] = document.createElement('div'));
-      portal = portals[`${portalId}`];
-      document.body.appendChild(portal);
-    }
-    if (portal === element.parentElement) return;
-    if (currentDropdown?.$.uid === $.$.uid) return;
+    try {
+      const portalId = 'dropdown';
+      const portals: any = $.platform.portals ?? ($.platform.portals = {});
+      let portal = portals[`${portalId}`];
+      if (!portal) {
+        (portals[`${portalId}`] = document.createElement('div'));
+        portal = portals[`${portalId}`];
+        document.body.appendChild(portal);
+      }
+      if (portal === element.parentElement) return;
+      // if (currentDropdown?.$.uid === $.$.uid) return;
 
-    currentDropdown = $;
-    currentDropdown.originalParent = parent;
-    if (portal !== element.parentElement) {
-      element.parentElement?.removeChild(element);
-      portal.appendChild(element);
+      currentDropdown = $;
+      currentDropdown.originalParent = parent;
+      if (portal !== element.parentElement) {
+        element.parentElement?.removeChild(element);
+        portal.appendChild(element);
+      }
+      const popStyle = element.style;
+      popStyle.position = 'relative';
+      popStyle.left = '-10000px';
+      popStyle.top = '-10000px';
+      popStyle.display = 'block';
+    } finally {
+      syncDropdownPosition();
     }
-    const popStyle = element.style;
-    popStyle.position = 'relative';
-    popStyle.left = '-10000px';
-    popStyle.top = '-10000px';
-    popStyle.display = 'block';
-    syncDropdownPosition();
   };
 };
 
@@ -70,22 +74,27 @@ function autoCloseCurrentDropdownOnClickOutside(event) {
   const target = event.target;
   const inDropdown = findParentElement(target, (p: any) => p === currentDropdown.$element);
   if (!inDropdown) {
+    // close
     currentDropdown.dropdown()
     currentDropdown = null
   }
 }
 
-const handler = debounce(autoCloseCurrentDropdownOnClickOutside, 10);
+export class DropdownsPlugin extends Component {
 
-export const dropdownPlugin = {
+  constructor(ini, $ctx) {
 
-  init(platform: IWebPlatform) {
+    super(ini, $ctx);
+
+    const platform: IWebPlatform = $ctx.platform;
     platform.addElementAttributeSetters({ dropdown });
+
+    const handler = debounce(autoCloseCurrentDropdownOnClickOutside, 10);
     document.addEventListener("touchstart", handler, { capture: true })
-    document.addEventListener("mousedown", handler, { capture: true })
-  },
-  done() {
-    document.removeEventListener("touchstart", handler)
-    document.removeEventListener("mousedown", handler)
-  },
+    document.addEventListener("mousedown", handler, { capture: true });
+    this.defer(() => {
+      document.removeEventListener("touchstart", handler)
+      document.removeEventListener("mousedown", handler)
+    })
+  }
 }

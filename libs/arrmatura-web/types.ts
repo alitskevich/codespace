@@ -1,6 +1,6 @@
 import { IPlatform } from "arrmatura/types";
 
-import { WebPlatform } from "./src/platform";
+import { WebPlatform } from "./src/WebPlatform";
 
 export type DomNode = HTMLElement & {
   disabled: boolean | null;
@@ -34,7 +34,6 @@ export type MyTouchEvent = TouchEvent & {
 export type LaunchWebOptions = {
   template?: string;
   components?: any[];
-  plugins?: any[];
   functions?: Record<string, (...args: any[]) => any>;
   resources?: any;
   Platform?: new <T extends WebPlatform>() => T;

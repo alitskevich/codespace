@@ -6,9 +6,9 @@ import { parseText } from "../utils/parseText";
 
 // service component
 export class UploaderService extends StoredData {
+  acquired?: any
   // defaults = {}
   // name = 'focusator'
-  list: Stemm[] = [];//arraySortBy(Object.values<any>(this.data), 'count', -1);
   // listIterator = this.getListIterator()
   // word: Stemm = this.listIterator.next().value ?? { id: 'none', names: {} }
 
@@ -27,12 +27,19 @@ export class UploaderService extends StoredData {
   uploadText(text) {
     const data = {}
     const parsequence = parseText(String(text ?? ""), data)
-    this.list = arraySortBy(Object.values<any>(data), 'name');
     // this.listIterator = this.getListIterator()
 
-    return { text, parsequence }
+    return { data, text, parsequence }
   }
 
+  get list(): Stemm[] {
+    return arraySortBy(Object.values<any>(this.data), 'name').map((e, index, all) => ({
+      ...e,
+      nextId: all[index + 1]?.id ?? null,
+      acquired: this.acquired?.[e.id]?.acquired ?? 0,
+      // idioms: this.idiomsHash?.[stemm(e.id).id] ?? []
+    }));
+  }
   // updateStemmAcquitance({ id, acquired }) {
   //   const { data, parsequence } = this;
   //   const newWord = { ...data[id], acquired };

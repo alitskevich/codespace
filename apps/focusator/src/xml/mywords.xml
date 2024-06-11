@@ -11,7 +11,7 @@
   <div class="flex-1 flex flex-col gap-2 max-w-5xl">
     <div class="grid grid-cols-5 gap-2 max-w-5xl">
       <ListItem (...)="{item}" Each="item of data">
-        <div class="w-6 h-6 bg-{ack.id|toColor}-700 rounded-full mx-2" Each="ack of R.enums.acknowledgements"
+        <div class="w-6 h-6 bg-{ack.id|toColor}-700 rounded-full mx-2" Each="ack of R.enums.acquired"
           data-id="{item.id}" data-acquired="{ack.id}" title="{ack.name}" click="-> words.updateStemmAcquitance()">
         </div>
       </ListItem>

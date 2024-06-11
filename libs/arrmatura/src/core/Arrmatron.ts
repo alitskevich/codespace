@@ -194,9 +194,9 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
 
         const result = method.call(impl, data);
 
-        // this.log(`-> ${refId}.${target}(data)`, result, data, impl);
-
         ref.up(result);
+
+        this.log(`-> ${refId}.${target}(data)`, data, impl);
       } else {
         let [refId, target] = key.split(".");
         if (!target) {
@@ -211,7 +211,7 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
 
         ref.up(target === "*" ? data : { [target]: data });
 
-        // this.log(`-> ${refId}.${target} = `, data);
+        this.log(`-> ${refId}.${target} = `, data);
       }
 
     } catch (ex) {

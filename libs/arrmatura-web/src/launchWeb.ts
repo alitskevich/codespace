@@ -3,11 +3,7 @@ import * as lib from "ultimus";
 
 import { LaunchWebOptions } from "../types";
 
-import { WebPlatform } from "./platform";
-import { draggingPlugin } from "./plugins/draggingPlugin";
-import { dropdownPlugin } from "./plugins/dropdownPlugin";
-import { popoversPlugin } from "./plugins/popoversPlugin";
-import { portalsPlugin } from "./plugins/portalsPlugin";
+import { WebPlatform } from "./WebPlatform";
 
 /**
  * Creates an instance of the "Application" component and renders it to the page.
@@ -19,24 +15,21 @@ import { portalsPlugin } from "./plugins/portalsPlugin";
  * @returns root node
  */
 export function launchWeb(config?: LaunchWebOptions) {
-  const { rootElement, functions, plugins = [], components = [], template = "<App/>", resources = {}, Platform = WebPlatform } = config ?? window as LaunchWebOptions;
+  const { rootElement, functions, components = [], template = "<App/>", resources = {}, Platform = WebPlatform } = config ?? window as LaunchWebOptions;
 
   const $fn = { ...lib, ...resources?.functions, ...functions };
 
   const platform = new Platform(rootElement, {
     ...resources,
     functions: $fn,
-  }, [popoversPlugin, portalsPlugin, dropdownPlugin, draggingPlugin, ...plugins]);
+  });
 
   platform.registerTypes(components);
-
-  platform.init();
 
   const top = launch(platform, template);
 
   window.addEventListener("beforeunload", () => {
     top.done()
-    platform.done()
   });
 
   return top;

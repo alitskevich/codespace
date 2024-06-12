@@ -11,7 +11,7 @@
     "build": "pnpm run clean && parcel build --no-scope-hoist",
     "clean": "rm -fdr dist && rm -fdr dist ../../.parcel-cache",
     "update-browserslist": "npx update-browserslist-db@latest",
-    "download:index": "curl -L https://script.google.com/macros/s/AKfycbxAjtppX_5PozyjJBwiK8Fc5gqtaqvE6KPlmMsvR_FEvOlf6nRhqdt75e4YiHZTZ8h3Yw/exec  > ./data/index.json",
+    "download:dictionary": "curl -L https://script.google.com/macros/s/AKfycbzyCnt2SM0swu2DuVdMuWgZls3U9IgGT0BMDweDnEF0ygIDJI2widP9hb4sd5_vWhgaIA/exec  > ./data/dictionary.json",
     "download:concepts": "curl -L https://script.google.com/macros/s/AKfycbwk024DnRMUbZj_1gRGpbPR5BKFb3tjUv_Nf0CZar4/dev > ./data/concepts.json",
     "download:idioms": "curl -L https://script.google.com/macros/s/AKfycbyhAm3M6jDcJGw2WRabpXyT4LLaGAzYZn7VAokHYwSk7fNzWjJKP-0arjo_l--n4If3/exec > ./data/idioms.json",
     "download:ctest": "curl -L https://script.google.com/macros/s/AKfycbw4xNoL9WKm9z5rMw0qoCFdo1KhbDU1bmdZI12uKFmul1S-4AgvGZMmsXPPJ2H4eA1f/exec > ./data/ctest.json",

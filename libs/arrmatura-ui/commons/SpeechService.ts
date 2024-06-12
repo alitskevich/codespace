@@ -8,16 +8,14 @@ import { arraySortBy } from "ultimus";
  */
 export class SpeechService extends Component {
 
-  synth = window.speechSynthesis
-  voices = this.synth.getVoices();
+  voices = window.speechSynthesis.getVoices();
   voicesList = arraySortBy(this.voices.map((e, id) => ({ ...e, id, name: `${e.name} (${e.lang})`, language: e.lang, voice: e })), 'name');
   defaultVoice = this.voices.find(e => e.default) ?? this.voices[0] ?? { lang: 'en-US', name: 'English' };
   currentVoice = this.defaultVoice;
   language = this.defaultVoice.lang?.slice(0, 2) ?? 'en'
 
   textToSpeech({ text, ...options }: any) {
-    const utterThis = Object.assign(new SpeechSynthesisUtterance(text), options);
-    this.synth.speak(utterThis);
+    window.speechSynthesis.speak(Object.assign(new SpeechSynthesisUtterance(text), options));
   }
 
   get currentVoices() {

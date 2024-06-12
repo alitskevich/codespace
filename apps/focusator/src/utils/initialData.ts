@@ -2,6 +2,7 @@ import { str } from "ultimus";
 
 import concepts from "../../data/concepts.json";
 import ctest from "../../data/ctest.json";
+import { data as dictionary } from "../../data/dictionary.json";
 import idioms from "../../data/idioms.json";
 import interview from "../../data/interview.json";
 
@@ -10,10 +11,13 @@ import { stemm } from "./stemm";
 function prepareIdioms() {
   idioms?.forEach((item: any) => {
     const reWord = /[ñáéóü\w]+/gi
-    const s = str(`${item.id}:${item.en}`)
+    const s = str(`${item.en}`)
     item.stems = [];
     for (let e = reWord.exec(s); e; e = reWord.exec(s)) {
-      item.stems.push(stemm(e[0]).id)
+      const stem = stemm(e[0]).id;
+      if (stem.length > 3) {
+        item.stems.push(stem)
+      }
     }
   });
 
@@ -46,5 +50,6 @@ export const initialData = {
   idioms: prepareIdioms,
   concepts: prepareConcepts,
   interview: prepareInterview,
-  ctest
+  ctest,
+  dictionary,
 }

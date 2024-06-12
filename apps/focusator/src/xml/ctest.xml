@@ -9,7 +9,8 @@
       <div class=" flex flex-row justify-between items-center py-2 px-2">
         <CNav step="{step}" />
         <!-- <AppTitle step="{step}" /> -->
-        <div class="h-8 flex flex-row items-center">
+        <div class="h-8 flex flex-row items-center gap-4">
+          <Btn title="Auto" class="bg-red-700" action="-> ctest.onAutoPlay()" If="step > -1" />
           <Btn title="Done" class="bg-red-700" action="-> ctest.onStop()" If="step > -1" />
           <Btn title="Start" class="bg-green-700" action="-> ctest.onRestart()" If="step == -1" />
           <!-- <Help If="step > -1" /> -->

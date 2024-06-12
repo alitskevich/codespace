@@ -11,6 +11,39 @@ export class CTestService extends Component {
     return Number(this.quiz?.length || 0);
   }
 
+  setAutoplay(auto) {
+    this.autoplay = auto;
+    if (auto) {
+      const nextTick = async () => {
+        const { state, current } = this;
+        const text = this.current.options[this.current.correct - 1]?.name ?? 'aga'
+        window.speechSynthesis.speak(Object.assign(new SpeechSynthesisUtterance(this.current.body), {
+          lang: 'ru-RU',
+          onend: () => {
+            setTimeout(() => {
+              const { id: key, correct } = current;
+              this.up({
+                state: {
+                  ...state,
+                  [key]: { value: correct, answered: true, isCorrect: true, correct, symbol: "🟢" }
+                }
+              })
+              window.speechSynthesis.speak(Object.assign(new SpeechSynthesisUtterance(text), {
+                onend: () => {
+                  if (this.autoplay) {
+                    this.up({ step: this.findNextStepInOrder() });
+                    nextTick()
+                  }
+                }
+              }));
+            }, 4000)
+          }
+        }));
+      }
+      nextTick();
+    }
+  }
+
   setData(data) {
     this.data = data;
     this.quiz = shuffleArray(data).map((quiz, order) => {
@@ -50,6 +83,13 @@ export class CTestService extends Component {
     return Number(this.#step || 0);
   }
 
+  findNextStepInOrder() {
+    const { state, current } = this;
+    return (this.quiz.findIndex((q) => q.order > current.order && !state?.[q.id]?.answered) + 1 ||
+      this.quiz.findIndex((q) => q.order < current.order && !state?.[q.id]?.answered) + 1 ||
+      0) - 1;
+  }
+
   set step(step) {
     this.#step = step > this.count - 1 ? -1 : step;
   }
@@ -64,26 +104,23 @@ export class CTestService extends Component {
         [key]: { value, answered: true, isCorrect, correct: current.correct, symbol }
       },
       step: new Promise((resolve) => {
-        setTimeout(() => {
-          resolve((this.quiz.findIndex((q) => q.order > current.order && !state?.[q.id]?.answered) + 1 ||
-            this.quiz.findIndex((q) => q.order < current.order && !state?.[q.id]?.answered) + 1 ||
-            0) - 1
-          );
+        setTimeout(async () => {
+          resolve(this.findNextStepInOrder());
         }, 1000);
       })
       ,
     };
   }
 
-  onBack(_, { step }) {
+  onBack() {
     return {
-      step: step == 0 ? 0 : step - 1,
+      step: this.step == 0 ? 0 : this.step - 1,
     };
   }
 
-  onNext(_, { step }) {
+  onNext() {
     return {
-      step: step + 1,
+      step: this.step + 1,
     };
   }
   onRestart() {
@@ -95,6 +132,12 @@ export class CTestService extends Component {
   onStop() {
     return {
       step: -1,
+    };
+  }
+
+  onAutoPlay() {
+    return {
+      autoplay: !this.autoplay,
     };
   }
 

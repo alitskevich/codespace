@@ -41,11 +41,12 @@ export const resources = {
   db: {
     name: 'focusator',
     stores: {
-      concepts: 'id',
-      idioms: 'id',
-      acquired: 'id',
-      ctest: 'id',
-      interview: 'id',
+      concepts: { keyPath: 'id', indicies: { en: {}, adversial: {} } },
+      idioms: { keyPath: 'id', indicies: { stems: { multiEntry: true } } },
+      acquired: { keyPath: 'id', indicies: {} },
+      ctest: { keyPath: 'id', indicies: {} },
+      interview: { keyPath: 'id', indicies: {} },
+      dictionary: { keyPath: 'id', indicies: { family: {}, stem: {} } },
     },
     initialData
   },

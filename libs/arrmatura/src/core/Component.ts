@@ -46,7 +46,7 @@ export abstract class Component implements IComponent {
   }
 
   // emit action event to another component by key
-  emit(key: string, data: Delta) {
+  emit(key: string, data: Delta = {}) {
     return this.$ctx.emit(key, data);
   }
 

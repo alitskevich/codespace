@@ -4,7 +4,7 @@
     <QuizService Ref="quiz" quiz="{quiz}" />
     <Connector data="<-quiz.step" change="-> step" />
     <Header />
-    <main class="flex flex-col">
+    <Container class="flex flex-col pt-20">
       <div class="h-10 flex flex-row justify-between items-center">
         <Nav step="{step}" quiz="{quiz}" />
         <AppTitle step="{step}" />
@@ -18,7 +18,7 @@
         <StepsList step="{step}" showHint="{showHint}" item="<-quiz.current" If="step > -1" />
         <Congrats If="step == -1" />
       </div>
-    </main>
+    </Container>
   </component>
 
   <component id="QStepsList">
@@ -109,14 +109,14 @@
     </div>
   </component>
   <component id="Congrats">
-    <div class="flex flex-col centroid flex-1">
+    <div class="flex flex-col place-content-center flex-1">
       <div class="flex flex-col items-center justify-center flex-1 revealed">
         <img src="{R.assets.thumbsup}" class="h-8 w-8" />
         <h3 class="my-2 text-center">{R.strings.congratTitle}</h3>
         <hr class="w-full h-1 border-1 border-zinc-400" />
         <ResultsReport data="<-quiz.report" />
       </div>
-      <div class="m-4 p-2 flex flex-row centroid" If="<-tg.isMocked">
+      <div class="m-4 p-2 flex flex-row place-content-center" If="<-tg.isMocked">
       </div>
     </div>
   </component>

@@ -32,8 +32,6 @@
     "**/*.mjs",
     "**/*.xml",
     "**/types.js",
-    "eslint.config.js",
-    "../expo-nativewind-app/scripts/config.ts",
-    "../expo-nativewind-app/scripts/main.ts"
+    "eslint.config.js"
   ]
 }

@@ -3,24 +3,34 @@
   <component id="Page.Ctest">
     <StoredData name="state" data="{state}" defaults="{R.defaultState}" action="-> state" />
     <CTestService Ref="ctest" state="{state}" data="<-db.allCtest" />
-    <Connector data="<-ctest.step" change="-> step" />
+    <Connector data="<-ctest.info" change="->" />
     <Header />
-    <main class="flex flex-col bg-slate-800 text-white pt-20">
-      <div class=" flex flex-row justify-between items-center py-2 px-2">
-        <CNav step="{step}" />
-        <!-- <AppTitle step="{step}" /> -->
-        <div class="h-8 flex flex-row items-center gap-4">
-          <Btn title="Auto" class="bg-red-700" action="-> ctest.onAutoPlay()" If="step > -1" />
-          <Btn title="Done" class="bg-red-700" action="-> ctest.onStop()" If="step > -1" />
-          <Btn title="Start" class="bg-green-700" action="-> ctest.onRestart()" If="step == -1" />
-          <!-- <Help If="step > -1" /> -->
+    <div class="fixed inset-0">
+      <Container class="flex flex-col dark:text-white pt-20 h-full">
+        <div class=" flex flex-row justify-between items-center py-2 px-2">
+          <div class="h-8 w-28 flex flex-row gap-2 items-center">
+            <Fragment If="step > -1">
+              <img class="icon" src="{R.assets.back}" click="-> ctest.onBack()" />
+              <div class="progess-caption">{step|plus:1}</div>
+              <b>{current.symbol ?? '⚪'}</b>
+              <img class="icon rotate-180" src="{R.assets.back}" click="-> ctest.onNext()" />
+            </Fragment>
+          </div>
+          <!-- <AppTitle step="{step}" /> -->
+          <div class="h-8 flex flex-row items-center gap-4 p-2">
+            <Btn title="{autoplay ? 'Stop' : 'Auto'}" class="{autoplay ? '!bg-red-700 !text-white' : ''}"
+              action="-> ctest.onAutoPlay()" If="step > -1" />
+            <Btn title="Done" class="!bg-red-700 !text-white" action="-> ctest.onStop()" If="step > -1 && !autoplay" />
+            <Btn title="Start" class="!bg-green-700 !text-white" action="-> ctest.onRestart()" If="step == -1" />
+            <!-- <Help If="step > -1" /> -->
+          </div>
         </div>
-      </div>
-      <div class="flex flex-col flex-1 min-h-0 px-2">
-        <StepsList step="{step}" showHint="{showHint}" item="<-ctest.current" If="step > -1" />
-        <Congrats If="step == -1" />
-      </div>
-    </main>
+        <div class="flex flex-col flex-1 min-h-0 px-2">
+          <StepsList step="{step}" showHint="{showHint}" item="<-ctest.current" If="step > -1" />
+          <CTestCongrats If="step == -1" />
+        </div>
+      </Container>
+    </div>
   </component>
 
   <component id="StepsList">
@@ -35,11 +45,13 @@
       <h5 class="hidden text-bold mt-2 p-4 bg-emerald-800 rounded-md" id="explanation" If="explanation">
         <b>💡</b><span class="ml-2">{explanation}</span>
       </h5>
-      <h5 class="text-bold text-base text-slate-300 mt-4"><b>{symbol ?? '⚪'} {slug}</b><span
-          class="ml-2">{question}</span>
+      <h5
+        class="flex flex-col text-4xl md:text-6xl p-4 m-4 items-center gap-4 justify-center text-center flex-1 min-h-0 overflow-y-auto"
+        innerHtml="{body|illustrateSentence ?? ''}">
       </h5>
-      <h5 class="text-2xl mt-2 flex-1 min-h-0 overflow-y-auto question-body" innerHtml="{body}"></h5>
-      <div class="mt-2 flex flex-col centroid items-stretch">
+      <h5 class="text-2xl p-2 m-2 text-center min-h-0 " innerHtml="({body ?? '...'})">
+      </h5>
+      <div class="mt-2 flex flex-col place-content-center items-stretch">
         <Input id="{id}" value="{value}" answered="{answered}" correct="{correct}" options="{options}"
           isCorrect="{isCorrect}" isWrong="{!isCorrect && answered}" changed="-> ctest.onAnswer()" />
       </div>
@@ -50,10 +62,10 @@
     <div class="flex flex-row gap-3 flex-wrap">
       <div class="flex flex-row flex-1 min-w-fit cursor-pointer" Each="option of options">
         <div class="flex flex-row flex-1 p-1 md:p-2 border-2 
-          text-center  rounded-md bg-slate-600 border-slate-300
-          {value == option.id ? '!border-amber-500'} 
-          {correct == option.id && answered ? '!bg-emerald-700'} 
-          {value == option.id && isWrong && answered ? '!bg-red-600'} 
+          text-center rounded-md bg-slate-200 dark:bg-slate-600 border-slate-300
+          {value == option.id ? '!border-amber-500 !text-white'} 
+          {correct == option.id && answered ? '!bg-emerald-700 !text-white'} 
+          {value == option.id && isWrong && answered ? '!bg-red-600 !text-white'} 
           {answered ? 'disabled'}" data-key="{id}" data-value="{option.id}" click="{changed}">
           <p class="flex-1" title="{option.id|plus:1}"> {option.name}</p>
         </div>
@@ -74,30 +86,19 @@
     </div>
   </component>
 
-  <component id="Congrats">
-    <TgWebAppService Ref="tg" buttonText="{R.strings.congratButtonTitle}" data="<-ctest.stat"
-      submitQueryUrl="{R.submitQueryUrl}" />
+  <component id="CTestCongrats">
+    <!-- <TgWebAppService Ref="tg" buttonText="{R.strings.congratButtonTitle}" data="<-ctest.stat"
+      submitQueryUrl="{R.submitQueryUrl}" /> -->
 
-    <div class="flex flex-col centroid flex-1">
-      <div class="flex flex-col centroid flex-1 revealed">
-        <img src="{R.assets.thumbsup}" />
+    <div class="flex flex-col place-content-center flex-1">
+      <div class="flex flex-col place-content-center flex-1 items-center place-content-center p-4">
+        <img src="{R.assets.thumbsup}" class="h-8 w-8" />
         <h3 class="my-2 text-center">{R.strings.congratTitle}</h3>
-        <hr class="w-full h-1 border-1 border-zinc-400" />
-        <ResultsReport data="<-ctest.report" />
+        <!-- <ResultsReport data="<-ctest.report" /> -->
       </div>
-      <div class="m-4 p-2 flex flex-row centroid" If="<-tg.isMocked">
+      <div class="m-4 p-2 flex flex-row place-content-center" If="<-tg.isMocked">
         <Btn title="{R.strings.congratButtonTitle}" mode="primary" large action="-> tg.onSubmit()" busy="<-tg.busy" />
       </div>
-    </div>
-  </component>
-
-  <component id="CNav">
-    <div class="h-8 w-28 flex flex-row items-center">
-      <Fragment If="step > -1">
-        <img class="icon" src="{R.assets.back}" click="-> ctest.onBack()" />
-        <div class="progess-caption">{step|plus:1}</div>
-        <img class="icon rotate-180" src="{R.assets.back}" click="-> ctest.onNext()" />
-      </Fragment>
     </div>
   </component>
 
@@ -111,7 +112,7 @@
     <div class="h-4 flex flex-row justify-between  items-center gap-0 md:gap-2">
       <div class=" flex-1
        bg-{item.color}-{item.order == step ? '300' : '600'} 
-      {item.order == step ? 'h-3' : 'h-1'}" Each="item of <-quizprogress" />
+      {item.order == step ? 'h-3' : 'h-1'}" Each="item of <-ctest.progress" />
     </div>
   </component>
 

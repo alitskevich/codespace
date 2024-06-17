@@ -11,6 +11,11 @@ export class CTestService extends Component {
     return Number(this.quiz?.length || 0);
   }
 
+  get info() {
+    const { count, step, autoplay } = this;
+    return { count, step, autoplay };
+  }
+
   setAutoplay(auto) {
     this.autoplay = auto;
     if (auto) {
@@ -29,9 +34,10 @@ export class CTestService extends Component {
                 }
               })
               window.speechSynthesis.speak(Object.assign(new SpeechSynthesisUtterance(text), {
+                lang: 'en-US',
                 onend: () => {
+                  this.up({ step: this.findNextStepInOrder() });
                   if (this.autoplay) {
-                    this.up({ step: this.findNextStepInOrder() });
                     nextTick()
                   }
                 }
@@ -57,15 +63,16 @@ export class CTestService extends Component {
 
   get current() {
     const current = this.quiz?.[this.step];
-    const currentSate = this.state?.[current.id] || {};
+    const currentState = this.state?.[current.id] || {};
 
     return {
+      step: this.step,
       value: null,
       isCorrect: null,
       answered: false,
       symbol: null,
       ...current,
-      ...currentSate,
+      ...currentState,
     };
   }
   get progress() {

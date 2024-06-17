@@ -1,33 +1,39 @@
 
-// @ts-ignore
-import { Component, ICtx } from 'arrmatura'
+import { Component } from 'arrmatura'
+import { IArrmatron } from 'arrmatura/types'
 import { Hash } from 'ultimus'
 
-type  User =Hash
-type  Doc = Hash 
-type  Coll = Hash 
-type  DocGet = { id: string, data: ()=>Doc }
+type User = Hash
+type Doc = Hash
+type Coll = Hash
+type DocGet = { id: string, data: () => Doc }
 
-const unpackDocs = (s:{docs:DocGet[]}) =>
-  s.docs.reduce((r:Doc[], e) => {
+const unpackDocs = (s: { docs: DocGet[] }) =>
+  s.docs.reduce((r: Doc[], e) => {
     const d = e.data()
     d.id = e.id
     r.push(d)
     return r
-  }, [])
+  }, []);
 
-// @ts-expect-error
-const firebase = window.firebase
+
+const firebase = 'firebase' in window ? window.firebase : {
+  app: () => { },
+  auth: () => { },
+  firestore: () => { },
+  initializeApp: () => { },
+} as any
 
 export class FirebaseService extends Component {
   firestore: any
   auth: any
   providers: { Google: any }
 
-  constructor ({ ...config }, ctx: ICtx) {
+  constructor({ ...config }, ctx: IArrmatron) {
     super(config, ctx)
 
     firebase.initializeApp(config)
+
     this.firestore = firebase.firestore()
     this.firestore.enablePersistence({ synchronizeTabs: true }).catch(function (err: any) {
       if (err.code === 'failed-precondition') {
@@ -40,6 +46,7 @@ export class FirebaseService extends Component {
         // ...
       }
     })
+
     this.auth = firebase.auth()
     this.auth.languageCode = 'by'
     this.providers = {
@@ -47,26 +54,40 @@ export class FirebaseService extends Component {
     }
   }
 
-  done () {
+  // init
+  init() {
+
+    firebase.listenUser((user: User) => {
+      if (!user) {
+        firebase.signInAnonymously()
+        // User is signed out.
+        // ...
+      }
+      this.touch();
+    })
+  }
+
+  done() {
     firebase.app().delete()
   }
 
   // auth
-  signInAnonymously () {
+
+  signInAnonymously() {
     this.auth.signInAnonymously().catch((error: Error) => {
       this.logError(error)
     })
   }
 
-  listenUser (cb: () => void) {
+  listenUser(cb: () => void) {
     this.auth.onAuthStateChanged(cb)
   }
 
-  getCurrentUser () {
+  getCurrentUser() {
     return this.auth.currentUser
   }
 
-  linkProvider () {
+  linkProvider() {
     const provider = new this.providers.Google()
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly')
     return this.auth
@@ -103,22 +124,47 @@ export class FirebaseService extends Component {
       })
   }
 
-  logout () {
-    return this.signInAnonymously()
+  getUserInfo() {
+    const user = firebase.getCurrentUser()
+    if (user !== null) {
+      user.providerData.forEach(function (_profile: Hash) {
+        // console.log('Sign-in provider: ' + profile.providerId)
+        // console.log('  Provider-specific UID: ' + profile.uid)
+        // console.log('  Name: ' + profile.displayName)
+        // console.log('  Email: ' + profile.email)
+        // console.log('  Photo URL: ' + profile.photoURL)
+      })
+    }
+    return !user
+      ? { isLoading: true }
+      : {
+        ...user,
+        isLoading: false,
+      }
   }
 
-  getCollection (coll: Coll, since: number) {
+  doLogin() {
+    return firebase.linkProvider()
+  }
+
+  doLogout() {
+    // return this.signInAnonymously()
+    return firebase.logout()
+  }
+
+  // firestore
+
+  getCollection(coll: Coll, since: number) {
     return ((c) => (since ? c.where('modified_at', '>', since) : c))(this.firestore.collection(coll))
       .get()
       .then(unpackDocs)
   }
 
-  // db
-  listenCollection (coll, ts = 0, cb) {
+  listenCollection(coll, ts = 0, cb) {
     return ((c) => (ts ? c.where('modified_at', '>', ts) : c))(this.firestore.collection(coll)).onSnapshot(function (
       querySnapshot,
     ) {
-      const r = []
+      const r: any[] = []
       querySnapshot.forEach(function (e) {
         const d = e.data()
         d.id = e.id
@@ -128,11 +174,11 @@ export class FirebaseService extends Component {
     })
   }
 
-  nextId (coll) {
+  nextId(coll) {
     return this.firestore.collection(coll).doc().id
   }
 
-  update (delta) {
+  update(delta) {
     const now = Date.now().valueOf()
     // Get a new write batch
     const batch = this.firestore.batch()
@@ -149,57 +195,18 @@ export class FirebaseService extends Component {
     })
     return batch.commit()
   }
-}
 
-export class FirebaseUserService extends Component {
-  get fb () {
-    return this.$.app.firebase
-  }
-
-  init () {
-
-    this.fb.listenUser((user: User) => {
-      if (user) {
-      } else {
-        this.fb.signInAnonymously()
-        // User is signed out.
-        // ...
-      }
-      this.emit('signed', {})
-    })
-  }
-
-  getInfo () {
-    const user = this.fb.getCurrentUser()
-    if (user !== null) {
-      user.providerData.forEach(function (_profile: Hash) {
-        // console.log('Sign-in provider: ' + profile.providerId)
-        // console.log('  Provider-specific UID: ' + profile.uid)
-        // console.log('  Name: ' + profile.displayName)
-        // console.log('  Email: ' + profile.email)
-        // console.log('  Photo URL: ' + profile.photoURL)
-      })
+  // realtime fasade for IndexedDbService
+  invokeApi({ action }) {
+    if (action === 'realtime.downstream') {
+      return this.update({})
+    } else if (action === 'realtime.upstream') {
+      return this.update({})
+    } else if (action === 'realtime.upsetItem') {
+      return this.update({})
     }
-    return !user
-      ? { isLoading: true }
-      : {
-          ...user,
-          isLoading: false,
-        }
-  }
 
-  onLogin () {
-    return this.fb.linkProvider()
-  }
-
-  onLogout () {
-    return this.fb.logout()
-  }
-
-  onSigned () {
-    return {
-      _: NaN,
-    }
+    return {}
   }
 }
 

@@ -30,7 +30,7 @@ export const resources = {
   strings: {
     confirm: "Confirm",
     nextQuestion: "Next Question",
-    congratTitle: "Your statistics",
+    congratTitle: "Never give up!",
     congratButtonTitle: "Submit",
   },
   samples: {

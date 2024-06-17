@@ -8,3 +8,4 @@ tmp
 .firebase
 .env.local
 
+firebase-adminsdk.config.json

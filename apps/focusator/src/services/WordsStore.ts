@@ -22,7 +22,7 @@ export class WordsStore extends StoredData {
 
   updateStemmAcquitance({ id, acquired }) {
     const { data, parsequence } = this;
-    const newWord = { ...data[id], acquired };
+    const newWord = { ...data?.[id], acquired };
     const newData = { ...data, [id]: newWord }
     this.emit(`db.upsertOptimistic()`, { store: 'acquired', id, acquired })
 

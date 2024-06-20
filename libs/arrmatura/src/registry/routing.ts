@@ -12,7 +12,12 @@ class DynamicTag extends Arrmatron<CDynamicTagNode> {
     const tag = this.$component.tag;
     const uid = `${this.uid}:${String(tag ?? "")}`;
     return new Map([
-      [uid, Object.assign(this.platform.getCompiledNodes({ ...this.manifest.xml, tag } as XmlNode), { uid })],
+      [
+        uid,
+        Object.assign(this.platform.getCompiledNodes({ ...this.manifest.xml, tag } as XmlNode), {
+          uid,
+        }),
+      ],
     ]);
   }
 }

@@ -7,14 +7,13 @@ import { compilePipeExpression } from "../utils/compileExpression";
 import { Arrmatron } from "./Arrmatron";
 import { resolveExpression } from "./resolveExpression";
 
-
 type PropertyResolver = (c: IArrmatron, acc: Delta) => Delta;
 
 type PropertyGetter = (c: IArrmatron) => unknown;
 
 /**
  * ManifestNode is a abstract factory for Arrmatron.
- * 
+ *
  * Each specific kind of Arrmatron has its own descending implementation of ManifestNode.
  */
 export abstract class ManifestNode implements IManifestNode {
@@ -30,7 +29,12 @@ export abstract class ManifestNode implements IManifestNode {
     this.uid = `${nextId("N")}:${xid}`;
   }
 
-  abstract get EntitronConstructor(): new (platform: IPlatform, node: typeof this, parent?: Arrmatron, scope?: Arrmatron) => Arrmatron;
+  abstract get EntitronConstructor(): new (
+    platform: IPlatform,
+    node: typeof this,
+    parent?: Arrmatron,
+    scope?: Arrmatron
+  ) => Arrmatron;
 
   /**
    * Create a context object.
@@ -87,7 +91,7 @@ export abstract class ManifestNode implements IManifestNode {
 
   private addEmitter(expr: ExpressionText, k: string) {
     const { key, pipec } = compilePipeExpression(expr);
-    const rkey = key + (expr.endsWith(")") ? "()" : '');
+    const rkey = key + (expr.endsWith(")") ? "()" : "");
     this.initialState[k] = (c) => (data: unknown) => c.scope?.emit(rkey, pipec(c, data) as Delta);
   }
 
@@ -110,7 +114,7 @@ export abstract class ManifestNode implements IManifestNode {
       this.addDataPropertyResolver(resolveExpression(v), k.slice(5));
     } else if (k === "Ref") {
       this.refId = String(v);
-    } else if (k === '(...)') {
+    } else if (k === "(...)") {
       const sv = String(v);
       if (sv[0] === "<" && sv[1] === "-") {
         this.addConnector(sv.slice(2), "");

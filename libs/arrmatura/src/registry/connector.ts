@@ -16,13 +16,13 @@ class Connector extends Arrmatron<ConnectorNode> {
     super.touch();
     //   if (this.isDone) return;
     const { trigger, data, change } = this.$component;
-    const hasTrigger = 'trigger' in this.$component;
+    const hasTrigger = "trigger" in this.$component;
 
-    if (hasTrigger && (trigger == null)) return;
+    if (hasTrigger && trigger == null) return;
 
     const key = hasTrigger ? trigger : data;
     const fprint = objectFingerprint(key);
-    const changed = !('prevkey' in this) || this.prevkey != fprint;
+    const changed = !("prevkey" in this) || this.prevkey != fprint;
 
     if (!changed) return;
 
@@ -45,5 +45,4 @@ export class ConnectorNode extends ManifestNode {
   get EntitronConstructor() {
     return Connector;
   }
-
 }

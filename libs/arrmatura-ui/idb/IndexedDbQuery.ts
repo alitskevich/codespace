@@ -3,20 +3,20 @@ import { capitalize } from "ultimus";
 
 import { IndexedDbService } from "./IndexedDbService";
 
-function doQuery(db, storeId, index, value) {
-  return db?.indexedDb.queryForValue(String(value ?? ''), storeId, index) ?? null
+function doQuery(db, store, index, value) {
+  return db?.indexedDb.queryForValue(String(value ?? ""), store, index) ?? null;
 }
 
 export class IndexedDbQuery extends Component {
-  storeId = "items";
+  store = "items";
 
   db?: IndexedDbService;
 
   get trigger() {
-    return this.db?.[`trigger${capitalize(this.storeId.toLowerCase())}`]
+    return this.db?.[`trigger${capitalize(this.store.toLowerCase())}`];
   }
 
   init() {
-    this.defineCalculatedProperty(`data`, doQuery, ['db', 'storeId', 'index', `value`, 'trigger'])
+    this.defineCalculatedProperty(`data`, doQuery, ["db", "store", "index", `value`, "trigger"]);
   }
 }

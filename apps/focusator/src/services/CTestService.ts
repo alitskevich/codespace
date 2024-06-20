@@ -20,7 +20,7 @@ export class CTestService extends Component {
     this.autoplay = auto;
     if (auto) {
       const nextTick = async () => {
-        const { state, current } = this;
+        const current = this.quiz?.[this.step];
         const text = this.current.options[this.current.correct - 1]?.name ?? 'aga'
         window.speechSynthesis.speak(Object.assign(new SpeechSynthesisUtterance(this.current.body), {
           lang: 'ru-RU',
@@ -29,7 +29,7 @@ export class CTestService extends Component {
               const { id: key, correct } = current;
               this.up({
                 state: {
-                  ...state,
+                  ...this.state,
                   [key]: { value: correct, answered: true, isCorrect: true, correct, symbol: "🟢" }
                 }
               })
@@ -53,11 +53,11 @@ export class CTestService extends Component {
   setData(data) {
     this.data = data;
     this.quiz = shuffleArray(data).map((quiz, order) => {
-      const { answer1, answer2, answer3, answer4, ...rest } = quiz;
+      const { ru, en, answer1 = en, answer2, answer3, answer4, body = ru, correct = 1, ...rest } = quiz;
       const options = [answer1, answer2, answer3, answer4]
         .filter(Boolean)
         .map((name, id) => ({ id: id + 1, name }));
-      return { options, order, ...rest };
+      return { options, order, body, correct, ...rest };
     })
   }
 
@@ -91,9 +91,9 @@ export class CTestService extends Component {
   }
 
   findNextStepInOrder() {
-    const { state, current } = this;
-    return (this.quiz.findIndex((q) => q.order > current.order && !state?.[q.id]?.answered) + 1 ||
-      this.quiz.findIndex((q) => q.order < current.order && !state?.[q.id]?.answered) + 1 ||
+    const current = this.quiz?.[this.step];
+    return (this.quiz.findIndex((q) => q.order > current.order && !this.state?.[q.id]?.answered) + 1 ||
+      this.quiz.findIndex((q) => q.order < current.order && !this.state?.[q.id]?.answered) + 1 ||
       0) - 1;
   }
 
@@ -113,7 +113,7 @@ export class CTestService extends Component {
       step: new Promise((resolve) => {
         setTimeout(async () => {
           resolve(this.findNextStepInOrder());
-        }, 1000);
+        }, 2000);
       })
       ,
     };

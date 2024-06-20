@@ -30,7 +30,7 @@ export class CRootNode extends ManifestNode {
   nodes?: XmlNode["nodes"];
 
   constructor(private template: string) {
-    super('R0');
+    super("R0");
     this.slotContent = {};
   }
 

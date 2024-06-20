@@ -2,7 +2,10 @@
 
   <component id="Page.Ctest">
     <StoredData name="state" data="{state}" defaults="{R.defaultState}" action="-> state" />
-    <CTestService Ref="ctest" state="{state}" data="<-db.allCtest" />
+
+    <StoredValue Ref="storeId" defaultValue="idioms" />
+    <IndexedDbQuery Ref="query" db="<-db.instance" store="<- storeId.value" value="*" />
+    <CTestService Ref="ctest" state="{state}" data="<-query.data" />
     <Connector data="<-ctest.info" change="->" />
     <Header />
     <div class="fixed inset-0">
@@ -53,7 +56,8 @@
       </h5>
       <div class="mt-2 flex flex-col place-content-center items-stretch">
         <Input id="{id}" value="{value}" answered="{answered}" correct="{correct}" options="{options}"
-          isCorrect="{isCorrect}" isWrong="{!isCorrect && answered}" changed="-> ctest.onAnswer()" />
+          isCorrect="{isCorrect}" isWrong="{!isCorrect && answered}" hiddenAnswer="{options.length == 1 && !answered}"
+          changed="-> ctest.onAnswer()" />
       </div>
     </div>
   </component>
@@ -67,7 +71,7 @@
           {correct == option.id && answered ? '!bg-emerald-700 !text-white'} 
           {value == option.id && isWrong && answered ? '!bg-red-600 !text-white'} 
           {answered ? 'disabled'}" data-key="{id}" data-value="{option.id}" click="{changed}">
-          <p class="flex-1" title="{option.id|plus:1}"> {option.name}</p>
+          <p class="flex-1" title="{option.id|plus:1}">{hiddenAnswer ? '...' : option.name}</p>
         </div>
       </div>
     </div>

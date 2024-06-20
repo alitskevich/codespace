@@ -1,5 +1,4 @@
-
-export function makeAsyncReturnState(fn, { busyProp = 'busy', targetProp = '...' } = {}) {
+export function makeAsyncReturnState(fn, { busyProp = "busy", targetProp = "..." } = {}) {
   return {
     [busyProp]: true,
     error: null,

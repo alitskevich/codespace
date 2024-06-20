@@ -48,10 +48,13 @@ export class CCompositeNode extends ManifestNode {
         return groups;
       }, {});
 
-      this.slotContent = Object.entries(slots ?? {}).reduce<Hash<EContent>>((groups, [gId, nodes]) => {
-        groups[gId] = platform.getCompiledNodes(nodes);
-        return groups;
-      }, {});
+      this.slotContent = Object.entries(slots ?? {}).reduce<Hash<EContent>>(
+        (groups, [gId, nodes]) => {
+          groups[gId] = platform.getCompiledNodes(nodes);
+          return groups;
+        },
+        {}
+      );
     }
 
     return this.slotContent[slotId || "default"] ?? undefined;

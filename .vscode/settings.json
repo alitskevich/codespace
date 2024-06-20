@@ -13,7 +13,14 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.unicodeHighlight.ambiguousCharacters": false,
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-  "eslint.probe": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html", "markdown"],
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "markdown"
+  ],
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "prettier.requireConfig": true,
@@ -36,6 +43,6 @@
     "editor.defaultFormatter": "redhat.vscode-xml"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

@@ -1,10 +1,10 @@
 import { str } from "ultimus";
 
-import concepts from "../../data/concepts.json";
 import ctest from "../../data/ctest.json";
 import { data as dictionary } from "../../data/dictionary.json";
 import idioms from "../../data/idioms.json";
 import interview from "../../data/interview.json";
+import thesaurus from "../../data/thesaurus.json";
 
 import { stemm } from "./stemm";
 
@@ -39,11 +39,11 @@ function prepareInterview() {
 }
 
 function prepareConcepts() {
-  concepts?.forEach((item: any) => {
+  thesaurus?.forEach((item: any) => {
     item.stem = stemm(item.id).id
   });
 
-  return concepts;
+  return thesaurus;
 }
 
 export const initialData = {

@@ -6,13 +6,15 @@ export const loadJson = <T = any>({ url, body, headers, ...opts }: any): Promise
     body: body ? JSON.stringify(body) : null,
     headers: {
       // work-around for `script.google.com`
-      "Content-Type": url.startsWith("https://script.google.com/macros/s/") ? "text/plain" : "application/json",
+      "Content-Type": url.startsWith("https://script.google.com/macros/s/")
+        ? "text/plain"
+        : "application/json",
       ...headers,
     },
     ...opts,
   })
     .then((res) => res.json())
     .then((res) => {
-      if (res?.error) throw res.error
+      if (res?.error) throw res.error;
       return res;
-    })
+    });

@@ -26,7 +26,12 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
   #refs?: Hash<IArrmatron>;
   #propFnMap?: Map<string, Proc>;
 
-  constructor(readonly platform: IPlatform, protected readonly manifest: T, private _parent?: Arrmatron, scope?: Arrmatron) {
+  constructor(
+    readonly platform: IPlatform,
+    protected readonly manifest: T,
+    private _parent?: Arrmatron,
+    scope?: Arrmatron
+  ) {
     this.scope = scope ?? this;
     this.root = scope?.root ?? this;
     this.#initialState = this.manifest.resolveInitialProps(this);
@@ -75,14 +80,12 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
         const isSpreading = !k || k.startsWith("...");
         const racer = this.raceCondition(`set:${k}`);
         void v.then((val) => racer(() => this.up(isSpreading ? val : { [k]: val })));
-
       } else if (k && typeof v !== "undefined") {
         if (k[0] === "$") {
           if (this.$component[k] !== v) {
             changes.set(k.slice(1), v);
           }
         } else {
-
           const fprint = objectFingerprint(v);
           if (!(k in this.#fprints) || fprint !== this.#fprints[k]) {
             this.#fprints[k] = fprint;
@@ -116,7 +119,7 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
    * use '@' prefix to access platform resources.
    * Functional values are bounded and cached.
    *
-   * @param {string} propId - The ID of the property. 
+   * @param {string} propId - The ID of the property.
    * @return {unknown} The value associated with the property ID.
    */
   get(propId: string): unknown {
@@ -141,7 +144,8 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
         fn = () => val;
       } else {
         const gettr = impl[`get${capitalize(pk)}`];
-        const fn0 = typeof gettr === "function" ? () => gettr.call(impl) ?? null : () => impl[pk] ?? null;
+        const fn0 =
+          typeof gettr === "function" ? () => gettr.call(impl) ?? null : () => impl[pk] ?? null;
 
         fn = !path.length ? fn0 : () => path.reduce((r, p) => r?.[p] ?? null, fn0());
       }
@@ -213,7 +217,6 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
 
         this.log(`-> ${refId}.${target} = `, data);
       }
-
     } catch (ex) {
       this.logError(`emit ${key}:`, ex);
     }
@@ -292,7 +295,8 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
     const children = new Map<Uid, Arrmatron>();
 
     nodes?.forEach((node: IManifestNode, uid: Uid) => {
-      const e = this.$children?.get(uid) ?? node.createArrmatron(this.platform, this, this.recontentScope);
+      const e =
+        this.$children?.get(uid) ?? node.createArrmatron(this.platform, this, this.recontentScope);
       children.set(e.uid, e);
     });
 
@@ -348,23 +352,24 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
 
         const applicator = targetPropName ? (rr: any) => ({ [targetPropName]: rr }) : identity;
 
-        this.defer((() => {
-          let popre;
-          return ref.subscribe(async (source: Arrmatron) => {
-            try {
-              const val = await source.get(sourcePropName);
-              const fingerprint = objectFingerprint(val);
+        this.defer(
+          (() => {
+            let popre;
+            return ref.subscribe(async (source: Arrmatron) => {
+              try {
+                const val = await source.get(sourcePropName);
+                const fingerprint = objectFingerprint(val);
 
-              if (popre !== undefined && popre === fingerprint) return;
+                if (popre !== undefined && popre === fingerprint) return;
 
-              popre = fingerprint;
-              const r = applicator(pipes(this, val));
-              this.up(r as Delta);
-            } catch (ex) {
-              source.logError("Notify ", ex);
-            }
-          })
-        })()
+                popre = fingerprint;
+                const r = applicator(pipes(this, val));
+                this.up(r as Delta);
+              } catch (ex) {
+                source.logError("Notify ", ex);
+              }
+            });
+          })()
         );
 
         // hot subscription
@@ -409,7 +414,7 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
 
   toast = (t: LogEntry) => {
     this.platform.toast(t, this);
-  }
+  };
 
   toString(): string {
     return stringify(this);

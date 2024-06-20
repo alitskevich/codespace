@@ -6,17 +6,16 @@ import { Arrmatron } from "../core/Arrmatron";
 import { ManifestNode } from "../core/ManifestNode";
 import { compilePlaceholder } from "../utils/compileExpression";
 
-
 const narrowData = (data: any) => {
   if (!data) {
     return [];
   }
   if (Array.isArray(data)) return data;
-  if (typeof data[Symbol.iterator] === 'function') return [...data];
-  if (typeof data === "string") return data.split(',').map(id => ({ id, name: id }));
+  if (typeof data[Symbol.iterator] === "function") return [...data];
+  if (typeof data === "string") return data.split(",").map((id) => ({ id, name: id }));
   if (typeof data === "object") return mapEntries(data, (key, value) => ({ ...value, id: key }));
   return [{ id: String(data), name: String(data) }];
-}
+};
 
 class Iterative extends Arrmatron<CForNode> {
   pkHash: Hash<Datum> = {};
@@ -32,7 +31,6 @@ class Iterative extends Arrmatron<CForNode> {
     this.pkHash = {};
     if (each?.length) {
       if (!each.forEach) {
-         
         throw new Error(`[each] Items has no forEach() ${each.toString()}`);
       }
       each.forEach((_datum: Datum, index: number) => {
@@ -83,7 +81,12 @@ export class CForNode extends ManifestNode {
 
   getItemCtxNode(platform: IPlatform) {
     return (
-      this.#itemNode ?? (this.#itemNode = new CItemNode(this.#xmlNode.id, this.#itemName, platform.getCompiledNodes([this.#xmlNode])))
+      this.#itemNode ??
+      (this.#itemNode = new CItemNode(
+        this.#xmlNode.id,
+        this.#itemName,
+        platform.getCompiledNodes([this.#xmlNode])
+      ))
     );
   }
 
@@ -107,7 +110,10 @@ class IterativeItem extends Arrmatron<CItemNode> {
 
   get(propId: string) {
     const iName: string = this.manifest.itemName;
-    const value = propId.startsWith(`${iName}.`) || propId === iName ? super.get(propId) : this.scope.get(propId);
+    const value =
+      propId.startsWith(`${iName}.`) || propId === iName
+        ? super.get(propId)
+        : this.scope.get(propId);
     // this.log(propId, value);
     return value;
   }

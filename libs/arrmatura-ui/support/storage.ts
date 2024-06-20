@@ -34,7 +34,11 @@ export class ClientStorage {
 
   constructor(mode?: PersistenceType, readonly ns = "") {
     this.storage =
-      mode === "local" ? window.localStorage : mode === "session" ? window.sessionStorage : new MemoryStore();
+      mode === "local"
+        ? window.localStorage
+        : mode === "session"
+        ? window.sessionStorage
+        : new MemoryStore();
   }
 
   clear() {

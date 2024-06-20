@@ -12,10 +12,7 @@ import { CDynamicTagNode } from "./routing";
 import { CSelectorNode } from "./selection";
 import { CSlotNode } from "./slot";
 
-
-
 const cloneNode = (x: XmlNode, eliminateAttr: string): XmlNode => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { [eliminateAttr]: _, ...attrs } = x.attrs ?? {};
   return {
     text: x.text,
@@ -27,7 +24,7 @@ const cloneNode = (x: XmlNode, eliminateAttr: string): XmlNode => {
 };
 
 const __compileManifestNode = (x: XmlNode): IManifestNode => {
-  const { tag = 'div', attrs } = x;
+  const { tag = "div", attrs } = x;
   if (attrs?.["Each"]) {
     return new CForNode(cloneNode(x, "Each"), String(attrs["Each"]).trim().split(" "));
   }

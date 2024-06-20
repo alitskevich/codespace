@@ -24,7 +24,6 @@ export class Item implements Delta {
   }
 
   get $data() {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { $row, $navInfo, $, ...d } = this;
     return d;
   }

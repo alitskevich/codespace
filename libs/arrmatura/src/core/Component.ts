@@ -62,7 +62,7 @@ export abstract class Component implements IComponent {
     Object.defineProperty(this, key, {
       get() {
         const args: any[] = deps?.length ? deps.map((k) => this.$ctx.get(k)) : [];
-        const newKey = args.join(':');
+        const newKey = args.join(":");
         if (depKey !== newKey) {
           depKey = newKey;
           depValue = fn.apply(this, args);

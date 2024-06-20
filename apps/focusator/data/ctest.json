@@ -2,7 +2,7 @@
   {
     "$row": 2,
     "id": 64,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я его не видел.",
     "answer1": "I did not see him.",
     "answer2": "She sees him.",
@@ -13,7 +13,7 @@
   {
     "$row": 3,
     "id": 65,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его видит.",
     "answer1": "She did not see them.",
     "answer2": "Will they see them?",
@@ -24,7 +24,7 @@
   {
     "$row": 4,
     "id": 66,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они их увидят?",
     "answer1": "She did not see them.",
     "answer2": "Will they see them?",
@@ -35,7 +35,7 @@
   {
     "$row": 5,
     "id": 67,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она их не видела.",
     "answer1": "They saw her.",
     "answer2": "I saw them.",
@@ -46,7 +46,7 @@
   {
     "$row": 6,
     "id": 68,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я видел их.",
     "answer1": "I saw them.",
     "answer2": "Did she see him?",
@@ -57,7 +57,7 @@
   {
     "$row": 7,
     "id": 69,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его видела?",
     "answer1": "They saw her.",
     "answer2": "Did she see him?",
@@ -68,7 +68,7 @@
   {
     "$row": 8,
     "id": 70,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они видели ее.",
     "answer1": "You do not see them.",
     "answer2": "They saw her.",
@@ -79,7 +79,7 @@
   {
     "$row": 9,
     "id": 71,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты их не видишь.",
     "answer1": "They will not see them.",
     "answer2": "I will not see her.",
@@ -90,7 +90,7 @@
   {
     "$row": 10,
     "id": 72,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я её не увижу.",
     "answer1": "They will not see them.",
     "answer2": "Do I see them?",
@@ -101,7 +101,7 @@
   {
     "$row": 11,
     "id": 73,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я их вижу?",
     "answer1": "They will not see them.",
     "answer2": "Do I see them?",
@@ -112,7 +112,7 @@
   {
     "$row": 12,
     "id": 74,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не увидят их.",
     "answer1": "She did not see her.",
     "answer2": "You see her.",
@@ -123,7 +123,7 @@
   {
     "$row": 13,
     "id": 75,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты её видишь.",
     "answer1": "She did not see her.",
     "answer2": "Did he see him?",
@@ -134,7 +134,7 @@
   {
     "$row": 14,
     "id": 76,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он видел его?",
     "answer1": "Will he see them?",
     "answer2": "She did not see her.",
@@ -145,7 +145,7 @@
   {
     "$row": 15,
     "id": 77,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не видела ее.",
     "answer1": "Will he see them?",
     "answer2": "Do you see her?",
@@ -156,7 +156,7 @@
   {
     "$row": 16,
     "id": 78,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты её видишь?",
     "answer1": "They do not see them.",
     "answer2": "Will he see them?",
@@ -167,7 +167,7 @@
   {
     "$row": 17,
     "id": 79,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он их увидит?",
     "answer1": "They do not see them.",
     "answer2": "You did not see them.",
@@ -178,7 +178,7 @@
   {
     "$row": 18,
     "id": 80,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты их не видел.",
     "answer1": "He did not see her.",
     "answer2": "They do not see them.",
@@ -189,7 +189,7 @@
   {
     "$row": 19,
     "id": 81,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они их не видят.",
     "answer1": "He did not see her.",
     "answer2": "They do not see them.",
@@ -200,7 +200,7 @@
   {
     "$row": 20,
     "id": 82,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он её не видел.",
     "answer1": "He does not see them.",
     "answer2": "He sees them.",
@@ -211,7 +211,7 @@
   {
     "$row": 21,
     "id": 83,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он их видит.",
     "answer1": "You saw them.",
     "answer2": "He sees them.",
@@ -222,7 +222,7 @@
   {
     "$row": 22,
     "id": 84,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты видел их.",
     "answer1": "You do not see him.",
     "answer2": "He does not see them.",
@@ -233,7 +233,7 @@
   {
     "$row": 23,
     "id": 85,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он их не видит.",
     "answer1": "He does not see them.",
     "answer2": "Does he see them?",
@@ -244,7 +244,7 @@
   {
     "$row": 24,
     "id": 86,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он их видит?",
     "answer1": "You do not see him.",
     "answer2": "Does he see them?",
@@ -255,7 +255,7 @@
   {
     "$row": 25,
     "id": 87,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты его не видишь.",
     "answer1": "He will see them.",
     "answer2": "She will not see them.",
@@ -266,7 +266,7 @@
   {
     "$row": 26,
     "id": 88,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она их не увидит.",
     "answer1": "He will see them.",
     "answer2": "She will not see them.",
@@ -277,7 +277,7 @@
   {
     "$row": 27,
     "id": 89,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он увидит их.",
     "answer1": "Will I see them?",
     "answer2": "Did he see her?",
@@ -288,7 +288,7 @@
   {
     "$row": 28,
     "id": 90,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он её видел?",
     "answer1": "Will she see her?",
     "answer2": "Will I see them?",
@@ -299,7 +299,7 @@
   {
     "$row": 29,
     "id": 91,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я их увижу?",
     "answer1": "He will not see him.",
     "answer2": "Will she see her?",
@@ -310,7 +310,7 @@
   {
     "$row": 30,
     "id": 92,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она увидит ее?",
     "answer1": "Will he see him?",
     "answer2": "He will not see him.",
@@ -321,7 +321,7 @@
   {
     "$row": 31,
     "id": 93,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он его не увидит.",
     "answer1": "She does not see her.",
     "answer2": "Will he see him?",
@@ -332,7 +332,7 @@
   {
     "$row": 32,
     "id": 94,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он его увидит?",
     "answer1": "Will he see her?",
     "answer2": "She does not see her.",
@@ -343,7 +343,7 @@
   {
     "$row": 33,
     "id": 95,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она её не видит.",
     "answer1": "She does not see them.",
     "answer2": "She does not see her.",
@@ -354,7 +354,7 @@
   {
     "$row": 34,
     "id": 96,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она их не видит.",
     "answer1": "She does not see them.",
     "answer2": "Will he see her?",
@@ -365,7 +365,7 @@
   {
     "$row": 35,
     "id": 97,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он её увидит?",
     "answer1": "Does she see her?",
     "answer2": "Did you see him?",
@@ -376,7 +376,7 @@
   {
     "$row": 36,
     "id": 98,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты видел его?",
     "answer1": "He will see him.",
     "answer2": "Does she see her?",
@@ -387,7 +387,7 @@
   {
     "$row": 37,
     "id": 99,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она её видит?",
     "answer1": "He will see him.",
     "answer2": "Does she see her?",
@@ -398,7 +398,7 @@
   {
     "$row": 38,
     "id": 100,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он увидит его.",
     "answer1": "You see him.",
     "answer2": "She will not see her.",
@@ -409,7 +409,7 @@
   {
     "$row": 39,
     "id": 101,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она её не увидит.",
     "answer1": "I saw her.",
     "answer2": "You see him.",
@@ -420,7 +420,7 @@
   {
     "$row": 40,
     "id": 102,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты его видишь.",
     "answer1": "Will she see him?",
     "answer2": "He sees her.",
@@ -431,7 +431,7 @@
   {
     "$row": 41,
     "id": 103,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он видит ее.",
     "answer1": "Will she see him?",
     "answer2": "I saw her.",
@@ -442,7 +442,7 @@
   {
     "$row": 42,
     "id": 104,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я видел её.",
     "answer1": "You will see her.",
     "answer2": "Will she see him?",
@@ -453,7 +453,7 @@
   {
     "$row": 43,
     "id": 105,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его увидит?",
     "answer1": "You do not see her.",
     "answer2": "You will see her.",
@@ -464,7 +464,7 @@
   {
     "$row": 44,
     "id": 106,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты её увидишь.",
     "answer1": "You do not see her.",
     "answer2": "You will see her.",
@@ -475,7 +475,7 @@
   {
     "$row": 45,
     "id": 107,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты её не видишь.",
     "answer1": "You do not see her.",
     "answer2": "She sees her.",
@@ -486,7 +486,7 @@
   {
     "$row": 46,
     "id": 108,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она видит её.",
     "answer1": "She will see them.",
     "answer2": "Do you see them?",
@@ -497,7 +497,7 @@
   {
     "$row": 47,
     "id": 109,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты их видишь?",
     "answer1": "He will see her.",
     "answer2": "Do you see them?",
@@ -508,7 +508,7 @@
   {
     "$row": 48,
     "id": 110,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он увидит её.",
     "answer1": "She will see them.",
     "answer2": "He will see her.",
@@ -519,7 +519,7 @@
   {
     "$row": 49,
     "id": 111,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она их увидит.",
     "answer1": "Will they see him?",
     "answer2": "I do not see them.",
@@ -530,7 +530,7 @@
   {
     "$row": 50,
     "id": 112,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я их не вижу.",
     "answer1": "Will I see him?",
     "answer2": "Did she see them?",
@@ -541,7 +541,7 @@
   {
     "$row": 51,
     "id": 113,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она видела их?",
     "answer1": "You see them.",
     "answer2": "Will they see him?",
@@ -552,7 +552,7 @@
   {
     "$row": 52,
     "id": 114,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они его увидят?",
     "answer1": "You saw her.",
     "answer2": "Will I see him?",
@@ -563,7 +563,7 @@
   {
     "$row": 53,
     "id": 115,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я его увижу?",
     "answer1": "You see them.",
     "answer2": "Will I see him?",
@@ -574,7 +574,7 @@
   {
     "$row": 54,
     "id": 116,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты их видишь.",
     "answer1": "You saw her.",
     "answer2": "You see them.",
@@ -585,7 +585,7 @@
   {
     "$row": 55,
     "id": 117,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты видел её.",
     "answer1": "I saw him.",
     "answer2": "He does not see him.",
@@ -596,7 +596,7 @@
   {
     "$row": 56,
     "id": 118,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он его не видит.",
     "answer1": "He does not see him.",
     "answer2": "I saw him.",
@@ -607,7 +607,7 @@
   {
     "$row": 57,
     "id": 119,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я видел его.",
     "answer1": "He does not see her.",
     "answer2": "You did not see him.",
@@ -618,7 +618,7 @@
   {
     "$row": 58,
     "id": 120,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы его не видели.",
     "answer1": "He does not see her.",
     "answer2": "She sees them.",
@@ -629,7 +629,7 @@
   {
     "$row": 59,
     "id": 121,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она их видит.",
     "answer1": "She sees them.",
     "answer2": "He does not see her.",
@@ -640,7 +640,7 @@
   {
     "$row": 60,
     "id": 122,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он её не видит.",
     "answer1": "You will see them.",
     "answer2": "He does not see her.",
@@ -651,7 +651,7 @@
   {
     "$row": 61,
     "id": 123,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты увидишь их.",
     "answer1": "Did you see her?",
     "answer2": "Did she see her?",
@@ -662,7 +662,7 @@
   {
     "$row": 62,
     "id": 124,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она видела ее?",
     "answer1": "Did you see her?",
     "answer2": "She will see her.",
@@ -673,7 +673,7 @@
   {
     "$row": 63,
     "id": 125,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она увидит её.",
     "answer1": "Did you see her?",
     "answer2": "She will see her.",
@@ -684,7 +684,7 @@
   {
     "$row": 64,
     "id": 126,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты её видел?",
     "answer1": "Will I see her?",
     "answer2": "They will not see him.",
@@ -695,7 +695,7 @@
   {
     "$row": 65,
     "id": 127,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они его не увидят.",
     "answer1": "Will I see her?",
     "answer2": "They will not see him.",
@@ -706,7 +706,7 @@
   {
     "$row": 66,
     "id": 128,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я ее увижу?",
     "answer1": "I do not see him.",
     "answer2": "Do they see him?",
@@ -717,7 +717,7 @@
   {
     "$row": 67,
     "id": 129,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они его видят?",
     "answer1": "You did not meet her.",
     "answer2": "Does she see him?",
@@ -728,7 +728,7 @@
   {
     "$row": 68,
     "id": 130,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его видит?",
     "answer1": "He meets her.",
     "answer2": "I do not see him.",
@@ -739,7 +739,7 @@
   {
     "$row": 69,
     "id": 131,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я его не вижу.",
     "answer1": "He meets her.",
     "answer2": "You did not meet her.",
@@ -750,7 +750,7 @@
   {
     "$row": 70,
     "id": 132,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы с ней не встречались.",
     "answer1": "He will meet her.",
     "answer2": "He meets her.",
@@ -761,7 +761,7 @@
   {
     "$row": 71,
     "id": 133,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он встречается с ней.",
     "answer1": "He meets her.",
     "answer2": "He will meet her.",
@@ -772,7 +772,7 @@
   {
     "$row": 72,
     "id": 134,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он встретится с ней.",
     "answer1": "They did not meet him.",
     "answer2": "They will meet him.",
@@ -783,7 +783,7 @@
   {
     "$row": 73,
     "id": 135,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они встретят его.",
     "answer1": "They will meet him.",
     "answer2": "Did she meet him?",
@@ -794,7 +794,7 @@
   {
     "$row": 74,
     "id": 136,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она с ним встречалась?",
     "answer1": "They did not meet him.",
     "answer2": "Did she meet him?",
@@ -805,7 +805,7 @@
   {
     "$row": 75,
     "id": 137,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не встречались с ним.",
     "answer1": "Will I meet him?",
     "answer2": "They did not meet him.",
@@ -816,7 +816,7 @@
   {
     "$row": 76,
     "id": 138,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я встречусь с ним?",
     "answer1": "You met him.",
     "answer2": "Will she meet him?",
@@ -827,7 +827,7 @@
   {
     "$row": 77,
     "id": 139,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она с ним встретится?",
     "answer1": "Did you meet them?",
     "answer2": "You met him.",
@@ -838,7 +838,7 @@
   {
     "$row": 78,
     "id": 140,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы с ним встречались.",
     "answer1": "He does not meet him.",
     "answer2": "Did you meet them?",
@@ -849,7 +849,7 @@
   {
     "$row": 79,
     "id": 141,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы с ними встречались?",
     "answer1": "They meet her.",
     "answer2": "He does not meet him.",
@@ -860,7 +860,7 @@
   {
     "$row": 80,
     "id": 142,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не встречается с ним.",
     "answer1": "They meet her.",
     "answer2": "He does not meet him.",
@@ -871,7 +871,7 @@
   {
     "$row": 81,
     "id": 143,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они встречаются с ней.",
     "answer1": "Will he meet them?",
     "answer2": "She did not meet them.",
@@ -882,7 +882,7 @@
   {
     "$row": 82,
     "id": 144,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не встречалась с ними.",
     "answer1": "Will he meet them?",
     "answer2": "She did not meet them.",
@@ -893,7 +893,7 @@
   {
     "$row": 83,
     "id": 145,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он с ними встретится?",
     "answer1": "I will meet her.",
     "answer2": "Will he meet them?",
@@ -904,7 +904,7 @@
   {
     "$row": 84,
     "id": 146,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я встречусь с ней.",
     "answer1": "I will meet her.",
     "answer2": "You do not meet them.",
@@ -915,7 +915,7 @@
   {
     "$row": 85,
     "id": 147,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты их не встречаешь.",
     "answer1": "He meets him.",
     "answer2": "You do not meet them.",
@@ -926,7 +926,7 @@
   {
     "$row": 86,
     "id": 148,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он встречается с ним.",
     "answer1": "You did not meet him.",
     "answer2": "Do they meet them?",
@@ -937,7 +937,7 @@
   {
     "$row": 87,
     "id": 149,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они с ними встречаются?",
     "answer1": "She will meet them.",
     "answer2": "You did not meet him.",
@@ -948,7 +948,7 @@
   {
     "$row": 88,
     "id": 150,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы с ним не встречались.",
     "answer1": "He will not meet them.",
     "answer2": "She will meet them.",
@@ -959,7 +959,7 @@
   {
     "$row": 89,
     "id": 151,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она с ними встретится.",
     "answer1": "He will not meet them.",
     "answer2": "She will meet them.",
@@ -970,7 +970,7 @@
   {
     "$row": 90,
     "id": 152,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не встретится с ними.",
     "answer1": "You meet them.",
     "answer2": "I do not meet her.",
@@ -981,7 +981,7 @@
   {
     "$row": 91,
     "id": 153,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я не встречаюсь с ней.",
     "answer1": "You meet them.",
     "answer2": "Did I meet her?",
@@ -992,7 +992,7 @@
   {
     "$row": 92,
     "id": 154,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я встречался с ней?",
     "answer1": "You meet them.",
     "answer2": "Did I meet her?",
@@ -1003,7 +1003,7 @@
   {
     "$row": 93,
     "id": 155,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты с ними встречаешься.",
     "answer1": "He does not meet them.",
     "answer2": "Will she meet them?",
@@ -1014,7 +1014,7 @@
   {
     "$row": 94,
     "id": 156,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она с ними встретится?",
     "answer1": "Will she meet them?",
     "answer2": "He does not meet them.",
@@ -1025,7 +1025,7 @@
   {
     "$row": 95,
     "id": 157,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не встречается с ними.",
     "answer1": "Do I meet them?",
     "answer2": "He does not meet them.",
@@ -1036,7 +1036,7 @@
   {
     "$row": 96,
     "id": 158,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я встречаюсь с ними?",
     "answer1": "You met her.",
     "answer2": "Did I meet them?",
@@ -1047,7 +1047,7 @@
   {
     "$row": 97,
     "id": 159,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я с ними встречался?",
     "answer1": "She does not meet them.",
     "answer2": "You met her.",
@@ -1058,7 +1058,7 @@
   {
     "$row": 98,
     "id": 160,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы с ней.",
     "answer1": "She does not meet them.",
     "answer2": "You met her.",
@@ -1069,7 +1069,7 @@
   {
     "$row": 99,
     "id": 161,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она с ними не знакома.",
     "answer1": "She did not meet her.",
     "answer2": "She does not meet them.",
@@ -1080,7 +1080,7 @@
   {
     "$row": 100,
     "id": 162,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не встречалась с ней.",
     "answer1": "Will I meet them?",
     "answer2": "She did not meet her.",
@@ -1091,7 +1091,7 @@
   {
     "$row": 101,
     "id": 163,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я встречусь с ними?",
     "answer1": "Does she meet him?",
     "answer2": "Will I meet them?",
@@ -1102,7 +1102,7 @@
   {
     "$row": 102,
     "id": 164,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она с ним встречается?",
     "answer1": "She does not meet him.",
     "answer2": "Did they meet her?",
@@ -1113,7 +1113,7 @@
   {
     "$row": 103,
     "id": 165,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они с ней встречались?",
     "answer1": "Did they meet her?",
     "answer2": "She does not meet him.",
@@ -1124,7 +1124,7 @@
   {
     "$row": 104,
     "id": 166,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его не встречает.",
     "answer1": "He meets them.",
     "answer2": "Will they meet him?",
@@ -1135,7 +1135,7 @@
   {
     "$row": 105,
     "id": 167,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они с ним встретятся?",
     "answer1": "She meets him.",
     "answer2": "He meets them.",
@@ -1146,7 +1146,7 @@
   {
     "$row": 106,
     "id": 168,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он встречается с ними.",
     "answer1": "She meets him.",
     "answer2": "He meets them.",
@@ -1157,7 +1157,7 @@
   {
     "$row": 107,
     "id": 169,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она встречается с ним.",
     "answer1": "They will meet them.",
     "answer2": "They meet them.",
@@ -1168,7 +1168,7 @@
   {
     "$row": 108,
     "id": 170,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они встречаются с ними.",
     "answer1": "They will meet them.",
     "answer2": "They meet them.",
@@ -1179,7 +1179,7 @@
   {
     "$row": 109,
     "id": 171,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они встретят их.",
     "answer1": "Will he meet him?",
     "answer2": "She meets them.",
@@ -1190,7 +1190,7 @@
   {
     "$row": 110,
     "id": 172,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она встречает их.",
     "answer1": "She meets them.",
     "answer2": "Will he meet him?",
@@ -1201,7 +1201,7 @@
   {
     "$row": 111,
     "id": 173,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он встретится с ним?",
     "answer1": "She meets her.",
     "answer2": "Will he meet him?",
@@ -1212,7 +1212,7 @@
   {
     "$row": 112,
     "id": 174,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она встречается с ней.",
     "answer1": "He will not meet him.",
     "answer2": "Will they meet them?",
@@ -1223,7 +1223,7 @@
   {
     "$row": 113,
     "id": 175,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они с ними встретятся?",
     "answer1": "Does she meet them?",
     "answer2": "He will not meet him.",
@@ -1234,7 +1234,7 @@
   {
     "$row": 114,
     "id": 176,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не встретится с ним.",
     "answer1": "Does she meet them?",
     "answer2": "He will not meet him.",
@@ -1245,7 +1245,7 @@
   {
     "$row": 115,
     "id": 177,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она с ними встречается?",
     "answer1": "Does she meet her?",
     "answer2": "You do not meet her.",
@@ -1256,7 +1256,7 @@
   {
     "$row": 116,
     "id": 178,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты не встречаешься с ней.",
     "answer1": "Does he meet her?",
     "answer2": "Does she meet her?",
@@ -1267,7 +1267,7 @@
   {
     "$row": 117,
     "id": 179,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она с ней встречается?",
     "answer1": "Did he meet them?",
     "answer2": "Does she meet her?",
@@ -1278,7 +1278,7 @@
   {
     "$row": 118,
     "id": 180,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он встречался с ними?",
     "answer1": "Does he meet her?",
     "answer2": "Did he meet them?",
@@ -1289,7 +1289,7 @@
   {
     "$row": 119,
     "id": 181,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он с ней встречается?",
     "answer1": "She will meet her.",
     "answer2": "Will they meet her?",
@@ -1300,7 +1300,7 @@
   {
     "$row": 120,
     "id": 182,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они с ней встретятся?",
     "answer1": "She will meet her.",
     "answer2": "Will they meet her?",
@@ -1311,7 +1311,7 @@
   {
     "$row": 121,
     "id": 183,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она встретится с ней.",
     "answer1": "You did not meet them.",
     "answer2": "She did not meet him.",
@@ -1322,7 +1322,7 @@
   {
     "$row": 122,
     "id": 184,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не встречалась с ним.",
     "answer1": "Do they meet him?",
     "answer2": "You did not meet them.",
@@ -1333,7 +1333,7 @@
   {
     "$row": 123,
     "id": 185,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты не встречался с ними.",
     "answer1": "You did not meet them.",
     "answer2": "Does he meet them?",
@@ -1344,7 +1344,7 @@
   {
     "$row": 124,
     "id": 186,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он с ними встречается?",
     "answer1": "Does he meet them?",
     "answer2": "Do they meet him?",
@@ -1355,7 +1355,7 @@
   {
     "$row": 125,
     "id": 187,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они с ним встречаются?",
     "answer1": "They meet him.",
     "answer2": "Did you meet him?",
@@ -1366,7 +1366,7 @@
   {
     "$row": 126,
     "id": 188,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы с ним встречались?",
     "answer1": "They meet him.",
     "answer2": "Did you meet him?",
@@ -1377,7 +1377,7 @@
   {
     "$row": 127,
     "id": 189,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они встречаются с ним.",
     "answer1": "Did they meet him?",
     "answer2": "Do you meet him?",
@@ -1388,7 +1388,7 @@
   {
     "$row": 128,
     "id": 190,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты с ним встречаешься?",
     "answer1": "Did they meet them?",
     "answer2": "Do you meet him?",
@@ -1399,7 +1399,7 @@
   {
     "$row": 129,
     "id": 191,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они с ними встречались?",
     "answer1": "Did they meet them?",
     "answer2": "Did they meet him?",
@@ -1410,7 +1410,7 @@
   {
     "$row": 130,
     "id": 192,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они с ним встречались?",
     "answer1": "Did they meet him?",
     "answer2": "He did not meet them.",
@@ -1421,7 +1421,7 @@
   {
     "$row": 131,
     "id": 193,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не встречался с ними.",
     "answer1": "He did not meet him.",
     "answer2": "He did not meet them.",
@@ -1432,7 +1432,7 @@
   {
     "$row": 132,
     "id": 194,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не встречался с ним.",
     "answer1": "He did not meet him.",
     "answer2": "I met them.",
@@ -1443,7 +1443,7 @@
   {
     "$row": 133,
     "id": 195,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я познакомился с ними.",
     "answer1": "Will she meet her?",
     "answer2": "I met them.",
@@ -1454,7 +1454,7 @@
   {
     "$row": 134,
     "id": 196,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она с ней встретится?",
     "answer1": "Will she meet her?",
     "answer2": "Do I meet him?",
@@ -1465,7 +1465,7 @@
   {
     "$row": 135,
     "id": 197,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я встречаюсь с ним?",
     "answer1": "He loves him.",
     "answer2": "She will not meet her.",
@@ -1476,7 +1476,7 @@
   {
     "$row": 136,
     "id": 198,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не встретится с ней.",
     "answer1": "He loves him.",
     "answer2": "She will not meet her.",
@@ -1487,7 +1487,7 @@
   {
     "$row": 137,
     "id": 199,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он любит его.",
     "answer1": "Did you love him?",
     "answer2": "He loves him.",
@@ -1498,7 +1498,7 @@
   {
     "$row": 138,
     "id": 200,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты любила его?",
     "answer1": "Do they love him?",
     "answer2": "You love him.",
@@ -1509,7 +1509,7 @@
   {
     "$row": 139,
     "id": 201,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты любишь его.",
     "answer1": "Do they love him?",
     "answer2": "You love him.",
@@ -1520,7 +1520,7 @@
   {
     "$row": 140,
     "id": 202,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они любят его?",
     "answer1": "Will he love them?",
     "answer2": "Did you love her?",
@@ -1531,7 +1531,7 @@
   {
     "$row": 141,
     "id": 203,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты любил ее?",
     "answer1": "You will love her.",
     "answer2": "Will he love them?",
@@ -1542,7 +1542,7 @@
   {
     "$row": 142,
     "id": 204,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он полюбит их?",
     "answer1": "You will love her.",
     "answer2": "Will he love them?",
@@ -1553,7 +1553,7 @@
   {
     "$row": 143,
     "id": 205,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты полюбишь ее.",
     "answer1": "Will you love her?",
     "answer2": "You will love her.",
@@ -1564,7 +1564,7 @@
   {
     "$row": 144,
     "id": 206,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты ее полюбишь?",
     "answer1": "I loved him.",
     "answer2": "Does he love her?",
@@ -1575,7 +1575,7 @@
   {
     "$row": 145,
     "id": 207,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он её любит?",
     "answer1": "Does he love her?",
     "answer2": "I loved him.",
@@ -1586,7 +1586,7 @@
   {
     "$row": 146,
     "id": 208,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я любила его.",
     "answer1": "He loves her.",
     "answer2": "Will they love her?",
@@ -1597,7 +1597,7 @@
   {
     "$row": 147,
     "id": 209,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они полюбят ее?",
     "answer1": "He loves her.",
     "answer2": "Will they love her?",
@@ -1608,7 +1608,7 @@
   {
     "$row": 148,
     "id": 210,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он любит ее.",
     "answer1": "He loves her.",
     "answer2": "He will love them.",
@@ -1619,7 +1619,7 @@
   {
     "$row": 149,
     "id": 211,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он полюбит их.",
     "answer1": "Did she love them?",
     "answer2": "I do not love him.",
@@ -1630,7 +1630,7 @@
   {
     "$row": 150,
     "id": 212,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я не люблю его.",
     "answer1": "Did she love them?",
     "answer2": "I do not love him.",
@@ -1641,7 +1641,7 @@
   {
     "$row": 151,
     "id": 213,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она их любила?",
     "answer1": "Did she love them?",
     "answer2": "Did I love him?",
@@ -1652,7 +1652,7 @@
   {
     "$row": 152,
     "id": 214,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я любила его?",
     "answer1": "She will love him.",
     "answer2": "I love them.",
@@ -1663,7 +1663,7 @@
   {
     "$row": 153,
     "id": 215,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я люблю их.",
     "answer1": "Will they love them?",
     "answer2": "She will love him.",
@@ -1674,7 +1674,7 @@
   {
     "$row": 154,
     "id": 216,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она полюбит его.",
     "answer1": "You will love them.",
     "answer2": "Will they love them?",
@@ -1685,7 +1685,7 @@
   {
     "$row": 155,
     "id": 217,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они полюбят их?",
     "answer1": "You will love them.",
     "answer2": "Will they love them?",
@@ -1696,7 +1696,7 @@
   {
     "$row": 156,
     "id": 218,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты полюбишь их.",
     "answer1": "They will not love them.",
     "answer2": "You will love them.",
@@ -1707,7 +1707,7 @@
   {
     "$row": 157,
     "id": 219,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не полюбят их.",
     "answer1": "She does not love her.",
     "answer2": "They will not love them.",
@@ -1718,7 +1718,7 @@
   {
     "$row": 158,
     "id": 220,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не любит ее.",
     "answer1": "She does not love her.",
     "answer2": "Do I love him?",
@@ -1729,7 +1729,7 @@
   {
     "$row": 159,
     "id": 221,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я люблю его?",
     "answer1": "He loves them.",
     "answer2": "Do I love him?",
@@ -1740,7 +1740,7 @@
   {
     "$row": 160,
     "id": 222,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он любит их.",
     "answer1": "You loved them.",
     "answer2": "He did not love her.",
@@ -1751,7 +1751,7 @@
   {
     "$row": 161,
     "id": 223,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не любил ее.",
     "answer1": "He will love him.",
     "answer2": "Did you love them?",
@@ -1762,7 +1762,7 @@
   {
     "$row": 162,
     "id": 224,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты их любил?",
     "answer1": "You loved them.",
     "answer2": "Did you love them?",
@@ -1773,7 +1773,7 @@
   {
     "$row": 163,
     "id": 225,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты любил их.",
     "answer1": "He will love him.",
     "answer2": "You loved them.",
@@ -1784,7 +1784,7 @@
   {
     "$row": 164,
     "id": 226,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он полюбит его.",
     "answer1": "She will love her.",
     "answer2": "He will love him.",
@@ -1795,7 +1795,7 @@
   {
     "$row": 165,
     "id": 227,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она полюбит её.",
     "answer1": "I will not love him.",
     "answer2": "She will love her.",
@@ -1806,7 +1806,7 @@
   {
     "$row": 166,
     "id": 228,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я не буду любить его.",
     "answer1": "I loved them.",
     "answer2": "I will not love him.",
@@ -1817,7 +1817,7 @@
   {
     "$row": 167,
     "id": 229,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я любила их.",
     "answer1": "I loved them.",
     "answer2": "I love her.",
@@ -1828,7 +1828,7 @@
   {
     "$row": 168,
     "id": 230,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я люблю ее.",
     "answer1": "Did she love her?",
     "answer2": "You do not love him.",
@@ -1839,7 +1839,7 @@
   {
     "$row": 169,
     "id": 231,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты его не любишь.",
     "answer1": "Did she love her?",
     "answer2": "You do not love him.",
@@ -1850,7 +1850,7 @@
   {
     "$row": 170,
     "id": 232,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она любила ее?",
     "answer1": "Do you love him?",
     "answer2": "She loves him.",
@@ -1861,7 +1861,7 @@
   {
     "$row": 171,
     "id": 233,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его любит.",
     "answer1": "She loves him.",
     "answer2": "Do you love him?",
@@ -1872,7 +1872,7 @@
   {
     "$row": 172,
     "id": 234,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты любишь его?",
     "answer1": "Will she love him?",
     "answer2": "Do you love him?",
@@ -1883,7 +1883,7 @@
   {
     "$row": 173,
     "id": 235,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его полюбит?",
     "answer1": "Does he love them?",
     "answer2": "You do not love them.",
@@ -1894,7 +1894,7 @@
   {
     "$row": 174,
     "id": 236,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты их не любишь.",
     "answer1": "Does he love them?",
     "answer2": "You do not love them.",
@@ -1905,7 +1905,7 @@
   {
     "$row": 175,
     "id": 237,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он их любит?",
     "answer1": "He will not love them.",
     "answer2": "He does not love them.",
@@ -1916,7 +1916,7 @@
   {
     "$row": 176,
     "id": 238,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не любит их.",
     "answer1": "He will not love them.",
     "answer2": "He does not love them.",
@@ -1927,7 +1927,7 @@
   {
     "$row": 177,
     "id": 239,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не будет любить их.",
     "answer1": "I did not love her.",
     "answer2": "I do not love her.",
@@ -1938,7 +1938,7 @@
   {
     "$row": 178,
     "id": 240,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я не люблю ее.",
     "answer1": "You will not love her.",
     "answer2": "They will not love her.",
@@ -1949,7 +1949,7 @@
   {
     "$row": 179,
     "id": 241,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не полюбят ее.",
     "answer1": "They will not love her.",
     "answer2": "I did not love her.",
@@ -1960,7 +1960,7 @@
   {
     "$row": 180,
     "id": 242,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я не любил ее.",
     "answer1": "Does he love him?",
     "answer2": "You will not love her.",
@@ -1971,7 +1971,7 @@
   {
     "$row": 181,
     "id": 243,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты ее не полюбишь.",
     "answer1": "Does he love him?",
     "answer2": "You will not love her.",
@@ -1982,7 +1982,7 @@
   {
     "$row": 182,
     "id": 244,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он любит его?",
     "answer1": "Does he love him?",
     "answer2": "Does she love him?",
@@ -1993,7 +1993,7 @@
   {
     "$row": 183,
     "id": 245,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его любит?",
     "answer1": "She will not love them.",
     "answer2": "She will not love him.",
@@ -2004,7 +2004,7 @@
   {
     "$row": 184,
     "id": 246,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его не полюбит.",
     "answer1": "You did not love her.",
     "answer2": "She will not love them.",
@@ -2015,7 +2015,7 @@
   {
     "$row": 185,
     "id": 247,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не будет любить их.",
     "answer1": "You did not love her.",
     "answer2": "She did not love her.",
@@ -2026,7 +2026,7 @@
   {
     "$row": 186,
     "id": 248,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не любила ее.",
     "answer1": "You did not love her.",
     "answer2": "She did not love her.",
@@ -2037,7 +2037,7 @@
   {
     "$row": 187,
     "id": 249,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты не любил ее.",
     "answer1": "You love her.",
     "answer2": "He does not love her.",
@@ -2048,7 +2048,7 @@
   {
     "$row": 188,
     "id": 250,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он ее не любит.",
     "answer1": "He does not love her.",
     "answer2": "You love her.",
@@ -2059,7 +2059,7 @@
   {
     "$row": 189,
     "id": 251,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты любишь ее.",
     "answer1": "Do they love them?",
     "answer2": "He did not love him.",
@@ -2070,7 +2070,7 @@
   {
     "$row": 190,
     "id": 252,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не любил его.",
     "answer1": "They did not love him.",
     "answer2": "Do they love them?",
@@ -2081,7 +2081,7 @@
   {
     "$row": 191,
     "id": 253,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они любят их?",
     "answer1": "Do they love them?",
     "answer2": "They did not love him.",
@@ -2092,7 +2092,7 @@
   {
     "$row": 192,
     "id": 254,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не любили его.",
     "answer1": "He did not love them.",
     "answer2": "Does she love her?",
@@ -2103,7 +2103,7 @@
   {
     "$row": 193,
     "id": 255,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она любит ее?",
     "answer1": "Does she love her?",
     "answer2": "They did not love her.",
@@ -2114,7 +2114,7 @@
   {
     "$row": 194,
     "id": 256,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не любили ее.",
     "answer1": "He did not love them.",
     "answer2": "They did not love her.",
@@ -2125,7 +2125,7 @@
   {
     "$row": 195,
     "id": 257,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не любил их.",
     "answer1": "She loves her.",
     "answer2": "They did not love them.",
@@ -2136,7 +2136,7 @@
   {
     "$row": 196,
     "id": 258,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не любили их.",
     "answer1": "You did not love them.",
     "answer2": "She loves her.",
@@ -2147,7 +2147,7 @@
   {
     "$row": 197,
     "id": 259,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она любит её.",
     "answer1": "You did not love him.",
     "answer2": "She loves her.",
@@ -2158,7 +2158,7 @@
   {
     "$row": 198,
     "id": 260,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты не любила его.",
     "answer1": "She will love them.",
     "answer2": "You did not love them.",
@@ -2169,7 +2169,7 @@
   {
     "$row": 199,
     "id": 261,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты не любил их.",
     "answer1": "They do not love her.",
     "answer2": "She will love them.",
@@ -2180,7 +2180,7 @@
   {
     "$row": 200,
     "id": 262,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она полюбит их.",
     "answer1": "She will love them.",
     "answer2": "They do not love her.",
@@ -2191,7 +2191,7 @@
   {
     "$row": 201,
     "id": 263,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не любят ее.",
     "answer1": "I will love them.",
     "answer2": "He will not love her.",
@@ -2202,7 +2202,7 @@
   {
     "$row": 202,
     "id": 264,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он ее не полюбит.",
     "answer1": "I will not love her.",
     "answer2": "He will not love her.",
@@ -2213,7 +2213,7 @@
   {
     "$row": 203,
     "id": 265,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я не буду любить ее.",
     "answer1": "I will love them.",
     "answer2": "I will not love her.",
@@ -2224,7 +2224,7 @@
   {
     "$row": 204,
     "id": 266,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я буду любить их.",
     "answer1": "They love him.",
     "answer2": "I will love them.",
@@ -2235,7 +2235,7 @@
   {
     "$row": 205,
     "id": 267,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они любят его.",
     "answer1": "Will she know her?",
     "answer2": "Do I know her?",
@@ -2246,7 +2246,7 @@
   {
     "$row": 206,
     "id": 268,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я ее знаю?",
     "answer1": "He knows them.",
     "answer2": "Will she know her?",
@@ -2257,7 +2257,7 @@
   {
     "$row": 207,
     "id": 269,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она узнает ее?",
     "answer1": "Will she know her?",
     "answer2": "He knows them.",
@@ -2268,7 +2268,7 @@
   {
     "$row": 208,
     "id": 270,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он их знает.",
     "answer1": "She will not know her.",
     "answer2": "I will not know them.",
@@ -2279,7 +2279,7 @@
   {
     "$row": 209,
     "id": 271,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я их не узнаю.",
     "answer1": "She will not know her.",
     "answer2": "I will not know them.",
@@ -2290,7 +2290,7 @@
   {
     "$row": 210,
     "id": 272,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не узнает ее.",
     "answer1": "She did not know them.",
     "answer2": "You know them.",
@@ -2301,7 +2301,7 @@
   {
     "$row": 211,
     "id": 273,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты их знаешь.",
     "answer1": "He does not know him.",
     "answer2": "You know them.",
@@ -2312,7 +2312,7 @@
   {
     "$row": 212,
     "id": 274,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он его не знает.",
     "answer1": "She knows her.",
     "answer2": "She did not know them.",
@@ -2323,7 +2323,7 @@
   {
     "$row": 213,
     "id": 275,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не знала их.",
     "answer1": "Do you know him?",
     "answer2": "She knows her.",
@@ -2334,7 +2334,7 @@
   {
     "$row": 214,
     "id": 276,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она знает её.",
     "answer1": "You do not know him.",
     "answer2": "Do you know him?",
@@ -2345,7 +2345,7 @@
   {
     "$row": 215,
     "id": 277,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы его знаете?",
     "answer1": "She knows him.",
     "answer2": "You do not know him.",
@@ -2356,7 +2356,7 @@
   {
     "$row": 216,
     "id": 278,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты его не знаешь.",
     "answer1": "She knows him.",
     "answer2": "Will she know them?",
@@ -2367,7 +2367,7 @@
   {
     "$row": 217,
     "id": 279,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она их узнает?",
     "answer1": "She will know him.",
     "answer2": "She knows him.",
@@ -2378,7 +2378,7 @@
   {
     "$row": 218,
     "id": 280,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его знает.",
     "answer1": "She will know him.",
     "answer2": "She knows him.",
@@ -2389,7 +2389,7 @@
   {
     "$row": 219,
     "id": 281,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его узнает.",
     "answer1": "He does not know her.",
     "answer2": "She will know him.",
@@ -2400,7 +2400,7 @@
   {
     "$row": 220,
     "id": 282,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он её не знает.",
     "answer1": "He does not know them.",
     "answer2": "He does not know her.",
@@ -2411,7 +2411,7 @@
   {
     "$row": 221,
     "id": 283,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он их не знает.",
     "answer1": "She will not know them.",
     "answer2": "I do not know them.",
@@ -2422,7 +2422,7 @@
   {
     "$row": 222,
     "id": 284,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я их не знаю.",
     "answer1": "Do you know them?",
     "answer2": "She will not know them.",
@@ -2433,7 +2433,7 @@
   {
     "$row": 223,
     "id": 285,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не узнает их.",
     "answer1": "I knew him.",
     "answer2": "She will not know them.",
@@ -2444,7 +2444,7 @@
   {
     "$row": 224,
     "id": 286,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я знал его.",
     "answer1": "I knew him.",
     "answer2": "Do you know them?",
@@ -2455,7 +2455,7 @@
   {
     "$row": 225,
     "id": 287,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы их знаете?",
     "answer1": "Did he know him?",
     "answer2": "Do you know them?",
@@ -2466,7 +2466,7 @@
   {
     "$row": 226,
     "id": 288,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он знал его?",
     "answer1": "You will not know him.",
     "answer2": "Did he know him?",
@@ -2477,7 +2477,7 @@
   {
     "$row": 227,
     "id": 289,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты его не узнаешь.",
     "answer1": "She does not know her.",
     "answer2": "He did not know him.",
@@ -2488,7 +2488,7 @@
   {
     "$row": 228,
     "id": 290,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не знал его.",
     "answer1": "He will not know them.",
     "answer2": "She does not know her.",
@@ -2499,7 +2499,7 @@
   {
     "$row": 229,
     "id": 291,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не знает ее.",
     "answer1": "He will not know them.",
     "answer2": "She does not know her.",
@@ -2510,7 +2510,7 @@
   {
     "$row": 230,
     "id": 292,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не узнает их.",
     "answer1": "You did not know him.",
     "answer2": "I know him.",
@@ -2521,7 +2521,7 @@
   {
     "$row": 231,
     "id": 293,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я знаю его.",
     "answer1": "I will not know her.",
     "answer2": "You did not know him.",
@@ -2532,7 +2532,7 @@
   {
     "$row": 232,
     "id": 294,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы не знали его.",
     "answer1": "She will not know him.",
     "answer2": "I will not know her.",
@@ -2543,7 +2543,7 @@
   {
     "$row": 233,
     "id": 295,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я её не узнаю.",
     "answer1": "I will know him.",
     "answer2": "She will not know him.",
@@ -2554,7 +2554,7 @@
   {
     "$row": 234,
     "id": 296,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его не узнает.",
     "answer1": "She will not know him.",
     "answer2": "Did you know them?",
@@ -2565,7 +2565,7 @@
   {
     "$row": 235,
     "id": 297,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы их знали?",
     "answer1": "You will know her.",
     "answer2": "I will know him.",
@@ -2576,7 +2576,7 @@
   {
     "$row": 236,
     "id": 298,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я его узнаю.",
     "answer1": "You will know her.",
     "answer2": "She did not know her.",
@@ -2587,7 +2587,7 @@
   {
     "$row": 237,
     "id": 299,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не знала ее.",
     "answer1": "I did not know him.",
     "answer2": "You will know her.",
@@ -2598,7 +2598,7 @@
   {
     "$row": 238,
     "id": 300,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты её узнаешь.",
     "answer1": "Does she know her?",
     "answer2": "I did not know him.",
@@ -2609,7 +2609,7 @@
   {
     "$row": 239,
     "id": 301,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я не знал его.",
     "answer1": "I did not know him.",
     "answer2": "Does she know her?",
@@ -2620,7 +2620,7 @@
   {
     "$row": 240,
     "id": 302,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она её знает?",
     "answer1": "She does not know him.",
     "answer2": "Does she know her?",
@@ -2631,7 +2631,7 @@
   {
     "$row": 241,
     "id": 303,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его не знает.",
     "answer1": "You know him.",
     "answer2": "Did I know him?",
@@ -2642,7 +2642,7 @@
   {
     "$row": 242,
     "id": 304,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я его знал?",
     "answer1": "You know him.",
     "answer2": "Did I know him?",
@@ -2653,7 +2653,7 @@
   {
     "$row": 243,
     "id": 305,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты его знаешь.",
     "answer1": "She does not know them.",
     "answer2": "You know him.",
@@ -2664,7 +2664,7 @@
   {
     "$row": 244,
     "id": 306,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она их не знает.",
     "answer1": "I do not know her.",
     "answer2": "They did not know him.",
@@ -2675,7 +2675,7 @@
   {
     "$row": 245,
     "id": 307,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не знали его.",
     "answer1": "Will I know him?",
     "answer2": "They did not know him.",
@@ -2686,7 +2686,7 @@
   {
     "$row": 246,
     "id": 308,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я его узнаю?",
     "answer1": "Will I know him?",
     "answer2": "I do not know her.",
@@ -2697,7 +2697,7 @@
   {
     "$row": 247,
     "id": 309,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я её не знаю.",
     "answer1": "Did he know them?",
     "answer2": "Will he know her?",
@@ -2708,7 +2708,7 @@
   {
     "$row": 248,
     "id": 310,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он её узнает?",
     "answer1": "Did he know them?",
     "answer2": "Will he know her?",
@@ -2719,7 +2719,7 @@
   {
     "$row": 249,
     "id": 311,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он знал их?",
     "answer1": "Did he know them?",
     "answer2": "Will you know her?",
@@ -2730,7 +2730,7 @@
   {
     "$row": 250,
     "id": 312,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы ее узнаете?",
     "answer1": "He did not know her.",
     "answer2": "Will he know him?",
@@ -2741,7 +2741,7 @@
   {
     "$row": 251,
     "id": 313,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он его узнает?",
     "answer1": "He will not know her.",
     "answer2": "He did not know her.",
@@ -2752,7 +2752,7 @@
   {
     "$row": 252,
     "id": 314,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не знал ее.",
     "answer1": "He will not know her.",
     "answer2": "He did not know her.",
@@ -2763,7 +2763,7 @@
   {
     "$row": 253,
     "id": 315,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он её не узнает.",
     "answer1": "They will know them.",
     "answer2": "They will not know her.",
@@ -2774,7 +2774,7 @@
   {
     "$row": 254,
     "id": 316,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они её не узнают.",
     "answer1": "Do I know them?",
     "answer2": "They will know them.",
@@ -2785,7 +2785,7 @@
   {
     "$row": 255,
     "id": 317,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они узнают их.",
     "answer1": "Do they know them?",
     "answer2": "Do I know them?",
@@ -2796,7 +2796,7 @@
   {
     "$row": 256,
     "id": 318,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я их знаю?",
     "answer1": "Does she know him?",
     "answer2": "Do they know them?",
@@ -2807,7 +2807,7 @@
   {
     "$row": 257,
     "id": 319,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они их знают?",
     "answer1": "I knew them.",
     "answer2": "I know her.",
@@ -2818,7 +2818,7 @@
   {
     "$row": 258,
     "id": 320,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я знаю ее.",
     "answer1": "I know her.",
     "answer2": "Does she know him?",
@@ -2829,7 +2829,7 @@
   {
     "$row": 259,
     "id": 321,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его знает?",
     "answer1": "I knew them.",
     "answer2": "Does she know him?",
@@ -2840,7 +2840,7 @@
   {
     "$row": 260,
     "id": 322,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я знал их.",
     "answer1": "You do not know them.",
     "answer2": "They know her.",
@@ -2851,7 +2851,7 @@
   {
     "$row": 261,
     "id": 323,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они её знают.",
     "answer1": "Will he know them?",
     "answer2": "You do not know them.",
@@ -2862,7 +2862,7 @@
   {
     "$row": 262,
     "id": 324,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты их не знаешь.",
     "answer1": "You do not know them.",
     "answer2": "Will he know them?",
@@ -2873,7 +2873,7 @@
   {
     "$row": 263,
     "id": 325,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он их узнает?",
     "answer1": "He will know him.",
     "answer2": "They will not know them.",
@@ -2884,7 +2884,7 @@
   {
     "$row": 264,
     "id": 326,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не узнают их.",
     "answer1": "He will know him.",
     "answer2": "They will not know them.",
@@ -2895,7 +2895,7 @@
   {
     "$row": 265,
     "id": 327,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он узнает его.",
     "answer1": "Do you know her?",
     "answer2": "He knows her.",
@@ -2906,7 +2906,7 @@
   {
     "$row": 266,
     "id": 328,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он её знает.",
     "answer1": "Did she know her?",
     "answer2": "He knows her.",
@@ -2917,7 +2917,7 @@
   {
     "$row": 267,
     "id": 329,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она знала ее?",
     "answer1": "Do you know her?",
     "answer2": "Did she know her?",
@@ -2928,7 +2928,7 @@
   {
     "$row": 268,
     "id": 330,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты ее знаешь?",
     "answer1": "She did not know him.",
     "answer2": "You know her.",
@@ -2939,7 +2939,7 @@
   {
     "$row": 269,
     "id": 331,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты ее знаешь.",
     "answer1": "Do they know him?",
     "answer2": "She did not know him.",
@@ -2950,7 +2950,7 @@
   {
     "$row": 270,
     "id": 332,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его не знала.",
     "answer1": "He will know them.",
     "answer2": "Do they know him?",
@@ -2961,7 +2961,7 @@
   {
     "$row": 271,
     "id": 333,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они его знают?",
     "answer1": "He will know them.",
     "answer2": "Do they know him?",
@@ -2972,7 +2972,7 @@
   {
     "$row": 272,
     "id": 334,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он узнает их.",
     "answer1": "Will I know her?",
     "answer2": "She knows them.",
@@ -2983,7 +2983,7 @@
   {
     "$row": 273,
     "id": 335,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она их знает.",
     "answer1": "Does he know him?",
     "answer2": "She knows them.",
@@ -2994,7 +2994,7 @@
   {
     "$row": 274,
     "id": 336,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он его знает?",
     "answer1": "Does he know him?",
     "answer2": "Will I know her?",
@@ -3005,7 +3005,7 @@
   {
     "$row": 275,
     "id": 337,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я ее узнаю?",
     "answer1": "I will not know him.",
     "answer2": "They will not know him.",
@@ -3016,7 +3016,7 @@
   {
     "$row": 276,
     "id": 338,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не узнают его.",
     "answer1": "She will not find her.",
     "answer2": "I will not know him.",
@@ -3027,7 +3027,7 @@
   {
     "$row": 277,
     "id": 339,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я его не узнаю.",
     "answer1": "She will not find her.",
     "answer2": "He finds him.",
@@ -3038,7 +3038,7 @@
   {
     "$row": 278,
     "id": 340,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он находит его.",
     "answer1": "She did not find her.",
     "answer2": "She will not find her.",
@@ -3049,7 +3049,7 @@
   {
     "$row": 279,
     "id": 341,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не найдёт ее.",
     "answer1": "I will find them.",
     "answer2": "She will not find her.",
@@ -3060,7 +3060,7 @@
   {
     "$row": 280,
     "id": 342,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я найду их.",
     "answer1": "Will I find him?",
     "answer2": "She did not find her.",
@@ -3071,7 +3071,7 @@
   {
     "$row": 281,
     "id": 343,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не нашла ее.",
     "answer1": "Will I find him?",
     "answer2": "She did not find her.",
@@ -3082,7 +3082,7 @@
   {
     "$row": 282,
     "id": 344,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я найду его?",
     "answer1": "Does he find them?",
     "answer2": "Did he find her?",
@@ -3093,7 +3093,7 @@
   {
     "$row": 283,
     "id": 345,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он нашел ее?",
     "answer1": "He did not find him.",
     "answer2": "Does he find them?",
@@ -3104,7 +3104,7 @@
   {
     "$row": 284,
     "id": 346,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он их находит?",
     "answer1": "They find him.",
     "answer2": "He did not find him.",
@@ -3115,7 +3115,7 @@
   {
     "$row": 285,
     "id": 347,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не нашел его.",
     "answer1": "They find him.",
     "answer2": "He did not find him.",
@@ -3126,7 +3126,7 @@
   {
     "$row": 286,
     "id": 348,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они найдут его.",
     "answer1": "He finds her.",
     "answer2": "He will not find him.",
@@ -3137,7 +3137,7 @@
   {
     "$row": 287,
     "id": 349,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не найдёт его.",
     "answer1": "She does not find her.",
     "answer2": "He will not find him.",
@@ -3148,7 +3148,7 @@
   {
     "$row": 288,
     "id": 350,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не находит ее.",
     "answer1": "He finds her.",
     "answer2": "She does not find her.",
@@ -3159,7 +3159,7 @@
   {
     "$row": 289,
     "id": 351,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он находит ее.",
     "answer1": "Does she find her?",
     "answer2": "They will not find them.",
@@ -3170,7 +3170,7 @@
   {
     "$row": 290,
     "id": 352,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не найдут их.",
     "answer1": "Does she find her?",
     "answer2": "They will not find them.",
@@ -3181,7 +3181,7 @@
   {
     "$row": 291,
     "id": 353,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она её находит?",
     "answer1": "Will she find him?",
     "answer2": "Does he find him?",
@@ -3192,7 +3192,7 @@
   {
     "$row": 292,
     "id": 354,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он его находит?",
     "answer1": "Do I find him?",
     "answer2": "Does he find him?",
@@ -3203,7 +3203,7 @@
   {
     "$row": 293,
     "id": 355,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я найду его?",
     "answer1": "Will you find her?",
     "answer2": "Will she find him?",
@@ -3214,7 +3214,7 @@
   {
     "$row": 294,
     "id": 356,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его найдет?",
     "answer1": "I will not find her.",
     "answer2": "Will you find her?",
@@ -3225,7 +3225,7 @@
   {
     "$row": 295,
     "id": 357,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты найдёшь ее?",
     "answer1": "I will not find her.",
     "answer2": "Will you find her?",
@@ -3236,7 +3236,7 @@
   {
     "$row": 296,
     "id": 358,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я не найду ее.",
     "answer1": "Will they find her?",
     "answer2": "Did you find her?",
@@ -3247,7 +3247,7 @@
   {
     "$row": 297,
     "id": 359,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы нашли ее?",
     "answer1": "Will you find him?",
     "answer2": "Will they find her?",
@@ -3258,7 +3258,7 @@
   {
     "$row": 298,
     "id": 360,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они найдут ее?",
     "answer1": "He does not find him.",
     "answer2": "Will you find him?",
@@ -3269,7 +3269,7 @@
   {
     "$row": 299,
     "id": 361,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты найдёшь его?",
     "answer1": "Did they find him?",
     "answer2": "He does not find him.",
@@ -3280,7 +3280,7 @@
   {
     "$row": 300,
     "id": 362,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не находит его.",
     "answer1": "She does not find him.",
     "answer2": "Did they find him?",
@@ -3291,7 +3291,7 @@
   {
     "$row": 301,
     "id": 363,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они нашли его?",
     "answer1": "She does not find him.",
     "answer2": "Did they find him?",
@@ -3302,7 +3302,7 @@
   {
     "$row": 302,
     "id": 364,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его не находит.",
     "answer1": "I found him.",
     "answer2": "I find them.",
@@ -3313,7 +3313,7 @@
   {
     "$row": 303,
     "id": 365,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я нахожу их.",
     "answer1": "They found them.",
     "answer2": "I found him.",
@@ -3324,7 +3324,7 @@
   {
     "$row": 304,
     "id": 366,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я нашел его.",
     "answer1": "They found them.",
     "answer2": "I found him.",
@@ -3335,7 +3335,7 @@
   {
     "$row": 305,
     "id": 367,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они нашли их.",
     "answer1": "You will find him.",
     "answer2": "They found them.",
@@ -3346,7 +3346,7 @@
   {
     "$row": 306,
     "id": 368,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты найдешь его.",
     "answer1": "He will not find her.",
     "answer2": "You will not find them.",
@@ -3357,7 +3357,7 @@
   {
     "$row": 307,
     "id": 369,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты их не найдешь.",
     "answer1": "Do I find her?",
     "answer2": "You will not find them.",
@@ -3368,7 +3368,7 @@
   {
     "$row": 308,
     "id": 370,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я найду ее?",
     "answer1": "You will not find her.",
     "answer2": "He will not find her.",
@@ -3379,7 +3379,7 @@
   {
     "$row": 309,
     "id": 371,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не найдёт ее.",
     "answer1": "You will not find her.",
     "answer2": "He will not find her.",
@@ -3390,7 +3390,7 @@
   {
     "$row": 310,
     "id": 372,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты её не найдешь.",
     "answer1": "You found them.",
     "answer2": "You will not find her.",
@@ -3401,7 +3401,7 @@
   {
     "$row": 311,
     "id": 373,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты нашел их.",
     "answer1": "They do not find her.",
     "answer2": "She did not find him.",
@@ -3412,7 +3412,7 @@
   {
     "$row": 312,
     "id": 374,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его не нашла.",
     "answer1": "They do not find her.",
     "answer2": "She did not find him.",
@@ -3423,7 +3423,7 @@
   {
     "$row": 313,
     "id": 375,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они её не найдут.",
     "answer1": "I find her.",
     "answer2": "They do not find her.",
@@ -3434,7 +3434,7 @@
   {
     "$row": 314,
     "id": 376,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я найду ее.",
     "answer1": "Did I find him?",
     "answer2": "He will not find them.",
@@ -3445,7 +3445,7 @@
   {
     "$row": 315,
     "id": 377,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не найдёт их.",
     "answer1": "Did I find him?",
     "answer2": "He will not find them.",
@@ -3456,7 +3456,7 @@
   {
     "$row": 316,
     "id": 378,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я нашел его?",
     "answer1": "Do you find him?",
     "answer2": "Did I find him?",
@@ -3467,7 +3467,7 @@
   {
     "$row": 317,
     "id": 379,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы нашли его?",
     "answer1": "I do not find them.",
     "answer2": "Do you find him?",
@@ -3478,7 +3478,7 @@
   {
     "$row": 318,
     "id": 380,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я их не нахожу.",
     "answer1": "She finds her.",
     "answer2": "She finds him.",
@@ -3489,7 +3489,7 @@
   {
     "$row": 319,
     "id": 381,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она нашла его.",
     "answer1": "He will find him.",
     "answer2": "She finds her.",
@@ -3500,7 +3500,7 @@
   {
     "$row": 320,
     "id": 382,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она находит ее.",
     "answer1": "I will not find them.",
     "answer2": "She finds her.",
@@ -3511,7 +3511,7 @@
   {
     "$row": 321,
     "id": 383,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я не найду их.",
     "answer1": "He will find him.",
     "answer2": "I will not find them.",
@@ -3522,7 +3522,7 @@
   {
     "$row": 322,
     "id": 384,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он найдет его.",
     "answer1": "Will I find her?",
     "answer2": "She will find her.",
@@ -3533,7 +3533,7 @@
   {
     "$row": 323,
     "id": 385,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она найдет её.",
     "answer1": "They will not find her.",
     "answer2": "She will find her.",
@@ -3544,7 +3544,7 @@
   {
     "$row": 324,
     "id": 386,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не найдут ее.",
     "answer1": "They will not find her.",
     "answer2": "Will I find her?",
@@ -3555,7 +3555,7 @@
   {
     "$row": 325,
     "id": 387,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я найду ее?",
     "answer1": "Will I find her?",
     "answer2": "Does he find her?",
@@ -3566,7 +3566,7 @@
   {
     "$row": 326,
     "id": 388,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он её находит?",
     "answer1": "They find her.",
     "answer2": "Does he find her?",
@@ -3577,7 +3577,7 @@
   {
     "$row": 327,
     "id": 389,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они найдут ее.",
     "answer1": "He finds them.",
     "answer2": "They find her.",
@@ -3588,7 +3588,7 @@
   {
     "$row": 328,
     "id": 390,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он находит их.",
     "answer1": "They did not find her.",
     "answer2": "She will find them.",
@@ -3599,7 +3599,7 @@
   {
     "$row": 329,
     "id": 391,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она их найдет.",
     "answer1": "They did not find her.",
     "answer2": "She does not find them.",
@@ -3610,7 +3610,7 @@
   {
     "$row": 330,
     "id": 392,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она их не находит.",
     "answer1": "He did not find her.",
     "answer2": "They did not find her.",
@@ -3621,7 +3621,7 @@
   {
     "$row": 331,
     "id": 393,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не нашли ее.",
     "answer1": "I will find her.",
     "answer2": "They did not find her.",
@@ -3632,7 +3632,7 @@
   {
     "$row": 332,
     "id": 394,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я найду ее.",
     "answer1": "I will find her.",
     "answer2": "He did not find her.",
@@ -3643,7 +3643,7 @@
   {
     "$row": 333,
     "id": 395,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не нашел ее.",
     "answer1": "She finds them.",
     "answer2": "She will not find them.",
@@ -3654,7 +3654,7 @@
   {
     "$row": 334,
     "id": 396,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она их не найдет.",
     "answer1": "They find them.",
     "answer2": "She finds them.",
@@ -3665,7 +3665,7 @@
   {
     "$row": 335,
     "id": 397,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она находит их.",
     "answer1": "They find them.",
     "answer2": "She finds them.",
@@ -3676,7 +3676,7 @@
   {
     "$row": 336,
     "id": 398,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они находят их.",
     "answer1": "Do they find them?",
     "answer2": "He did not find them.",
@@ -3687,7 +3687,7 @@
   {
     "$row": 337,
     "id": 399,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не нашел их.",
     "answer1": "Do they find them?",
     "answer2": "He did not find them.",
@@ -3698,7 +3698,7 @@
   {
     "$row": 338,
     "id": 400,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они их находят?",
     "answer1": "Will you find them?",
     "answer2": "Do they find them?",
@@ -3709,7 +3709,7 @@
   {
     "$row": 339,
     "id": 401,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты найдёшь их?",
     "answer1": "Will you find them?",
     "answer2": "They will not find him.",
@@ -3720,7 +3720,7 @@
   {
     "$row": 340,
     "id": 402,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не найдут его.",
     "answer1": "Will she call them?",
     "answer2": "You do not call her.",
@@ -3731,7 +3731,7 @@
   {
     "$row": 341,
     "id": 403,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты не звонишь ей.",
     "answer1": "They called her.",
     "answer2": "You do not call her.",
@@ -3742,7 +3742,7 @@
   {
     "$row": 342,
     "id": 404,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ей позвонили.",
     "answer1": "Did I call her?",
     "answer2": "Will she call them?",
@@ -3753,7 +3753,7 @@
   {
     "$row": 343,
     "id": 405,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она позвонит им?",
     "answer1": "Did they call her?",
     "answer2": "Did I call her?",
@@ -3764,7 +3764,7 @@
   {
     "$row": 344,
     "id": 406,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я ей звонил?",
     "answer1": "Did I call her?",
     "answer2": "He will not call her.",
@@ -3775,7 +3775,7 @@
   {
     "$row": 345,
     "id": 407,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не будет ей звонить.",
     "answer1": "Did they call her?",
     "answer2": "He will not call her.",
@@ -3786,7 +3786,7 @@
   {
     "$row": 346,
     "id": 408,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ей позвонили?",
     "answer1": "Did she call him?",
     "answer2": "He calls him.",
@@ -3797,7 +3797,7 @@
   {
     "$row": 347,
     "id": 409,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он звонит ему.",
     "answer1": "Will he call them?",
     "answer2": "He calls him.",
@@ -3808,7 +3808,7 @@
   {
     "$row": 348,
     "id": 410,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он позвонит им?",
     "answer1": "Does he call them?",
     "answer2": "Did she call him?",
@@ -3819,7 +3819,7 @@
   {
     "$row": 349,
     "id": 411,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она ему звонила?",
     "answer1": "Does he call them?",
     "answer2": "Did she call him?",
@@ -3830,7 +3830,7 @@
   {
     "$row": 350,
     "id": 412,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он им звонит?",
     "answer1": "They did not call them.",
     "answer2": "You will call them.",
@@ -3841,7 +3841,7 @@
   {
     "$row": 351,
     "id": 413,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты позвонишь им.",
     "answer1": "She will not call them.",
     "answer2": "They did not call them.",
@@ -3852,7 +3852,7 @@
   {
     "$row": 352,
     "id": 414,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не позвонили им.",
     "answer1": "He will call her.",
     "answer2": "They did not call them.",
@@ -3863,7 +3863,7 @@
   {
     "$row": 353,
     "id": 415,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он позвонит ей.",
     "answer1": "He does not call them.",
     "answer2": "She will not call them.",
@@ -3874,7 +3874,7 @@
   {
     "$row": 354,
     "id": 416,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не будет им звонить.",
     "answer1": "He does not call them.",
     "answer2": "She will not call them.",
@@ -3885,7 +3885,7 @@
   {
     "$row": 355,
     "id": 417,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не звонит им.",
     "answer1": "He does not call them.",
     "answer2": "She will not call her.",
@@ -3896,7 +3896,7 @@
   {
     "$row": 356,
     "id": 418,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не будет ей звонить.",
     "answer1": "She did not call them.",
     "answer2": "She will not call her.",
@@ -3907,7 +3907,7 @@
   {
     "$row": 357,
     "id": 419,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она им не звонила.",
     "answer1": "Did he call her?",
     "answer2": "She did not call him.",
@@ -3918,7 +3918,7 @@
   {
     "$row": 358,
     "id": 420,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она ему не звонила.",
     "answer1": "I will not call him.",
     "answer2": "Did he call her?",
@@ -3929,7 +3929,7 @@
   {
     "$row": 359,
     "id": 421,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он звонил ей?",
     "answer1": "She will call him.",
     "answer2": "Did he call her?",
@@ -3940,7 +3940,7 @@
   {
     "$row": 360,
     "id": 422,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она позвонит ему.",
     "answer1": "She does not call her.",
     "answer2": "I will not call him.",
@@ -3951,7 +3951,7 @@
   {
     "$row": 361,
     "id": 423,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я не буду ему звонить.",
     "answer1": "Will they call him?",
     "answer2": "She does not call her.",
@@ -3962,7 +3962,7 @@
   {
     "$row": 362,
     "id": 424,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не звонит ей.",
     "answer1": "She does not call her.",
     "answer2": "Will they call him?",
@@ -3973,7 +3973,7 @@
   {
     "$row": 363,
     "id": 425,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они позвонят ему?",
     "answer1": "I will not call her.",
     "answer2": "Did he call them?",
@@ -3984,7 +3984,7 @@
   {
     "$row": 364,
     "id": 426,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он позвонил им?",
     "answer1": "Will he call him?",
     "answer2": "I will not call her.",
@@ -3995,7 +3995,7 @@
   {
     "$row": 365,
     "id": 427,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я не буду ей звонить.",
     "answer1": "Will he call him?",
     "answer2": "Do I call her?",
@@ -4006,7 +4006,7 @@
   {
     "$row": 366,
     "id": 428,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Мне ей позвонить?",
     "answer1": "You did not call him.",
     "answer2": "Will he call him?",
@@ -4017,7 +4017,7 @@
   {
     "$row": 367,
     "id": 429,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он позвонит ему?",
     "answer1": "You did not call him.",
     "answer2": "Will he call him?",
@@ -4028,7 +4028,7 @@
   {
     "$row": 368,
     "id": 430,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты ему не звонил.",
     "answer1": "You will not call him.",
     "answer2": "I will not call them.",
@@ -4039,7 +4039,7 @@
   {
     "$row": 369,
     "id": 431,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я не буду им звонить.",
     "answer1": "Did they call them?",
     "answer2": "You will not call him.",
@@ -4050,7 +4050,7 @@
   {
     "$row": 370,
     "id": 432,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты не позвонишь ему.",
     "answer1": "Did they call them?",
     "answer2": "Will he call her?",
@@ -4061,7 +4061,7 @@
   {
     "$row": 371,
     "id": 433,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он позвонит ей?",
     "answer1": "Did they call them?",
     "answer2": "Will he call her?",
@@ -4072,7 +4072,7 @@
   {
     "$row": 372,
     "id": 434,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они позвонили им?",
     "answer1": "Did he call him?",
     "answer2": "You will call her.",
@@ -4083,7 +4083,7 @@
   {
     "$row": 373,
     "id": 435,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Позвони ей.",
     "answer1": "You will call her.",
     "answer2": "Did he call him?",
@@ -4094,7 +4094,7 @@
   {
     "$row": 374,
     "id": 436,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он позвонил ему?",
     "answer1": "He calls her.",
     "answer2": "Will she call him?",
@@ -4105,7 +4105,7 @@
   {
     "$row": 375,
     "id": 437,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она позвонит ему?",
     "answer1": "He calls her.",
     "answer2": "Do you call her?",
@@ -4116,7 +4116,7 @@
   {
     "$row": 376,
     "id": 438,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты ей звонишь?",
     "answer1": "He calls her.",
     "answer2": "Do you call her?",
@@ -4127,7 +4127,7 @@
   {
     "$row": 377,
     "id": 439,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он звонит ей.",
     "answer1": "He calls her.",
     "answer2": "She does not call him.",
@@ -4138,7 +4138,7 @@
   {
     "$row": 378,
     "id": 440,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она ему не звонит.",
     "answer1": "He calls them.",
     "answer2": "I call her.",
@@ -4149,7 +4149,7 @@
   {
     "$row": 379,
     "id": 441,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я звоню ей.",
     "answer1": "Will she call her?",
     "answer2": "He calls them.",
@@ -4160,7 +4160,7 @@
   {
     "$row": 380,
     "id": 442,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он звонит им.",
     "answer1": "Will she call her?",
     "answer2": "He calls them.",
@@ -4171,7 +4171,7 @@
   {
     "$row": 381,
     "id": 443,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она позвонит ей?",
     "answer1": "Will they call her?",
     "answer2": "I do not call her.",
@@ -4182,7 +4182,7 @@
   {
     "$row": 382,
     "id": 444,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я ей не звоню.",
     "answer1": "I do not call her.",
     "answer2": "Will they call her?",
@@ -4193,7 +4193,7 @@
   {
     "$row": 383,
     "id": 445,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они позвонят ей?",
     "answer1": "They do not call him.",
     "answer2": "They do not call her.",
@@ -4204,7 +4204,7 @@
   {
     "$row": 384,
     "id": 446,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ей не звонят.",
     "answer1": "They do not call her.",
     "answer2": "They do not call him.",
@@ -4215,7 +4215,7 @@
   {
     "$row": 385,
     "id": 447,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не звонят ему.",
     "answer1": "Did she call them?",
     "answer2": "She will not call him.",
@@ -4226,7 +4226,7 @@
   {
     "$row": 386,
     "id": 448,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не будет ему звонить.",
     "answer1": "Does she call him?",
     "answer2": "Did she call them?",
@@ -4237,7 +4237,7 @@
   {
     "$row": 387,
     "id": 449,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она позвонила им?",
     "answer1": "Does she call him?",
     "answer2": "You will not call them.",
@@ -4248,7 +4248,7 @@
   {
     "$row": 388,
     "id": 450,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты не позвонишь им.",
     "answer1": "They will not call her.",
     "answer2": "Does she call him?",
@@ -4259,7 +4259,7 @@
   {
     "$row": 389,
     "id": 451,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она ему звонит?",
     "answer1": "Did she call her?",
     "answer2": "They will not call her.",
@@ -4270,7 +4270,7 @@
   {
     "$row": 390,
     "id": 452,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не позвонят ей.",
     "answer1": "She calls her.",
     "answer2": "I call him.",
@@ -4281,7 +4281,7 @@
   {
     "$row": 391,
     "id": 453,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я звоню ему.",
     "answer1": "Did she call her?",
     "answer2": "I call him.",
@@ -4292,7 +4292,7 @@
   {
     "$row": 392,
     "id": 454,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она позвонила ей?",
     "answer1": "She calls her.",
     "answer2": "Did she call her?",
@@ -4303,7 +4303,7 @@
   {
     "$row": 393,
     "id": 455,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она звонит ей.",
     "answer1": "She calls her.",
     "answer2": "He will not call them.",
@@ -4314,7 +4314,7 @@
   {
     "$row": 394,
     "id": 456,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не будет им звонить.",
     "answer1": "They did not call him.",
     "answer2": "Will I call them?",
@@ -4325,7 +4325,7 @@
   {
     "$row": 395,
     "id": 457,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я позвоню им?",
     "answer1": "They did not call him.",
     "answer2": "Do I call him?",
@@ -4336,7 +4336,7 @@
   {
     "$row": 396,
     "id": 458,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Мне ему позвонить?",
     "answer1": "They did not call him.",
     "answer2": "Do I call him?",
@@ -4347,7 +4347,7 @@
   {
     "$row": 397,
     "id": 459,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ему не позвонили.",
     "answer1": "They did not call him.",
     "answer2": "Will you call him?",
@@ -4358,7 +4358,7 @@
   {
     "$row": 398,
     "id": 460,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Позвонишь ему?",
     "answer1": "I called him.",
     "answer2": "I do not call them.",
@@ -4369,7 +4369,7 @@
   {
     "$row": 399,
     "id": 461,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я им не звоню.",
     "answer1": "You called her.",
     "answer2": "I called him.",
@@ -4380,7 +4380,7 @@
   {
     "$row": 400,
     "id": 462,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я позвонила ему.",
     "answer1": "Will you call them?",
     "answer2": "You called her.",
@@ -4391,7 +4391,7 @@
   {
     "$row": 401,
     "id": 463,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты позвонил ей.",
     "answer1": "You called her.",
     "answer2": "Will you call them?",
@@ -4402,7 +4402,7 @@
   {
     "$row": 402,
     "id": 464,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Позвонишь им?",
     "answer1": "Does he call him?",
     "answer2": "Will you call them?",
@@ -4413,7 +4413,7 @@
   {
     "$row": 403,
     "id": 465,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он ему звонит?",
     "answer1": "Does he call him?",
     "answer2": "Did they call him?",
@@ -4424,7 +4424,7 @@
   {
     "$row": 404,
     "id": 466,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ему позвонили?",
     "answer1": "He will call him.",
     "answer2": "Did they call him?",
@@ -4435,7 +4435,7 @@
   {
     "$row": 405,
     "id": 467,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он позвонит ему.",
     "answer1": "Did he hear her?",
     "answer2": "She does not hear her.",
@@ -4446,7 +4446,7 @@
   {
     "$row": 406,
     "id": 468,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она её не слышит.",
     "answer1": "Did he hear her?",
     "answer2": "Will he hear them?",
@@ -4457,7 +4457,7 @@
   {
     "$row": 407,
     "id": 469,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он услышит их?",
     "answer1": "They will hear him.",
     "answer2": "Did he hear her?",
@@ -4468,7 +4468,7 @@
   {
     "$row": 408,
     "id": 470,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он слышал ее?",
     "answer1": "They will hear him.",
     "answer2": "Did he hear her?",
@@ -4479,7 +4479,7 @@
   {
     "$row": 409,
     "id": 471,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они услышат его.",
     "answer1": "He did not hear them.",
     "answer2": "I will not hear him.",
@@ -4490,7 +4490,7 @@
   {
     "$row": 410,
     "id": 472,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я его не услышу.",
     "answer1": "He did not hear them.",
     "answer2": "They did not hear them.",
@@ -4501,7 +4501,7 @@
   {
     "$row": 411,
     "id": 473,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не услышали их.",
     "answer1": "I do not hear them.",
     "answer2": "He did not hear them.",
@@ -4512,7 +4512,7 @@
   {
     "$row": 412,
     "id": 474,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не слышал их.",
     "answer1": "I do not hear them.",
     "answer2": "Will she hear them?",
@@ -4523,7 +4523,7 @@
   {
     "$row": 413,
     "id": 475,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она услышит их?",
     "answer1": "I do not hear them.",
     "answer2": "Will she hear them?",
@@ -4534,7 +4534,7 @@
   {
     "$row": 414,
     "id": 476,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я их не слышу.",
     "answer1": "Do I hear him?",
     "answer2": "I do not hear them.",
@@ -4545,7 +4545,7 @@
   {
     "$row": 415,
     "id": 477,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я слышу его?",
     "answer1": "She does not hear him.",
     "answer2": "I do not hear him.",
@@ -4556,7 +4556,7 @@
   {
     "$row": 416,
     "id": 478,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я его не слышу.",
     "answer1": "She does not hear him.",
     "answer2": "I do not hear him.",
@@ -4567,7 +4567,7 @@
   {
     "$row": 417,
     "id": 479,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его не слышит.",
     "answer1": "She does not hear him.",
     "answer2": "You heard her.",
@@ -4578,7 +4578,7 @@
   {
     "$row": 418,
     "id": 480,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты слышал её.",
     "answer1": "I hear him.",
     "answer2": "You heard her.",
@@ -4589,7 +4589,7 @@
   {
     "$row": 419,
     "id": 481,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я слышу его.",
     "answer1": "Did he hear him?",
     "answer2": "I hear them.",
@@ -4600,7 +4600,7 @@
   {
     "$row": 420,
     "id": 482,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я их слышу.",
     "answer1": "I hear them.",
     "answer2": "They did not hear her.",
@@ -4611,7 +4611,7 @@
   {
     "$row": 421,
     "id": 483,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не услышали ее.",
     "answer1": "Will I hear them?",
     "answer2": "Did he hear him?",
@@ -4622,7 +4622,7 @@
   {
     "$row": 422,
     "id": 484,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он слышал его?",
     "answer1": "Will I hear them?",
     "answer2": "You will hear her.",
@@ -4633,7 +4633,7 @@
   {
     "$row": 423,
     "id": 485,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты её услышишь.",
     "answer1": "Do I hear her?",
     "answer2": "Will I hear them?",
@@ -4644,7 +4644,7 @@
   {
     "$row": 424,
     "id": 486,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я услышу их?",
     "answer1": "Do I hear her?",
     "answer2": "Will I hear them?",
@@ -4655,7 +4655,7 @@
   {
     "$row": 425,
     "id": 487,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я слышу ее?",
     "answer1": "He will hear them.",
     "answer2": "Do I hear her?",
@@ -4666,7 +4666,7 @@
   {
     "$row": 426,
     "id": 488,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он услышит их.",
     "answer1": "He will hear them.",
     "answer2": "They do not hear her.",
@@ -4677,7 +4677,7 @@
   {
     "$row": 427,
     "id": 489,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они её не слышат.",
     "answer1": "You do not hear her.",
     "answer2": "They heard them.",
@@ -4688,7 +4688,7 @@
   {
     "$row": 428,
     "id": 490,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они слышали их.",
     "answer1": "I heard them.",
     "answer2": "You do not hear her.",
@@ -4699,7 +4699,7 @@
   {
     "$row": 429,
     "id": 491,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты ее не слышишь.",
     "answer1": "He hears them.",
     "answer2": "I heard them.",
@@ -4710,7 +4710,7 @@
   {
     "$row": 430,
     "id": 492,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я слышал их.",
     "answer1": "I heard them.",
     "answer2": "Will I hear her?",
@@ -4721,7 +4721,7 @@
   {
     "$row": 431,
     "id": 493,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я её услышу?",
     "answer1": "He hears them.",
     "answer2": "Will I hear her?",
@@ -4732,7 +4732,7 @@
   {
     "$row": 432,
     "id": 494,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он их слышит.",
     "answer1": "They do not hear him.",
     "answer2": "You did not hear him.",
@@ -4743,7 +4743,7 @@
   {
     "$row": 433,
     "id": 495,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы его не слышали.",
     "answer1": "Did I hear her?",
     "answer2": "They do not hear him.",
@@ -4754,7 +4754,7 @@
   {
     "$row": 434,
     "id": 496,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они его не слышат.",
     "answer1": "Do you hear him?",
     "answer2": "Did I hear her?",
@@ -4765,7 +4765,7 @@
   {
     "$row": 435,
     "id": 497,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я слышал ее?",
     "answer1": "I will hear them.",
     "answer2": "Do you hear him?",
@@ -4776,7 +4776,7 @@
   {
     "$row": 436,
     "id": 498,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты его слышишь?",
     "answer1": "I will hear them.",
     "answer2": "She did not hear him.",
@@ -4787,7 +4787,7 @@
   {
     "$row": 437,
     "id": 499,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его не слышала.",
     "answer1": "She did not hear him.",
     "answer2": "I will hear them.",
@@ -4798,7 +4798,7 @@
   {
     "$row": 438,
     "id": 500,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я услышу их.",
     "answer1": "They will not hear him.",
     "answer2": "They did not hear him.",
@@ -4809,7 +4809,7 @@
   {
     "$row": 439,
     "id": 501,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не услышали его.",
     "answer1": "She will not hear her.",
     "answer2": "They did not hear him.",
@@ -4820,7 +4820,7 @@
   {
     "$row": 440,
     "id": 502,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не услышит ее.",
     "answer1": "They heard him.",
     "answer2": "They will not hear him.",
@@ -4831,7 +4831,7 @@
   {
     "$row": 441,
     "id": 503,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не услышат его.",
     "answer1": "They will not hear him.",
     "answer2": "They heard him.",
@@ -4842,7 +4842,7 @@
   {
     "$row": 442,
     "id": 504,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они слышали его.",
     "answer1": "They heard him.",
     "answer2": "He will not hear her.",
@@ -4853,7 +4853,7 @@
   {
     "$row": 443,
     "id": 505,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он её не услышит.",
     "answer1": "Did she hear her?",
     "answer2": "They will not hear them.",
@@ -4864,7 +4864,7 @@
   {
     "$row": 444,
     "id": 506,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они не услышат их.",
     "answer1": "Did she hear her?",
     "answer2": "He hears him.",
@@ -4875,7 +4875,7 @@
   {
     "$row": 445,
     "id": 507,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он слышит его.",
     "answer1": "Did she hear her?",
     "answer2": "He hears him.",
@@ -4886,7 +4886,7 @@
   {
     "$row": 446,
     "id": 508,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она слышала ее?",
     "answer1": "I did not hear her.",
     "answer2": "Did she hear her?",
@@ -4897,7 +4897,7 @@
   {
     "$row": 447,
     "id": 509,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я её не слышал.",
     "answer1": "She did not hear them.",
     "answer2": "He does not hear them.",
@@ -4908,7 +4908,7 @@
   {
     "$row": 448,
     "id": 510,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он не слышит их.",
     "answer1": "He does not hear them.",
     "answer2": "She did not hear them.",
@@ -4919,7 +4919,7 @@
   {
     "$row": 449,
     "id": 511,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она их не слышала.",
     "answer1": "She did not hear her.",
     "answer2": "She did not hear them.",
@@ -4930,7 +4930,7 @@
   {
     "$row": 450,
     "id": 512,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не слышала ее.",
     "answer1": "She will hear him.",
     "answer2": "She did not hear her.",
@@ -4941,7 +4941,7 @@
   {
     "$row": 451,
     "id": 513,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она услышит его.",
     "answer1": "She will not hear him.",
     "answer2": "She hears him.",
@@ -4952,7 +4952,7 @@
   {
     "$row": 452,
     "id": 514,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его слышит.",
     "answer1": "She hears him.",
     "answer2": "She will not hear him.",
@@ -4963,7 +4963,7 @@
   {
     "$row": 453,
     "id": 515,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она не услышит его.",
     "answer1": "Does she hear them?",
     "answer2": "She will not hear him.",
@@ -4974,7 +4974,7 @@
   {
     "$row": 454,
     "id": 516,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она их слышит?",
     "answer1": "You heard them.",
     "answer2": "Does she hear them?",
@@ -4985,7 +4985,7 @@
   {
     "$row": 455,
     "id": 517,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Ты слышал их.",
     "answer1": "Will I hear him?",
     "answer2": "You heard them.",
@@ -4996,7 +4996,7 @@
   {
     "$row": 456,
     "id": 518,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я услышу его?",
     "answer1": "She hears her.",
     "answer2": "Will I hear him?",
@@ -5007,7 +5007,7 @@
   {
     "$row": 457,
     "id": 519,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она слышит её.",
     "answer1": "I will not hear them.",
     "answer2": "Does she hear him?",
@@ -5018,7 +5018,7 @@
   {
     "$row": 458,
     "id": 520,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Она его слышит?",
     "answer1": "They will not hear her.",
     "answer2": "I will not hear them.",
@@ -5029,7 +5029,7 @@
   {
     "$row": 459,
     "id": 521,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я их не услышу.",
     "answer1": "They will not hear her.",
     "answer2": "I will not hear them.",
@@ -5040,7 +5040,7 @@
   {
     "$row": 460,
     "id": 522,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они её не услышат.",
     "answer1": "Will they hear him?",
     "answer2": "I did not hear them.",
@@ -5051,7 +5051,7 @@
   {
     "$row": 461,
     "id": 523,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я их не слышал.",
     "answer1": "I did not hear them.",
     "answer2": "Will they hear him?",
@@ -5062,7 +5062,7 @@
   {
     "$row": 462,
     "id": 524,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они его услышат?",
     "answer1": "Will they hear him?",
     "answer2": "He will hear him.",
@@ -5073,7 +5073,7 @@
   {
     "$row": 463,
     "id": 525,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он услышит его.",
     "answer1": "He will hear him.",
     "answer2": "Does he hear him?",
@@ -5084,7 +5084,7 @@
   {
     "$row": 464,
     "id": 526,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он его слышит?",
     "answer1": "I heard him.",
     "answer2": "I will hear her.",
@@ -5095,7 +5095,7 @@
   {
     "$row": 465,
     "id": 527,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я её услышу.",
     "answer1": "You will not hear him.",
     "answer2": "I will hear her.",
@@ -5106,7 +5106,7 @@
   {
     "$row": 466,
     "id": 528,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Вы его не услышите.",
     "answer1": "He did not hear her.",
     "answer2": "I heard him.",
@@ -5117,7 +5117,7 @@
   {
     "$row": 467,
     "id": 529,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Я слышала его.",
     "answer1": "Do they hear her?",
     "answer2": "Do they hear him?",
@@ -5128,7 +5128,7 @@
   {
     "$row": 468,
     "id": 530,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они его слышат?",
     "answer1": "He did not hear her.",
     "answer2": "Do they hear him?",
@@ -5139,7 +5139,7 @@
   {
     "$row": 469,
     "id": 531,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он её не слышал.",
     "answer1": "He did not hear her.",
     "answer2": "Do they hear her?",
@@ -5150,7 +5150,7 @@
   {
     "$row": 470,
     "id": 532,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Они её слышат?",
     "answer1": "Will he understand them?",
     "answer2": "Does he hear them?",
@@ -5161,7 +5161,7 @@
   {
     "$row": 471,
     "id": 533,
-    "question": "Выберите правильный вариант ответа",
+    "question": null,
     "body": "Он их слышит?",
     "answer1": "They understand them.",
     "answer2": "Will he understand them?",

@@ -10,17 +10,17 @@ export class NavigationService extends Component {
     const hashchange = () => {
       const hash = window.location.hash.slice(1);
       if (hash[0] === "/" && hash !== this.prevHash) {
-        void this.emit('this.hash', hash as any);
+        void this.emit("this.hash", hash as any);
         this.prevHash = hash;
       } else if (!this.prevHash) {
-        void this.emit('this.hash', "/main" as any);
+        void this.emit("this.hash", "/main" as any);
       }
-    }
+    };
 
     window.addEventListener("hashchange", hashchange);
     this.defer(() => {
       window.removeEventListener("hashchange", hashchange);
-    })
+    });
 
     setTimeout(hashchange, 0);
 
@@ -57,7 +57,7 @@ export class NavigationService extends Component {
   }
 
   setParam(expr) {
-    const [key, value] = expr.split('=');
+    const [key, value] = expr.split("=");
     const params = { ...this.params, [key]: value };
     this.onParams(params);
   }

@@ -10,18 +10,19 @@ export class IndexedDbService extends Component {
   name = "items";
   version = 1;
   stores = {
-    items: { keyPath: 'id', indicies: { kind: {}, parent: {}, links: { multiEntry: true } } }
-  }
+    items: { keyPath: "id", indicies: { kind: {}, parent: {}, links: { multiEntry: true } } },
+  };
   triggers: any = {};
   initialData?: any;
-  indexedDb = new IndexedDb()
+  indexedDb = new IndexedDb();
   local?: ClientStorage;
 
   async init() {
-
-    await this.indexedDb.open(this.name,
-      { version: this.version, stores: this.stores, initialData: this.initialData }
-    );
+    await this.indexedDb.open(this.name, {
+      version: this.version,
+      stores: this.stores,
+      initialData: this.initialData,
+    });
 
     // const threadUpId = setInterval(() => this.emit('this.upstream()', {}), 10000);
     // const threadDownId = setInterval(() => this.emit('this.downstream()', {}), 5 * 60000);
@@ -34,11 +35,15 @@ export class IndexedDbService extends Component {
     Object.keys(this.stores).forEach((store) => {
       Object.defineProperty(this, `trigger${capitalize(store.toLowerCase())}`, {
         get(): string {
-          return this.triggers[store] ?? 0
-        }
+          return this.triggers[store] ?? 0;
+        },
       });
 
-      this.defineCalculatedProperty(`all${capitalize(store.toLowerCase())}`, () => this.indexedDb.getAll(store), [`trigger${capitalize(store.toLowerCase())}`])
+      this.defineCalculatedProperty(
+        `all${capitalize(store.toLowerCase())}`,
+        () => this.indexedDb.getAll(store),
+        [`trigger${capitalize(store.toLowerCase())}`]
+      );
     });
 
     return this.downstream();
@@ -78,17 +83,19 @@ export class IndexedDbService extends Component {
       busy: true,
       error: null,
 
-      "...downstream": this.invokeApi({ body: { action: 'realtime.downstream', data } })
+      "...downstream": this.invokeApi({ body: { action: "realtime.downstream", data } })
         .then(async ({ data, since, next }) => {
-          const triggers = { ...this.triggers }
+          const triggers = { ...this.triggers };
 
-          await Promise.all(data?.map(({ store = "items", ...rest }) => {
-            triggers[store] = (triggers[store] ?? 0) + 1;
-            return this.indexedDb.put(rest, store)
-          }) ?? []);
+          await Promise.all(
+            data?.map(({ store = "items", ...rest }) => {
+              triggers[store] = (triggers[store] ?? 0) + 1;
+              return this.indexedDb.put(rest, store);
+            }) ?? []
+          );
 
           if (next) {
-            await this.downstream(next)
+            await this.downstream(next);
           }
 
           this.log(`downstream ${this.name}`, since);
@@ -98,25 +105,30 @@ export class IndexedDbService extends Component {
         .catch((error) => {
           const message = String(error?.message || error || "unknown error");
 
-          this.toast({ id: message, level: "error", message: `downstream: ${message}`, });
+          this.toast({ id: message, level: "error", message: `downstream: ${message}` });
 
           return { busy: false, isOutdated: true, error: message };
         }),
     };
   }
 
-  invokeApi({ body: { action = 'realtime.downstream' } }:
-    {
-      body: {
-        action: 'realtime.downstream' | 'realtime.loadItem' | 'realtime.upsertItem' | 'realtime.upstream',
-        data?: any,
-      }
-    }): Promise<any> {
+  invokeApi({
+    body: { action = "realtime.downstream" },
+  }: {
+    body: {
+      action:
+        | "realtime.downstream"
+        | "realtime.loadItem"
+        | "realtime.upsertItem"
+        | "realtime.upstream";
+      data?: any;
+    };
+  }): Promise<any> {
     return Promise.resolve({
       ok: true,
       action,
       data: [],
-      item: {}
+      item: {},
     });
   }
 
@@ -133,39 +145,40 @@ export class IndexedDbService extends Component {
 
           const upload = {};
 
-          Object.values(data).forEach(({ store = 'items', id, delta }: any) => {
-            const coll = (upload[store] ?? (upload[store] = {}))
-            coll[id] = { ...coll[id], ...delta }
+          Object.values(data).forEach(({ store = "items", id, delta }: any) => {
+            const coll = upload[store] ?? (upload[store] = {});
+            coll[id] = { ...coll[id], ...delta };
           });
 
-          const { ok } = await this.invokeApi({ body: { action: 'realtime.upstream', data: upload } });
+          const { ok } = await this.invokeApi({
+            body: { action: "realtime.upstream", data: upload },
+          });
 
           if (!ok) throw new Error(`upstream failed`);
 
           this.storage.transform(`changeset`, (root: any = {}) => {
             Object.keys(data).forEach((key) => {
               delete root[key];
-            })
+            });
             return root;
           });
 
           this.log(`upstream ${this.name}`);
 
           return { busy: false, isOutdated: false };
-
         } catch (error) {
           const message = String((error as Error)?.message || error || "unknown error");
-          this.toast({ id: message, level: "error", message: `upstream: ${message}`, });
+          this.toast({ id: message, level: "error", message: `upstream: ${message}` });
           return { busy: false, isOutdated: true, error: message };
         }
-      })()
+      })(),
     };
   }
 
   async upsertOptimistic(data: Delta) {
     const now = Date.now();
 
-    const { id = `${now}`, store = 'items', $callback, ...delta } = data;
+    const { id = `${now}`, store = "items", $callback, ...delta } = data;
 
     this.storage.transform(`changeset`, (root: any) => {
       return Object.assign(root ?? {}, { [Date.now()]: { id, store, delta } });
@@ -173,39 +186,41 @@ export class IndexedDbService extends Component {
 
     await this.indexedDb.update({ ...delta, id, ts: now }, store);
 
-    $callback?.({})
+    $callback?.({});
 
-    setTimeout(() => this.emit('this.upstream()', {}), 5000);
+    setTimeout(() => this.emit("this.upstream()", {}), 5000);
 
     return {
       triggers: {
         ...this.triggers,
-        [store]: (this.triggers[store] ?? 0) + 1
-      }
-    }
+        [store]: (this.triggers[store] ?? 0) + 1,
+      },
+    };
   }
 
   upsertItem(data: Delta) {
     // const now = Date.now();
-    const { store: store0 = "items", $callback, ...payload } = data
+    const { store: store0 = "items", $callback, ...payload } = data;
     return {
       isOutdated: true,
       busy: true,
       hasUploaded: false,
       isUploading: true,
       uploadError: null,
-      "...upsertItem": this.invokeApi({ body: { action: 'realtime.upsertItem', data: { ...payload } } })
+      "...upsertItem": this.invokeApi({
+        body: { action: "realtime.upsertItem", data: { ...payload } },
+      })
         .then(async ({ item }) => {
-          const { store = store0, ...payload } = item
-          await this.indexedDb.put(payload, store)
+          const { store = store0, ...payload } = item;
+          await this.indexedDb.put(payload, store);
           this.log(`upsertItem ${this.name}`, item);
-          await $callback?.({ item })
-          this.triggers[store] = (this.triggers[store] ?? 0) + 1
+          await $callback?.({ item });
+          this.triggers[store] = (this.triggers[store] ?? 0) + 1;
           return { busy: false, isUploading: false, isOutdated: false, hasUploaded: true };
         })
         .catch(async (error) => {
           const message = String(error?.message || error || "unknown error");
-          await $callback?.({ error })
+          await $callback?.({ error });
           return { busy: false, isUploading: false, uploadError: message };
         }),
     };
@@ -213,28 +228,30 @@ export class IndexedDbService extends Component {
 
   loadItem(data: Delta) {
     // const now = Date.now();
-    const { store: store = "items", $callback, ...payload } = data
+    const { store: store = "items", $callback, ...payload } = data;
     return {
       isOutdated: true,
       busy: true,
       loadError: null,
-      "...loadItem": this.invokeApi({ body: { action: 'realtime.loadItem', data: { ...payload, store } } })
+      "...loadItem": this.invokeApi({
+        body: { action: "realtime.loadItem", data: { ...payload, store } },
+      })
         .then(async ({ item }) => {
-          assert(item, `item not found: ${payload.id}`)
+          assert(item, `item not found: ${payload.id}`);
 
           await this.indexedDb.put(item, store);
 
           // this.log(`loadItem ${this.name}`, item);
 
-          await $callback?.({ item })
+          await $callback?.({ item });
 
-          this.triggers[store] = (this.triggers[store] ?? 0) + 1
+          this.triggers[store] = (this.triggers[store] ?? 0) + 1;
 
           return { busy: false, isOutdated: false };
         })
         .catch(async (error) => {
           const message = String(error?.message || error || "unknown error");
-          await $callback?.({ error })
+          await $callback?.({ error });
           return { busy: false, loadError: message };
         }),
     };

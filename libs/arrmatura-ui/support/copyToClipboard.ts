@@ -16,7 +16,7 @@ export async function copyToClipboard(data: any, toast) {
   const can = await canWriteToClipboard();
 
   if (!can) {
-    toast({ id: "error-clipboard-copy", level: 'error', message: `Can't copy to clipboard` });
+    toast({ id: "error-clipboard-copy", level: "error", message: `Can't copy to clipboard` });
     return;
   }
 
@@ -51,7 +51,11 @@ export async function copyToClipboard(data: any, toast) {
           });
         },
         (err: Error) => {
-          toast({ id: "error-clipboard-copy", level: 'error', message: `Could not copy to clipboard: ${err.message}` });
+          toast({
+            id: "error-clipboard-copy",
+            level: "error",
+            message: `Could not copy to clipboard: ${err.message}`,
+          });
         }
       );
     }

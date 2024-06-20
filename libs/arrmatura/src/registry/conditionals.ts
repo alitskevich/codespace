@@ -49,10 +49,10 @@ export class CIfNode extends ManifestNode {
         $then = ifThen
           ? ifThen.nodes
           : [
-            Object.assign(this.#xml, {
-              nodes: nodes.filter((e) => e !== ifElse),
-            }),
-          ];
+              Object.assign(this.#xml, {
+                nodes: nodes.filter((e) => e !== ifElse),
+              }),
+            ];
       } else if (ifThen) {
         $then = ifThen.nodes;
       }
@@ -68,7 +68,10 @@ export class CIfNode extends ManifestNode {
     } else if (expr.slice(0, 5) === "slot(") {
       const slotId = expr.slice(5, -1);
       // DO NOT place inside iterations.
-      this.addPropertyResolver((c: IArrmatron) => !!(c.scope as Composite).slotContent?.(slotId)?.size, "condition");
+      this.addPropertyResolver(
+        (c: IArrmatron) => !!(c.scope as Composite).slotContent?.(slotId)?.size,
+        "condition"
+      );
     } else {
       const resolver = compilePlaceholder(expr);
       this.addPropertyResolver((c) => !!resolver(c), "condition");

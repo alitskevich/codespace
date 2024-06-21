@@ -10,13 +10,13 @@ import { stemm } from "./stemm";
 
 function prepareIdioms() {
   idioms?.forEach((item: any) => {
-    const reWord = /[ñáéóü\w]+/gi
-    const s = str(`${item.en}`)
+    const reWord = /[ñáéóü\w]+/gi;
+    const s = str(`${item.en}`);
     item.stems = [];
     for (let e = reWord.exec(s); e; e = reWord.exec(s)) {
       const stem = stemm(e[0]).id;
       if (stem.length > 3) {
-        item.stems.push(stem)
+        item.stems.push(stem);
       }
     }
   });
@@ -26,12 +26,12 @@ function prepareIdioms() {
 
 function prepareInterview() {
   interview?.forEach((item: any) => {
-    const reWord = /[ñáéóü\w]+/gi
-    const s = str(`${item.id}:${item.en}`)
+    const reWord = /[ñáéóü\w]+/gi;
+    const s = str(`${item.id}:${item.en}`);
     item.stems = [];
-    item.name = `${item.prefix ?? ''}\n${item.subject}`
+    item.name = `${item.prefix ?? ""}\n${item.subject}`;
     for (let e = reWord.exec(s); e; e = reWord.exec(s)) {
-      item.stems.push(stemm(e[0]).id)
+      item.stems.push(stemm(e[0]).id);
     }
   });
 
@@ -40,16 +40,24 @@ function prepareInterview() {
 
 function prepareConcepts() {
   thesaurus?.forEach((item: any) => {
-    item.stem = stemm(item.id).id
+    item.stem = stemm(item.id).id;
   });
 
   return thesaurus;
+}
+
+function prepareCtest() {
+  return ctest;
+}
+
+function prepareDictionary() {
+  return dictionary;
 }
 
 export const initialData = {
   idioms: prepareIdioms,
   concepts: prepareConcepts,
   interview: prepareInterview,
-  ctest,
-  dictionary,
-}
+  ctest: prepareCtest,
+  dictionary: prepareDictionary,
+};

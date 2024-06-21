@@ -3,7 +3,7 @@ import { Delta, assert, capitalize } from "ultimus";
 
 import { ClientStorage } from "../support";
 
-import { IndexedDb } from "./impl/IndexedDb";
+import { IndexedDb } from "./IndexedDb";
 
 export class IndexedDbService extends Component {
   trigger: unknown;

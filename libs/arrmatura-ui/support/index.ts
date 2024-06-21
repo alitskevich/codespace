@@ -1,4 +1,4 @@
 export * from "./heartbeat";
-export * from "./copyToClipboard";
+export * from "./clipboard";
 export * from "./loadJson";
 export * from "./storage";

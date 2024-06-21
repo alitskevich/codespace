@@ -1,7 +1,7 @@
 import { Component } from "arrmatura";
 import { arrayGroupBy, arraySortBy, arrayToObject, mapEntries } from "ultimus";
 
-import { IndexedDb } from "../idb/impl/IndexedDb";
+import { IndexedDb } from "../idb/IndexedDb";
 import { ClientStorage, loadJson } from "../support";
 
 const resourceBundlesAdapter = (data) =>

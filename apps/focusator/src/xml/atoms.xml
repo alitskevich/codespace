@@ -45,4 +45,18 @@
     <div class="text-sm h-8 rounded-lg dark:bg-slate-800 p-2">{text}</div>
   </component>
 
+  <component id="HelpButton">
+    <div class="h-8 mx-2 flex flex-row justify-between items-center" toggleClass="hidden in explanation">
+      <img class="h-6 w-6" src="{R.assets.info}" />
+    </div>
+  </component>
+
+  <component id="Progress">
+    <div class="h-4 flex flex-row justify-between items-center gap-0 md:gap-2">
+      <div class=" flex-1
+         bg-{item.color}-{item.order == step ? '300' : '600'} 
+        {item.order == step ? 'h-3' : 'h-1'}" Each="item of data" />
+    </div>
+  </component>
+
 </components>

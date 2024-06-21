@@ -11,7 +11,7 @@
         <div class="h-8 w-28 flex flex-row items-center">
           <Btn title="Stop" class="bg-red-700" action="-> quiz.onStop()" If="step > -1" />
           <Btn title="Restart" class="bg-green-700" action="-> quiz.onRestart()" If="step == -1" />
-          <Help If="step > -1" />
+          <HelpButton If="step > -1" />
         </div>
       </div>
       <div class="flex flex-col flex-1">
@@ -22,7 +22,7 @@
   </component>
 
   <component id="QStepsList">
-    <Progress step="{step}" />
+    <Progress step="{step}" data="<-quiz.progress" />
     <div class="flex flex-col flex-1 op" style="position: relative;">
       <QuizItem (...)="{item}" />
     </div>
@@ -95,19 +95,6 @@
     </div>
   </component>
 
-  <component id="Help">
-    <div class="h-8 mx-2 flex flex-row justify-between items-center" toggleClass="hidden in explanation">
-      <img class="h-6 w-6" src="{R.assets.info}" />
-    </div>
-  </component>
-
-  <component id="Progress">
-    <div class="h-4 flex flex-row justify-between items-center gap-0 md:gap-2">
-      <div class=" flex-1
-       bg-{item.color}-{item.order == step ? '300' : '600'} 
-      {item.order == step ? 'h-3' : 'h-1'}" Each="item of <-quiz.progress" />
-    </div>
-  </component>
   <component id="Congrats">
     <div class="flex flex-col place-content-center flex-1">
       <div class="flex flex-col items-center justify-center flex-1 revealed">

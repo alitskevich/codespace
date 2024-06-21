@@ -1,8 +1,6 @@
 import { Item } from "arrmatura-ui/support/Item";
 import { Hash, arrayToObject, mapEntries } from "ultimus";
 
-import { DeferedContext } from "./DeferedContext";
-
 const withRwStoreTx = (db, store, oncomplete, fn) => {
   const tx = db.transaction(store, "readwrite");
   tx.oncomplete = oncomplete;
@@ -20,7 +18,8 @@ export class IndexedDb {
     name: string,
     meta: { version?: number; stores: Hash; initialData?: any; forcePresist?: boolean }
   ) => Promise<any>;
-  ldb: any;
+
+  db: IDBDatabase | null = null;
 
   static async deleteAll() {
     (await window.indexedDB?.databases())?.forEach((db) => {
@@ -42,11 +41,9 @@ export class IndexedDb {
 
   static isStoragePersisted = () => navigator.storage?.persisted?.();
 
-  defered = new DeferedContext();
+  invocations = new Set<{ fn; resolve; reject }>();
 
   constructor() {
-    let db: any;
-
     this.open = async (name = "db", options) => {
       if (options.forcePresist) {
         await IndexedDb.forcePersistMode();
@@ -59,20 +56,18 @@ export class IndexedDb {
 
         Object.assign(request, {
           onsuccess: async () => {
-            db = request.result;
-
             if (isVersionUpgraded && options.initialData) {
               mapEntries(options.stores, async (store) => {
                 const ini: any = options.initialData[store];
                 const data = typeof ini === "function" ? await ini() : ini;
 
-                return this.bulkPut(data, store);
+                this.bulkPut(data, store);
               });
             }
 
-            await this.defered.setContext(db);
+            await this.setDb(request.result);
 
-            success({ db, isVersionUpgraded });
+            success({ db: this, isVersionUpgraded });
           },
 
           onerror: (event) => {
@@ -108,16 +103,91 @@ export class IndexedDb {
     };
   }
 
+  async setDb(db) {
+    this.db = db;
+
+    for (const { fn, resolve, reject } of this.invocations.values()) {
+      try {
+        await fn(db, resolve);
+      } catch (error) {
+        reject(error);
+      }
+    }
+
+    this.invocations.clear();
+  }
+
+  invoke<T>(fn: (db: IDBDatabase, resolve: (result: T) => void) => void): Promise<T> {
+    return new Promise((resolve, reject) => {
+      if (!this.db) {
+        this.invocations.add({ fn, resolve, reject });
+      } else {
+        try {
+          fn(this.db, resolve);
+        } catch (error) {
+          reject(error);
+        }
+      }
+    });
+  }
+
   clear(store = "items") {
-    return this.defered.invoke((db, callback) =>
+    return this.invoke((db, callback) =>
       withRwStoreTx(db, store, callback, (store) => store.clear())
     );
   }
 
-  get<T = any>(key: string, store = "items") {
-    return this.defered.invoke<T | null>(
+  put(obj: object, store = "items") {
+    return this.invoke((db, callback) =>
+      withRwStoreTx(db, store, callback, (store) => store.put(obj))
+    );
+  }
+
+  bulkPut(data: object[], store) {
+    return this.invoke((db, callback) =>
+      withRwStoreTx(db, store, callback, (store) => data?.forEach((obj) => store.put(obj)))
+    );
+  }
+
+  update(obj: any, store = "items") {
+    return this.invoke(
       (db, callback) =>
-        (db.transaction(store).objectStore(store).get(key).onsuccess = function (event) {
+        (db.transaction(store).objectStore(store).get(obj.id).onsuccess = function (event: any) {
+          const item = event.target.result ?? {};
+          withRwStoreTx(db, store, callback, (store) => store.put({ ...item, ...obj }));
+        })
+    );
+  }
+
+  bulkUpdate(data: any[], store) {
+    return this.invoke((db, callback) => {
+      return (db.transaction(store).objectStore(store).getAll().onsuccess = function (event: any) {
+        const items = arrayToObject(event.target.result, "id");
+        withRwStoreTx(db, store, callback, (store) => {
+          data?.map((e) => ({ ...items[e.id], ...e })).forEach((obj) => store.put(obj));
+        });
+      });
+    });
+  }
+
+  delete(key: string, store = "items") {
+    return this.invoke((db, callback) =>
+      withRwStoreTx(db, store, callback, (store) => store.delete(key))
+    );
+  }
+
+  bulkDelete(data: Item[], store = "items") {
+    return this.invoke((db, callback) =>
+      withRwStoreTx(db, store, callback, (store) =>
+        data.forEach((obj) => store.delete(typeof obj === "string" ? obj : obj.id))
+      )
+    );
+  }
+
+  get<T = any>(key: string, store = "items") {
+    return this.invoke<T | null>(
+      (db, callback) =>
+        (db.transaction(store).objectStore(store).get(key).onsuccess = function (event: any) {
           const result = event.target.result ?? null;
           callback(result);
         })
@@ -125,19 +195,19 @@ export class IndexedDb {
   }
 
   getAllKeys<T = any>(store = "items") {
-    return this.defered.invoke<T[] | null>(
+    return this.invoke<T[] | null>(
       (db, callback) =>
-        (db.transaction(store).objectStore(store).getAllKeys().onsuccess = function (event) {
-          const result = event.target.result ?? null;
+        (db.transaction(store).objectStore(store).getAllKeys().onsuccess = function (event: any) {
+          const result = (event.target?.result as T[]) ?? null;
           callback(result);
         })
     );
   }
 
   getAll<T = any>(store = "items") {
-    return this.defered.invoke<T[] | null>(
+    return this.invoke<T[] | null>(
       (db, callback) =>
-        (db.transaction(store).objectStore(store).getAll().onsuccess = function (event) {
+        (db.transaction(store).objectStore(store).getAll().onsuccess = function (event: any) {
           const result = event.target.result ?? null;
           callback(result);
         })
@@ -145,14 +215,14 @@ export class IndexedDb {
   }
 
   queryForValue<T = any>(value: string, store = "items", index = null) {
-    return this.defered.invoke<T[] | null>((db, callback) => {
+    return this.invoke<T[] | null>((db, callback) => {
       if (!value) {
         callback(null);
         return;
       }
 
       if (value === "*") {
-        db.transaction(store).objectStore(store).getAll().onsuccess = function (event) {
+        db.transaction(store).objectStore(store).getAll().onsuccess = function (event: any) {
           const result = event.target.result ?? null;
           callback(result);
         };
@@ -171,7 +241,7 @@ export class IndexedDb {
       const datasource = index ? objectStore.index(index) : objectStore;
       const result: any[] = [];
 
-      datasource.openCursor(keyRangeValue).onsuccess = (event) => {
+      datasource.openCursor(keyRangeValue).onsuccess = (event: any) => {
         const cursor = event.target.result;
         if (cursor) {
           result.push(Object.freeze(cursor.value));
@@ -182,52 +252,5 @@ export class IndexedDb {
         }
       };
     });
-  }
-
-  put(obj: object, store = "items") {
-    return this.defered.invoke((db, callback) =>
-      withRwStoreTx(db, store, callback, (store) => store.put(obj))
-    );
-  }
-
-  bulkPut(data: object[], store) {
-    return this.defered.invoke((db, callback) =>
-      withRwStoreTx(db, store, callback, (store) => data?.forEach((obj) => store.put(obj)))
-    );
-  }
-
-  update(obj: any, store = "items") {
-    return this.defered.invoke(
-      (db, callback) =>
-        (db.transaction(store).objectStore(store).get(obj.id).onsuccess = function (event) {
-          const item = event.target.result ?? {};
-          withRwStoreTx(db, store, callback, (store) => store.put({ ...item, ...obj }));
-        })
-    );
-  }
-
-  bulkUpdate(data: any[], store) {
-    return this.defered.invoke((db, callback) => {
-      return (db.transaction(store).objectStore(store).getAll().onsuccess = function (event) {
-        const items = arrayToObject(event.target.result, "id");
-        withRwStoreTx(db, store, callback, (store) => {
-          data?.map((e) => ({ ...items[e.id], ...e })).forEach((obj) => store.put(obj));
-        });
-      });
-    });
-  }
-
-  delete(key: string, store = "items") {
-    return this.defered.invoke((db, callback) =>
-      withRwStoreTx(db, store, callback, (store) => store.delete(key))
-    );
-  }
-
-  bulkDelete(data: Item[], store = "items") {
-    return this.defered.invoke((db, callback) =>
-      withRwStoreTx(db, store, callback, (store) =>
-        data.forEach((obj) => store.delete(typeof obj === "string" ? obj : obj.id))
-      )
-    );
   }
 }

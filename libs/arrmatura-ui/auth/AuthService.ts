@@ -2,7 +2,7 @@ import { Component } from "arrmatura";
 import { PersistenceType } from "arrmatura-web/types";
 import { Proc, StringHash, Hash } from "ultimus";
 
-import { IndexedDb } from "../idb/impl/IndexedDb";
+import { IndexedDb } from "../idb/IndexedDb";
 import { ClientStorage, loadJson } from "../support";
 import { makeAsyncReturnState } from "../support/makeAsyncReturnState";
 
@@ -16,7 +16,10 @@ export class AuthService extends Component {
   local?: ClientStorage;
 
   get storage() {
-    return this.local ?? (this.local = new ClientStorage(this.persistence, this.url.replace(/\W+/g, "_")));
+    return (
+      this.local ??
+      (this.local = new ClientStorage(this.persistence, this.url.replace(/\W+/g, "_")))
+    );
   }
 
   get token(): any {
@@ -37,9 +40,16 @@ export class AuthService extends Component {
 
   signIn(data: StringHash) {
     const { email, username = email, password } = data || {};
-    const body = { action: "user.signin", creds: `${username}:${password}`, credentials: data, data };
+    const body = {
+      action: "user.signin",
+      creds: `${username}:${password}`,
+      credentials: data,
+      data,
+    };
 
-    return makeAsyncReturnState(() => loadJson({ url: this.url, body }), { targetProp: '...signIn' });
+    return makeAsyncReturnState(() => loadJson({ url: this.url, body }), {
+      targetProp: "...signIn",
+    });
   }
 
   signUp(data: Hash) {
@@ -47,7 +57,9 @@ export class AuthService extends Component {
 
     if (!this.isSignUpAllowed) return null;
 
-    return makeAsyncReturnState(() => loadJson({ url: this.url, body }), { targetProp: '...signUp' });
+    return makeAsyncReturnState(() => loadJson({ url: this.url, body }), {
+      targetProp: "...signUp",
+    });
   }
 
   async signOut() {

@@ -7,10 +7,9 @@
     <IndexedDbQuery Ref="query" db="<-db.instance" store="<- storeId.value" value="*" />
     <CTestService Ref="ctest" state="{state}" data="<-query.data" />
     <Connector data="<-ctest.info" change="->" />
-    <Header />
-    <div class="fixed inset-0">
-      <Container class="flex flex-col dark:text-white pt-20 h-full">
-        <div class=" flex flex-row justify-between items-center py-2 px-2">
+    <div class="fixed inset-0 top-20">
+      <Container class="flex flex-col dark:text-white h-full">
+        <div class=" flex flex-row justify-between items-center py-4 px-2">
           <div class="h-8 w-28 flex flex-row gap-2 items-center">
             <Fragment If="step > -1">
               <img class="icon" src="{R.assets.back}" click="-> ctest.onBack()" />
@@ -19,13 +18,11 @@
               <img class="icon rotate-180" src="{R.assets.back}" click="-> ctest.onNext()" />
             </Fragment>
           </div>
-          <!-- <AppTitle step="{step}" /> -->
           <div class="h-8 flex flex-row items-center gap-4 p-2">
             <Btn title="{autoplay ? 'Stop' : 'Auto'}" class="{autoplay ? '!bg-red-700 !text-white' : ''}"
               action="-> ctest.onAutoPlay()" If="step > -1" />
             <Btn title="Done" class="!bg-red-700 !text-white" action="-> ctest.onStop()" If="step > -1 && !autoplay" />
             <Btn title="Start" class="!bg-green-700 !text-white" action="-> ctest.onRestart()" If="step == -1" />
-            <!-- <Help If="step > -1" /> -->
           </div>
         </div>
         <div class="flex flex-col flex-1 min-h-0 px-2">
@@ -34,10 +31,12 @@
         </div>
       </Container>
     </div>
+    <Header />
   </component>
 
   <component id="StepsList">
-    <Progress step="{step}" />
+    <Progress step="{step}" data="<-ctest.progress" />
+
     <div class="flex flex-col flex-1 min-h-0 op" style="position: relative;">
       <QuizItem (...)="{item}" />
     </div>
@@ -103,12 +102,6 @@
       <div class="m-4 p-2 flex flex-row place-content-center" If="<-tg.isMocked">
         <Btn title="{R.strings.congratButtonTitle}" mode="primary" large action="-> tg.onSubmit()" busy="<-tg.busy" />
       </div>
-    </div>
-  </component>
-
-  <component id="Help">
-    <div class="h-8 mx-2 flex flex-row justify-between items-center" toggleClass="hidden in explanation">
-      <img class="h-6 w-6" src="{R.assets.info}" />
     </div>
   </component>
 

@@ -1,7 +1,6 @@
 <components>
 
   <component id="Header">
-    <DarkModeService Ref="dark" />
     <nav class="bg-gray-300 dark:bg-gray-800 block w-full absolute h-20 " id="top">
       <Container class="p-4 flex w-full">
         <div class="flex flex-1 items-center justify-between">

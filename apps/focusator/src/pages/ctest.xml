@@ -11,12 +11,12 @@
 
     <Connector data="<-ctest.info" change="->" />
 
-    <div class="fixed inset-0 top-20">
+    <div class="fixed inset-0 pt-20">
       <Container class="flex flex-col dark:text-white h-full">
         <div class=" flex flex-row justify-between items-center py-4 px-2">
           <div class="h-8 w-28 flex flex-row gap-2 items-center">
             <Fragment If="step > -1">
-              <Dropdown options="{R.enums.ctestSources}" change="-> storeId=data.value" value="{storeId}" />
+              <!-- <Dropdown options="{R.enums.ctestSources}" change="-> storeId=data.value" value="{storeId}" /> -->
               <img class="icon" src="{R.assets.back}" click="-> ctest.onBack()" />
               <div class="progess-caption">{step|plus:1}</div>
               <b>{current.symbol ?? '⚪'}</b>

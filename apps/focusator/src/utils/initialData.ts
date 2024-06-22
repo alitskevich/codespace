@@ -38,7 +38,7 @@ function prepareInterview() {
   return interview;
 }
 
-function prepareConcepts() {
+function prepareThesaurus() {
   thesaurus?.forEach((item: any) => {
     item.stem = stemm(item.id).id;
   });
@@ -56,7 +56,7 @@ function prepareDictionary() {
 
 export const initialData = {
   idioms: prepareIdioms,
-  concepts: prepareConcepts,
+  thesaurus: prepareThesaurus,
   interview: prepareInterview,
   ctest: prepareCtest,
   dictionary: prepareDictionary,

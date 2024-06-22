@@ -44,7 +44,7 @@ export const resources = {
   db: {
     name: "focusator",
     stores: {
-      concepts: { keyPath: "id", indicies: { en: {}, adversial: {} } },
+      thesaurus: { keyPath: "id", indicies: { en: {}, adversial: {} } },
       idioms: { keyPath: "id", indicies: { stems: { multiEntry: true } } },
       acquired: { keyPath: "id", indicies: {} },
       ctest: { keyPath: "id", indicies: {} },
@@ -60,10 +60,6 @@ export const resources = {
       { id: "3", name: "3" },
       { id: "4", name: "4" },
       { id: "5", name: "5" },
-    ],
-    ctestSources: [
-      { id: "ctest", name: "Basics" },
-      { id: "idioms", name: "idioms" },
     ],
     acquired: [
       { id: "-1", name: "Incognito" },
@@ -92,6 +88,22 @@ export const resources = {
       { id: "acquired", name: "Acquired", type: "enum", typeSpec: "acquired" },
       { id: "topic", name: "Topic" },
       { id: "tags", name: "Tags", type: "multitext" },
+    ],
+  },
+  columns: {
+    thesaurus: [
+      { id: "en", name: "En" },
+      { id: "definition", name: "definition" },
+      { id: "ru", name: "ru" },
+      { id: "adversial", name: "adversial", class: "text-gray-300" },
+      { id: "alternate1", name: "alternate1" },
+      { id: "alternate2", name: "alternate2" },
+      { id: "alternate3", name: "alternate3" },
+      { id: "alternate4", name: "alternate4" },
+      { id: "alternate5", name: "alternate5" },
+      { id: "alternate6", name: "alternate6" },
+      { id: "alternate7", name: "alternate7" },
+      { id: "alternate8", name: "alternate8" },
     ],
   },
 };

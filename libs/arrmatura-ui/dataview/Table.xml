@@ -1,8 +1,8 @@
-<component id="Cell">
+<component id="TableCell">
   <div class="w-full  bg-gray-200 dark:bg-gray-900 truncate max-w-40 p-1">{value}</div>
 </component>
 
-<component id="Cell.Enum">
+<component id="TableCell.Enum">
   <!-- <Connector data="{data}" data-value="{changes.value}" trigger="{changes.value}" change="{cellChange}" If="changes" /> -->
   <div class="w-full  bg-gray-200 dark:bg-gray-900 truncate max-w-40 p-1">{R.enums| dot:typeSpec| resolveNameById:
     value}
@@ -11,24 +11,25 @@
   <!-- <Dropdown class="" options="{R.enums | dot:typeSpec}" value="{value}" change="-> changes" /> -->
 </component>
 
-<component id="Cell.Url">
+<component id="TableCell.Url">
   <a target="_blank" href="{value}" style="padding-left: 0px">{value}</a>
 </component>
 
-<component id="Cell.Date">
+<component id="TableCell.Date">
   <span class="" style="padding-left: 0px">{value | date}</span>
 </component>
 
 <component id="Table">
   <Connector data="{columns|slice:1}" change="-> cols" />
-  <div class="grid auto-cols-auto overflow-auto {class}" style="
+  <div class="flex-auto flex-grow-0 min-h-0 grid auto-cols-auto overflow-auto {class}" style="
     display: grid; 
     grid-template-columns: 2rem minmax(12rem, 1fr) repeat({cols.length}, minmax(9rem, 10rem));
     " scrolledDown="{scrolledDown}">
 
     <div class="grid grid-cols-subgrid gap-0 col-span-full col-row-full order-1">
-      <TableRow Each="item of data" data="{item}" selected="{item.selected}" col1="{columns.0}" cols="{cols}"
-        kind="{kind}" cellChange="{cellChange}" rowFirstComponent="{rowFirstComponent}" />
+      <Dynamic As="TableRow{item.items ? 'Group' : ''}" Each="item of data" data="{item}" selected="{item.selected}"
+        col1="{columns.0}" cols="{cols}" kind="{kind}" cellChange="{cellChange}"
+        rowFirstComponent="{rowFirstComponent}" />
     </div>
 
     <div class="h-10 sticky top-0 grid grid-cols-subgrid gap-0 col-span-full order-0">
@@ -54,6 +55,27 @@
   <div>{value ?? data.title ?? data.name}</div>
 </component>
 
+<component id="TableRowGroup">
+  <div class="grid grid-cols-subgrid gap-0 col-span-full" click="-> expanded = !expanded">
+    <div class="border border-1 border-gray-400
+    cursor-pointer
+    sticky left-0 
+    bg-gray-300 dark:bg-gray-700 
+    snap-start 
+    flex items-start p-2 justify-center">
+      <Svg.Chevron class="h-4 w-3 transition duration-300 m-0 {expanded ? 'rotate-90':''}" />
+    </div>
+    <div class="sticky left-8 border border-dotted border-gray-400 px-2 py-1"
+      style="grid-column-start:2; grid-column-end: span {cols.length|increment};">
+      {data.name ?? data.id}
+    </div>
+  </div>
+  <Fragment If="expanded">
+    <TableRow Each="item of data.items" data="{item}" selected="{item.selected}" col1="{col1}" cols="{cols}"
+      kind="{kind}" cellChange="{cellChange}" rowFirstComponent="{rowFirstComponent}" />
+  </Fragment>
+</component>
+
 <component id="TableRow">
   <div class="grid grid-cols-subgrid gap-0 col-span-full">
     <div class="border border-dotted border-gray-400
@@ -72,9 +94,9 @@
         data="{data}" />
     </div>
 
-    <div class="border border-dotted border-gray-300 snap-start p-0 overflow-hidden line-clamp-4" Each="col of cols"
-      title="data| dot:col.id">
-      <Dynamic As="Cell.{col.type | capitalize}" (...)="{col}" value="{data | dot:col.id}" data-row="{data}"
+    <div class="border border-dotted border-gray-300 snap-start p-0 overflow-hidden line-clamp-4 {col.class}"
+      Each="col of cols" title="data| dot:col.id">
+      <Dynamic As="TableCell.{col.type | capitalize}" (...)="{col}" value="{data | dot:col.id}" data-row="{data}"
         data-collection="{kind ?? 'items'}" data-itemId="{data.id}" data-field="{col.id}" cellChange="{cellChange}" />
     </div>
   </div>

@@ -5,8 +5,10 @@ import { Arrmatron } from "./src/core/Arrmatron";
 export type IComponent = {
   // optional Lifecycle method called during initialization.
   __init?: (c: IArrmatron) => Delta | null | undefined | unknown | void;
-  // optional Lifecycle method called when the state changes.
+  // optional method called when the state changes.
   __stateChanged?: (changes: Map<string, unknown>) => void;
+  // optional method to get a state property by name.
+  __getStateProperty?: (propName: string) => any;
   // state key/values
   [key: string]: unknown;
 };

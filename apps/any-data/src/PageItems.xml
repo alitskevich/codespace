@@ -148,7 +148,7 @@
 </component>
 
 <component id="ItemsTableView">
-  <Table class="flex-auto min-h-0" data="{data}" columns="{R.forms | dot: id ?? R.forms.itemsTable ?? R.forms.item}"
+  <Table class="" data="{data}" columns="{R.forms | dot: id ?? R.forms.itemsTable ?? R.forms.item}"
     rowFirstComponent="ItemTitle" scrolledDown="-> items.showMore()" cellChange="-> items.changeField()" />
 </component>
 

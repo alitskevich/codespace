@@ -1,4 +1,4 @@
-#Templates
+# Templates
 
 **Template** is a xml-based notation defining a components composition, events and data flow.
 
@@ -225,10 +225,11 @@ There is a [Component] class that could be used an base ancestor for custom comp
 
 While designing custom components you can
 
-- to define life-cycle hooks;
-- to add getters/setter for its properties;
-- to define `__getProperty(propName)` to return value of any property by its name
-- to define `__stateChanged(changes)` to intercept appluing state changes
+- to define `__init` life-cycle hook;
+- to use `defer` method for adding cleanup code;
+- to add `getX/setX` for its properties;
+- to define `__getStateProperty(propName)` to return value of any property by its name
+- to define `__stateChanged(changes)` to intercept applying state changes
 - to define action handlers like `doSomethig(data: any): object`, which may return a delta object for updating a component state;
 - to use context methods like `up(delta)`, `emit('ref-target', data)`, `defer(fn)`.
 
@@ -255,7 +256,7 @@ class MyService extends Component {
     }
 
     // to intercept getting of any property
-    __getProperty(key: string) {
+    __getStateProperty(key: string) {
       this.log('getProperty', key)
       return this[key]
 

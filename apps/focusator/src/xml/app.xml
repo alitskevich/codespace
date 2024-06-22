@@ -2,7 +2,10 @@
   <DropdownsPlugin />
   <ToastFacility>
     <StoredValue Ref="language" defaultValue="en" />
+
     <StoredValue Ref="level" defaultValue="500" />
+
+    <DarkModeService Ref="dark" />
 
     <BrowserService Ref="browser" title="{R.name}" />
 

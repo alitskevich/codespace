@@ -1,19 +1,17 @@
 # Arrmatura
 
-## Definitive
+> ![](assets/logo.svg)
 
-`Arrmatura` is a framework which inherits declarative approach and functional programming.
+`Arrmatura` is an universal framework, which promotes ideas of declarative functional programming.
 
 It comprises of
 
-- extended HTML notation to define components, its composition, behaviour and data flow.
-- type system and runtime enabling development of applications of any kind.
-- `IPlatform` implementation for web client applications.
-- Web UI kits with plenty of components, services, forms, editors etc.
+- formal notation to define components and its composition.
+- Typescript runtime, enabling development of applications of any kind.
+- Implementation for web clients.
+- UI kit with plenty of web components, services, forms, editors etc.
 
-## Key features and benefits of the platform
-
-The framework is designed to facilitate the creation of web applications
+The framework is designed to facilitate the creation of applications
 by allowing developers to define components and specify how they are composed and connected.
 
 This component composition is achieved through a declarative syntax,
@@ -28,11 +26,7 @@ to build web applications that are scalable, maintainable, and responsive.
 ## Documentation
 
 - [Manual](docs/manual.md)
-- [Glossary](docs/glossary.md)
-
-## Getting started for Web
-
-See [Hello, world](docs/HELLO.md) for starting example.
+- [Hello, world](docs/HELLO.md)
 
 ## Examples
 

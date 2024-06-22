@@ -135,8 +135,8 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
     if (instant && typeof instant === "function") {
       const bound = instant.bind(impl);
       fn = () => bound;
-    } else if (impl.__getProperty) {
-      fn = () => (impl.__getProperty as (p: string) => unknown)(propId);
+    } else if (impl.__getStateProperty) {
+      fn = () => (impl.__getStateProperty as (p: string) => unknown)(propId);
     } else {
       const [pk, ...path] = propId.split(".");
       if (pk === "R") {

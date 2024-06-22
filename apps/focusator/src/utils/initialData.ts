@@ -4,6 +4,7 @@ import ctest from "../../data/ctest.json";
 import { data as dictionary } from "../../data/dictionary.json";
 import idioms from "../../data/idioms.json";
 import interview from "../../data/interview.json";
+import irregular from "../../data/irregular.json";
 import thesaurus from "../../data/thesaurus.json";
 
 import { stemm } from "./stemm";
@@ -46,6 +47,13 @@ function prepareThesaurus() {
   return thesaurus;
 }
 
+function prepareIrregular() {
+  irregular?.forEach((item: any) => {
+    item.id = item.v1;
+  });
+  return irregular;
+}
+
 function prepareCtest() {
   return ctest;
 }
@@ -60,4 +68,5 @@ export const initialData = {
   interview: prepareInterview,
   ctest: prepareCtest,
   dictionary: prepareDictionary,
+  irregular: prepareIrregular,
 };

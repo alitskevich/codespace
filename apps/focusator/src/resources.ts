@@ -26,6 +26,7 @@ export const resources = {
     { id: "quiz", name: "Quiz", caption: "Practice until confident." },
     { id: "ctest", name: "Train", caption: "Train until done." },
     { id: "mywords", name: "Revise", caption: "Revise wordbank." },
+    { id: "irregular", name: "Irregular", caption: "Irregular verbs." },
   ],
   functions,
   assets,
@@ -47,6 +48,7 @@ export const resources = {
       thesaurus: { keyPath: "id", indicies: { en: {}, adversial: {} } },
       idioms: { keyPath: "id", indicies: { stems: { multiEntry: true } } },
       acquired: { keyPath: "id", indicies: {} },
+      irregular: { keyPath: "id", indicies: {} },
       ctest: { keyPath: "id", indicies: {} },
       interview: { keyPath: "id", indicies: {} },
       dictionary: { keyPath: "id", indicies: { family: {}, stem: {} } },
@@ -104,6 +106,12 @@ export const resources = {
       { id: "alternate6", name: "alternate6" },
       { id: "alternate7", name: "alternate7" },
       { id: "alternate8", name: "alternate8" },
+    ],
+    irregular: [
+      { id: "v1", name: "v1" },
+      { id: "v2", name: "v2" },
+      { id: "v3", name: "v3" },
+      { id: "ru", name: "ru" },
     ],
   },
 };

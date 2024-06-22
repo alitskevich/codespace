@@ -231,8 +231,6 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
     }
     this.isDone = true;
 
-    this.$component.done?.(this);
-
     this.children?.forEach((c) => c.done());
 
     this.#defered?.forEach((f) => f(this));
@@ -257,7 +255,7 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
 
       this.up(this.#initialState, true);
 
-      this.up(this.$component.init?.(this));
+      this.up(this.$component.__init?.(this));
     } else {
       void this.up(this.manifest.resolveProps(this), true);
     }
@@ -266,7 +264,7 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
   // --- Content.
 
   // map of children contexts
-  get children(): Map<Uid, IArrmatron> | undefined {
+  get children(): Map<Uid, Arrmatron> | undefined {
     return this.$children;
   }
 

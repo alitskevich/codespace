@@ -15,15 +15,14 @@ export class UserProfileService extends Component {
   }
 
   set data(profile: unknown) {
-    this.storage.set('data', profile);
+    this.storage.set("data", profile);
   }
 
   get data(): Delta {
-    return this.storage.get('data');
+    return this.storage.get("data");
   }
 
-  init() {
-
+  __init() {
     const ts = this.storage.get("ts");
     const data = this.storage.get("profile");
     const stale = !data || (ts && Number(ts) + this.ttl <= Date.now());

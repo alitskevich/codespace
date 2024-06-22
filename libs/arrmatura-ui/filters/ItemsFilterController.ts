@@ -1,5 +1,5 @@
 import { Component } from "arrmatura";
-import type { IArrmatron } from "arrmatura/types";
+import type { TArrmatron } from "arrmatura/types";
 import type { Hash } from "ultimus/types";
 
 import { FilterField } from "./FilterField";
@@ -10,38 +10,47 @@ export class ItemsFilterController extends Component {
   change?: (data: any) => void;
   data: Hash[] = [];
 
-  constructor(initials: Hash<unknown>, ctx: IArrmatron) {
+  constructor(initials: Hash<unknown>, ctx: TArrmatron) {
     super(initials, ctx);
 
-    this.fields = (initials.meta as any[])?.map((e) => new FilterField(this, Object.assign(e, {
-      isSelected: false,
-    }))) ?? [];
-
+    this.fields =
+      (initials.meta as any[])?.map(
+        (e) =>
+          new FilterField(
+            this,
+            Object.assign(e, {
+              isSelected: false,
+            })
+          )
+      ) ?? [];
   }
 
   get actualData() {
-    return this.data?.filter((item: Hash) => {
-      for (const fields of this.fields) {
-        if (!fields.matched(item)) return false;
-      }
-      return true;
-    }) ?? null;
+    return (
+      this.data?.filter((item: Hash) => {
+        for (const fields of this.fields) {
+          if (!fields.matched(item)) return false;
+        }
+        return true;
+      }) ?? null
+    );
   }
 
   touch() {
-
     const fingerprint = this.fields.reduce((value, ff) => {
-      return Object.assign(value, { [`filter_${ff.id}`]: ff.isSelected ? ff.selections : undefined });
+      return Object.assign(value, {
+        [`filter_${ff.id}`]: ff.isSelected ? ff.selections : undefined,
+      });
     }, {});
 
-    const sfingerprint = JSON.stringify(fingerprint)
+    const sfingerprint = JSON.stringify(fingerprint);
 
     if (this.fingerprint !== sfingerprint) {
       super.touch();
 
       this.fingerprint = sfingerprint;
       this.change?.(fingerprint);
-    };
+    }
   }
 
   setValue(value = {}) {
@@ -56,6 +65,6 @@ export class ItemsFilterController extends Component {
 
   toggleField(id: string) {
     const field = this.fields.find((ff) => ff.id === id);
-    field?.setIsSelected(!field.isSelected)
+    field?.setIsSelected(!field.isSelected);
   }
 }

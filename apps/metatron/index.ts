@@ -1,4 +1,4 @@
-import { IArrmatron } from "arrmatura/types";
+import type { IArrmatronRoot } from "arrmatura/types";
 import commonUiTypes from "arrmatura-ui";
 import launchWeb from "arrmatura-web";
 import * as lib from "ultimus";
@@ -9,14 +9,13 @@ import appResources from "./src/resources";
 import { fetchApiData } from "./src/utils/fetchApiData";
 import { resolveProjectMetadata } from "./src/utils/resolveProjectMetadata";
 
-
 const apiKey = "AKfycbwLdEiWXYDr5WESB7hI-zmwr4NEqx-6yhMhzi2uYk4OraJCvyWryvMGhYnzAYModa4N";
 const { params, path } = lib.urlParse(window.location.href);
-const pageId = window['pageId'] ?? path[0] ?? "home";
+const pageId = window["pageId"] ?? path[0] ?? "home";
 const projectsUrl = `https://script.google.com/macros/s/${apiKey}/exec`;
 // const metatronUrl = `https://script.google.com/macros/s/AKfycbz9KNZSQr71Hg2seKmQvohsFQYNC7JRsrhN674j_XSIKQVyWvHELExJrzHoQLK7ObRt/exec`;
 
-let root: IArrmatron | null = null;
+let root: IArrmatronRoot | null = null;
 
 const reload = (meta: any, projects: any, params = {}, resetUI?: lib.Fn, Platform?: any) => {
   const components = [...commonUiTypes, ...typesRegistry, ...(meta?.templates ?? [])];
@@ -36,14 +35,13 @@ const reload = (meta: any, projects: any, params = {}, resetUI?: lib.Fn, Platfor
 };
 
 function main() {
-
   fetchApiData(`projects`, projectsUrl).then(({ projects }) => {
     if (pageId === "project") {
       const projectId = path[1] ?? params.projectId;
       const projectUrl = `https://script.google.com/macros/s/${projectId}/exec`;
 
       resolveProjectMetadata(projectId, projectUrl).then((data) =>
-        reload((data), projects, { ...params, projectId })
+        reload(data, projects, { ...params, projectId })
       );
     } else if (pageId === "preview") {
       const { projectId, darkMode, locale } = params;
@@ -57,27 +55,24 @@ function main() {
       window.document.dir = locale === "ar" ? "rtl" : "ltr";
       const resetUI = () =>
         resolveProjectMetadata(projectId, projectUrl).then((_data) => {
-
           //reload((data), projects, params, resetUI, PreviewWebPlatform)
-        }
-        );
+        });
 
       resetUI();
     } else if (pageId === "editor" || pageId === "chromext") {
-      const projectId = window.projectId ?? path[1] ?? params.projectId;
+      const projectId = path[1] ?? params.projectId;
       const itemId = path[2] ?? params.itemId;
       const projectUrl = `https://script.google.com/macros/s/${projectId}/exec`;
 
       resolveProjectMetadata(projectId, projectUrl).then((data) => {
-        const metadata = (data)
+        const metadata = data;
         reload(metadata, projects, {
           ...params,
           projectId,
           itemId,
-          item: metadata.components.find(e => e.id == itemId)
-        })
-      }
-      );
+          item: metadata.components.find((e) => e.id == itemId),
+        });
+      });
     } else {
       reload({}, projects);
     }

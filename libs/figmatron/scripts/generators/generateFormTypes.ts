@@ -9,7 +9,7 @@ export function generateFormTypes({ forms, formItems, formItemTypes }) {
   const paramsMap = {};
   formItems
     .filter((e) => e.field && !e.deleted && !e.field?.startsWith("//"))
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+     
     .map(({ $row, deleted, field: item, ts, ...e }) => ({
       ...dehydrateObject(e),
       id: item,

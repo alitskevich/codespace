@@ -3,9 +3,11 @@ import { Component } from "arrmatura";
 export class DarkModeService extends Component {
   trigger: unknown;
 
-  init() {
-    const isDarkMode = localStorage.getItem("color-theme") === "dark" ||
-      (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
+  __init() {
+    const isDarkMode =
+      localStorage.getItem("color-theme") === "dark" ||
+      (!("color-theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
 
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
@@ -14,7 +16,7 @@ export class DarkModeService extends Component {
     }
 
     return {
-      isDarkMode
+      isDarkMode,
     };
   }
 
@@ -44,7 +46,7 @@ export class DarkModeService extends Component {
     document.dispatchEvent(event);
 
     return {
-      isDarkMode: !this.isDarkMode
-    }
+      isDarkMode: !this.isDarkMode,
+    };
   }
 }

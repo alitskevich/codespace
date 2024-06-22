@@ -10,14 +10,16 @@ export const resources = {
   name: "10ACE",
   app: {
     hint: "Paste here any text you want and tap red button.",
-    hint2: "Enjoy reading and pick up unknown words. You can review all of them at once on the 'Review' page",
-    lemmaUrl: "https://docs.google.com/spreadsheets/d/1JenJOLO0GJSPlpwl0sTeaU5xVBr8SMqBtMN1ehgjXLI/edit#gid=1464289509",
+    hint2:
+      "Enjoy reading and pick up unknown words. You can review all of them at once on the 'Review' page",
+    lemmaUrl:
+      "https://docs.google.com/spreadsheets/d/1JenJOLO0GJSPlpwl0sTeaU5xVBr8SMqBtMN1ehgjXLI/edit#gid=1464289509",
     dictionaryUrl: "https://www.merriam-webster.com/dictionary/",
     copy: "© 2024, 10ACE. All rights reserved.",
     slogan: "Learn as you go",
     overview: `Pick up a new words from any text, hone with your own vocabulary and see how well you progress!`,
     logoUrl: assets.logo,
-    pictureUrl: assets.picture
+    pictureUrl: assets.picture,
   },
   nav: [
     { id: "addText", name: "Upload", caption: "Add a new text" },
@@ -34,21 +36,22 @@ export const resources = {
     congratButtonTitle: "Submit",
   },
   samples: {
-    text1: "Explore the impact of generative AI on software development methodologies, from traditional processes to the challenges and benefits of using AI tools. Dive into the evolution of roles in the AI space and the potential blending of roles with virtual agents. Discover practical AI applications, automation of routine tasks, and testing AI capabilities with different currencies. Learn about the importance of aligning organizational beliefs with client pitches and mastering wave two and three approaches for increased productivity. Join the discussion on workflow, collaboration, change management, and adoption of new tools, with a focus on empowering users and driving adoption and trust in tools. Don't miss out on this insightful exploration of the future of AI in software development.",
+    text1:
+      "Explore the impact of generative AI on software development methodologies, from traditional processes to the challenges and benefits of using AI tools. Dive into the evolution of roles in the AI space and the potential blending of roles with virtual agents. Discover practical AI applications, automation of routine tasks, and testing AI capabilities with different currencies. Learn about the importance of aligning organizational beliefs with client pitches and mastering wave two and three approaches for increased productivity. Join the discussion on workflow, collaboration, change management, and adoption of new tools, with a focus on empowering users and driving adoption and trust in tools. Don't miss out on this insightful exploration of the future of AI in software development.",
     text2: `An element will only render something when a texture is defined. A texture is rendered as a background, and the children are rendered in front of it.
       The easiest way to define a texture is by specifying one of the following shorthand properties:`,
   },
   db: {
-    name: 'focusator',
+    name: "focusator",
     stores: {
-      concepts: { keyPath: 'id', indicies: { en: {}, adversial: {} } },
-      idioms: { keyPath: 'id', indicies: { stems: { multiEntry: true } } },
-      acquired: { keyPath: 'id', indicies: {} },
-      ctest: { keyPath: 'id', indicies: {} },
-      interview: { keyPath: 'id', indicies: {} },
-      dictionary: { keyPath: 'id', indicies: { family: {}, stem: {} } },
+      concepts: { keyPath: "id", indicies: { en: {}, adversial: {} } },
+      idioms: { keyPath: "id", indicies: { stems: { multiEntry: true } } },
+      acquired: { keyPath: "id", indicies: {} },
+      ctest: { keyPath: "id", indicies: {} },
+      interview: { keyPath: "id", indicies: {} },
+      dictionary: { keyPath: "id", indicies: { family: {}, stem: {} } },
     },
-    initialData
+    initialData,
   },
   enums: {
     fiveNumbers: [
@@ -57,6 +60,10 @@ export const resources = {
       { id: "3", name: "3" },
       { id: "4", name: "4" },
       { id: "5", name: "5" },
+    ],
+    ctestSources: [
+      { id: "ctest", name: "Basics" },
+      { id: "idioms", name: "idioms" },
     ],
     acquired: [
       { id: "-1", name: "Incognito" },
@@ -69,11 +76,9 @@ export const resources = {
       { id: "de", name: "Deutsch" },
     ],
     levels: [
-      { id: "500", name: "A1" },
-      { id: "200", name: "A2" },
-      { id: "100", name: "B1" },
-      { id: "50", name: "B2" },
-      { id: "20", name: "C1" },
+      { id: "A", name: "A" },
+      { id: "B", name: "B" },
+      { id: "C", name: "C" },
     ],
     marks: [
       { id: "all", name: "All" },

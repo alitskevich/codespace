@@ -1,12 +1,11 @@
 import { Component } from "arrmatura";
-import { IArrmatron } from "arrmatura/types";
+import { TArrmatron } from "arrmatura/types";
 import { Hash } from "ultimus";
 
 import { ClientStorage } from "../support";
 
 export class StoredValue extends Component {
-
-  constructor(initials: Hash, $ctx: IArrmatron) {
+  constructor(initials: Hash, $ctx: TArrmatron) {
     super({}, $ctx);
 
     const { persistence = "local", name = $ctx.refId, defaultValue = null } = initials;
@@ -20,6 +19,6 @@ export class StoredValue extends Component {
       set(value) {
         storage.set("value", value);
       },
-    })
+    });
   }
 }

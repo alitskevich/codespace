@@ -12,18 +12,18 @@ export type DomNode = HTMLElement & {
   blur: () => void;
   $dataset: any;
   component?: IElement;
-}
+};
 
 export type IElement = {
-  init?: () => any;
+  __init?: () => any;
   $listeners: any;
   $element: DomNode;
   [key: string]: any;
-}
+};
 export type IWebPlatform = IPlatform & {
   addElementAttributeSetters(attrs: any): void;
   setElementAttribute(element: IElement, node: DomNode, key: string, value: any): void;
-}
+};
 export type MyTouchEvent = TouchEvent & {
   layerX: number;
   layerY: number;
@@ -38,6 +38,6 @@ export type LaunchWebOptions = {
   resources?: any;
   Platform?: new <T extends WebPlatform>() => T;
   rootElement?: HTMLElement;
-}
+};
 
 export type PersistenceType = "local" | "session" | "transient";

@@ -34,7 +34,7 @@ export function generateEndpoints({ endpoints, structItems }) {
 
   arraySortBy(structItems, (e) => `${e.struct}.${e.position}.${e.item}`)
     .filter((e) => e.item && !e.deleted && !e.item.startsWith("//"))
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+     
     .map(({ $row, deleted, item, ts, ...e }) => ({
       ...dehydrateObject(e),
       id: item.includes(":") ? item.split(":")[1] : item, // cut off sorting prefix

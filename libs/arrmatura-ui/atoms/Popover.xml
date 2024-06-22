@@ -7,11 +7,11 @@
       <Slot Key="trigger" />
     </p>
 
-    <div Ref="backdrop" toggleClass="hidden; invisible in content; opacity-0 in content"
+    <div id="backdrop" toggleClass="hidden; invisible in content; opacity-0 in content"
       class="hidden fixed right-0 left-0 top-0 bottom-0 max-sm:bg-gray-500 max-sm:opacity-50 max-sm:blur-sm {backdropClass}">
     </div>
     <div class="relative z-50" dropdown="-> opened=false">
-      <div role="tooltip" Ref="content" class="absolute block 
+      <div role="tooltip" id="content" class="absolute block 
     text-sm font-light text-gray-500 
      {position ?? 'right-0 top-0'} z-10 
     invisible opacity-0  transition-opacity duration-300 

@@ -119,7 +119,7 @@ export class GreenAppService extends Component {
     });
   }
 
-  async init() {
+  async __init() {
     await this.db.open(this.name, { stores: { ...this.stores } });
 
     const ts = this.storage.get("ts");

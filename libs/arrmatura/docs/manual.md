@@ -235,16 +235,16 @@ While designing custom components you can
 ```typescript
 class MyService extends Component {
 
-    constructor(initials: Hash, ctx: ICtx) {
+    constructor(initials: Hash, ctx: TArrmatron) {
         Object.asign(this, initials);
         this.ctx = ctx;
     }
 
     // life-cycle hook called once on component is inited
-    init() {
-        this.cancel = api.listen(this)
-        // ...or using $.defer()
-        this.ctx.defer(api.listen2(this));
+    __init() {
+        const cancel = api.subscribe(this);
+        // unsubscribe when done
+        this.defer(cancel);
 
         // will update component state with returned result
         return {
@@ -252,11 +252,6 @@ class MyService extends Component {
             // can be promise as well
             prop2: Promise.resolve(2)
         }
-    }
-
-    // life-cycle hook called once on component is done
-    done (){
-      this.cancel();
     }
 
     // to intercept getting of any property
@@ -283,8 +278,8 @@ class MyService extends Component {
       return this.fetchData()
     }
 
-    // action handler. To be invoked with '-> ref.someAction' notation
-    onSomeAction(data: any) {
+    // action handler. To be invoked with 'data-> ref.doSomeAction(data)' notation
+    doSomeAction(data: any) {
         if (asyncMode) {
             return promise.then(() => delta)
         }

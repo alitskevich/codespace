@@ -1,15 +1,13 @@
 import { speak } from "arrmatura-ui/support/speech";
 import { Component } from "arrmatura-web";
 
-import { shuffleArray } from "../utils/shuffleArray";
-
 export class CTestService extends Component {
   #step = 0;
   state = {};
-  quiz: any[] = [];
+  data?: any[];
 
   get count() {
-    return Number(this.quiz?.length || 0);
+    return Number(this.data?.length || 0);
   }
 
   get info() {
@@ -21,7 +19,7 @@ export class CTestService extends Component {
     this.autoplay = auto;
     if (auto) {
       const nextTick = async () => {
-        const current = this.quiz?.[this.step];
+        const current = this.data?.[this.step];
         const text = this.current.options[this.current.correct - 1]?.name ?? "aga";
         speak(this.current.body, {
           lang: "ru-RU",
@@ -50,29 +48,8 @@ export class CTestService extends Component {
     }
   }
 
-  setData(data) {
-    this.data = data;
-    this.quiz = shuffleArray(data).map((quiz, order) => {
-      const {
-        ru,
-        en,
-        answer1 = en,
-        answer2,
-        answer3,
-        answer4,
-        body = ru,
-        correct = 1,
-        ...rest
-      } = quiz;
-      const options = [answer1, answer2, answer3, answer4]
-        .filter(Boolean)
-        .map((name, id) => ({ id: id + 1, name }));
-      return { options, order, body, correct, ...rest };
-    });
-  }
-
   get current() {
-    const current = this.quiz?.[this.step];
+    const current = this.data?.[this.step];
     const currentState = this.state?.[current.id] || {};
 
     return {
@@ -86,7 +63,7 @@ export class CTestService extends Component {
     };
   }
   get progress() {
-    return this.quiz?.map((current) => {
+    return this.data?.map((current) => {
       const { answered, isCorrect, value } = this.state?.[current.id] || {};
       return {
         id: current.id,
@@ -101,10 +78,12 @@ export class CTestService extends Component {
   }
 
   findNextStepInOrder() {
-    const current = this.quiz?.[this.step];
+    const current = this.data?.[this.step];
     return (
-      (this.quiz.findIndex((q) => q.order > current.order && !this.state?.[q.id]?.answered) + 1 ||
-        this.quiz.findIndex((q) => q.order < current.order && !this.state?.[q.id]?.answered) + 1 ||
+      ((this.data?.findIndex((q) => q.order > current.order && !this.state?.[q.id]?.answered) ??
+        -1) + 1 ||
+        (this.data?.findIndex((q) => q.order < current.order && !this.state?.[q.id]?.answered) ??
+          -1) + 1 ||
         0) - 1
     );
   }
@@ -160,7 +139,7 @@ export class CTestService extends Component {
   }
 
   get stat() {
-    // const total = this.quiz?.length || 0;
+    // const total = this.data?.length || 0;
     const weight = {
       total: 0,
       correct: 0,
@@ -171,7 +150,7 @@ export class CTestService extends Component {
       correct: 0,
     };
 
-    this.quiz?.forEach((current) => {
+    this.data?.forEach((current) => {
       const { answered, isCorrect } = this.state?.[current.id] || {};
       if (answered) {
         weight.total += current.weight || 2;

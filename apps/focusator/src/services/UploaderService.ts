@@ -1,48 +1,51 @@
-import { StoredData } from "arrmatura-ui/commons/StoredData";
+import { Component } from "arrmatura-web";
 import { arraySortBy } from "ultimus";
 
-import { BaseWord, Stemm } from "../types";
+import { Stemm } from "../types";
 import { parseText } from "../utils/parseText";
 
 // service component
-export class UploaderService extends StoredData {
-  acquired?: any
+export class UploaderService extends Component {
+  acquired?: any;
+  parsequence?: any[];
+  data?: any;
   // defaults = {}
   // name = 'focusator'
   // listIterator = this.getListIterator()
   // word: Stemm = this.listIterator.next().value ?? { id: 'none', names: {} }
 
-  init() {
-    super.init()
-    window.document.body.addEventListener('keydown', (e) => {
+  __init() {
+    window.document.body.addEventListener("keydown", (e) => {
       console.log(e);
 
       // if (e.key === 'ArrowRight') {
       //   this.determineWord()
       // }
-    })
-    return null
+    });
+    return null;
   }
 
   uploadText(text) {
-    const data = {}
-    const parsequence = parseText(String(text ?? ""), data)
+    const data = {};
+    const parsequence = parseText(String(text ?? ""), data);
     // this.listIterator = this.getListIterator()
 
-    return { data, text, parsequence }
+    return { data, text, parsequence };
   }
 
-  get parsedText(): BaseWord[] {
-    return this.parsequence?.map((e, index, all) => ({
-      ...e,
-      nextId: all[index + 1]?.id ?? null,
-      acquired: this.acquired?.[e.stemm?.id ?? '']?.acquired ?? 0,
-      // idioms: this.idiomsHash?.[stemm(e.id).id] ?? []
-    }));
+  get parsedText(): any[] {
+    return (
+      this.parsequence?.map((e, index: number, all) => ({
+        ...e,
+        nextId: all[index + 1]?.id ?? null,
+        acquired: this.acquired?.[e.stemm?.id ?? ""]?.acquired ?? 0,
+        // idioms: this.idiomsHash?.[stemm(e.id).id] ?? []
+      })) ?? []
+    );
   }
 
   get list(): Stemm[] {
-    return arraySortBy(Object.values<any>(this.data), 'name').map((e, index, all) => ({
+    return arraySortBy(Object.values<any>(this.data), "name").map((e, index, all) => ({
       ...e,
       nextId: all[index + 1]?.id ?? null,
       acquired: this.acquired?.[e.id]?.acquired ?? 0,
@@ -70,8 +73,4 @@ export class UploaderService extends StoredData {
   //     yield word
   //   }
   // }
-
-
-
-
 }

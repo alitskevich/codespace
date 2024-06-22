@@ -214,7 +214,7 @@ export class IndexedDb {
     );
   }
 
-  queryForValue<T = any>(value: string, store = "items", index = null) {
+  queryForValue<T = any>(value: string, { store = "items", index = null, keysOnly = false } = {}) {
     return this.invoke<T[] | null>((db, callback) => {
       if (!value) {
         callback(null);
@@ -222,7 +222,9 @@ export class IndexedDb {
       }
 
       if (value === "*") {
-        db.transaction(store).objectStore(store).getAll().onsuccess = function (event: any) {
+        const objStore = db.transaction(store, "readonly").objectStore(store);
+        const tx = keysOnly ? objStore.getAllKeys() : objStore.getAll();
+        tx.onsuccess = function (event: any) {
           const result = event.target.result ?? null;
           callback(result);
         };
@@ -244,7 +246,8 @@ export class IndexedDb {
       datasource.openCursor(keyRangeValue).onsuccess = (event: any) => {
         const cursor = event.target.result;
         if (cursor) {
-          result.push(Object.freeze(cursor.value));
+          const value = cursor.value;
+          result.push(keysOnly ? value.id : Object.freeze(value));
 
           cursor.continue();
         } else {

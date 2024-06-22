@@ -1,5 +1,5 @@
 import { launch } from "arrmatura";
-import { IArrmatron } from "arrmatura/types";
+import { TArrmatron } from "arrmatura/types";
 import * as lib from "ultimus";
 
 import { LaunchWebOptions } from "../../types";
@@ -12,13 +12,15 @@ export function defineCustomElement(
     css?: string;
   }
 ) {
-
-  const { tag, attributes = [], functions, types = [], resources = {} } = config;
-  const rattributes = typeof attributes === "string" ? attributes.split(",").map((s) => s.trim()) : attributes;
-  const template = `<${lib.properCase(tag, "-")} ${rattributes.map((name) => `${name}="{@${name}}"`).join(" ")}/>`;
+  const { tag, attributes = [], functions, components = [], resources = {} } = config;
+  const rattributes =
+    typeof attributes === "string" ? attributes.split(",").map((s) => s.trim()) : attributes;
+  const template = `<${lib.properCase(tag, "-")} ${rattributes
+    .map((name) => `${name}="{@${name}}"`)
+    .join(" ")}/>`;
 
   class Custom extends HTMLElement {
-    top: IArrmatron;
+    top: TArrmatron;
     rootElement: ShadowRoot;
     static get observedAttributes() {
       return rattributes;
@@ -39,9 +41,7 @@ export function defineCustomElement(
         functions: functionsAll,
       });
 
-      platform.registerTypes(([] as any[]).concat(types));
-
-      platform.init();
+      platform.registerTypes(([] as any[]).concat(components));
 
       this.top = launch(platform, template);
     }

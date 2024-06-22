@@ -1,4 +1,4 @@
-import { IArrmatron, IPlatform } from "arrmatura/types";
+import type { IArrmatronRoot, IPlatform } from "arrmatura/types";
 
 import { CRootNode } from "./src/registry/root";
 
@@ -11,9 +11,9 @@ export * from "./src/core/Component";
  *
  * @param {IPlatform} platform - The platform on which to launch the template.
  * @param {string} template - The template to launch with.
- * @return {IArrmatron} The root context object.
+ * @return {IArrmatronRoot} The root context object.
  */
-export const launch = (platform: IPlatform, template: string): IArrmatron => {
+export const launch = (platform: IPlatform, template: string): IArrmatronRoot => {
   const root = new CRootNode(template).createArrmatron(platform);
 
   root.up({}, true);

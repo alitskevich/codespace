@@ -16,7 +16,7 @@ export class ServiceWorker extends Component {
     return navigator.serviceWorker;
   }
 
-  init() {
+  __init() {
     try {
       assert(this.api, "Service Workers are not supported");
 

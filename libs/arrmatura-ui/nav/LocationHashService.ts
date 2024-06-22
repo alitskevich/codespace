@@ -3,7 +3,7 @@ import { Component } from "arrmatura";
 export class LocationHashService extends Component {
   data: any;
 
-  init() {
+  __init() {
     const hashchange = () => {
       const data = window.location.hash.slice(1);
       this.up({ data });

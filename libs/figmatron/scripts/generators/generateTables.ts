@@ -5,7 +5,7 @@ export function generateTables({ tables, tableItems, actions }) {
   const actionsMap = arrayGroupBy(actions, "entity");
   const items = tableItems
     .filter((e) => e.table && !e.deleted)
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+     
     .map(({ $row, deleted, field, ...e }) => ({ ...dehydrateObject(e), id: field }))
     .map((e) => Object.entries(e).reduce((acc, e) => Object.assign(acc, { [e[0]]: scalarParse(e[1] as any) }), {}));
 

@@ -1,5 +1,4 @@
 import { Component } from "arrmatura";
-import { IArrmatron } from "arrmatura/types";
 
 export class PostMessageReceiver extends Component {
   eventType = "main";
@@ -9,7 +8,7 @@ export class PostMessageReceiver extends Component {
     // no-op
   };
 
-  init(_: IArrmatron) {
+  __init() {
     const handler = (event) => {
       if (this.eventOrigin && event.origin !== this.eventOrigin) return;
 
@@ -18,12 +17,12 @@ export class PostMessageReceiver extends Component {
         this.log("onMessage:", type, data);
         this.onMessage(data);
       }
-    }
-    window.addEventListener("message", handler, false);
+    };
 
+    window.addEventListener("message", handler, false);
     this.defer(() => {
       window.removeEventListener("message", handler, false);
-    })
+    });
 
     return null;
   }

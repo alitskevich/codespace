@@ -17,7 +17,7 @@ export class IndexedDbService extends Component {
   indexedDb = new IndexedDb();
   local?: ClientStorage;
 
-  async init() {
+  async __init() {
     await this.indexedDb.open(this.name, {
       version: this.version,
       stores: this.stores,
@@ -55,6 +55,10 @@ export class IndexedDbService extends Component {
 
   toString() {
     return `${super.toString()}:${this.name}`;
+  }
+
+  queryForValue(value, options) {
+    return this.indexedDb.queryForValue(String(value ?? ""), options);
   }
 
   get storage() {

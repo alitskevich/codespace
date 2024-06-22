@@ -34,7 +34,9 @@ function itemToPlot(item) {
     tooltip: {
       content:
         (!item.tooltip ? "" : `<span style="font-weight:bold;">${item.tooltip}</span>`) +
-        (!item.tooltipHint ? "" : `<br/><span style="font-weight:normal;">${item.tooltipHint}</span>`),
+        (!item.tooltipHint
+          ? ""
+          : `<br/><span style="font-weight:normal;">${item.tooltipHint}</span>`),
     },
   };
   return plot;
@@ -46,7 +48,7 @@ export class MapaelService {
   plotsItems?: Hash<any>;
   map: any;
 
-  init() {
+  __init() {
     setTimeout(() => {
       const config: any = {};
 
@@ -75,7 +77,6 @@ export class MapaelService {
   }
 
   setPlotsItems(items) {
-
     const hash = arrayToObject(items);
     const newPlots = {};
     const existingPlots = this.plots || {};
@@ -103,5 +104,5 @@ export class MapaelService {
     ]);
     this.plots = Object.assign({}, existingPlots, newPlots);
     this.plotsItems = hash;
-  };
+  }
 }

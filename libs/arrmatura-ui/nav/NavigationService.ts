@@ -6,7 +6,7 @@ export class NavigationService extends Component {
   path: any;
   params: any;
 
-  init() {
+  __init() {
     const hashchange = () => {
       const hash = window.location.hash.slice(1);
       if (hash[0] === "/" && hash !== this.prevHash) {

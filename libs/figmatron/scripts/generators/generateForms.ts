@@ -14,7 +14,7 @@ export function generateForms({ forms, formItems, actions, formItemTypes }) {
 
   formItems
     .filter((e) => e.field && !e.deleted)
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+     
     .map(({ $row, deleted, id, field, ts, ...e }) => ({
       ...dehydrateObject(e),
       id: field,

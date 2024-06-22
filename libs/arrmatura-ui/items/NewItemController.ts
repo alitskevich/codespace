@@ -6,15 +6,15 @@ export class NewItemController extends Component {
   itemId = "";
   meta: any;
   data = {};
-  initialData = {}
+  initialData = {};
 
-  init() {
+  __init() {
     return {
       showModal: false,
       data: {
-        ...this.initialData
-      }
-    }
+        ...this.initialData,
+      },
+    };
   }
 
   submit() {
@@ -22,7 +22,7 @@ export class NewItemController extends Component {
       busy: true,
       error: null,
       "...": new Promise((resolve) => {
-        this.emit(`${this.upsertOperationId ?? 'db.upsert'}()`, {
+        this.emit(`${this.upsertOperationId ?? "db.upsert"}()`, {
           ...this.data,
           $callback: ({ error = null, item }) => {
             console.log(error, item);
@@ -49,12 +49,11 @@ export class NewItemController extends Component {
     };
   }
 
-
   // event handlers:
   change(delta: Hash) {
     return {
       touched: true,
       data: { ...this.data, ...delta },
     };
-  };
+  }
 }

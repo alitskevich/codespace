@@ -4,7 +4,6 @@ import { Proc } from "ultimus";
 
 import { ClientStorage } from "../support";
 
-
 export class Auth2Service extends Component {
   authUrl = "";
   isAuthorized = false;
@@ -15,8 +14,7 @@ export class Auth2Service extends Component {
   persistence: PersistenceType = "session";
   local?: ClientStorage;
 
-
-  init() {
+  __init() {
     return {
       busy: true,
       "...": fetch(`${this.authUrl}?action=ping`, {
@@ -25,7 +23,7 @@ export class Auth2Service extends Component {
         redirect: "error",
         credentials: "include",
         referrerPolicy: "no-referrer",
-        cache: 'no-cache',
+        cache: "no-cache",
         // body: "{}",
         headers: {
           "Content-Type": "text/plain;charset=utf-8",
@@ -37,15 +35,13 @@ export class Auth2Service extends Component {
           } else {
             return {
               busy: false,
-              isAuthorized: true
-            }
+              isAuthorized: true,
+            };
           }
-
-        }).catch((_error: Error) => {
-          // window.location.replace(`${this.authUrl}?action=signin`)
         })
-
+        .catch((_error: Error) => {
+          // window.location.replace(`${this.authUrl}?action=signin`)
+        }),
     };
   }
-
 }

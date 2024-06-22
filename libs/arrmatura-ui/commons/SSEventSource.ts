@@ -4,11 +4,10 @@ import { Component } from "arrmatura";
  * SSE client.
  */
 export class SSEventSource extends Component {
-
   url = "/sse";
   action?: (event: any) => void;
 
-  init() {
+  __init() {
     let evtSource: EventSource | null = new EventSource(this.url, {
       withCredentials: false,
     });

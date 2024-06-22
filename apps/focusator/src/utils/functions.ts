@@ -3,3 +3,12 @@ export { toColor, toColorText } from "./color";
 export { idiomsHash } from "./idiomsHash";
 export { parseText } from "./parseText";
 export { illustrateSentence } from "./illustrateSentence";
+export { shuffleArray } from "./shuffleArray";
+
+export const adaptQuizItem = (quiz, order) => {
+  const { ru, en, answer1 = en, answer2, answer3, answer4, body = ru, correct = 1, ...rest } = quiz;
+  const options = [answer1, answer2, answer3, answer4]
+    .filter(Boolean)
+    .map((name, id) => ({ id: id + 1, name }));
+  return { options, order, body, correct, ...rest };
+};

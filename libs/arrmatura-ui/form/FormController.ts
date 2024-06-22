@@ -24,13 +24,13 @@ export class FormController extends Component {
   #fields: FieldMeta[] = [];
   counter = 0;
 
-  init() {
+  __init() {
     return null;
   }
 
   setData(d: Data) {
     const data = { ...d };
-    this.log('data', data);
+    this.log("data", data);
     this.data = data;
   }
 
@@ -39,11 +39,13 @@ export class FormController extends Component {
   }
 
   get tabsInfo() {
-    const tabs = Object.values(arrayGroupBy(this.fields, ({ tab = "tab" }) => tab)).map(({ id, items }) => ({
-      id,
-      name: this.tabs?.[id],
-      items: getFieldsGroups(items, this.groups),
-    }));
+    const tabs = Object.values(arrayGroupBy(this.fields, ({ tab = "tab" }) => tab)).map(
+      ({ id, items }) => ({
+        id,
+        name: this.tabs?.[id],
+        items: getFieldsGroups(items, this.groups),
+      })
+    );
     const fixedTab = this.fixFirstTab || tabs.length === 1 ? tabs.shift() : null;
     return { fixedTab, initialTab: tabs?.[0]?.id, tabs };
   }
@@ -70,14 +72,17 @@ export class FormController extends Component {
         this.change?.(this.data);
 
         this.up({ touched: true });
-      }
+      };
     };
 
-    const onChangeFor = new Proxy({}, {
-      get(target: any, prop: string) {
-        return target[`$${prop}`] || (target[`$${prop}`] = onChange(prop));
-      },
-    });
+    const onChangeFor = new Proxy(
+      {},
+      {
+        get(target: any, prop: string) {
+          return target[`$${prop}`] || (target[`$${prop}`] = onChange(prop));
+        },
+      }
+    );
 
     const metadata =
       this.meta
@@ -93,9 +98,19 @@ export class FormController extends Component {
           return true;
         })
         .map((field: StringHash) => {
-          const { id, visible, disabled = false, name, caption = name, type, multi, typeSpec, ...rest } = field;
+          const {
+            id,
+            visible,
+            disabled = false,
+            name,
+            caption = name,
+            type,
+            multi,
+            typeSpec,
+            ...rest
+          } = field;
 
-          const ff = ({
+          const ff = {
             ...rest,
             id,
             type: multi ? `${type}.Multi` : type,
@@ -118,8 +133,8 @@ export class FormController extends Component {
             get hidden() {
               return !(visible ? getPredicat(visible)(getData()) : true);
             },
-          });
-          return ff
+          };
+          return ff;
         }) ?? [];
 
     this.#fields = metadata;

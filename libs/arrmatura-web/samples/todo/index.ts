@@ -39,7 +39,9 @@ const REDUCERS: Record<string, (state: State, action: Action) => Partial<State> 
     items: items.map((e) => (e.id === id ? { ...e, completed: !e.completed } : e)),
   }),
   save: ({ items }, { id, value }) => ({
-    items: !value ? items.filter((e) => e.id !== id) : items.map((e) => (e.id === id ? { ...e, name: value } : e)),
+    items: !value
+      ? items.filter((e) => e.id !== id)
+      : items.map((e) => (e.id === id ? { ...e, name: value } : e)),
   }),
   rm: ({ items }, { id }) => ({ items: items.filter((e) => e.id !== id) }),
   filter: (st, { filterId }) => ({
@@ -95,8 +97,7 @@ class TodoStore extends Component {
     this.storage.state = state;
   }
 
-  // hook on init
-  init(ctx: any) {
+  __init(ctx: any) {
     const onhash = () =>
       ctx.emit("this.filter()", {
         filterId: window.location.hash.slice(1) ?? FILTERS[0].id,
@@ -160,4 +161,3 @@ launchWeb({
   resources,
   functions,
 });
-

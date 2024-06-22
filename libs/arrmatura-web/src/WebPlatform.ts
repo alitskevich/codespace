@@ -1,10 +1,5 @@
 import { compileManifestNode, compileManifestNodes } from "arrmatura";
-import {
-  IArrmatron,
-  IComponent,
-  IComponentDescriptor,
-  IManifestNode,
-} from "arrmatura/types";
+import { IArrmatron, IComponent, IComponentDescriptor, IManifestNode } from "arrmatura/types";
 import { DomNode, IElement, IWebPlatform } from "arrmatura-web/types";
 import * as libs from "ultimus";
 import { mapEntries, xmlParse, mergeObject } from "ultimus";
@@ -16,7 +11,6 @@ import { DomElement } from "./dom/elements";
 import { fnName } from "./utils/fnName";
 import { reflow } from "./utils/reflow";
 
-
 /**
  * Arramture platform implementation for regular Web browser DOM.
  */
@@ -24,8 +18,11 @@ export class WebPlatform implements IWebPlatform {
   rootElement: ShadowRoot | HTMLElement;
   reflowId?: unknown;
   typeRegistry = new Map<string, IComponentDescriptor>();
-  compiledTemplates = new Map<string | XmlNode | XmlNode[], IManifestNode | Map<Uid, IManifestNode>>();
-  private readonly resources: Hash<any> = {}
+  compiledTemplates = new Map<
+    string | XmlNode | XmlNode[],
+    IManifestNode | Map<Uid, IManifestNode>
+  >();
+  private readonly resources: Hash<any> = {};
 
   constructor(root: ShadowRoot | HTMLElement | string = "root", resources: Hash<any> = {}) {
     if (typeof root === "string") {
@@ -43,14 +40,17 @@ export class WebPlatform implements IWebPlatform {
       const tag = String(ctr.tag);
       this.compiledTemplates.delete(tag);
       this.typeRegistry.set(tag, ctr);
-    }
+    };
 
     const registerType = (ctr) => {
       if (typeof ctr === "string") {
-        ctr.replace(/<component\s+id="([^"]+)"(?:[^>]*)>([\s\S]*?)<\/component>/gm, (_, tag, template) => {
-          register({ tag, template: template.trim() });
-          return "";
-        });
+        ctr.replace(
+          /<component\s+id="([^"]+)"(?:[^>]*)>([\s\S]*?)<\/component>/gm,
+          (_, tag, template) => {
+            register({ tag, template: template.trim() });
+            return "";
+          }
+        );
       } else if (typeof ctr === "function") {
         register({ Ctor: ctr, tag: ctr.name ?? fnName(ctr) });
       } else {
@@ -60,8 +60,7 @@ export class WebPlatform implements IWebPlatform {
 
     Array.isArray(types)
       ? types.filter(Boolean).forEach(registerType)
-      : mapEntries(types, (tag, template) => register({ tag, template }))
-
+      : mapEntries(types, (tag, template) => register({ tag, template }));
   }
 
   getByTag(tag: string): IComponentDescriptor {
@@ -83,7 +82,9 @@ export class WebPlatform implements IWebPlatform {
   getCompiledNodes(tag: string | XmlNode | XmlNode[]) {
     if (typeof tag === "string") {
       const map = this.compiledTemplates;
-      return map.has(tag) ? map.get(tag) : map.set(tag, compileManifestNodes(xmlParse(this.getByTag(tag)?.template))).get(tag);
+      return map.has(tag)
+        ? map.get(tag)
+        : map.set(tag, compileManifestNodes(xmlParse(this.getByTag(tag)?.template))).get(tag);
     }
     if (Array.isArray(tag)) {
       return compileManifestNodes(tag);
@@ -108,9 +109,16 @@ export class WebPlatform implements IWebPlatform {
       }
       return { ...initials };
     } catch (error: any) {
-      return new DomElement("div", { ...initials, class: " bg-red-600 p-4 border", "#text": `✧ERROR: ${def.tag}: ${error.message}` }, ctx);
+      return new DomElement(
+        "div",
+        {
+          ...initials,
+          class: " bg-red-600 p-4 border",
+          "#text": `✧ERROR: ${def.tag}: ${error.message}`,
+        },
+        ctx
+      );
     }
-
   }
   setElementAttribute(element: IElement, node: DomNode, key: string, value: any) {
     const setter = ATTR_SETTERS[key];
@@ -126,7 +134,7 @@ export class WebPlatform implements IWebPlatform {
   }
 
   addElementAttributeSetters(attrs) {
-    Object.assign(ATTR_SETTERS, attrs)
+    Object.assign(ATTR_SETTERS, attrs);
   }
 
   updateResources(delta: any) {
@@ -138,13 +146,13 @@ export class WebPlatform implements IWebPlatform {
       }
       const keys = key.split(".");
       if (keys.length > 1) {
-        const last = keys.pop() ?? '-';
-        const target = keys.reduce<Hash>((r, e) => (r[e] ?? (r[e] = {})), this.resources);
+        const last = keys.pop() ?? "-";
+        const target = keys.reduce<Hash>((r, e) => r[e] ?? (r[e] = {}), this.resources);
         target[last] = mergeObject(target[last], value);
         return;
       }
       this.resources[key] = mergeObject(this.resources[key], value);
-    })
+    });
   }
 
   getResource(key: string | string[]): Data {
@@ -161,7 +169,9 @@ export class WebPlatform implements IWebPlatform {
   }
 
   getFunction(id: string): (...args: any[]) => any {
-    return ((libs as Hash)[id] || this.resources.functions?.[id]) as unknown as (...args: any[]) => any;
+    return ((libs as Hash)[id] || this.resources.functions?.[id]) as unknown as (
+      ...args: any[]
+    ) => any;
   }
 
   redraw(_: IArrmatron, root: IArrmatron) {
@@ -175,14 +185,26 @@ export class WebPlatform implements IWebPlatform {
 
   log({ level, source = "", message = "", error, params = [] }: LogEntry) {
     if (level === "error") {
-      console.error(`⛔ ERROR:`, source ? `${source}:` : "", message, error?.message ?? "", ...params);
+      console.error(
+        `⛔ ERROR:`,
+        source ? `${source}:` : "",
+        message,
+        error?.message ?? "",
+        ...params
+      );
     } else if (level === "warning") {
-      console.warn(`⚠ WARNING:`, source ? `${source}:` : "", message, error?.message ?? "", ...params);
+      console.warn(
+        `⚠ WARNING:`,
+        source ? `${source}:` : "",
+        message,
+        error?.message ?? "",
+        ...params
+      );
     } else {
       console.log(source, message, ...params);
     }
   }
   toast(message: LogEntry, ctx: IArrmatron) {
-    ctx.emit('toaster.send(data)', message);
+    ctx.emit("toaster.send(data)", message);
   }
 }

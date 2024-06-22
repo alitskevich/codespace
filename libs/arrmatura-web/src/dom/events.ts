@@ -33,11 +33,15 @@ export const LISTENERS: Hash<($: IElement, e: DomNode, v: unknown) => void> = {
     ),
   contentEditable: ($, e) => {
     e.contentEditable = "true";
-    setEventListener($, "contentEditable:input", debounce((domEvent: Event) => {
-      $.contentEditable?.({ ...e.$dataset, domEvent, value: e.innerHTML, text: e.innerText });
-      domEvent.preventDefault();
-      return false;
-    }, 330));
+    setEventListener(
+      $,
+      "contentEditable:input",
+      debounce((domEvent: Event) => {
+        $.contentEditable?.({ ...e.$dataset, domEvent, value: e.innerHTML, text: e.innerText });
+        domEvent.preventDefault();
+        return false;
+      }, 330)
+    );
   },
   toggleClass: ($, e) =>
     setEventListener(
@@ -48,9 +52,7 @@ export const LISTENERS: Hash<($: IElement, e: DomNode, v: unknown) => void> = {
           if (isEltEnabled(e)) {
             $.toggleClass?.split(";").forEach((chunk = "") => {
               const [className, prep, toggleClassTarget = prep] = chunk.trim().split(" ");
-              const target = toggleClassTarget
-                ? $.getComponentByRef(toggleClassTarget)?.$element || document.getElementById(toggleClassTarget)
-                : e;
+              const target = toggleClassTarget ? document.getElementById(toggleClassTarget) : e;
 
               if (!target) {
                 console.warn(`toggleClass: target element not found: ${toggleClassTarget}`);
@@ -87,7 +89,6 @@ export const LISTENERS: Hash<($: IElement, e: DomNode, v: unknown) => void> = {
       }
       return false;
     }),
-
 
   keypress: ($, e) =>
     setEventListener($, "keypress:keyup", (ev: KeyboardEvent) => {

@@ -1,4 +1,5 @@
-import { IComponent, IArrmatron } from "arrmatura/types";
+import { Component } from "arrmatura";
+import type { TArrmatron } from "arrmatura/types";
 import { defineObjectRef } from "ultimus";
 import type { Hash } from "ultimus/types";
 
@@ -7,39 +8,44 @@ const SVGTAGS = ["svg", "path", "g", "defs"]; // "lineargradient", "circle", "po
 /**
  * DOM Element abstraction.
  */
-export class DomElement implements IComponent, IElement {
+export class DomElement extends Component implements IElement {
   declare readonly $element: DomNode;
   $listeners: any;
   declare readonly $changes: Map<string, any>;
 
   [key: string]: unknown;
 
-  constructor(tag: string, initials: Hash<any>, private readonly $: IArrmatron) {
+  constructor(tag: string, initials: Hash<any>, private readonly $: TArrmatron) {
+    super(initials, $);
+    defineObjectRef(this, "$", $);
 
-    defineObjectRef(this, '$', $);
+    Object.defineProperty(this, "$", {
+      get() {
+        return $;
+      },
+      enumerable: false,
+    });
 
-    Object.defineProperty(this, '$', { get() { return $; }, enumerable: false, });
-
-    const node = (SVGTAGS.includes(tag)
-      ? document.createElementNS("http://www.w3.org/2000/svg", tag)
-      : document.createElement(tag || 'div')
+    const node = (
+      SVGTAGS.includes(tag)
+        ? document.createElementNS("http://www.w3.org/2000/svg", tag)
+        : document.createElement(tag || "div")
     ) as DomNode;
 
-    defineObjectRef(node, 'component', this);
+    defineObjectRef(node, "component", this);
 
-    defineObjectRef(this, '$element', node);
+    defineObjectRef(this, "$element", node);
 
-    defineObjectRef(this, '$changes', new Map<string, any>(Object.entries(initials)));
+    defineObjectRef(this, "$changes", new Map<string, any>(Object.entries(initials)));
 
+    this.defer(() => {
+      node.parentElement?.removeChild(this.$element);
+    });
     this.applyStateChanges();
   }
 
-  done() {
-    this.$element?.parentElement?.removeChild(this.$element);
-  }
-
-  defer(fn) {
-    this.$.defer(fn);
+  __init() {
+    // no-op
   }
 
   __stateChanged(changes: Map<string, any>) {
@@ -51,12 +57,6 @@ export class DomElement implements IComponent, IElement {
     });
   }
 
-  getComponentByRef(id: string) {
-    return this.$.getByRef(id)?.$component;
-  }
-  updateScope(delta: any) {
-    this.$.scope?.up(delta)
-  }
   get platform() {
     return this.$.platform as IWebPlatform;
   }

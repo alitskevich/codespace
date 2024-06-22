@@ -49,7 +49,7 @@ export class TgWebAppService extends Component {
     return this.app.initData;
   }
 
-  init() {
+  __init() {
     this.app.ready();
 
     this.app.expand();
@@ -61,12 +61,12 @@ export class TgWebAppService extends Component {
     });
 
     this.app.onEvent("mainButtonClicked", () => setTimeout(() => this.mainButtonClicked(), 10));
-    return null;
-  }
-  done(): void {
-    this.app.MainButton.setParams({
-      is_visible: false,
+    this.defer(() => {
+      this.app.MainButton.setParams({
+        is_visible: false,
+      });
     });
+    return null;
   }
 
   async mainButtonClicked() {
@@ -109,7 +109,8 @@ export class TgWebAppService extends Component {
     };
 
     return loadJson({
-      url: this.submitQueryUrl, body,
+      url: this.submitQueryUrl,
+      body,
       mode: "no-cors",
       headers: {
         // https://stackoverflow.com/questions/44910180/app-script-sends-405-response-when-trying-to-send-a-post-request

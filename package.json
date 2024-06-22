@@ -8,8 +8,9 @@
   "scripts": {
     "tsc": "tsc",
     "test": "jest",
-    "lint": "eslint --fix",
-    "pretier:fix": "prettier ./**/*.ts --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier:fix": "prettier ./**/*.ts --fix",
     "tdd": "jest  --watch",
     "format": "prettier --check --ignore-path .gitignore --write ."
   },

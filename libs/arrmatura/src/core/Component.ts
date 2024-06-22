@@ -1,6 +1,6 @@
 import type { Delta, Hash, LogEntry } from "ultimus/types";
 
-import type { IComponent, IArrmatron } from "../../types";
+import type { TArrmatron, IArrmatron, IComponent } from "../../types";
 
 /**
  * Base Ancestor for custom components.
@@ -8,8 +8,12 @@ import type { IComponent, IArrmatron } from "../../types";
 export abstract class Component implements IComponent {
   [key: string]: unknown;
 
-  constructor(_: Hash, private readonly $ctx: IArrmatron) {
+  constructor(_: Hash, private readonly $ctx: TArrmatron) {
     //no-op
+  }
+
+  get refId() {
+    return this.$ctx.refId;
   }
 
   get platform() {
@@ -20,14 +24,9 @@ export abstract class Component implements IComponent {
     return this.$ctx.isDone;
   }
 
-  // hook on done
-  done(_: IArrmatron): void {
-    //no-op
-  }
-
-  // hook on init
+  // hook on initialization
   // returned value will be used to update state
-  init(_: IArrmatron): Delta | null | undefined | unknown {
+  __init(_: IArrmatron): Delta | null | undefined | unknown {
     return undefined;
   }
 
@@ -37,7 +36,7 @@ export abstract class Component implements IComponent {
   }
 
   // update ctx state
-  up(d: Delta) {
+  up(d) {
     return this.$ctx.up(d);
   }
 
@@ -55,7 +54,6 @@ export abstract class Component implements IComponent {
     this.$ctx.defer(fn);
   }
 
-  // register callback to be called on done
   defineCalculatedProperty(key, fn: (...args: any[]) => any, deps?: string[]) {
     let depKey = "";
     let depValue = undefined;

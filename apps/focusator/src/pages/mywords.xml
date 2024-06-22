@@ -10,7 +10,7 @@
       </div>
     </div>
   </div>
-  <nav class="bg-gray-300 dark:bg-gray-800 block w-full absolute top-0 h-20 " id="top">
+  <nav class="bg-gray-300 dark:bg-gray-800 block w-full fixed top-0 h-20 " id="top">
     <div class="p-4 flex w-full">
       <div class="flex flex-1 items-center justify-between">
         <div class="flex items-center gap-4 justify-start">

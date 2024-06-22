@@ -30,6 +30,7 @@
       <Dynamic As="TableRow{item.items ? 'Group' : ''}" Each="item of data" data="{item}" selected="{item.selected}"
         col1="{columns.0}" cols="{cols}" kind="{kind}" cellChange="{cellChange}"
         rowFirstComponent="{rowFirstComponent}" />
+      <div style="height:5rem;"></div>
     </div>
 
     <div class="h-10 sticky top-0 grid grid-cols-subgrid gap-0 col-span-full order-0">
@@ -37,8 +38,8 @@
         class="border p-2 snap-start sticky  left-0 z-50 bg-gray-300 dark:bg-gray-700 flex items-start p-2 justify-center">
         <input type="checkbox" />
       </div>
-      <div class="border p-2 snap-start sticky z-50 left-8  bg-gray-200 dark:bg-gray-800">--</div>
-      <div class="border p-2 snap-start p-2 top-0 z-20 bg-gray-200 dark:bg-gray-800" Each="item of cols">
+      <div class="border p-2 snap-start sticky z-50 left-8  bg-gray-200 dark:bg-gray-600">--</div>
+      <div class="border p-2 snap-start p-2 top-0 z-20 bg-gray-200 dark:bg-gray-600" Each="item of cols">
         <span>{item.name ?? item.id}</span>
         <div class="table-column-sorter" If="item.sortable && doSort">
           <span class="table-column-sorter-up off" title="↑" data-id="-{item.id}" click="{doSort}">
@@ -56,20 +57,20 @@
 </component>
 
 <component id="TableRowGroup">
-  <div class="grid grid-cols-subgrid gap-0 col-span-full" click="-> expanded = !expanded">
-    <div class="border border-1 border-gray-400
-    cursor-pointer
-    sticky left-0 
-    bg-gray-300 dark:bg-gray-700 
-    snap-start 
-    flex items-start p-2 justify-center">
-      <Svg.Chevron class="h-4 w-3 transition duration-300 m-0 {expanded ? 'rotate-90':''}" />
-    </div>
-    <div class="sticky left-8 border border-dotted border-gray-400 px-2 py-1"
-      style="grid-column-start:2; grid-column-end: span {cols.length|increment};">
-      {data.name ?? data.id}
+  <div class="col-span-full cursor-pointer bg-gray-400 dark:bg-slate-800 flex sticky top-0 z-100"
+    click="-> expanded = !expanded">
+    <div class="
+    sticky left-0
+    flex items-start justify-center">
+      <div class="p-2 w-8">
+        <Svg.Chevron class="h-4 w-3 transition duration-300 m-0 {expanded ? 'rotate-90':''}" />
+      </div>
+      <div class=" px-2 py-1" style="grid-column-start:2; grid-column-end: span {cols.length|increment};">
+        {data.name ?? data.id}
+      </div>
     </div>
   </div>
+
   <Fragment If="expanded">
     <TableRow Each="item of data.items" data="{item}" selected="{item.selected}" col1="{col1}" cols="{cols}"
       kind="{kind}" cellChange="{cellChange}" rowFirstComponent="{rowFirstComponent}" />

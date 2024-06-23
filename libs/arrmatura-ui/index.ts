@@ -22,13 +22,13 @@ import Stub from "./atoms/Stub.xml";
 import Tabs from "./atoms/Tabs.xml";
 import fab from "./atoms/fab.xml";
 import svg from "./atoms/svg.xml";
-import typography from "./atoms/typography.xml"
+import typography from "./atoms/typography.xml";
 import Auth2Facility from "./auth/Auth2Facility.xml";
 import { Auth2Service } from "./auth/Auth2Service";
 import { AuthService } from "./auth/AuthService";
 import SignInPage from "./auth/SignInPage.xml";
 import UserProfileModal from "./auth/UserProfileModal.xml";
-import { UserProfileService } from "./auth/UserProfileService"
+import { UserProfileService } from "./auth/UserProfileService";
 import user from "./auth/user.xml";
 import { ApiEndpoint } from "./commons/ApiEndpoint";
 import { BrowserService } from "./commons/BrowserService";
@@ -39,7 +39,6 @@ import { SSEventSource } from "./commons/SSEventSource";
 import { ServiceWorker } from "./commons/ServiceWorker";
 import { SpeechService } from "./commons/SpeechService";
 import { StoredData } from "./commons/StoredData";
-import { StoredValue } from "./commons/StoredValue";
 import JsonView from "./dataview/JsonView.xml";
 import ListSortBy from "./dataview/ListSortBy.xml";
 import ListView from "./dataview/ListView.xml";
@@ -176,7 +175,6 @@ export default [
   Stub,
   Table,
   Tabs,
-  StoredValue,
   TagsValueController,
   TgWebAppService,
   ToastFacility,
@@ -188,5 +186,5 @@ export default [
   fab,
   navigation,
   svg,
-  user
+  user,
 ];

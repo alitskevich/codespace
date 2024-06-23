@@ -14,8 +14,6 @@
   <NewItemController Ref="newItem" initialData="{R.defaults.newItem}" />
 
   <Connector data="<-items.info" change="->" />
-  <StoredData name="viewMode" data="{viewMode}" defaults="list" action="-> viewMode" />
-  <!-- <StoredData  data="{viewSidebar}" defaults="false" action="-> viewSidebar" /> -->
   <StoredData Ref="mainPageState" name="viewMode" data="{viewMode}" defaults="list" action="-> viewMode" />
 
   <Container class="absolute" If="!itemId">

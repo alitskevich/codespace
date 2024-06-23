@@ -15,7 +15,6 @@ export type IComponent = {
 
 export type TArrmatron = {
   platform: IPlatform;
-  isDone: any;
 
   // state access
   get: (propId: string) => unknown;

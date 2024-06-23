@@ -1,6 +1,10 @@
+> This documentation provides a detailed overview of the Template syntax, control flow mechanisms,
+> dynamic tags, property bindings, connectors, slots, and custom component creation,
+> offering a comprehensive guide for developers to create and manage components effectively.
+
 # Templates
 
-**Template** is a xml-based notation defining a components composition, events and data flow.
+**Template** is a xml-based formal notation, which defining components composition, connections, logic and flow.
 
 ## Insight
 
@@ -27,7 +31,7 @@
 
 ### Conditionals.
 
-With `if` attribute, an element(and its inner context) presents only if value of expression is truthy.
+With `If` attribute, an element(and its inner context) presents only if value of expression is truthy.
 
 ```html
 <div ... If="enabled">...</div>
@@ -44,7 +48,7 @@ With `if` attribute, an element(and its inner context) presents only if value of
 
 ### Iterations.
 
-`each` attribute multiplies component instances along items from given array.
+`Each` attribute multiplies component instances along items from given array.
 
 ```html
 <ul>

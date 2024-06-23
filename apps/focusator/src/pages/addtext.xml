@@ -46,12 +46,12 @@
 
   <component id="AddText">
 
-    <StoredValue Ref="text" defaultValue="{R.samples.text1}" />
+    <StoredData Ref="text" defaults="{R.samples.text1}" />
 
     <Connector trigger="{counter}" data="<-text.value" change="data-> uploader.uploadText(data)" />
     <Connector trigger="{counter}" change="-> opened=false" />
 
-    <StoredValue Ref="fromClipboard" defaultValue="<-browser.fromClipboard" persistence="inmemory" />
+    <StoredData Ref="fromClipboard" defaults="<-browser.fromClipboard" persistence="inmemory" />
 
     <FAB class="select-none" mode="primary" title="+" action="-> opened=true" />
     <Modal open="{opened}" If="opened" close="-> opened=false" class="top-12">

@@ -20,10 +20,6 @@ export abstract class Component implements IComponent {
     return this.$ctx.platform;
   }
 
-  get isDone() {
-    return this.$ctx.isDone;
-  }
-
   // hook on initialization
   // returned value will be used to update state
   __init(_: IArrmatron): Delta | null | undefined | unknown {

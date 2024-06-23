@@ -50,7 +50,7 @@ export class CTestService extends Component {
 
   get current() {
     const current = this.data?.[this.step];
-    const currentState = this.state?.[current.id] || {};
+    const currentState = this.state?.[current?.id] || {};
 
     return {
       step: this.step,

@@ -214,9 +214,14 @@ export class IndexedDb {
     );
   }
 
-  queryForValue<T = any>(value: string, { store = "items", index = null, keysOnly = false } = {}) {
+  queryForValue<T = any>(value: string, { store = null, index = null, keysOnly = false } = {}) {
     return this.invoke<T[] | null>((db, callback) => {
       if (!value) {
+        callback(null);
+        return;
+      }
+
+      if (!store) {
         callback(null);
         return;
       }

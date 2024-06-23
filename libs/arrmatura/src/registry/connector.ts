@@ -14,7 +14,7 @@ class Connector extends Arrmatron<ConnectorNode> {
    */
   touch() {
     super.touch();
-    //   if (this.isDone) return;
+
     const { trigger, data, change } = this.$component;
     const hasTrigger = "trigger" in this.$component;
 

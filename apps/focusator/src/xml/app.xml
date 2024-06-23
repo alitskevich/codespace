@@ -1,9 +1,9 @@
 <component id="App">
   <DropdownsPlugin />
   <ToastFacility>
-    <StoredValue Ref="language" defaultValue="en" />
+    <StoredData Ref="language" defaults="en" />
 
-    <StoredValue Ref="level" defaultValue="500" />
+    <StoredData Ref="level" defaults="A" />
 
     <DarkModeService Ref="dark" />
 

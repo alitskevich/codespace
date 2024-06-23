@@ -16,7 +16,7 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
   readonly scope: Arrmatron;
 
   $children?: Map<Uid, Arrmatron>;
-  isDone = false;
+  #isDone = false;
   #isInited = false;
   #fprints: Hash = {};
   #initialState: Hash = {};
@@ -64,7 +64,7 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
 
   // updates component state
   up(delta?: Delta | Promise<any> | null | void | unknown, force = false): void {
-    if (!delta || this.isDone) {
+    if (!delta || this.#isDone) {
       return;
     }
 
@@ -179,7 +179,7 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
 
   // emits action event to this component
   emit(key: string, data: Delta): void {
-    if (this.isDone) return;
+    if (this.#isDone) return;
 
     try {
       if (key.endsWith(")")) {
@@ -226,10 +226,10 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
 
   // Done  hook.
   done() {
-    if (this.isDone) {
+    if (this.#isDone) {
       return;
     }
-    this.isDone = true;
+    this.#isDone = true;
 
     this.children?.forEach((c) => c.done());
 

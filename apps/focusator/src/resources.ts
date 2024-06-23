@@ -113,10 +113,8 @@ export const resources = {
       { id: "alternate8", name: "alternate8" },
     ],
     irregular: [
-      { id: "v1", name: "v1" },
-      { id: "v2", name: "v2" },
-      { id: "v3", name: "v3" },
       { id: "ru", name: "ru" },
+      { id: "v1", name: "v1", type: "IrregularVerb", width: "minmax(40rem, 1fr)" },
     ],
   },
 };

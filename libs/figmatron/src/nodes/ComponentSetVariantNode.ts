@@ -1,4 +1,4 @@
-import { qname, strJoin } from "ultimus";
+import { qname, arrayJoin } from "ultimus";
 
 import { ANode } from "./ANode";
 
@@ -6,7 +6,12 @@ export class ComponentSetVariantNode extends ANode {
   getHtmlNode() {
     const { properties = [], selectorProps } = this as any;
 
-    const When = strJoin(",", ...selectorProps.map(({ id, defaultValue }) => `${id}=${properties.find((p) => p.id === id)?.value ?? defaultValue ?? "Default"}`));
+    const When = arrayJoin(
+      selectorProps.map(
+        ({ id, defaultValue }) =>
+          `${id}=${properties.find((p) => p.id === id)?.value ?? defaultValue ?? "Default"}`
+      )
+    );
 
     return {
       tag: "Case",

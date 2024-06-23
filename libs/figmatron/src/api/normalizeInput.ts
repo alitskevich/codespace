@@ -1,13 +1,19 @@
-import { Hash, arrayToObject, mapEntries, strJoin } from "ultimus";
+import { Hash, arrayToObject, mapEntries, arrayJoin } from "ultimus";
 
 import { FNode, NormalizedNode } from "../../types";
-import { adoptProperties, getBounds, getSize, guardValuable, toComponentName, toPropertyName } from "../utils";
+import {
+  adoptProperties,
+  getBounds,
+  getSize,
+  guardValuable,
+  toComponentName,
+  toPropertyName,
+} from "../utils";
 import { NodeTree } from "../utils/NodeTree";
 import { appendProperties } from "../utils/appendProperties";
 import { dehydrateObject } from "../utils/dehydrateObject";
 
 import { OUTER_LAYOUT_DEFAULTS, STYLE_DEFAULTS, stylify } from "./stylify";
-
 
 /**
  * Normalizes the raw input data from Figma REST API v.1.
@@ -33,10 +39,8 @@ export function normalizeInput(input: any = {}, opts: any = {}) {
 
     if (type === "COMPONENT_SET") {
       // local only, so will be added from its first variant instance, just like as remote
-
     } else if (node.name.startsWith("ignore-")) {
       // ignore
-
     } else if (type === "COMPONENT" || type === "INSTANCE" || node.name.startsWith("component-")) {
       const { componentId = id } = node;
 
@@ -49,7 +53,10 @@ export function normalizeInput(input: any = {}, opts: any = {}) {
         componentSets[componentSetId] = { ...meta };
       }
 
-      const { componentPropertyReferences, componentProperties = node.componentPropertyDefinitions } = node;
+      const {
+        componentPropertyReferences,
+        componentProperties = node.componentPropertyDefinitions,
+      } = node;
       const properties = adoptProperties({ ...componentProperties }, components);
 
       const compSetMeta = componentSets[componentSetId];
@@ -58,7 +65,7 @@ export function normalizeInput(input: any = {}, opts: any = {}) {
       if (componentPropertyReferences?.mainComponent) {
         // this is a reference to another component made from a parent property
         tree.addUsageChild(parentId, { ...node, id: `D${id}` }, "DynamicComponent", {
-          ...arrayToObject(properties, 'id', 'value'),
+          ...arrayToObject(properties, "id", "value"),
           As: `{${toPropertyName(componentPropertyReferences?.mainComponent)}}`,
         });
         return;
@@ -78,7 +85,9 @@ export function normalizeInput(input: any = {}, opts: any = {}) {
         });
 
       // create component variant for first time
-      const when = strJoin(",", ...properties.filter(p => p.type === 'VARIANT').map(({ id, value }) => `${id}=${value}`));
+      const when = arrayJoin(
+        properties.filter((p) => p.type === "VARIANT").map(({ id, value }) => `${id}=${value}`)
+      );
 
       if (!compSet.variants[when]) {
         compSet.variants[when] = 1;
@@ -89,23 +98,24 @@ export function normalizeInput(input: any = {}, opts: any = {}) {
       }
 
       // add usage of this component in place
-      tree.addUsageChild(parentId, node, componentSetName, arrayToObject(properties, 'id', 'value'));
-
+      tree.addUsageChild(
+        parentId,
+        node,
+        componentSetName,
+        arrayToObject(properties, "id", "value")
+      );
     } else if (type === "VECTOR") {
       tree.addVector(parentId, node, components[node.componentId]);
-
     } else if (type === "TEXT") {
       const charRef = node.componentPropertyReferences?.["characters"];
       const text = charRef ? `{${toPropertyName(charRef)}}` : node.characters;
       node.content = text;
-      node.size = {}
+      node.size = {};
       tree.addChild(parentId, node);
-
     } else if (type === "GROUP") {
       tree.addChild(parentId, node);
       node.clipsContent = true;
       children?.forEach((v) => decomposeNode(v, node));
-
     } else {
       tree.addChild(parentId, node);
       children?.forEach((v) => decomposeNode(v, node));
@@ -119,29 +129,41 @@ export function normalizeInput(input: any = {}, opts: any = {}) {
       if (isPageNode(node, parent)) {
         const { id, name, children, absoluteBoundingBox } = node;
         const componentName = `${toComponentName(name)}`;
-        tree.addTop({ id, name, type: "PAGE", componentName, absoluteBoundingBox, });
+        tree.addTop({ id, name, type: "PAGE", componentName, absoluteBoundingBox });
         children?.forEach((v) => decomposeNode(v, node));
       } else {
-        scanForPages(node.children, node)
+        scanForPages(node.children, node);
       }
-    })
-  }
+    });
+  };
   scanForPages(document?.children, document);
 
   // apply normalization transformations
   const normNodes: Hash<NormalizedNode> = {};
   tree.all.forEach((node: any) => {
-    const { id, type, tag, attrs, content, properties, name, parentId, componentName, origin } = node;
+    const { id, type, tag, attrs, content, properties, name, parentId, componentName, origin } =
+      node;
 
     const bounds = parentId ? getBounds(node) : getSize(origin ?? node);
 
     const styling = {
-      bounds: mapEntries(bounds, (k, v) => `${k}-${v ?? 0}`).join('-'),
+      bounds: mapEntries(bounds, (k, v) => `${k}-${v ?? 0}`).join("-"),
       ...(origin ? null : guardValuable(stylify(node, STYLE_DEFAULTS))),
       ...stylify(origin ?? node, OUTER_LAYOUT_DEFAULTS),
     };
 
-    normNodes[id] = dehydrateObject({ id, type, name, tag, attrs, properties, content, componentName, styling, bounds, });
+    normNodes[id] = dehydrateObject({
+      id,
+      type,
+      name,
+      tag,
+      attrs,
+      properties,
+      content,
+      componentName,
+      styling,
+      bounds,
+    });
   });
 
   // re-union all

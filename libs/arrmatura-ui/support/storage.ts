@@ -41,6 +41,10 @@ export class ClientStorage {
         : new MemoryStore();
   }
 
+  get prefix() {
+    return this.ns ? `${this.ns}:` : "";
+  }
+
   clear() {
     this.cache = {};
     return this.storage.clear();
@@ -48,7 +52,7 @@ export class ClientStorage {
 
   get(key: string) {
     if (key in this.cache) return this.cache[key];
-    this.scache[key] = this.storage.getItem(`${this.ns}:${key}`);
+    this.scache[key] = this.storage.getItem(`${this.prefix}${key}`);
     return (this.cache[key] = parseJson(this.scache[key], null));
   }
 
@@ -62,9 +66,9 @@ export class ClientStorage {
     this.scache[key] = sval;
 
     if (val != null) {
-      this.storage.setItem(`${this.ns}:${key}`, sval);
+      this.storage.setItem(`${this.prefix}${key}`, sval);
     } else {
-      this.storage.removeItem(`${this.ns}:${key}`);
+      this.storage.removeItem(`${this.prefix}${key}`);
     }
   }
 

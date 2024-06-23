@@ -49,14 +49,6 @@ export class IndexedDbService extends Component {
     return this.downstream();
   }
 
-  get instance() {
-    return this;
-  }
-
-  toString() {
-    return `${super.toString()}:${this.name}`;
-  }
-
   queryForValue(value, options) {
     return this.indexedDb.queryForValue(String(value ?? ""), options);
   }

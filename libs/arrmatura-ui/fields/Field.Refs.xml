@@ -7,7 +7,7 @@
 </component>
 
 <component id="Field.BackRefs">
-  <IndexedDbQuery Ref="query" db="<-db.instance" index="links" value="{data.id}" />
+  <IndexedDbQuery Ref="query" db="<-db" index="links" value="{data.id}" />
 
   <Connector data="<-query.data" change="-> items" />
 
@@ -20,7 +20,7 @@
 
 <component id="RefTitle">
   <Fragment If="value">
-    <IndexedDbQuery Ref="query" db="<-db.instance" value="{value}" />
+    <IndexedDbQuery Ref="query" db="<-db" value="{value}" />
 
     <Connector data="<-query.data|dot:0" change="-> item" />
 
@@ -41,7 +41,7 @@
 
     <Fragment If="opened">
 
-      <IndexedDbQuery Ref="query" db="<-db.instance" value="{typeSpec}:{kliuq|slice:0:3}*" />
+      <IndexedDbQuery Ref="query" db="<-db" value="{typeSpec}:{kliuq|slice:0:3}*" />
       <Connector data="<-query.data" change="-> options" />
 
       <DropdownOptionsList If="opened" caption="{caption}" options="{options}" close="-> opened=false"

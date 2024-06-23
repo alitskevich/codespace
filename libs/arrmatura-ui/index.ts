@@ -33,6 +33,7 @@ import user from "./auth/user.xml";
 import { ApiEndpoint } from "./commons/ApiEndpoint";
 import { BrowserService } from "./commons/BrowserService";
 import { DarkModeService } from "./commons/DarkModeService";
+import { LocalStorage } from "./commons/LocalStorage";
 import { PostMessageReceiver } from "./commons/PostMessageReceiver";
 import { PostMessageSender } from "./commons/PostMessageSender";
 import { SSEventSource } from "./commons/SSEventSource";
@@ -149,6 +150,7 @@ export default [
   ListSortBy,
   ListView,
   LoadingIndicator,
+  LocalStorage,
   LocationHashService,
   Logo,
   MapaelService,

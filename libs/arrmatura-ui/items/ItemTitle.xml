@@ -21,7 +21,7 @@
 
 <component id="ItemLink">
   <Fragment If="id">
-    <IndexedDbQuery Ref="query" db="<-db.instance" value="{id}" />
+    <IndexedDbQuery Ref="query" db="<-db" value="{id}" />
 
     <Connector data="<-query.data|dot:0" change="-> item" />
 

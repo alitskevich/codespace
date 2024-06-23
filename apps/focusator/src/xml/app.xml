@@ -1,9 +1,9 @@
 <component id="App">
   <DropdownsPlugin />
   <ToastFacility>
-    <StoredData Ref="language" defaults="en" />
+    <LocalStorage Ref="localStorage" />
 
-    <StoredData Ref="level" defaults="A" />
+    <StoredData Ref="language" defaults="en" />
 
     <DarkModeService Ref="dark" />
 
@@ -15,8 +15,8 @@
 
     <IndexedDbService Ref="db" (...)="{R.db}" />
 
-    <WordsStore Ref="words" concepts="<-db.allConcepts" interview="<-db.allInterview" level="<-level.value"
-      acquired="<-db.allAcquired|arrayToObject" />
+    <WordsStore Ref="words" concepts="<-db.allConcepts" interview="<-db.allInterview"
+      level="<-localStorage.level ?? 'A'" acquired="<-db.allAcquired|arrayToObject" />
 
     <Connector data="<-nav.route" change="-> route" />
 

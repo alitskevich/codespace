@@ -1,7 +1,7 @@
 const CACHE = new Map();
 
 function upnum(r: number, n: number) {
-  const rr = ((r << 5) - r) + n;
+  const rr = (r << 5) - r + n;
   return rr & rr;
 }
 
@@ -34,12 +34,11 @@ export class FingerprintMashine {
   }
 
   upString(x: string) {
-    return this.upNumber(stringHash(x))
+    return this.upNumber(stringHash(x));
   }
 
   upObject(x) {
-
-    if (x.$hash) return x.$hash;
+    if (x.uid) return x.uid;
 
     if (x instanceof Date) return this.upNumber(x.getTime());
 
@@ -55,18 +54,18 @@ export class FingerprintMashine {
         this.upString(k);
         this.upNumber(COLON_NUM);
         this.upAny(v);
-      })
+      });
     } else if (x instanceof Set) {
       this.upString("$$$Set$$$");
-      x.forEach((v) => this.upAny(v))
+      x.forEach((v) => this.upAny(v));
     } else if (Array.isArray(x)) {
       this.upString("$$$Array$$$");
-      x.forEach((v) => this.upAny(v))
+      x.forEach((v) => this.upAny(v));
     } else {
       this.upString("$$$Object$$$");
       for (const k in x) {
-        if (Object.prototype.hasOwnProperty.call(x, k) && k[0] !== '$') {
-          this.upString(k)
+        if (Object.prototype.hasOwnProperty.call(x, k) && k[0] !== "$") {
+          this.upString(k);
           this.upNumber(COLON_NUM);
           this.upAny(x[k]);
         }
@@ -78,37 +77,35 @@ export class FingerprintMashine {
     return this.r;
   }
   upAny(x: any): void {
-
     if (x == null) {
       this.upString(String(x));
-    } else if (typeof x === 'number') {
+    } else if (typeof x === "number") {
       if (isNaN(x)) {
         this.upString(`$$$NaN$$$`);
       } else {
         this.upNumber(x);
       }
-    } else if (typeof x === 'object') {
+    } else if (typeof x === "object") {
       this.upObject(x);
-    } else if (typeof x === 'string') {
+    } else if (typeof x === "string") {
       this.upString(x);
-    } else if (typeof x === 'boolean') {
+    } else if (typeof x === "boolean") {
       this.upString(`$$$Boolean$$$${x}`);
-    } else if (typeof x === 'function') {
+    } else if (typeof x === "function") {
       // this.upString(`$$$Function$$$${x}`);
     } else {
-      this.upString(String(x))
+      this.upString(String(x));
     }
   }
 
   do(x: any) {
-
     if (x == null) return x;
 
     if (typeof x !== "object") return x;
 
     if (Object.isFrozen(x)) return x;
 
-    if (x.$hash) return x.$hash;
+    if (x.uid) return x.uid;
 
     this.r = 0;
     this.x = x;
@@ -120,9 +117,8 @@ export class FingerprintMashine {
 
     return this.r;
   }
-
 }
 
 const FM = new FingerprintMashine();
 
-export const objectFingerprint = (x: any) => FM.do(x)
+export const objectFingerprint = (x: any) => FM.do(x);

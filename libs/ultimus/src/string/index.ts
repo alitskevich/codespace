@@ -16,7 +16,12 @@ export function strLowerize(x: unknown) {
   return s.length ? s[0].toLowerCase() + s.slice(1) : "";
 }
 
-export function strMapChunks(x: unknown, fn: (chunk: string, index: number) => string, sep = "_", sep2 = sep) {
+export function strMapChunks(
+  x: unknown,
+  fn: (chunk: string, index: number) => string,
+  sep = "_",
+  sep2 = sep
+) {
   return x == null ? "" : String(x).split(sep).filter(Boolean).map(fn).filter(Boolean).join(sep2);
 }
 export function camelize(x: unknown, sep = "_") {
@@ -25,24 +30,30 @@ export function camelize(x: unknown, sep = "_") {
 export function qname(x: unknown, re = /\W+/g) {
   return x == null
     ? ""
-    : strMapChunks(String(x).trim().replaceAll(re, "_"), (t, i) => (i ? capitalize(t) : strLowerize(t)), "_", "");
+    : strMapChunks(
+        String(x).trim().replaceAll(re, "_"),
+        (t, i) => (i ? capitalize(t) : strLowerize(t)),
+        "_",
+        ""
+      );
 }
 
-export const snakeCase = (x: string) => str(x).replace(/([a-z])([A-Z])/g, "$1_$2").toLowerCase();
+export const snakeCase = (x: string) =>
+  str(x)
+    .replace(/([a-z])([A-Z])/g, "$1_$2")
+    .toLowerCase();
 export const properCase = (x: string, sep?: string) => capitalize(camelize(x, sep));
 export const upperCase = (x: string) => str(x).toUpperCase();
 export const lowerCase = (x: string) => str(x).toLowerCase();
 
-export function strJoin(sep, ...arr) {
-  return arr.filter(Boolean).join(sep ?? ", ");
-}
-
 export function strFormat(template: string, params: Hash = {}, regExp = /\$\{([\S]+)\}/gi) {
-  return str(template).replaceAll(regExp, (_, key) => (params[key] != null ? str(params[key]) : ""));
+  return str(template).replaceAll(regExp, (_, key) =>
+    params[key] != null ? str(params[key]) : ""
+  );
 }
 
-export const strEnhance = (x: string, template: string) => {
-  return !x ? "" : `${template || "*"}`.replace("*", x);
+export const strEnhance = (x: string, template?: string, def?: string) => {
+  return !x ? "" : `${template || "*"}`.replace("*", x ?? def ?? "");
 };
 
 export const strTail = (x: string, sep = " ") => {
@@ -69,11 +80,11 @@ export const abbreviate = (x: string, sep = " ") =>
   !x
     ? ""
     : str(x)
-      .split(sep)
-      .map((s) => s[0])
-      .slice(0, 2)
-      .join("")
-      .toUpperCase();
+        .split(sep)
+        .map((s) => s[0])
+        .slice(0, 2)
+        .join("")
+        .toUpperCase();
 
 export const mirror = (x: string) =>
   str(x)

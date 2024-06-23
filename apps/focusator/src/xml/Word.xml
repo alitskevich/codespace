@@ -1,0 +1,37 @@
+<component id="Word">
+  <div class="relative inline-block" click="-> expanded=!expanded">
+    <span data="{data}"
+      class="border-dotted border hover:border-gray-500 p-1 m-1
+          leading-8 rounded-md bg-neutral-200 
+          cursor-pointer
+          {data.type == 'word' ? 'word' :''} word-{data.acquired} text-{data.stemm.acquired ?? data.acquired|toColorText}-700">{value}
+    </span>
+    <Tooltip data="{data}" If="expanded" close="-> expanded=false" />
+  </div>
+</component>
+
+<component id="TableCell.IrregularVerb">
+  <div class="relative inline-block p-2" click="-> expanded=!expanded">
+    <span>I can</span>
+    <span data="{data}"
+      class="border-dotted border hover:border-gray-500 p-1 m-1
+          leading-8 rounded-md bg-neutral-200 
+          cursor-pointer
+          {data.type == 'word' ? 'word' :''} word-{data.acquired} text-{data.stemm.acquired ?? data.acquired|toColorText}-700">{value}
+    </span>
+    <span> it, I </span>
+    <span data="{data}"
+      class="border-dotted border hover:border-gray-500 p-1 m-1
+          leading-8 rounded-md bg-neutral-200 
+          cursor-pointer
+          {data.type == 'word' ? 'word' :''} word-{data.acquired} text-{data.stemm.acquired ?? data.acquired|toColorText}-700">{data.v2}
+    </span>
+    <span> it yesterday, it have been </span>
+    <span data="{data}"
+      class="border-dotted border hover:border-gray-500 p-1 m-1
+          leading-8 rounded-md bg-neutral-200 
+          cursor-pointer
+          {data.type == 'word' ? 'word' :''} word-{data.acquired} text-{data.stemm.acquired ?? data.acquired|toColorText}-700">{data.v3}
+    </span>
+  </div>
+</component>

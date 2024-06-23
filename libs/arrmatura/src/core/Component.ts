@@ -79,6 +79,6 @@ export abstract class Component implements IComponent {
   }
 
   toString() {
-    return this.$ctx.toString();
+    return `${this.$ctx.toString()}${this.name ? `(${this.name})` : ""}`;
   }
 }

@@ -23,7 +23,7 @@
   <Connector data="{columns|slice:1}" change="-> cols" />
   <div class="flex-auto flex-grow-0 min-h-0 grid auto-cols-auto overflow-auto {class}" style="
     display: grid; 
-    grid-template-columns: 2rem minmax(12rem, 1fr) repeat({cols.length}, minmax(9rem, 10rem));
+    grid-template-columns: 2rem minmax(12rem, 1fr) {cols|map:R.functions.dot:'width':null:'minmax(8rem, 1fr)'|arrayJoin:' '} minmax(0rem, 10fr);
     " scrolledDown="{scrolledDown}">
 
     <div class="grid grid-cols-subgrid gap-0 col-span-full col-row-full order-1">
@@ -38,7 +38,7 @@
         class="border p-2 snap-start sticky  left-0 z-50 bg-gray-300 dark:bg-gray-700 flex items-start p-2 justify-center">
         <input type="checkbox" />
       </div>
-      <div class="border p-2 snap-start sticky z-50 left-8  bg-gray-200 dark:bg-gray-600">--</div>
+      <div class="border p-2 snap-start sticky z-50 left-8 bg-gray-200 dark:bg-gray-600">--</div>
       <div class="border p-2 snap-start p-2 top-0 z-20 bg-gray-200 dark:bg-gray-600" Each="item of cols">
         <span>{item.name ?? item.id}</span>
         <div class="table-column-sorter" If="item.sortable && doSort">
@@ -48,6 +48,7 @@
             <i class="anticon anticon-caret-down"></i></span>
         </div>
       </div>
+      <div class="bg-gray-200 dark:bg-gray-600"> </div>
     </div>
   </div>
 </component>
@@ -65,7 +66,7 @@
       <div class="p-2 w-8">
         <Svg.Chevron class="h-4 w-3 transition duration-300 m-0 {expanded ? 'rotate-90':''}" />
       </div>
-      <div class=" px-2 py-1" style="grid-column-start:2; grid-column-end: span {cols.length|increment};">
+      <div class=" px-2 py-1" style="grid-column-start:2; grid-column-end: span {cols.length|plus:2};">
         {data.name ?? data.id}
       </div>
     </div>
@@ -97,8 +98,11 @@
 
     <div class="border border-dotted border-gray-300 snap-start p-0 overflow-hidden line-clamp-4 {col.class}"
       Each="col of cols" title="data| dot:col.id">
-      <Dynamic As="TableCell.{col.type | capitalize}" (...)="{col}" value="{data | dot:col.id}" data-row="{data}"
-        data-collection="{kind ?? 'items'}" data-itemId="{data.id}" data-field="{col.id}" cellChange="{cellChange}" />
+      <Dynamic As="TableCell.{col.type | capitalize}" (...)="{col}" value="{data | dot:col.id}" data="{data}"
+        data-row="{data}" data-collection="{kind ?? 'items'}" data-itemId="{data.id}" data-field="{col.id}"
+        cellChange="{cellChange}" />
     </div>
+    <div class="bg-gray-100 dark:bg-gray-800"></div>
+
   </div>
 </component>

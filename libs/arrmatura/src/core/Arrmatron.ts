@@ -343,11 +343,6 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
           continue;
         }
 
-        if (!sourcePropName) {
-          this.logError(`Connect: No prop specified: ${key}`);
-          continue;
-        }
-
         const applicator = targetPropName ? (rr: any) => ({ [targetPropName]: rr }) : identity;
 
         this.defer(
@@ -355,7 +350,7 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
             let popre;
             return ref.subscribe(async (source: Arrmatron) => {
               try {
-                const val = await source.get(sourcePropName);
+                const val = sourcePropName ? await source.get(sourcePropName) : source.$component;
                 const fingerprint = objectFingerprint(val);
 
                 if (popre !== undefined && popre === fingerprint) return;
@@ -371,7 +366,10 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
         );
 
         // hot subscription
-        Object.assign(this.#initialState, applicator(pipes(ref, ref.get(sourcePropName))));
+        Object.assign(
+          this.#initialState,
+          applicator(pipes(ref, sourcePropName ? ref.get(sourcePropName) : ref.$component))
+        );
       }
     }
   }

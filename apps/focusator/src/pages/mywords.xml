@@ -1,7 +1,7 @@
 <component id="Page.Mywords">
-  <StoredData Ref="domainId" data="{domainId}" defaults="OBJ" action="-> domainId" />
+  <Connector data="<- localStorage.domainId ?? 'OBJ'" change="-> domainId" />
 
-  <IndexedDbQuery Ref="query" db="<-db.instance" store="thesaurus" value="*" />
+  <IndexedDbQuery Ref="query" db="<-db" store="thesaurus" value="*" />
   <Connector data="<-query.data|arrayGroupBy:'domain'" change="-> domains" />
   <div class="fixed inset-0 pt-20">
     <div class="flex flex-col items-stretch gap-4 h-full">
@@ -10,26 +10,9 @@
       </div>
     </div>
   </div>
-  <nav class="bg-gray-300 dark:bg-gray-800 block w-full fixed top-0 h-20 " id="top">
-    <div class="p-4 flex w-full">
-      <div class="flex flex-1 items-center justify-between">
-        <div class="flex items-center gap-4 justify-start">
-          <a href="#/main">
-            <Logo />
-          </a>
-          <div class="flex items-center gap-2 md:block hidden">
-            <a click="-> domainId = nav.id"
-              class="text-lg py-2 px-1 font-medium rounded-sm target:bg-slate-700 text-orange-600 hover:underline"
-              Each="nav of domains|keysOf">{nav.id}</a>
-          </div>
-        </div>
-        <div class="flex items-center justify-end gap-4">
-          <DarkModeToggler value="<-dark.isDarkMode" on="-> dark.toggle()" />
-          <Dropdown options="{R.enums.levels}" change="-> level.value=data.value" value="<-level.value" />
-        </div>
-      </div>
-    </div>
-  </nav>
+  <Header>
+    <TopListSelector data="{domains|keysOf}" change="data-> localStorage.domainId = data.value" value="{domainId}" />
+  </Header>
 </component>
 
 <component id="MResultList">
@@ -39,24 +22,4 @@
       <Table class="" data="{data}" columns="{R.columns.thesaurus}" sortBy="{sortBy}" click="-> nav.onParams()" />
     </Else>
   </Fragment>
-</component>
-
-<component id="WListItem">
-  <div class="w-40 flex">
-    <div class="w-6 h-6 bg-{ack.id|toColor}-700 rounded-full mx-2" Each="ack of R.enums.acquired" data-id="{item.id}"
-      data-acquired="{ack.id}" title="{ack.name}" click="-> words.updateStemmAcquitance()">
-    </div>
-  </div>
-  <div class="mx-2 flex-1 overflow-hidden text-{mark|toColor:'white'}">
-    <a class="break-words  text-{acquired|toColorText}-500" href="{R.app.dictionaryUrl}{id}" target="_mw_{id}">
-      {names|keysOf|join|or:en}
-    </a>
-  </div>
-  <div class=" text-gray-500">
-    {domain} / {topic}
-  </div>
-  <div class=" text-gray-300">
-    {alternate1} {alternate2}
-  </div>
-  <div class=" text-gray-300"></div>
 </component>

@@ -2,7 +2,7 @@
 
   <IndexedDbService Ref="db" (...)="{R.clientDb}" invokeApi="<-api.invoke" />
 
-  <IndexedDbQuery Ref="query" db="<-db.instance" index="kind" value="{subpage}" />
+  <IndexedDbQuery Ref="query" db="<-db" index="kind" value="{subpage}" />
 
   <ItemSearchController Ref="itemsSearch" data="<-query.data" />
 

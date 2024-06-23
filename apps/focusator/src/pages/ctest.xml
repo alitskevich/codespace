@@ -1,13 +1,9 @@
 <components>
 
   <component id="Page.Ctest">
-    <StoredData name="state" data="{state}" defaults="{R.defaultState}" action="-> state" />
+    <IndexedDbQuery Ref="query" db="<- db" store="<- localStorage.ctest ?? 'ctest'" value="*" />
 
-    <StoredData name="storeId" data="{storeId}" defaults="ctest" action="-> storeId" />
-
-    <IndexedDbQuery Ref="query" db="<-db.instance" store="{storeId}" value="*" />
-
-    <CTestService Ref="ctest" state="{state}" data="<-query.data|shuffleArray|map: R.functions.adaptQuizItem" />
+    <CTestService Ref="ctest" data="<-query.data | shuffleArray | map: R.functions.adaptQuizItem" />
 
     <Connector data="<-ctest.info" change="->" />
 
@@ -36,7 +32,8 @@
       </Container>
     </div>
     <Header>
-      <Dropdown options="{R.enums.ctest}" change="-> storeId=data.value" value="{storeId}" />
+      <TopListSelector data="{R.enums.ctest}" change="data-> localStorage.ctest = data.value"
+        value="<-localStorage.ctest" />
     </Header>
   </component>
 

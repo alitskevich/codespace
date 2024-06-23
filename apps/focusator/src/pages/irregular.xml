@@ -31,3 +31,67 @@
       action="-> localStorage.irregularVerbsMode=!quizMode" />
   </Header>
 </component>
+
+<component id="IrregularVerb">
+  <div class="relative inline-block cursor-pointer" click="-> out = value | speak">
+    <span data="{data}" class="border-dotted border hover:border-gray-500 p-1 m-1
+          leading-8 rounded-md  
+          {correct ? 'text-white bg-green-800' :'bg-neutral-200 text-black'}">
+      <span>{value}</span>
+    </span>
+    <!-- <Tooltip data="{data}" If="expanded" close="-> expanded=false" /> -->
+  </div>
+</component>
+
+<component id="IrregularVerbQuiz">
+  <Connector data="{_|assignKeyValue:mode:newValue}" data-id="{data.id}" data-store="irregular" change="{change}"
+    trigger="{newValue}" />
+  <span class="inline">
+    <Dropdown options="beginned,beginen,begging,bought,{value}" change="data-> newValue=data.value"
+      value="{data| dot:mode}" class="mx-2
+    leading-8 rounded-md bg-neutral-200
+    inline-block
+    text-{answer && answer == value ? 'green':''}-700
+    text-{answer && answer != value ? 'red':''}-700
+    " />
+  </span>
+</component>
+
+<component id="TableCell.IrregularVerbName">
+  <span class="font-bold uppercase
+    ">{value}</span>
+</component>
+
+<component id="TableCell.IrregularVerbQuiz">
+  <div class="relative inline-block p-2">
+    <span>I can</span>
+    <IrregularVerbQuiz value="{data.v1}" answer="{data.a1}" data="{data}" mode="a1" change="{change}" />
+    <span> it, I </span>
+    <IrregularVerbQuiz value="{data.v2}" answer="{data.a2}" data="{data}" mode="a2" change="{change}" />
+    <span> it yesterday, it have been </span>
+    <IrregularVerbQuiz value="{data.v3}" answer="{data.a3}" data="{data}" mode="a3" change="{change}" />
+  </div>
+</component>
+
+<component id="TableCell.IrregularVerbPrononunce">
+  <div class=" flex items-center justify-between gap-2 p-2 cursor-pointer" click="-> out = data.value | speak"
+    data-value="{data.v1} {data.t1 == data.t2 ? '' : data.v2} {data.t2 == data.t3 ? '' : data.v3}">
+    <span>{data.t1}
+    </span>
+    <span If="data.t1 == data.t2 | not">{data.t2}
+    </span>
+    <span If="data.t2 == data.t3 | not">{data.t3}
+    </span>
+  </div>
+</component>
+
+<component id="TableCell.IrregularVerbExample">
+  <div class="inline-block p-2">
+    <span>I can</span>
+    <IrregularVerb value="{data.v1}" data="{data}" correct="{data.v1 == data.a1}" />
+    <span> it, I </span>
+    <IrregularVerb value="{data.v2}" data="{data}" correct="{data.v2 == data.a2}" />
+    <span> it yesterday, it have been </span>
+    <IrregularVerb value="{data.v3}" data="{data}" correct="{data.v3 == data.a3}" />
+  </div>
+</component>

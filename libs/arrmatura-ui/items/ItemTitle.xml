@@ -2,6 +2,10 @@
   <span class="truncate break-words">{R.enums.entities | find: kind :'id' |dot:'symbol'} {title ?? name ?? '--'}</span>
 </component>
 
+<component id="TableCell.ItemTitle">
+  <span class="truncate break-words">{R.enums.entities | find: kind :'id' |dot:'symbol'} {title ?? name ?? '--'}</span>
+</component>
+
 <component id="ItemTitle.Persons">
   <Connector data="{R.enums.gender | find: gender:'id'}" change="-> genderItem" />
   <div class="inline-flex items-center gap-1">

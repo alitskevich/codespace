@@ -2,8 +2,6 @@
  * Useful low-level Functions.
  */
 
-import { Fn } from "../../types";
-
 // checks
 export const isTrue = (x: any) => x === true;
 export const isFalse = (x: any) => x === false;
@@ -19,12 +17,16 @@ export const and = (x: any, s: any) => x && s;
 export const coalesce = (x: any, s: any) => x ?? s;
 
 // math
- 
-export const equals = (x: any, p: any, thenn: any = true, elsee: any = false) => (x == p ? thenn : elsee);
-export const notEquals = (x: any, p: any, thenn: any = true, elsee: any = false) => (x != p ? thenn : elsee);
 
-export const greater = (x: any, p: any, thenn: any = true, elsee: any = false) => (x > p ? thenn : elsee);
-export const less = (x: any, p: any, thenn: any = true, elsee: any = false) => (x < p ? thenn : elsee);
+export const equals = (x: any, p: any, thenn: any = true, elsee: any = false) =>
+  x == p ? thenn : elsee;
+export const notEquals = (x: any, p: any, thenn: any = true, elsee: any = false) =>
+  x != p ? thenn : elsee;
+
+export const greater = (x: any, p: any, thenn: any = true, elsee: any = false) =>
+  x > p ? thenn : elsee;
+export const less = (x: any, p: any, thenn: any = true, elsee: any = false) =>
+  x < p ? thenn : elsee;
 export const between = (x: any, a: any, b: any) => x >= a && x <= b;
 
 export const min = Math.min;
@@ -40,11 +42,9 @@ export const numToFixed = (num: number): string => {
 };
 
 // functions
-export const fnBind = (fn: () => unknown, ...args: []) => fn?.bind(null, ...args);
+export const bind = (fn: () => unknown, ...args: []) => fn?.bind(null, ...args);
 
-export const fnCall = (fn: () => unknown, ...args: []) => fn.call(null, ...args);
-
-export const fnSwapArgs = (fn: Fn) => (a: unknown, b: unknown) => fn(b, a);
+export const call = (fn: () => unknown, ...args: []) => fn?.call(null, ...args);
 
 export const assert = (b: unknown, error: string | Error, ErrorType = Error) => {
   if (!b) {

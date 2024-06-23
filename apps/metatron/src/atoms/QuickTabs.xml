@@ -11,6 +11,6 @@
 <component id="QuickTabs">
   <div class="flex flex-row items-center {class}">
     <QuickTabs.Item Each="item of data" data="{item}" active="item.id == value" class="{itemClass}"
-      click="{on|fnBind:item.id}" />
+      click="{on|bind:item.id}" />
   </div>
 </component>

@@ -67,7 +67,7 @@
 
 <component id="IconTabs">
   <Line class="gap-1 px-1">
-    <button click="{on|fnBind:item}" Each="item of data" title="{item.name}"
+    <button click="{on|bind:item}" Each="item of data" title="{item.name}"
       class="px-2 h-6 flex flex-row items-center gap-x-2 cursor-pointer hover:bg-gray-600 rounded-md {itemClass} {item.id == value ? 'bg-gray-500' : '' }">
       <Dynamic As="{item.icon}" class="h-6 w-6" />
     </button>

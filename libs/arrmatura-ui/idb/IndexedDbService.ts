@@ -171,6 +171,23 @@ export class IndexedDbService extends Component {
     };
   }
 
+  async upsertLocally(data: Delta) {
+    const now = Date.now();
+
+    const { id = `${now}`, store = "items", $callback, ...delta } = data;
+
+    await this.indexedDb.update({ ...delta, id, ts: now }, store);
+
+    $callback?.({});
+
+    return {
+      triggers: {
+        ...this.triggers,
+        [store]: (this.triggers[store] ?? 0) + 1,
+      },
+    };
+  }
+
   async upsertOptimistic(data: Delta) {
     const now = Date.now();
 

@@ -2,12 +2,12 @@ import { Uid, XmlNode } from "ultimus";
 
 import { IManifestNode } from "../../types";
 
+import { CForNode } from "./Iterative";
 import { CCompositeNode } from "./composition";
 import { CIfNode } from "./conditionals";
 import { ConnectorNode } from "./connector";
 import { CElementNode } from "./elementary";
 import { CFragmentNode } from "./fragment";
-import { CForNode } from "./iterations";
 import { CDynamicTagNode } from "./routing";
 import { CSelectorNode } from "./selection";
 import { CSlotNode } from "./slot";

@@ -1,9 +1,8 @@
 import defaults from "arrmatura-ui/resources";
 
-import assets from "../assets";
-
-import * as functions from "./utils/functions";
-import { initialData } from "./utils/initialData";
+import assets from "./assets";
+import * as functions from "./src/utils/functions";
+import { initialData } from "./src/utils/initialData";
 
 export const resources = {
   ...defaults,
@@ -31,6 +30,8 @@ export const resources = {
   functions,
   assets,
   strings: {
+    quiz: "Quiz",
+    stop: "Stop",
     confirm: "Confirm",
     nextQuestion: "Next Question",
     congratTitle: "Never give up!",
@@ -99,7 +100,7 @@ export const resources = {
   },
   columns: {
     thesaurus: [
-      { id: "en", name: "En" },
+      { id: "en", name: "Word" },
       { id: "definition", name: "definition" },
       { id: "ru", name: "ru" },
       { id: "adversial", name: "adversial", class: "text-gray-300" },
@@ -113,8 +114,18 @@ export const resources = {
       { id: "alternate8", name: "alternate8" },
     ],
     irregular: [
-      { id: "ru", name: "ru" },
-      { id: "v1", name: "v1", type: "IrregularVerb", width: "minmax(40rem, 1fr)" },
+      { id: "ru", name: "Verb", type: "IrregularVerbName" },
+      { id: "v1", name: "Example", type: "IrregularVerbExample", width: "minmax(35rem, 1fr)" },
+      {
+        id: "v2",
+        name: "Prononunce",
+        type: "IrregularVerbPrononunce",
+        width: "minmax(15rem, 1fr)",
+      },
+    ],
+    irregularQuiz: [
+      { id: "ru", name: "Verb", type: "IrregularVerbName" },
+      { id: "v1", name: "Quiz", type: "IrregularVerbQuiz", width: "minmax(50rem, 1fr)" },
     ],
   },
 };

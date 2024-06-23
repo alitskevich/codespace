@@ -3,6 +3,8 @@
 
   <Connector data="<-query.data" change="-> data" />
 
+  <Connector data="<- localStorage.irregularVerbsMode" change="-> quizMode" />
+
   <div class="fixed inset-0 pt-20">
     <Container class="flex flex-col items-stretch gap-4 h-full">
       <div class=" flex-auto flex flex-col min-h-0">
@@ -14,8 +16,8 @@
                 action="-> newItem.showModal=true" />
             </Stub>
             <Else>
-              <Table class="" data="{data}" columns="{R.columns.irregular}" sortBy="{sortBy}"
-                click="-> nav.onParams()" />
+              <Table class="" data="{data}" columns="{quizMode ? R.columns.irregularQuiz : R.columns.irregular}"
+                cellChange="-> db.upsertLocally()" sortBy="{sortBy}" click="-> nav.onParams()" />
             </Else>
           </Fragment>
         </AsyncLoader>
@@ -23,5 +25,9 @@
     </Container>
   </div>
 
-  <Header />
+  <Header>
+    <Btn title="{quizMode ? R.strings.stop : R.strings.quiz}"
+      class="!text-white {quizMode ? '!bg-red-700' : '!bg-green-700'}"
+      action="-> localStorage.irregularVerbsMode=!quizMode" />
+  </Header>
 </component>

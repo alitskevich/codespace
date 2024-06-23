@@ -1,6 +1,6 @@
 import launchWeb from "arrmatura-web";
 
-import { components } from "./src/components"
-import { resources } from "./src/resources"
+import { resources } from "./resources";
+import { components } from "./src/components";
 
 launchWeb({ components, resources });

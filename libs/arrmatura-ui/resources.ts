@@ -35,20 +35,20 @@ export default {
     newItem: [
       { id: "name", name: "Name", required: true },
       { id: "type", name: "Type", required: true },
-      { id: "description", name: "Description", type: 'textarea' },
+      { id: "description", name: "Description", type: "textarea" },
     ],
     item: [
       { id: "name", name: "Name", required: true },
       { id: "type", name: "Type", required: true },
-      { id: "description", name: "Description", type: 'textarea' },
+      { id: "description", name: "Description", type: "textarea" },
     ],
     itemColumns: [
-      { id: "name", name: "Name" },
+      { id: "name", name: "Name", type: "ItemTitle" },
       { id: "description", name: "Description" },
     ],
     userProfile: [
       { id: "email", name: "Email", required: true },
-      { id: "name", name: "Name", type: 'text' },
+      { id: "name", name: "Name", type: "text" },
     ],
     signIn: [
       { id: "email", name: "User email" },
@@ -61,4 +61,4 @@ export default {
       { id: "password2", name: "Retype Password", type: "password" },
     ],
   },
-}
+};

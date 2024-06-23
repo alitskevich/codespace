@@ -3,12 +3,9 @@
 </component>
 
 <component id="TableCell.Enum">
-  <!-- <Connector data="{data}" data-value="{changes.value}" trigger="{changes.value}" change="{cellChange}" If="changes" /> -->
   <div class="w-full  bg-gray-200 dark:bg-gray-900 truncate max-w-40 p-1">{R.enums| dot:typeSpec| resolveNameById:
     value}
   </div>
-
-  <!-- <Dropdown class="" options="{R.enums | dot:typeSpec}" value="{value}" change="-> changes" /> -->
 </component>
 
 <component id="TableCell.Url">
@@ -23,23 +20,26 @@
   <Connector data="{columns|slice:1}" change="-> cols" />
   <div class="flex-auto flex-grow-0 min-h-0 grid auto-cols-auto overflow-auto {class}" style="
     display: grid; 
-    grid-template-columns: 2rem minmax(12rem, 1fr) {cols|map:R.functions.dot:'width':null:'minmax(8rem, 1fr)'|arrayJoin:' '} minmax(0rem, 10fr);
+    grid-template-columns: 2rem {columns.0.width ?? 'minmax(12rem, 1fr)'} {cols|map:R.functions.dot:'width':null:'minmax(8rem, 1fr)'|arrayJoin:' '} minmax(0rem, 10fr);
     " scrolledDown="{scrolledDown}">
 
     <div class="grid grid-cols-subgrid gap-0 col-span-full col-row-full order-1">
       <Dynamic As="TableRow{item.items ? 'Group' : ''}" Each="item of data" data="{item}" selected="{item.selected}"
-        col1="{columns.0}" cols="{cols}" kind="{kind}" cellChange="{cellChange}"
+        selectable="{selectable}" col1="{columns.0}" cols="{cols}" kind="{kind}" cellChange="{cellChange}"
         rowFirstComponent="{rowFirstComponent}" />
       <div style="height:5rem;"></div>
     </div>
 
     <div class="h-10 sticky top-0 grid grid-cols-subgrid gap-0 col-span-full order-0">
       <div
-        class="border p-2 snap-start sticky  left-0 z-50 bg-gray-300 dark:bg-gray-700 flex items-start p-2 justify-center">
-        <input type="checkbox" />
+        class="border p-2 snap-start sticky  left-0 z-50 bg-gray-200 dark:bg-gray-600 flex items-start p-2 justify-center">
+        <input type="checkbox" If="selectable" />
       </div>
-      <div class="border p-2 snap-start sticky z-50 left-8 bg-gray-200 dark:bg-gray-600">--</div>
-      <div class="border p-2 snap-start p-2 top-0 z-20 bg-gray-200 dark:bg-gray-600" Each="item of cols">
+      <div class="border p-2 snap-start sticky z-50 left-8 bg-gray-200 dark:bg-gray-600 flex items-center">
+        <Slot />
+        <span></span>
+      </div>
+      <div class="font-bold border p-2 snap-start p-2 top-0 z-20 bg-gray-200 dark:bg-gray-600" Each="item of cols">
         <span>{item.name ?? item.id}</span>
         <div class="table-column-sorter" If="item.sortable && doSort">
           <span class="table-column-sorter-up off" title="↑" data-id="-{item.id}" click="{doSort}">
@@ -53,8 +53,8 @@
   </div>
 </component>
 
-<component id="TableRowFirstCol">
-  <div>{value ?? data.title ?? data.name}</div>
+<component id="TableCell.FirstCol">
+  <div>{value}</div>
 </component>
 
 <component id="TableRowGroup">
@@ -74,7 +74,7 @@
 
   <Fragment If="expanded">
     <TableRow Each="item of data.items" data="{item}" selected="{item.selected}" col1="{col1}" cols="{cols}"
-      kind="{kind}" cellChange="{cellChange}" rowFirstComponent="{rowFirstComponent}" />
+      selectable="{selectable}" kind="{kind}" cellChange="{cellChange}" rowFirstComponent="{rowFirstComponent}" />
   </Fragment>
 </component>
 
@@ -82,7 +82,7 @@
   <div class="grid grid-cols-subgrid gap-0 col-span-full">
     <div class="border border-dotted border-gray-400
       sticky left-0 bg-gray-300 dark:bg-gray-700 snap-start flex items-start p-2 justify-center" click="->">
-      <input type="checkbox" />
+      <input type="checkbox" If="selectable" />
     </div>
     <div class="border border-dotted 
       px-2 py-1 
@@ -92,15 +92,14 @@
       hover:bg-gray-400 hover:dark:bg-gray-600 
       cursor-pointer 
       line-clamp-2" data-itemId="{data.id}" click="->nav.onParams()">
-      <Dynamic As="{rowFirstComponent ?? 'TableRowFirstCol'}" (...)="{data}" value="{data | dot:col1.id}"
+      <Dynamic As="TableCell.{col1.type ?? 'FirstCol' | capitalize}" (...)="{data}" value="{data | dot:col1.id}"
         data="{data}" />
     </div>
 
     <div class="border border-dotted border-gray-300 snap-start p-0 overflow-hidden line-clamp-4 {col.class}"
       Each="col of cols" title="data| dot:col.id">
       <Dynamic As="TableCell.{col.type | capitalize}" (...)="{col}" value="{data | dot:col.id}" data="{data}"
-        data-row="{data}" data-collection="{kind ?? 'items'}" data-itemId="{data.id}" data-field="{col.id}"
-        cellChange="{cellChange}" />
+        change="{cellChange}" />
     </div>
     <div class="bg-gray-100 dark:bg-gray-800"></div>
 

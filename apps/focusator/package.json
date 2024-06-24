@@ -8,6 +8,7 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "start": "parcel",
+    "redeploy": "pnpm run build && pnpm run deploy",
     "build": "pnpm run clean && parcel build --no-scope-hoist",
     "clean": "rm -fdr dist && rm -fdr dist ../../.parcel-cache",
     "update-browserslist": "npx update-browserslist-db@latest",

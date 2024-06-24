@@ -2,13 +2,13 @@
   <component id="Page.AddText">
     <BrowserService Ref="browser" title="{R.name}" />
     <UploaderService Ref="uploader" acquired="<-db.allAcquired|arrayToObject" />
-    <Header />
+
 
     <Connector data="{R.samples.text1}" change="data-> uploader.uploadText(data)" />
 
     <!-- <Connector data="<-uploader.word" change="-> value" /> -->
 
-    <Container class="w-full h-full grid grid-cols-3 p-4 gap-4 pt-[6rem]">
+    <Container class="w-full md:h-full flex flex-col md:grid md:grid-cols-3 p-4 gap-4 pt-[6rem]">
       <div class="col-span-3">
         <MarkedText data="<-uploader.parsedText" class="flex-1 overflow-y-auto !text-xl" />
       </div>
@@ -30,6 +30,7 @@
     </Container>
 
     <AddText />
+    <Header />
   </component>
 
   <component id="AddText">

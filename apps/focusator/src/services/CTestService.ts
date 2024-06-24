@@ -78,14 +78,7 @@ export class CTestService extends Component {
   }
 
   findNextStepInOrder() {
-    const current = this.data?.[this.step];
-    return (
-      ((this.data?.findIndex((q) => q.order > current.order && !this.state?.[q.id]?.answered) ??
-        -1) + 1 ||
-        (this.data?.findIndex((q) => q.order < current.order && !this.state?.[q.id]?.answered) ??
-          -1) + 1 ||
-        0) - 1
-    );
+    return this.step + 1;
   }
 
   set step(step) {

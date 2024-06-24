@@ -31,8 +31,8 @@
         <Connector data="<- localStorage.language ?? 'en'" change="-> language" />
 
         <Table class="" groupCaptionType="IrregularVerbTableGroupCaption"
-          data="{data| map: R.functions.adaptIrregularVerbItem : language| arraySortBy:'name'}" columns="{columns}"
-          cellChange="-> db.upsertLocally()" sortBy="{sortBy}">
+          data="{data| map: R.functions.adaptIrregularVerbItem : language| arraySortBy:'name'| arrayGroupBy:'id'}"
+          columns="{columns}" cellChange="-> db.upsertLocally()" sortBy="{sortBy}">
           <Dropdown options="{R.enums.languages2}" change="data-> localStorage.language=data.value"
             value="{language}" />
         </Table>
@@ -53,27 +53,41 @@
   </div>
 </component>
 
+<component id="QuizOptionsSelector">
+  <div class="inline-block">
+    <div class="flex flex-no-wrap items-center gap-0      
+    divide-x divide-gray-600  
+    cursor-pointer" role="group">
+      <label Each="option of options" class="px-1
+    first:rounded-l-lg last:rounded-r-lg  
+    {option.id == value ? 'bg-red-600 text-white' : 'bg-neutral-200 text-gray-700' } 
+    " data-value="{option.id}" click="{change}">
+        <span class="text-sm">{option.name}</span>
+      </label>
+    </div>
+  </div>
+</component>
+
 <component id="IrregularVerbQuiz">
   <Connector data="{_|assignKeyValue:mode:newValue}" data-id="{data.id}" data-store="irregular" change="{change}"
     trigger="{newValue}" />
-  <Connector data="{data.f1}ed,{data.f1}en,{data.f1}ing,{data.f1}ght,{value}"
+  <Connector data="{data.f1},{data.f2},{data.f3},{data.f1}en,{data.f1}ed"
     change="-> options| split:','| arrayShuffle | arrayJoin:','" />
-  <span class="inline">
-    <Dropdown options="{options}" change="data-> newValue=data.value" value="{data| dot:mode}" class="mx-2
-    leading-8 rounded-md bg-neutral-200
-    inline-block
-    text-{answer == value ? 'green':''}-700
-    text-{answer && answer != value ? 'red':''}-700
-    " />
-  </span>
+  <Fragment If="answer == value">
+    <Connector data="{newValue}" trigger="{newValue}" change="-> outloud | speak" />
+    <IrregularVerb value="{value}" data="{data}" correct="true" />
+    <Else>
+      <audio src="{R.assets.bruh}?code={newValue}" autoplay once If="newValue" />
+      <QuizOptionsSelector options="{options}" change="data-> newValue=data.value" value="{answer}" />
+    </Else>
+  </Fragment>
 </component>
 
 <component id="IrregularVerbTableGroupCaption">
-  <div dir="{data.language != 'ar' ? 'ltr' : 'rtl'}" class="font-bold uppercase">{data.name}</div>
+  <div dir="{data.language != 'ar' ? 'ltr' : 'rtl'}" class="font-bold uppercase">{data.items.0.name}</div>
 </component>
 
 <component id="TableCell.IrregularVerbQuiz">
-  <IrregularVerbTableGroupCaption data="{data}" />
   <div class="inline-block p-2 grid grid-cols-1 gap-2 auto-cols-auto" style="grid-template-columns: 1fr;">
     <div>
       <span>{data.s1|strHead:data.f1}</span>
@@ -94,7 +108,6 @@
 </component>
 
 <component id="TableCell.IrregularVerbExample">
-  <IrregularVerbTableGroupCaption data="{data}" />
 
   <div class="inline-block p-2 grid grid-cols-1 gap-2 auto-cols-auto" style="grid-template-columns: 1fr;">
     <div>

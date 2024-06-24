@@ -3,6 +3,9 @@
   "transformers": {
     "*.{xml,rss,atom}": [
       "@parcel/transformer-inline-string"
+    ],
+    "*.{au,wav,mp3,m4a}": [
+      "@parcel/transformer-raw"
     ]
   },
   "packagers": {

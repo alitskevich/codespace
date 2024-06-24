@@ -7,13 +7,6 @@
     </div>
   </component>
 
-  <component id="MarkedText">
-    <div contentEditable="data-> editedText=data.text"
-      class="text-black bg-white dark:bg-slate-200 w-full rounded-lg p-2 {class}">
-      <Dynamic As="Token.{item.type}" item="{item}" Each="item of data" />
-    </div>
-  </component>
-
   <component id="Hint">
     <div class="text-sm h-8 rounded-lg dark:bg-slate-800 p-2">{text}</div>
   </component>

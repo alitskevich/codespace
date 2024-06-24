@@ -1,13 +1,12 @@
 export const enums = {
   acquired: [
     { id: "-1", name: "Incognito" },
-    { id: "0", name: "In progress" },
+    // { id: "0", name: "In progress" },
     { id: "1", name: "Confident!" },
   ],
   ctest: [
     { id: "ctest", name: "Basic" },
     { id: "idioms", name: "Large" },
-    { id: "irregular", name: "Irregular" },
   ],
   languages: [
     { id: "en", name: "English" },

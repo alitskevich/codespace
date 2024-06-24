@@ -52,9 +52,7 @@
       </h5>
       <h5
         class="flex flex-col text-4xl md:text-6xl p-4 m-4 items-center gap-4 justify-center text-center flex-1 min-h-0 overflow-y-auto"
-        innerHtml="{body|illustrateSentence ?? ''}">
-      </h5>
-      <h5 class="text-2xl p-2 m-2 text-center min-h-0 " innerHtml="({body ?? '...'})">
+        innerHtml="{body ?? '(...)'}">
       </h5>
       <div class="mt-2 flex flex-col place-content-center items-stretch">
         <Input id="{id}" value="{value}" answered="{answered}" correct="{correct}" options="{options}"

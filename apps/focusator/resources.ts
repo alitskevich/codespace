@@ -24,7 +24,6 @@ export const resources = {
   },
   nav: [
     { id: "addText", name: "Upload", caption: "Add a new text" },
-    { id: "quiz", name: "Quiz", caption: "Practice until confident." },
     { id: "ctest", name: "Train", caption: "Train until done." },
     { id: "mywords", name: "Revise", caption: "Revise wordbank." },
     { id: "irregular", name: "Irregular", caption: "Irregular verbs." },

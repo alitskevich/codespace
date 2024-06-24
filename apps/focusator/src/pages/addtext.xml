@@ -32,18 +32,6 @@
     <AddText />
   </component>
 
-  <component id="Word">
-    <div class="relative inline-block mb-2" click="-> expanded=true">
-      <span data="{item}" class="border-dotted border hover:border-gray-500 p-1 
-          leading-8 rounded-md bg-neutral-200
-          cursor-pointer
-          {item.type == 'word' ? 'word' :''} word-{item.acquired} text-{item.acquired|toColorText}-700">{item.name}
-      </span>
-      <Tooltip data="{item}" If="expanded" close="-> expanded=false" />
-    </div>
-  </component>
-
-
   <component id="AddText">
 
     <StoredData Ref="text" defaults="{R.samples.text1}" />

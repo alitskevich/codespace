@@ -4,7 +4,7 @@ import ctest from "../../data/ctest.json";
 import { data as dictionary } from "../../data/dictionary.json";
 import idioms from "../../data/idioms.json";
 import interview from "../../data/interview.json";
-import irregular from "../../data/irregular.json";
+import irregular from "../../data/irrverbs.json";
 import thesaurus from "../../data/thesaurus.json";
 
 import { stemm } from "./stemm";
@@ -49,7 +49,7 @@ function prepareThesaurus() {
 
 function prepareIrregular() {
   irregular?.forEach((item: any) => {
-    item.id = item.v1;
+    item.level = String(item.level);
   });
   return irregular;
 }

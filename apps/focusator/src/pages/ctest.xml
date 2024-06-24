@@ -3,7 +3,7 @@
   <component id="Page.Ctest">
     <IndexedDbQuery Ref="query" db="<- db" store="<- localStorage.ctest ?? 'ctest'" value="*" />
 
-    <CTestService Ref="ctest" data="<-query.data | shuffleArray | map: R.functions.adaptQuizItem" />
+    <CTestService Ref="ctest" data="<-query.data | arrayShuffle | map: R.functions.adaptQuizItem" />
 
     <Connector data="<-ctest.info" change="->" />
 

@@ -1,40 +1,50 @@
 <component id="Page.Irregular">
-  <IndexedDbQuery Ref="query" db="<-db" store="irregular" value="*" />
-
-  <Connector data="<-query.data" change="-> data" />
+  <IndexedDbQuery Ref="query" db="<-db" store="irregular" index="level" value="{level=='all'?'':level}*" />
 
   <Connector data="<- localStorage.irregularVerbsMode" change="-> quizMode" />
+  <Connector data="<- localStorage.irregularVerbsLevel" change="data-> level = data ??'all'" />
+  <Connector data="<-query.data" change="-> data" />
 
   <div class="fixed inset-0 pt-20">
     <Container class="flex flex-col items-stretch gap-4 h-full">
-      <div class=" flex-auto flex flex-col min-h-0">
-        <AsyncLoader isLoading="{data|not}" title="Wait..." subtitle="🚀  Loading data" error="<-db.error"
-          onError="-> db.downstream()">
-          <Fragment If="!data.length">
-            <Stub title="No data">
-              <Btn title="{R.strings.add_a_new_item}" icon="plus" tooltip="{R.strings.add_a_new_item}"
-                action="-> newItem.showModal=true" />
-            </Stub>
-            <Else>
-              <Table class="" data="{data}" columns="{quizMode ? R.columns.irregularQuiz : R.columns.irregular}"
-                cellChange="-> db.upsertLocally()" sortBy="{sortBy}" click="-> nav.onParams()" />
-            </Else>
-          </Fragment>
-        </AsyncLoader>
+      <div class=" flex-auto flex flex-col min-h-0 md:m-4">
+        <IrregularVerbTable data="{data}" columns="{quizMode ? R.columns.irregularQuiz : R.columns.irregular}" />
       </div>
     </Container>
   </div>
 
   <Header>
-    <Btn title="{quizMode ? R.strings.stop : R.strings.quiz}"
-      class="!text-white {quizMode ? '!bg-red-700' : '!bg-green-700'}"
-      action="-> localStorage.irregularVerbsMode=!quizMode" />
+    <TopListSelector data="{R.enums.levels4}" change="data-> localStorage.irregularVerbsLevel = data.value"
+      value="{level}" />
+
+    <Btn title="{quizMode ? R.strings.stop : R.strings.quiz} ({data|calcIrregularVerbQuizProgress|dot:'percent'}%)"
+      class="{quizMode ? '!text-white !bg-red-700' : ''}" action="-> localStorage.irregularVerbsMode=!quizMode" />
   </Header>
+</component>
+
+<component id="IrregularVerbTable">
+  <AsyncLoader isLoading="{data|not}" title="Wait..." subtitle="🚀  Loading data" error="<-db.error"
+    onError="-> db.downstream()">
+    <Fragment If="!data.length">
+      <Stub title="No data" />
+      <Else>
+        <Connector data="<- localStorage.language ?? 'en'" change="-> language" />
+
+        <Table class="" groupCaptionType="IrregularVerbTableGroupCaption"
+          data="{data| map: R.functions.adaptIrregularVerbItem : language| arraySortBy:'name'}" columns="{columns}"
+          cellChange="-> db.upsertLocally()" sortBy="{sortBy}">
+          <Dropdown options="{R.enums.languages2}" change="data-> localStorage.language=data.value"
+            value="{language}" />
+        </Table>
+      </Else>
+    </Fragment>
+  </AsyncLoader>
 </component>
 
 <component id="IrregularVerb">
   <div class="relative inline-block cursor-pointer" click="-> out = value | speak">
     <span data="{data}" class="border-dotted border hover:border-gray-500 p-1 m-1
+    text-nowrap
           leading-8 rounded-md  
           {correct ? 'text-white bg-green-800' :'bg-neutral-200 text-black'}">
       <span>{value}</span>
@@ -46,52 +56,61 @@
 <component id="IrregularVerbQuiz">
   <Connector data="{_|assignKeyValue:mode:newValue}" data-id="{data.id}" data-store="irregular" change="{change}"
     trigger="{newValue}" />
+  <Connector data="{data.f1}ed,{data.f1}en,{data.f1}ing,{data.f1}ght,{value}"
+    change="-> options| split:','| arrayShuffle | arrayJoin:','" />
   <span class="inline">
-    <Dropdown options="beginned,beginen,begging,bought,{value}" change="data-> newValue=data.value"
-      value="{data| dot:mode}" class="mx-2
+    <Dropdown options="{options}" change="data-> newValue=data.value" value="{data| dot:mode}" class="mx-2
     leading-8 rounded-md bg-neutral-200
     inline-block
-    text-{answer && answer == value ? 'green':''}-700
+    text-{answer == value ? 'green':''}-700
     text-{answer && answer != value ? 'red':''}-700
     " />
   </span>
 </component>
 
-<component id="TableCell.IrregularVerbName">
-  <span class="font-bold uppercase
-    ">{value}</span>
+<component id="IrregularVerbTableGroupCaption">
+  <div dir="{data.language != 'ar' ? 'ltr' : 'rtl'}" class="font-bold uppercase">{data.name}</div>
 </component>
 
 <component id="TableCell.IrregularVerbQuiz">
-  <div class="relative inline-block p-2">
-    <span>I can</span>
-    <IrregularVerbQuiz value="{data.v1}" answer="{data.a1}" data="{data}" mode="a1" change="{change}" />
-    <span> it, I </span>
-    <IrregularVerbQuiz value="{data.v2}" answer="{data.a2}" data="{data}" mode="a2" change="{change}" />
-    <span> it yesterday, it have been </span>
-    <IrregularVerbQuiz value="{data.v3}" answer="{data.a3}" data="{data}" mode="a3" change="{change}" />
-  </div>
-</component>
-
-<component id="TableCell.IrregularVerbPrononunce">
-  <div class=" flex items-center justify-between gap-2 p-2 cursor-pointer" click="-> out = data.value | speak"
-    data-value="{data.v1} {data.t1 == data.t2 ? '' : data.v2} {data.t2 == data.t3 ? '' : data.v3}">
-    <span>{data.t1}
-    </span>
-    <span If="data.t1 == data.t2 | not">{data.t2}
-    </span>
-    <span If="data.t2 == data.t3 | not">{data.t3}
-    </span>
+  <IrregularVerbTableGroupCaption data="{data}" />
+  <div class="inline-block p-2 grid grid-cols-1 gap-2 auto-cols-auto" style="grid-template-columns: 1fr;">
+    <div>
+      <span>{data.s1|strHead:data.f1}</span>
+      <IrregularVerbQuiz value="{data.f1}" answer="{data.a1}" data="{data}" mode="a1" change="{change}" />
+      <span>{data.s1|strTail:data.f1}</span>
+    </div>
+    <div>
+      <span>{data.s2|strHead:data.f2}</span>
+      <IrregularVerbQuiz value="{data.f2}" answer="{data.a2}" data="{data}" mode="a2" change="{change}" />
+      <span>{data.s2|strTail:data.f2}</span>
+    </div>
+    <div>
+      <span>{data.s3|strHead:data.f3}</span>
+      <IrregularVerbQuiz value="{data.f3}" answer="{data.a3}" data="{data}" mode="a3" change="{change}" />
+      <span>{data.s3|strTail:data.f3}</span>
+    </div>
   </div>
 </component>
 
 <component id="TableCell.IrregularVerbExample">
-  <div class="inline-block p-2">
-    <span>I can</span>
-    <IrregularVerb value="{data.v1}" data="{data}" correct="{data.v1 == data.a1}" />
-    <span> it, I </span>
-    <IrregularVerb value="{data.v2}" data="{data}" correct="{data.v2 == data.a2}" />
-    <span> it yesterday, it have been </span>
-    <IrregularVerb value="{data.v3}" data="{data}" correct="{data.v3 == data.a3}" />
+  <IrregularVerbTableGroupCaption data="{data}" />
+
+  <div class="inline-block p-2 grid grid-cols-1 gap-2 auto-cols-auto" style="grid-template-columns: 1fr;">
+    <div>
+      <span>{data.s1|strHead:data.f1}</span>
+      <IrregularVerb value="{data.f1}" data="{data}" correct="{data.f1 == data.a1}" />
+      <span>{data.s1|strTail:data.f1}</span>
+    </div>
+    <div>
+      <span>{data.s2|strHead:data.f2}</span>
+      <IrregularVerb value="{data.f2}" data="{data}" correct="{data.f2 == data.a2}" />
+      <span>{data.s2|strTail:data.f2}</span>
+    </div>
+    <div>
+      <span>{data.s3|strHead:data.f3}</span>
+      <IrregularVerb value="{data.f3}" data="{data}" correct="{data.f3 == data.a3}" />
+      <span>{data.s3|strTail:data.f3}</span>
+    </div>
   </div>
 </component>

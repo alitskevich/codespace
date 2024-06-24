@@ -1,6 +1,8 @@
 import defaults from "arrmatura-ui/resources";
 
 import assets from "./assets";
+import { enums } from "./data/enums";
+import { strings } from "./data/strings";
 import * as functions from "./src/utils/functions";
 import { initialData } from "./src/utils/initialData";
 
@@ -29,14 +31,7 @@ export const resources = {
   ],
   functions,
   assets,
-  strings: {
-    quiz: "Quiz",
-    stop: "Stop",
-    confirm: "Confirm",
-    nextQuestion: "Next Question",
-    congratTitle: "Never give up!",
-    congratButtonTitle: "Submit",
-  },
+  strings: strings,
   samples: {
     text1:
       "Explore the impact of generative AI on software development methodologies, from traditional processes to the challenges and benefits of using AI tools. Dive into the evolution of roles in the AI space and the potential blending of roles with virtual agents. Discover practical AI applications, automation of routine tasks, and testing AI capabilities with different currencies. Learn about the importance of aligning organizational beliefs with client pitches and mastering wave two and three approaches for increased productivity. Join the discussion on workflow, collaboration, change management, and adoption of new tools, with a focus on empowering users and driving adoption and trust in tools. Don't miss out on this insightful exploration of the future of AI in software development.",
@@ -45,52 +40,19 @@ export const resources = {
   },
   db: {
     name: "focusator",
+    version: 2,
     stores: {
       thesaurus: { keyPath: "id", indicies: { en: {}, adversial: {} } },
       idioms: { keyPath: "id", indicies: { stems: { multiEntry: true } } },
       acquired: { keyPath: "id", indicies: {} },
-      irregular: { keyPath: "id", indicies: {} },
+      irregular: { keyPath: "id", indicies: { level: {} } },
       ctest: { keyPath: "id", indicies: {} },
       interview: { keyPath: "id", indicies: {} },
       dictionary: { keyPath: "id", indicies: { family: {}, stem: {} } },
     },
     initialData,
   },
-  enums: {
-    fiveNumbers: [
-      { id: "1", name: "1" },
-      { id: "2", name: "2" },
-      { id: "3", name: "3" },
-      { id: "4", name: "4" },
-      { id: "5", name: "5" },
-    ],
-    acquired: [
-      { id: "-1", name: "Incognito" },
-      { id: "0", name: "In progress" },
-      { id: "1", name: "Confident!" },
-    ],
-    ctest: [
-      { id: "ctest", name: "Basic" },
-      { id: "idioms", name: "Large" },
-      { id: "irregular", name: "Irregular" },
-    ],
-    languages: [
-      { id: "en", name: "English" },
-      { id: "es", name: "Spanish" },
-      { id: "de", name: "Deutsch" },
-    ],
-    levels: [
-      { id: "A", name: "A" },
-      { id: "B", name: "B" },
-      { id: "C", name: "C" },
-    ],
-    marks: [
-      { id: "all", name: "All" },
-      { id: "1", name: "Incognito" },
-      { id: "2", name: "Need practice" },
-      { id: "3", name: "Confident" },
-    ],
-  },
+  enums,
   forms: {
     filter: [
       { id: "acquired", name: "Acquired", type: "enum", typeSpec: "acquired" },
@@ -114,18 +76,10 @@ export const resources = {
       { id: "alternate8", name: "alternate8" },
     ],
     irregular: [
-      { id: "ru", name: "Verb", type: "IrregularVerbName" },
-      { id: "v1", name: "Example", type: "IrregularVerbExample", width: "minmax(35rem, 1fr)" },
-      {
-        id: "v2",
-        name: "Prononunce",
-        type: "IrregularVerbPrononunce",
-        width: "minmax(15rem, 1fr)",
-      },
+      { id: "v1", name: "Example", type: "IrregularVerbExample", width: "minmax(20rem, 1fr)" },
     ],
     irregularQuiz: [
-      { id: "ru", name: "Verb", type: "IrregularVerbName" },
-      { id: "v1", name: "Quiz", type: "IrregularVerbQuiz", width: "minmax(50rem, 1fr)" },
+      { id: "v1", name: "Quiz", type: "IrregularVerbQuiz", width: "minmax(20rem, 1fr)" },
     ],
   },
 };

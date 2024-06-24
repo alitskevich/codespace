@@ -12,6 +12,7 @@
     "clean": "rm -fdr dist && rm -fdr dist ../../.parcel-cache",
     "update-browserslist": "npx update-browserslist-db@latest",
     "download:dictionary": "curl -L https://script.google.com/macros/s/AKfycbzyCnt2SM0swu2DuVdMuWgZls3U9IgGT0BMDweDnEF0ygIDJI2widP9hb4sd5_vWhgaIA/exec  > ./data/dictionary.json",
+    "download:irrverbs": "curl -L https://script.google.com/macros/s/AKfycbxeydIAMqJsRmb_brOquWxxmlxzhK46UNOp-cSv82ocjQhq1hFNya4omjtXdlOkyBYLuA/exec  > ./data/irrverbs.json",
     "download:thesaurus": "curl -L https://script.google.com/macros/s/AKfycbwk024DnRMUbZj_1gRGpbPR5BKFb3tjUv_Nf0CZar4/dev > ./data/thesaurus.json",
     "download:idioms": "curl -L https://script.google.com/macros/s/AKfycbyhAm3M6jDcJGw2WRabpXyT4LLaGAzYZn7VAokHYwSk7fNzWjJKP-0arjo_l--n4If3/exec > ./data/idioms.json",
     "download:ctest": "curl -L https://script.google.com/macros/s/AKfycbw4xNoL9WKm9z5rMw0qoCFdo1KhbDU1bmdZI12uKFmul1S-4AgvGZMmsXPPJ2H4eA1f/exec?action=items > ./data/ctest.json",

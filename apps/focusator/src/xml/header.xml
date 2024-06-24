@@ -8,15 +8,10 @@
             <a href="#/main">
               <Logo />
             </a>
-            <!-- <div class="flex items-center gap-2 md:block hidden">
-              <NavLink id="{nav.id}" name="{nav.name}" Each="nav of R.nav" />
-            </div> -->
           </div>
           <div class="flex items-center justify-end gap-4">
             <Slot />
             <DarkModeToggler value="<-dark.isDarkMode" on="-> dark.toggle()" />
-            <!-- <Dropdown options="{R.enums.languages}" change="data-> language.value=data.value"
-              value="<-language.value" /> -->
           </div>
         </div>
       </Container>
@@ -27,7 +22,7 @@
     <div class="flex items-center gap-2 md:block hidden">
       <a click="{change}" data-value="{item.id}" class="text-lg py-2 px-1 font-medium rounded-sm target:bg-slate-700 
        {value == item.id ? 'text-orange-600': 'text-purple-500 hover:underline cursor-pointer'} "
-        Each="item of data">{item.id}</a>
+        Each="item of data">{item.name ??item.id}</a>
     </div>
     <Dropdown options="{data}" change="{change}" value="{value}" class="md:hidden block" />
   </component>

@@ -1,24 +1,10 @@
 import type { EContent, IManifestNode, IPlatform } from "arrmatura/types";
-import { mapEntries } from "ultimus";
 import type { Datum, Delta, Hash, Uid, XmlNode } from "ultimus/types";
 
 import { Arrmatron } from "../core/Arrmatron";
 import { ManifestNode } from "../core/ManifestNode";
 import { compilePlaceholder } from "../utils/compileExpression";
-
-const narrowData = (data: any) => {
-  if (!data) {
-    return [];
-  }
-  if (typeof data === "string") return data.split(",").map((id) => ({ id, name: id }));
-  if (Array.isArray(data)) return data;
-  if (typeof data[Symbol.iterator] === "function") return [...data];
-  if (typeof data === "object")
-    return mapEntries(data, (key, value) =>
-      typeof value === "object" ? { ...value, id: key } : { id: key, name: String(value) }
-    );
-  return [{ id: String(data), name: String(data) }];
-};
+import { narrowData } from "../utils/narrowData";
 
 class Iterative extends Arrmatron<CForNode> {
   pkHash: Hash<Datum> = {};

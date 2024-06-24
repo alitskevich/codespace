@@ -1,4 +1,4 @@
-export function shuffleArray(array) {
+export function arrayShuffle(array) {
   if (!array?.length) return [];
   array = [...array];
 

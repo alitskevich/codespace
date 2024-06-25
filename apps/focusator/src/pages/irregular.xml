@@ -1,14 +1,17 @@
 <component id="Page.Irregular">
   <IndexedDbQuery Ref="query" db="<-db" store="irregular" index="level" value="{level=='all'?'':level}*" />
 
-  <Connector data="<- localStorage.irregularVerbsMode" change="-> quizMode" />
+  <Connector data="<- localStorage.irregularVerbsMode" change="-> quizMode = it ?? false" />
   <Connector data="<- localStorage.irregularVerbsLevel" change="-> level = it ?? 'all'" />
+  <Connector data="<- localStorage.language" change="-> language = it ?? 'en'" />
+
   <Connector data="<-query.data" change="-> data" />
 
   <div class="fixed inset-0 pt-20">
     <Container class="flex flex-col items-stretch gap-4 h-full">
       <div class=" flex-auto flex flex-col min-h-0 md:m-4">
-        <IrregularVerbTable data="{data}" columns="{quizMode ? R.columns.irregularQuiz : R.columns.irregular}" />
+        <IrregularVerbTable data="{data}" language="{language}"
+          columns="{quizMode ? R.columns.irregularQuiz : R.columns.irregular}" />
       </div>
     </Container>
   </div>
@@ -18,6 +21,8 @@
 
     <Btn title="{quizMode ? R.strings.stop : R.strings.quiz} ({data|calcIrregularVerbQuizProgress['percent']}%)"
       class="{quizMode ? '!text-white !bg-red-700' : ''}" action="-> localStorage.irregularVerbsMode = !quizMode" />
+    <Dropdown options="{R.enums.languages2}" change="-> localStorage.language = it.value" value="{language}" />
+
   </Header>
 </component>
 
@@ -27,12 +32,9 @@
     <Fragment If="!data.length">
       <Stub title="No data" />
       <Else>
-        <Connector data="<- localStorage.language ?? 'en'" change="-> language" />
-
-        <Table class="" groupCaptionType="IrregularVerbTableGroupCaption"
+        <Table class="" noHeader="true" groupCaptionType="IrregularVerbTableGroupCaption"
           data="{data| map: R.functions.adaptIrregularVerbItem : language| arraySortBy:'name'| arrayGroupBy:'id'}"
           columns="{columns}" cellChange="-> db.upsertLocally()" sortBy="{sortBy}">
-          <Dropdown options="{R.enums.languages2}" change="-> localStorage.language = it.value" value="{language}" />
         </Table>
       </Else>
     </Fragment>
@@ -69,7 +71,7 @@
   <Connector data="{_|assignKeyValue:mode:newValue}" data-id="{data.id}" data-store="irregular" change="{change}"
     trigger="{newValue}" />
   <Connector data="{data.f1},{data.f2},{data.f3},{data.f1}en,{data.f1}ed"
-    change="-> options| split:','| arrayShuffle | arrayJoin:','" />
+    change="-> options| split:','| arrayShuffle | arrayDedup | arrayJoin:','" />
   <Fragment If="answer == value">
     <Connector data="{newValue}" trigger="{newValue}" change="-> outloud | speak" />
     <IrregularVerb value="{value}" data="{data}" correct="true" />
@@ -86,17 +88,17 @@
 
 <component id="TableCell.IrregularVerbQuiz">
   <div class="inline-block p-2 grid grid-cols-1 gap-2 auto-cols-auto" style="grid-template-columns: 1fr;">
-    <div>
+    <div If="data.f1 != data.a1">
       <span>{data.s1|strHead:data.f1}</span>
       <IrregularVerbQuiz value="{data.f1}" answer="{data.a1}" data="{data}" mode="a1" change="{change}" />
       <span>{data.s1|strTail:data.f1}</span>
     </div>
-    <div>
+    <div If="data.f2 != data.a2">
       <span>{data.s2|strHead:data.f2}</span>
       <IrregularVerbQuiz value="{data.f2}" answer="{data.a2}" data="{data}" mode="a2" change="{change}" />
       <span>{data.s2|strTail:data.f2}</span>
     </div>
-    <div>
+    <div If="data.f3 != data.a3">
       <span>{data.s3|strHead:data.f3}</span>
       <IrregularVerbQuiz value="{data.f3}" answer="{data.a3}" data="{data}" mode="a3" change="{change}" />
       <span>{data.s3|strTail:data.f3}</span>

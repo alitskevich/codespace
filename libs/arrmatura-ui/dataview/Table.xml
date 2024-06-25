@@ -19,19 +19,21 @@
 <component id="Table">
   <Connector data="{columns|slice:1}" change="-> cols" />
   <div class="flex-auto flex-grow-0 min-h-0 grid auto-cols-auto overflow-auto {class}" style="
+    box-sizing: border-box;
     display: grid; 
     grid-template-columns: 2rem {columns.0.width ?? 'minmax(12rem, 1fr)'} {cols|map:R.functions.dot:'width':null:'minmax(8rem, 1fr)'|arrayJoin:' '};
     " scrolledDown="{scrolledDown}">
 
     <div class="grid grid-cols-subgrid gap-0 col-span-full col-row-full order-1">
       <Dynamic As="TableRow{item.items ? 'Group' : ''}" Each="item of data" data="{item}" selected="{item.selected}"
-        selectable="{selectable}" expander="{groupExpander}" col1="{columns.0}" cols="{cols}" kind="{kind}"
-        cellChange="{cellChange}" rowFirstComponent="{rowFirstComponent}" groupCaptionType="{groupCaptionType}" />
+        selectable="{selectable}" noHeader="{noHeader}" expander="{groupExpander}" col1="{columns.0}" cols="{cols}"
+        kind="{kind}" cellChange="{cellChange}" rowFirstComponent="{rowFirstComponent}"
+        groupCaptionType="{groupCaptionType}" />
       <div style="height:5rem;"></div>
     </div>
 
-    <div class="sticky top-0 z-10  order-0
-    grid grid-cols-subgrid gap-0 col-span-full">
+    <div class="sticky top-0 left-0 right-0 z-10  order-0 box-border
+    grid grid-cols-subgrid gap-0 col-span-full" style="height: 2rem;box-sizing: border-box;" If="!noHeader">
       <div
         class="border p-2 snap-start sticky left-0 z-50 top-0 bg-gray-200 dark:bg-gray-600 flex items-start p-2 justify-center">
         <input type="checkbox" If="selectable" />
@@ -62,8 +64,8 @@
 </component>
 
 <component id="TableRowGroup">
-  <div class="col-span-full {expander ? 'cursor-pointer'} bg-gray-400 dark:bg-slate-800 flex sticky top-0 z-100"
-    data-id="{data.id}" click="{expander.toggle}">
+  <div class="col-span-full {expander ? 'cursor-pointer'} bg-gray-400 dark:bg-slate-800 flex sticky z-20"
+    style="top:{noHeader ? '0' : '2.125rem;'}" data-id="{data.id}" click="{expander.toggle}">
     <div class="
     sticky left-0
     flex items-start justify-center">

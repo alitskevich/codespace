@@ -2,6 +2,6 @@
   <FieldItem caption="{caption}" class="{class}" error="{error}" required="{required}" hint="{hint}"
     disabled="{disabled}">
     <Select class="py-1 rounded-lg" change="{onChange}" value="{value ?? defaultValue ?? ''}"
-      options="{R.enums|dot:typeSpec}" emptyCaption="{emptyCaption}" disabled="{disabled}" />
+      options="{R.enums[typeSpec]}" emptyCaption="{emptyCaption}" disabled="{disabled}" />
   </FieldItem>
 </component>

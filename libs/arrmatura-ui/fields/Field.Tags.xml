@@ -6,7 +6,7 @@
   </component>
 
   <component id="Field.Tags">
-    <TagsValueController Ref="ctrl" value="{value}" options="{R.enums|dot:typeSpec}" change="{onChange}"
+    <TagsValueController Ref="ctrl" value="{value}" options="{R.enums[typeSpec]}" change="{onChange}"
       disabled="{disabled}" multi="true" />
     <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}">
       <FieldTags.UI tags="<-ctrl.evaluatedOptions" click="-> ctrl.toggle" />

@@ -24,7 +24,7 @@
 
 <component id="Field.Suggestion">
 
-  <TagsValueController Ref="ctrl" value="{value}" options="{R.enums|dot:typeSpec}" change="{onChange}"
+  <TagsValueController Ref="ctrl" value="{value}" options="{R.enums[typeSpec]}" change="{onChange}"
     disabled="{disabled}" />
 
   <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}">

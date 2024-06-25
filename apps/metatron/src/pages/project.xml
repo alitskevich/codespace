@@ -114,7 +114,7 @@
   <main class="h-screen w-screen flex flex-col gap-0">
     <Nav>
       <Nav:right>
-        <ViewportSizesSelector value="{viewportSize}" on="-> viewportSize=data.value" />
+        <ViewportSizesSelector value="{viewportSize}" on="-> viewportSize=it.value" />
         <DarkModeToggler value="{darkMode}" on="-> darkMode=!darkMode" />
         <LanguageSelector value="{locale}" on="-> locale" />
         <ShowHtmlTrigger value="{showHtml}" on="-> showHtml=!showHtml" />

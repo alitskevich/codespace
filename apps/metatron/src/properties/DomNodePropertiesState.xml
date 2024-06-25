@@ -9,7 +9,7 @@
           options="{R.enums.position}" />
       </Line>
       <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
-        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+        change="-> append=it.value" options="{R.ide.nodeLayoutProps}" />
     </div>
   </div>
 
@@ -23,7 +23,7 @@
           options="{R.enums.position}" />
       </Line>
       <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
-        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+        change="-> append=it.value" options="{R.ide.nodeLayoutProps}" />
     </div>
   </div>
 
@@ -37,14 +37,14 @@
           options="{R.enums.position}" />
       </Line>
       <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
-        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+        change="-> append=it.value" options="{R.ide.nodeLayoutProps}" />
     </div>
   </div>
 
   <!-- <DomNodeDisplay click="-> result" /> -->
   <div Each="group of data.appearance|log:'actiondom'">
     <h5>{group.id}</h5>
-    <Forma meta="{group.value}" metaId="{group.id}" data="{data.appearanceValues|dot:group.id}"
+    <Forma meta="{group.value}" metaId="{group.id}" data="{data.appearanceValues[group.id]}"
       change="{data.appearanceChanged}" />
   </div>
 </component>

@@ -116,7 +116,7 @@ export abstract class ManifestNode implements IManifestNode {
       this.refId = String(v);
     } else if (k === "(...)") {
       const sv = String(v);
-      if (sv[0] === "<" && sv[1] === "-") {
+      if (sv.startsWith("<-")) {
         this.addConnector(sv.slice(2), "");
       } else {
         this.addPropertiesResolver(resolveExpression(sv));
@@ -125,22 +125,16 @@ export abstract class ManifestNode implements IManifestNode {
       if (typeof v !== "string") {
         this.initialState[k] = () => v;
       } else {
-        if (v[0] === "<" && v[1] === "-") {
-          this.addConnector(v.slice(2), k);
-        } else if (v[0] === "-" && v[1] === ">") {
-          this.addEmitter(v.slice(2).trim() || "*", k);
-        } else if (v[0] === "d" && v.startsWith("data->")) {
-          this.addEmitter(v.slice(6), k);
-        } else {
-          if (!v.includes("{")) {
-            this.initialState[k] = () => v;
+        if (!v.includes("{")) {
+          if (v.startsWith("<-")) {
+            this.addConnector(v.slice(2), k);
+          } else if (v.startsWith("->")) {
+            this.addEmitter(v.slice(2).trim() || "*", k);
           } else {
-            if (v[0] === "R" && v[1] === "." && v.match(/^@@[a-z0-9\-_.]+$/i) != null) {
-              this.initialState[k] = (c) => c.platform.getResource(v.slice(2));
-            } else {
-              this.addPropertyResolver(resolveExpression(v), k);
-            }
+            this.initialState[k] = () => v;
           }
+        } else {
+          this.addPropertyResolver(resolveExpression(v), k);
         }
       }
     }

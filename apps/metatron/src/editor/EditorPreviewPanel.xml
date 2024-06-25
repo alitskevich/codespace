@@ -14,10 +14,10 @@
       class="px-2 bg-gray-100 dark:bg-gray-700 h-8 flex items-center justify-between  border-b-[1px] border-gray-200 dark:border-gray-700">
       <h5 class="font-bold">Preview</h5>
       <div class="flex flex-row  items-center">
-        <ViewportSizesSelector value="{viewportSize}" on="-> viewportSize=data.value" />
+        <ViewportSizesSelector value="{viewportSize}" on="-> viewportSize=it.value" />
         <DarkModeToggler value="{darkMode}" on="-> darkMode=!darkMode" />
         <LanguageSelector value="{locale}" on="-> locale" class="rounded-none" />
-        <Dropdown value="{modifiers}" change="-> modifiers=data.value" id="modifiers" placeholder="modifiers"
+        <Dropdown value="{modifiers}" change="-> modifiers=it.value" id="modifiers" placeholder="modifiers"
           options="{R.project.modifiers}" />
       </div>
     </div>

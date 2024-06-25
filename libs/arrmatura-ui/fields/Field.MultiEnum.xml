@@ -37,7 +37,7 @@
   </component>
 
   <component id="Field.MultiEnum">
-    <TagsValueController Ref="ctrl" value="{value}" options="{R.enums|dot:typeSpec}" change="{onChange}"
+    <TagsValueController Ref="ctrl" value="{value}" options="{R.enums[typeSpec]}" change="{onChange}"
       disabled="{disabled}" multi="true" />
     <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}">
       <FieldMultiEnum.UI tags="<-ctrl.selectedOptions" click="-> ctrl.toggle">

@@ -14,7 +14,7 @@
           options="{R.enums.position}" />
       </Line>
       <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
-        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+        change="-> append=it.value" options="{R.ide.nodeLayoutProps}" />
     </div>
   </div>
 
@@ -28,7 +28,7 @@
           options="{R.enums.position}" />
       </Line>
       <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
-        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+        change="-> append=it.value" options="{R.ide.nodeLayoutProps}" />
     </div>
   </div>
 
@@ -42,7 +42,7 @@
           options="{R.enums.position}" />
       </Line>
       <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
-        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+        change="-> append=it.value" options="{R.ide.nodeLayoutProps}" />
     </div>
   </div>
 </component>

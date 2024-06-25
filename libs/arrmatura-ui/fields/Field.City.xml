@@ -1,8 +1,8 @@
 <component id="Field.City">
 
-  <Connector data-country="{data|dot:typeSpec}" change="->" />
+  <Connector data-country="{data[typeSpec]}" change="->" />
 
-  <Connector data-value="{R.enums.city|find:value|dot:'type' ?? country}" change="onChangeFor|dot:typeSpec" />
+  <Connector data-value="{R.enums.city|find:value|dot:'type' ?? country}" change="onChangeFor[typeSpec]" />
 
   <Connector data-citiesByCountry="{R.enums.city|filter:'type': country}" change="->" />
 
@@ -12,7 +12,7 @@
   <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}" disabled="{disabled}">
 
     <FieldPrefix>
-      <Dropdown options="{R.enums.country}" value="{data|dot:typeSpec}" change="onChangeFor|dot:typeSpec"
+      <Dropdown options="{R.enums.country}" value="{data[typeSpec]}" change="onChangeFor[typeSpec]"
         disabled="disabled ?? value|truthy" />
     </FieldPrefix>
 

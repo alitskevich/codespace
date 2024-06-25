@@ -40,6 +40,10 @@ export const adaptQuizItem = (quiz, order) => {
   return { options, order, body, correct, ...rest };
 };
 
+export const arrayDedup = (arr) => {
+  return arr.filter((item, index) => arr.indexOf(item) === index);
+};
+
 export const adaptIrregularVerbItem = (item, language) => {
   const { name, ...rest } = item;
 

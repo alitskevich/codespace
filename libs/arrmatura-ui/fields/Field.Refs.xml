@@ -48,7 +48,7 @@
         itemClick="{onChange}" class="">
         <div class="mx-2 my-2">
           <input type="text" class="px-2 py-1 {R.styles.input} h-10 rounded-lg 
-                " value="{kliuq}" placeholder="{placeholder}" keypress="-> kliuq|dot:'value'" />
+                " value="{kliuq}" placeholder="{placeholder}" keypress="-> kliuq = it.value" />
         </div>
 
         <div class="{R.styles.dropdown-item} px-2 py-1" If="!options.length && kliuq" data-value="{kliuq}"

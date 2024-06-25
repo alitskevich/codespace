@@ -99,7 +99,7 @@
 
                 <Case When="list">
                   <Container class="h-full pt-2 {itemId?'!pr-0 !pl-2':''} sm:flex-1 min-h-0 overflow-y-auto"
-                    scrolledDown="-> items.showMore()" scroll="-> showScrollToTopButton = data.value > 120">
+                    scrolledDown="-> items.showMore()" scroll="-> showScrollToTopButton = it.value > 120">
                     <ul role="list" class="w-full max-md:divide-y md:space-y-4  divide-gray-200 dark:divide-gray-700">
                       <Dynamic As="ListItem.{subpage | capitalize}" (...)="{item}" data="{item}" kind="{subpage}"
                         selectedId="{itemId}" sortBy="{sortBy}" Each="item of shownData" />

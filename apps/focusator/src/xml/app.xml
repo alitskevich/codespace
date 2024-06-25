@@ -26,3 +26,9 @@
 
   </ToastFacility>
 </component>
+
+<component id="Page.Loading">
+  <div class="loadscreen fixed inset-0 z-50 flex items-center justify-center bg-white">
+    <div class="loadscreen-text select-none text-7xl">{R.name}</div>
+  </div>
+</component>

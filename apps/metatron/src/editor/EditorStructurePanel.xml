@@ -11,12 +11,12 @@
           <span class="inline-block truncate">(main)</span>
         </button>
         <!-- <span class="font-bold">Structure</span> -->
-        <Dropdown value="..." caption="Variants:" change="-> append=data.value" options="{R.ide.treeRoots}" />
-        <Dropdown value="true" caption="Conditions:" change="-> append=data.value"
+        <Dropdown value="..." caption="Variants:" change="-> append=it.value" options="{R.ide.treeRoots}" />
+        <Dropdown value="true" caption="Conditions:" change="-> append=it.value"
           options="{R.ide.treeRootsConditions}" />
       </Line>
       <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Operations:"
-        change="-> append=data.value" options="{R.ide.treeOperations}" />
+        change="-> append=it.value" options="{R.ide.treeOperations}" />
     </Line.between>
     <EditorStructree currentId="{currentId}" class="flex-1 min-h-0 overflow-y-auto" />
   </div>

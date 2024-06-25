@@ -17,12 +17,6 @@
     </div>
   </component>
 
-  <component id="LoadScreen">
-    <div class="loadscreen fixed inset-0 z-50 flex items-center justify-center bg-white">
-      <div class="loadscreen-text select-none text-7xl">{R.name}</div>
-    </div>
-  </component>
-
   <component id="Logo">
     <div class="logo select-none m-4 font-bold	text-lg">{R.name}</div>
   </component>

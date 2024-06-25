@@ -5,7 +5,7 @@
         <div class="font-bold">Touching</div>
       </Line>
       <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
-        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+        change="-> append=it.value" options="{R.ide.nodeLayoutProps}" />
     </div>
   </div>
   <div>
@@ -14,7 +14,7 @@
         <div class="font-bold">Remote loading</div>
       </Line>
       <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
-        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+        change="-> append=it.value" options="{R.ide.nodeLayoutProps}" />
     </div>
   </div>
   <div>
@@ -23,7 +23,7 @@
         <div class="font-bold">Drag/drop</div>
       </Line>
       <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
-        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+        change="-> append=it.value" options="{R.ide.nodeLayoutProps}" />
     </div>
   </div>
   <div>
@@ -32,7 +32,7 @@
         <div class="font-bold">Input handlers</div>
       </Line>
       <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Layout options:"
-        change="-> append=data.value" options="{R.ide.nodeLayoutProps}" />
+        change="-> append=it.value" options="{R.ide.nodeLayoutProps}" />
     </div>
   </div>
 </component>

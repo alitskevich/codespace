@@ -1,5 +1,5 @@
 <component id="Field.Smartarea">
-  <SmartareaController Ref="ctrl" options="{R.enums|dot:typeSpec}" value="{value}" change="{onChange}" />
+  <SmartareaController Ref="ctrl" options="{R.enums[typeSpec]" value="{value}" change="{onChange}" />
 
   <FieldItem caption="{caption}" error="{error}" required="{required}">
     <Fragment If="disabled">

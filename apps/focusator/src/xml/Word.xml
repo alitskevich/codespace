@@ -21,7 +21,7 @@
 </component>
 
 <component id="MarkedText">
-  <div contentEditable="data-> editedText=data.text"
+  <div contentEditable="-> editedText=it.text"
     class="text-black bg-slate-200 dark:bg-slate-300 w-full rounded-lg p-2 {class}">
     <Dynamic As="Token.{item.type}" item="{item}" Each="item of data" />
   </div>

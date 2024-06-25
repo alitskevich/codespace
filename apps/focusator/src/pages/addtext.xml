@@ -4,7 +4,7 @@
     <UploaderService Ref="uploader" acquired="<-db.allAcquired|arrayToObject" />
 
 
-    <Connector data="{R.samples.text1}" change="data-> uploader.uploadText(data)" />
+    <Connector data="{R.samples.text1}" change="-> uploader.uploadText(it)" />
 
     <!-- <Connector data="<-uploader.word" change="-> value" /> -->
 
@@ -37,7 +37,7 @@
 
     <StoredData Ref="text" defaults="{R.samples.text1}" />
 
-    <Connector trigger="{counter}" data="<-text.value" change="data-> uploader.uploadText(data)" />
+    <Connector trigger="{counter}" data="<-text.value" change="-> uploader.uploadText(it)" />
     <Connector trigger="{counter}" change="-> opened=false" />
 
     <StoredData Ref="fromClipboard" defaults="<-browser.fromClipboard" persistence="inmemory" />
@@ -51,7 +51,7 @@
         </div>
       </Modal:header>
       <div>
-        <textarea autofocus class="input px-2 w-full" style="min-height:16rem;" change="-> text.value=data.value"
+        <textarea autofocus class="input px-2 w-full" style="min-height:16rem;" change="-> text.value=it.value"
           value="<-text.value"></textarea>
       </div>
       <Modal:footer>

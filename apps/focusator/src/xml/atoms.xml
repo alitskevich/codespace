@@ -1,9 +1,9 @@
 <components>
 
   <component id="IdiomView">
-    <div class="flex flex-col gap-1 {class}" data-text="{item|dot:language}" click="-> speech.textToSpeech()">
+    <div class="flex flex-col gap-1 {class}" data-text="{item[language]}" click="-> speech.textToSpeech()">
       <h3 class="text-sm flex-1 text-left">{item.id}</h3>
-      <MarkedText data="{item|dot:language|parseText}" class="flex-1" />
+      <MarkedText data="{item[language]|parseText}" class="flex-1" />
     </div>
   </component>
 

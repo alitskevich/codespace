@@ -7,7 +7,7 @@
           <Dynamic As="ItemTitle.{kind | capitalize}" (...)="{data}" />
         </NavLink>
         <p class="text text-gray-500 truncate dark:text-gray-300" If="sortBy">{sortBy}:
-          {item|dot:sortBy}</p>
+          {item[sortBy]}</p>
         <p class="text-sm text-gray-500 truncate dark:text-gray-400 break-words">
           {subtitle ?? type}</p>
         <p class="text-sm text-gray-400 truncate dark:text-gray-300" If="tags">({tags})</p>
@@ -32,7 +32,7 @@
           <ItemTitle.Persons (...)="{data}" />
         </NavLink>
         <p class="text text-gray-500 truncate dark:text-gray-300" If="sortBy != 'title' && sortBy">{sortBy}:
-          {item|dot:sortBy}</p>
+          {item[sortBy]}</p>
         <p class="text-sm text-gray-500 truncate dark:text-gray-400 break-words">
           <RefTitle value="{data.place}" />
         </p>

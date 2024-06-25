@@ -66,7 +66,7 @@
         </div>
         <div class="relative">
           <DropdownOptionsList caption="Filter by..." options="{fields}" close="-> opened=false"
-            multiItemClick="-> itemsFilter.toggleField(*.value)" If="opened" />
+            multiItemClick="-> itemsFilter.toggleField(it.value)" If="opened" />
         </div>
       </div>
     </div>

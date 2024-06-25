@@ -14,8 +14,8 @@
         style="display:flex;  flex-direction:row; align-items: center; justify-content: space-between; margin: 2rem 0 2rem 0;">
         <h1><a href="https://heroicons.dev/">Heroic Icons</a></h1>
         <div>
-          <input style="border-radius:0.25rem;" list="icons" value="{filterKey}" keypress="->filterKey|dot:'value'">
-          <button click="-> filterKey=''">x</button>
+          <input style="border-radius:0.25rem;" list="icons" value="{filterKey}" keypress="-> filterKey = it.value">
+          <button click="-> filterKey = ''">x</button>
           <datalist id="icons" If="filterKey.length > 2">
             <option value="{item.id}" Each="item of R.heroicons|entriesOf" />
           </datalist>

@@ -34,7 +34,7 @@
         </span>
       </Line>
       <Dropdown triggerComponent="IconPlusDropdownTrigger" side="right" caption="Operations:"
-        change="-> append=data.value" options="{R.ide.nodeOperations}" />
+        change="-> append=it.value" options="{R.ide.nodeOperations}" />
     </Line>
     <Fragment If="!collapsed && item.nodes.length">
       <ContentTreeChildren data="{item.nodes}" currentId="{currentId}" />

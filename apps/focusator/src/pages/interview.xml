@@ -60,7 +60,7 @@
             <MasterDetailInterview data="{sortedData}" itemId="{params.itemId}" viewMode="{viewMode}">
 
               <Container class="h-full sm:flex-1 min-h-0 overflow-y-auto" scrolledDown="-> items.showMore()"
-                scroll="-> showScrollToTopButton = data.value > 120">
+                scroll="-> showScrollToTopButton = it.value > 120">
                 <ul role="list" class="w-full flex flex-col gap-2">
                   <DomainItemInterview (...)="{item}" item="{item}" selectedId="{params.itemId}" sortBy="{sortBy}"
                     Each="item of sortedData" />

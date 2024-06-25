@@ -2,7 +2,7 @@
   <FieldItem caption="{caption}" class="{class}" error="{error}" required="{required}" hint="{hint}">
     <div class="w-full flex flex-no-wrap items-center h-10 gap-0 !p-0 rounded-md text-dark dark:text-white"
       role="group">
-      <label Each="option of R.enums|dot:typeSpec" class="py-1 px-2 flex-1 h-10
+      <label Each="option of R.enums[typeSpec]" class="py-1 px-2 flex-1 h-10
         first:rounded-l-lg last:rounded-r-lg  
         cursor-pointer text-center
         {option.id == value ? 'bg-purple-800  dark:bg-purple-600 ' : 'bg-slate-600' } 

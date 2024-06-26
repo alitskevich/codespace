@@ -68,5 +68,8 @@ export const initialData = {
   interview: prepareInterview,
   ctest: prepareCtest,
   dictionary: prepareDictionary,
-  irregular: prepareIrregular,
 };
+
+export const initialIrregularVerbsData = () => ({
+  items: prepareIrregular,
+});

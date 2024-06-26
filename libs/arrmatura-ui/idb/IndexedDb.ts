@@ -44,21 +44,28 @@ export class IndexedDb {
   invocations = new Set<{ fn; resolve; reject }>();
 
   constructor() {
-    this.open = async (name = "db", options) => {
-      if (options.forcePresist) {
+    this.open = async (
+      name = "db",
+      { forcePresist = false, version = 1, initialData = {}, stores = { items: {} } }: any = {}
+    ) => {
+      if (forcePresist) {
         await IndexedDb.forcePersistMode();
       }
 
       return new Promise<void>((success: (r: any) => void, fail: (err: any) => void) => {
-        let isVersionUpgraded = false;
+        let upgradeDb: IDBDatabase | null = null;
 
-        const request = window.indexedDB?.open(name, options.version ?? 1) ?? { result: {} };
+        const request = window.indexedDB?.open(name, version) ?? { result: {} };
 
         Object.assign(request, {
           onsuccess: async () => {
-            if (isVersionUpgraded && options.initialData) {
-              mapEntries(options.stores, async (store) => {
-                const ini: any = options.initialData[store];
+            if (upgradeDb) {
+              const upgradeData =
+                typeof initialData === "function"
+                  ? await initialData(upgradeDb, version)
+                  : initialData;
+              mapEntries(stores, async (store) => {
+                const ini: any = upgradeData[store];
                 const data = typeof ini === "function" ? await ini() : ini;
 
                 this.bulkPut(data, store);
@@ -67,7 +74,7 @@ export class IndexedDb {
 
             await this.setDb(request.result);
 
-            success({ db: this, isVersionUpgraded });
+            success({ db: this });
           },
 
           onerror: (event) => {
@@ -75,28 +82,29 @@ export class IndexedDb {
             fail(event);
           },
 
-          onupgradeneeded: async (event) => {
-            const db = event.target.result;
-            const { stores = { items: {} } } = options;
+          onupgradeneeded: (event) => {
+            upgradeDb = event.target.result;
 
             mapEntries(
               stores,
-              (store, { keyPath = "id", autoIncrement = false, indicies = {} }) => {
-                const objStore = db.createObjectStore(store, {
-                  keyPath,
-                  autoIncrement,
-                });
+              async (store, { keyPath = "id", autoIncrement = false, indicies = {} }) => {
+                try {
+                  const objStore = upgradeDb?.createObjectStore(store, {
+                    keyPath,
+                    autoIncrement,
+                  });
 
-                mapEntries(
-                  indicies,
-                  (name, { keyPath = name, unique = false, multiEntry = false } = {}) => {
-                    objStore.createIndex(name, keyPath, { unique, multiEntry });
-                  }
-                );
+                  mapEntries(
+                    indicies,
+                    (name, { keyPath = name, unique = false, multiEntry = false } = {}) => {
+                      objStore?.createIndex(name, keyPath, { unique, multiEntry });
+                    }
+                  );
+                } catch (error) {
+                  // ignore
+                }
               }
             );
-
-            isVersionUpgraded = true;
           },
         });
       });
@@ -143,10 +151,12 @@ export class IndexedDb {
     );
   }
 
-  bulkPut(data: object[], store) {
-    return this.invoke((db, callback) =>
-      withRwStoreTx(db, store, callback, (store) => data?.forEach((obj) => store.put(obj)))
-    );
+  async bulkPut(data: object[], store) {
+    return !data
+      ? null
+      : this.invoke((db, callback) =>
+          withRwStoreTx(db, store, callback, (store) => data?.forEach((obj) => store.put(obj)))
+        );
   }
 
   update(obj: any, store = "items") {
@@ -173,6 +183,12 @@ export class IndexedDb {
   delete(key: string, store = "items") {
     return this.invoke((db, callback) =>
       withRwStoreTx(db, store, callback, (store) => store.delete(key))
+    );
+  }
+
+  deleteAll(store = "items") {
+    return this.invoke((db, callback) =>
+      withRwStoreTx(db, store, callback, (store) => store.deleteAll())
     );
   }
 

@@ -4,7 +4,7 @@ import assets from "./assets";
 import { enums } from "./data/enums";
 import { strings } from "./data/strings";
 import * as functions from "./src/utils/functions";
-import { initialData } from "./src/utils/initialData";
+import { initialData, initialIrregularVerbsData } from "./src/utils/initialData";
 
 export const resources = {
   ...defaults,
@@ -44,12 +44,20 @@ export const resources = {
       thesaurus: { keyPath: "id", indicies: { en: {}, adversial: {} } },
       idioms: { keyPath: "id", indicies: { stems: { multiEntry: true } } },
       acquired: { keyPath: "id", indicies: {} },
-      irregular: { keyPath: "id", indicies: { level: {} } },
       ctest: { keyPath: "id", indicies: {} },
       interview: { keyPath: "id", indicies: {} },
       dictionary: { keyPath: "id", indicies: { family: {}, stem: {} } },
     },
     initialData,
+  },
+
+  irrDb: {
+    name: "irregular",
+    version: 6,
+    stores: {
+      items: { keyPath: "id", indicies: { level: {} } },
+    },
+    initialData: initialIrregularVerbsData,
   },
   enums,
   forms: {

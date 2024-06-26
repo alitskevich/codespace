@@ -44,12 +44,17 @@ export const arrayDedup = (arr) => {
   return arr.filter((item, index) => arr.indexOf(item) === index);
 };
 
-export const adaptIrregularVerbItem = (item, language) => {
-  const { name, ...rest } = item;
-
-  return {
-    ...rest,
-    language,
-    name: language === "en" ? name : rest[language],
-  };
+export const adaptIrregularVerbItems = (items, language, mode) => {
+  return (items ?? [])
+    .map((item) => {
+      const { name, f1, a1, f2, a2, f3, a3, ...rest } = item;
+      const completed = f1 == a1 && f2 == a2 && f3 == a3;
+      return {
+        ...item,
+        language,
+        completed,
+        name: language === "en" ? name : rest[language],
+      };
+    })
+    .filter((item) => mode !== "quiz" || !item.completed);
 };

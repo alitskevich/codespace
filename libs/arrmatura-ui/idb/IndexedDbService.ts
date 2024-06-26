@@ -53,6 +53,17 @@ export class IndexedDbService extends Component {
     return this.indexedDb.queryForValue(String(value ?? ""), options);
   }
 
+  async deleteAll(store) {
+    await this.indexedDb.deleteAll(store);
+  }
+
+  async deleteDatabase(reload) {
+    await IndexedDb.deleteDatabase(this.name);
+    if (reload) {
+      window.location.reload();
+    }
+  }
+
   get storage() {
     return this.local ?? (this.local = new ClientStorage("local", `IndexedDbService:${this.name}`));
   }

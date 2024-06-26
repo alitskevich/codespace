@@ -73,3 +73,18 @@ export function debounce(func, delay) {
     }, delay);
   };
 }
+
+/**
+ * delay.
+ *
+ * @param {function} func - The function to be debounced.
+ * @param {number} delay - The delay in milliseconds.
+ * @return {function} The debounced function.
+ */
+export function delayedValue(x, delay = 100) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(x);
+    }, delay);
+  });
+}

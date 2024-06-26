@@ -7,6 +7,19 @@ import picture from "./jumbo3.webp";
 import logo from "./logo.svg";
 import nice from "./nice.m4a";
 import picture2 from "./picture.jpg";
+import tap from "./tap.mp3";
 import thumbsup from "./thumbsup.png";
 
-export default { football, back, info, checkmark, thumbsup, logo, picture, picture2, nice, bruh };
+export default {
+  football,
+  back,
+  info,
+  checkmark,
+  thumbsup,
+  logo,
+  picture,
+  picture2,
+  nice,
+  bruh,
+  tap,
+};

@@ -1,6 +1,6 @@
 <component id="Stub">
   <Container>
-    <div class="w-full gap-4 flex flex-col items-stretch text-center {class}">
+    <div class="w-full gap-4 flex flex-col items-center text-center {class}">
       <div class="mx-4">
         <Icon type="{icon}" size="16" If="icon" />
       </div>

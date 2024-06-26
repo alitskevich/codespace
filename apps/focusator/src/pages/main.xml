@@ -38,4 +38,6 @@
       </div>
     </div>
   </div>
+  <Settings If="<- localStorage.settings" />
+
 </component>

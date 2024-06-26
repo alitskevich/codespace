@@ -4,7 +4,7 @@
       <Fragment If="isLoading">
         <Then>
           <Container>
-            <Stub class="h100 mt-4" title="{title}" subtitle="{error ? '' : subtitle}" icon="{icon ?? 'download'}">
+            <Stub class="h-100 mt-4" title="{title}" subtitle="{error ? '' : subtitle}" icon="{icon ?? 'download'}">
               <LoadingIndicator title="{R.loading ?? 'Loading...'" />
             </Stub>
           </Container>

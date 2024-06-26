@@ -34,6 +34,7 @@
     <Header>
       <TopListSelector data="{R.enums.ctest}" change="-> localStorage.ctest = it.value" value="<-localStorage.ctest" />
     </Header>
+    <Settings If="<- localStorage.settings" />
   </component>
 
   <component id="StepsList">

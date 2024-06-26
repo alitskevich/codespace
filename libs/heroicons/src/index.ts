@@ -5,6 +5,6 @@ import heroicons from "../heroicons.json";
 import templates from "./index.xml";
 
 launchWeb({
-  types: [templates],
+  components: [templates],
   resources: { heroicons },
 });

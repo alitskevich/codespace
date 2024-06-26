@@ -1,6 +1,8 @@
 <components>
 
   <component id="Header">
+    <Connector data="<- localStorage.settings" change="-> settings = it ?? false" />
+
     <nav class="bg-gray-300 dark:bg-gray-800 block w-full fixed top-0 h-20 " id="top">
       <Container class="p-4 flex w-full">
         <div class="flex flex-1 items-center justify-between">
@@ -11,7 +13,7 @@
           </div>
           <div class="flex items-center justify-end gap-4">
             <Slot />
-            <DarkModeToggler value="<-dark.isDarkMode" on="-> dark.toggle()" />
+            <Icon type="cog" click="-> localStorage.settings = !settings" size="8" />
           </div>
         </div>
       </Container>
@@ -30,6 +32,31 @@
   <component id="NavLink">
     <a href="#/{id}"
       class="text-lg py-2 px-1 font-medium rounded-sm target:bg-slate-700 text-orange-600 hover:underline">{name}</a>
+  </component>
+
+  <component id="Settings">
+    <Connector data="<- localStorage.language" change="-> language = it ?? 'en'" />
+
+    <div
+      class="fixed p-4 w-[20rem] top-[5rem] flex flex-col items-stretch gap-4 right-0 bottom-0 bg-gray-400 dark:bg-slate-800 border-t border-l border-gray-600">
+      <div class="flex items-center justify-between">
+        <span>Theme</span>
+        <div class="border hover:border-transparent rounded-md">
+          <DarkModeToggler value="<-dark.isDarkMode" on="-> dark.toggle()" />
+        </div>
+
+      </div>
+      <div class="flex items-center justify-between">
+        <span>Language</span>
+        <div class="border rounded-md">
+          <Dropdown class="!w-[10rem]" options="{R.enums.languages2}" change="-> localStorage.language = it.value"
+            value="{language}" />
+        </div>
+      </div>
+
+      <hr class="w-full h-1 border-1 border-zinc-100 dark:border-zinc-400" If="slot()" />
+      <Slot />
+    </div>
   </component>
 
 </components>

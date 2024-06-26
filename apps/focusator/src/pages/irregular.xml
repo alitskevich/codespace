@@ -9,6 +9,7 @@
 
   <Connector data="<-query.data" change="-> data" />
 
+
   <div class="fixed inset-0 pt-20">
     <Container class="flex flex-col items-stretch gap-4 h-full">
       <div class=" flex-auto flex flex-col min-h-0 md:m-4">
@@ -27,16 +28,18 @@
 
   <Header>
     <TopListSelector data="{R.enums.levels4}" change="-> localStorage.irregularVerbsLevel = it.value" value="{level}" />
-    <Btn title="{R.strings.reset}" class="!bg-orange-700" action="-> irrDb.deleteDatabase(true)" If="level=='all'" />
     <Fragment If="percent==100">
       <Else>
         <Btn title="{quizMode ? R.strings.stop : R.strings.quiz} ({percent}%)"
           class="{quizMode ? '!text-white !bg-red-700' : ''}" action="-> localStorage.irregularVerbsMode = !quizMode" />
       </Else>
     </Fragment>
-    <Dropdown options="{R.enums.languages2}" change="-> localStorage.language = it.value" value="{language}" />
-
   </Header>
+
+  <Settings If="<- localStorage.settings">
+    <Btn title="{R.strings.reset} {R.strings.quiz}" class="!bg-orange-700 !text-white"
+      action="-> irrDb.deleteDatabase(true)" />
+  </Settings>
 </component>
 
 <component id="IrregularVerbTable">
@@ -67,15 +70,15 @@
 
 <component id="QuizOptionsSelector">
   <div class="inline-block">
-    <div class="flex flex-no-wrap items-center gap-0      
-    divide-x divide-gray-600  
-    cursor-pointer" role="group">
-      <label Each="option of options" class="px-1 py-1
+    <div class="flex flex-no-wrap items-center gap-0 mx-1    
+      divide-x divide-gray-400 text-sm
+      cursor-pointer" role="group">
+      <div Each="option of options" class="px-1 py-1 border border-gray-400
     first:rounded-l-lg last:rounded-r-lg  
-    {option.id == value ? 'bg-red-600 text-white' : 'bg-neutral-200 text-gray-700' } 
+    {option.id == value ? ' bg-red-600 text-white' : ' bg-neutral-200 text-gray-700' } 
     " data-value="{option.id}" click="{change}">
-        <span class="text-sm">{option.name}</span>
-      </label>
+        <span class="">{option.name}</span>
+      </div>
     </div>
   </div>
 </component>

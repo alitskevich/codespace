@@ -35,6 +35,6 @@
 
 <component id="IconSquareButtonGroup">
   <div class="flex items-center gap-2">
-    <IconSquareButton (...)="{elt}" class="{itemClass}" action="{action}" Each="elt of options" />
+    <IconSquareButton Props="{elt}" class="{itemClass}" action="{action}" Each="elt of options" />
   </div>
 </component>

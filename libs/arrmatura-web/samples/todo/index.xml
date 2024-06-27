@@ -46,7 +46,7 @@
       <input id="toggle-all" class="toggle-all" type="checkbox" toggle="-> todo.toggle()" />
       <label for="toggle-all" title="{R.mark_all_complete}"></label>
       <ul class="todo-list">
-        <TodoItem (...)="{item}" Each="item of data" />
+        <TodoItem Props="{item}" Each="item of data" />
       </ul>
     </section>
   </component>

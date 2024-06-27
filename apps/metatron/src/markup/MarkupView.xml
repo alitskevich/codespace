@@ -1,6 +1,6 @@
 <component id="MarkupAttrsView">
   <span>
-    <Dynamic As="MarkupAttr.{item.id}" (...)="{item}" Each="item of data" data="{item}" />
+    <Dynamic As="MarkupAttr.{item.id}" Props="{item}" Each="item of data" data="{item}" />
   </span>
 </component>
 

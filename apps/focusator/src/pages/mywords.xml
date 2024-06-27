@@ -1,7 +1,7 @@
 <component id="Page.Mywords">
   <Connector data="<- localStorage.domainId ?? 'OBJ'" change="-> domainId" />
 
-  <IndexedDbQuery Ref="query" db="<-db" store="thesaurus" value="*" />
+  <IndexedDbQuery Ref="query" db="<-db.This" store="thesaurus" value="*" />
   <Connector data="<-query.data|arrayGroupBy:'domain'" change="-> domains" />
   <div class="fixed inset-0 pt-20">
     <div class="flex flex-col items-stretch gap-4 h-full">

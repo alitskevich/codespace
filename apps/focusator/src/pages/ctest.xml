@@ -1,7 +1,7 @@
 <components>
 
   <component id="Page.Ctest">
-    <IndexedDbQuery Ref="query" db="<- db" store="<- localStorage.ctest ?? 'ctest'" value="*" />
+    <IndexedDbQuery Ref="query" db="<- db.This" store="<- localStorage.ctest ?? 'ctest'" value="*" />
 
     <CTestService Ref="ctest" data="<-query.data | arrayShuffle | map: R.functions.adaptQuizItem" />
 
@@ -41,7 +41,7 @@
     <Progress step="{step}" data="<-ctest.progress" />
 
     <div class="flex flex-col flex-1 min-h-0 op" style="position: relative;">
-      <QuizItem (...)="{item}" />
+      <QuizItem Props="{item}" />
     </div>
   </component>
 
@@ -52,7 +52,7 @@
       </h5>
       <h5
         class="flex flex-col text-4xl md:text-6xl p-4 m-4 items-center gap-4 justify-center text-center flex-1 min-h-0 overflow-y-auto"
-        innerHtml="{body ?? '(...)'}">
+        innerHtml="{body ?? '(.)'}">
       </h5>
       <div class="mt-2 flex flex-col place-content-center items-stretch">
         <Input id="{id}" value="{value}" answered="{answered}" correct="{correct}" options="{options}"

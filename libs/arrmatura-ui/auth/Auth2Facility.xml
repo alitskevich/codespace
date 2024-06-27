@@ -8,6 +8,6 @@
       subtitle="{R.strings.app_load_user_profile_subtitle}">
       <Slot />
     </AsyncLoader>
-    <UserProfileModal If="<-user.showProfile" />
+    <UserProfileModal If="<-localStorage.showUserProfile" />
   </Fragment>
 </component>

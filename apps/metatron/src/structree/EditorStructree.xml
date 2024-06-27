@@ -57,7 +57,7 @@
 
 <component id="ContentTreeAttributes">
   <div class="block border-gray-300" If="data.length">
-    <Dynamic As="ContentTreeAttr.{item.id}" (...)="{item}" Each="item of data" data="{item}" />
+    <Dynamic As="ContentTreeAttr.{item.id}" Props="{item}" Each="item of data" data="{item}" />
   </div>
 </component>
 

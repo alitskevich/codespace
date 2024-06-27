@@ -2,25 +2,25 @@
   <div class="flex flex-col {class}">
     <FormController Ref="formController" data="{data}" meta="{meta}" metaId="{metaId}" fixFirstTab="{fixFirstTab}"
       change="{change}" tabs="{tabs}" errors="{errors}" groups="{groups}" disabled="{disabled}" />
-    <FormContent (...)="<-formController.tabsInfo" />
+    <FormContent Props="<-formController.tabsInfo" />
   </div>
 </component>
 
 <component id="FormContent">
-  <FormTab (...)="{fixedTab}" If="fixedTab" />
+  <FormTab Props="{fixedTab}" If="fixedTab" />
   <Tabs items="{tabs}" change="-> tabId" value="{tabId ?? initialTab}" If="tabs.length | greater : 1" />
   <div class="flex-initial" If="tabId ?? initialTab == tab.id" Each="tab of tabs">
-    <FormTab (...)="{tab}" />
+    <FormTab Props="{tab}" />
   </div>
 </component>
 
 <component id="FormTab">
-  <FormGroup (...)="{group}" Each="group of items" />
+  <FormGroup Props="{group}" Each="group of items" />
 </component>
 
 <component id="FormGroup">
   <h6 class="mt-6 text-slate-600 text-lg dark:text-slate-300" If="name">{name}</h6>
   <div class="mt-6 mb-2 flex flex-col gap-4">
-    <Dynamic As="Field.{field.type | capitalize}" (...)="{field}" Each="field of items" />
+    <Dynamic As="Field.{field.type | capitalize}" Props="{field}" Each="field of items" />
   </div>
 </component>

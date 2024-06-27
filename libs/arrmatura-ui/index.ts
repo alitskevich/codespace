@@ -68,6 +68,7 @@ import { FormController } from "./form/FormController";
 import Forma from "./form/Forma.xml";
 import GreenAppFacility from "./green/GreenAppFacility.xml";
 import { GreenAppService } from "./green/GreenAppService";
+import { DataApiService } from "./idb/DataApiService";
 import { IndexedDbQuery } from "./idb/IndexedDbQuery";
 import { IndexedDbService } from "./idb/IndexedDbService";
 import { TgWebAppService } from "./integration/TgWebAppService";
@@ -139,6 +140,7 @@ export default [
   Input,
   IndexedDbService,
   IndexedDbQuery,
+  DataApiService,
   Item,
   ItemTitle,
   ItemCollectionController,

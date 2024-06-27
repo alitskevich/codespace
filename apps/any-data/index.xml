@@ -1,20 +1,26 @@
 <component id="App">
   <DarkModeService Ref="dark" />
+  <LocalStorage Ref="localStorage" />
+  <DropdownsPlugin />
+
   <ToastFacility>
-    <GreenAppFacility (...)="{R.green}">
+    <GreenAppFacility Props="{R.green}">
       <BrowserService Ref="browser" title="{R.name}" />
       <NavigationService Ref="nav" />
-      <AuthService Ref="auth" (...)="{R.authLocal ?? R.auth}" afterSignedOut="-> browser.reload()" />
+      <FirebaseAppService Ref="app" Props="{R.firebaseConfig}" />
+      <FirebaseAuthService Ref="auth" app="<- app.This" afterSignedOut="-> browser.reload()" />
+      <!-- <AuthService Ref="auth" Props="{R.authLocal ?? R.auth}" afterSignedOut="-> browser.reload()" /> -->
       <SignInPage If="<-auth.isAuthorized | not">
         <Else>
-          <ApiEndpoint Ref="api" (...)="{R.apiLocal ?? R.api}" token="<-auth.token"
-            onUnauthorized="-> auth.invalidateToken()" />
-          <UserProfileService Ref="user" persistence="{R.auth.persistence}" invokeApi="<-api.invoke" />
+          <FirestoreService Ref="api" app="<- app.This" />
+          <!-- <ApiEndpoint Ref="api" Props="{R.apiLocal ?? R.api}" token="<-auth.token"
+            onUnauthorized="-> auth.invalidateToken()" /> -->
+          <UserProfileService Ref="user" persistence="{R.auth.persistence}" api="<-api.This" />
           <AsyncLoader isLoading="<-user.isLoading" title="{R.strings.app_load_user_profile}"
             subtitle="{R.strings.app_load_user_profile_subtitle}">
-            <PageRouter (...)="<-nav.route" />
+            <PageRouter Props="<-nav.route" />
           </AsyncLoader>
-          <UserProfileModal If="<-user.showProfile" />
+          <UserProfileModal If="<-localStorage.showUserProfile" />
         </Else>
       </SignInPage>
     </GreenAppFacility>

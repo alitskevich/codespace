@@ -61,7 +61,7 @@
         </header> -->
         <ul role="list" class="flex flex-col md:gap-2 w-full divide-y divide-gray-200 dark:divide-gray-700">
           <li data="{field}" class="p-2 list-item" Each="item of cellDetails.items">
-            <Dynamic As="{rowFirstComponent ?? 'PivotRowFirstComponent'}" (...)="{item}" value="{item | dot:col1.id}"
+            <Dynamic As="{rowFirstComponent ?? 'PivotRowFirstComponent'}" Props="{item}" value="{item | dot:col1.id}"
               data="{item}" />
 
             <p class="text-sm text-gray-500 truncate dark:text-gray-400 break-words">

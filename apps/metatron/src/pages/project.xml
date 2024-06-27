@@ -151,7 +151,7 @@
       <div class="flex flex-col flex-auto min-h-0 min-w-0 my-2 mx-2">
         <Preview item="{item}" ping="<-current.fileChanged" darkMode="{darkMode}" locale="{locale}"
           viewportSize="{viewportSize}" />
-        <Markup (...)="{item}" If="showHtml" />
+        <Markup Props="{item}" If="showHtml" />
       </div>
     </div>
   </main>

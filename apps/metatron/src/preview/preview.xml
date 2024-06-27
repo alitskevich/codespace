@@ -10,6 +10,6 @@
   <PostMessageReceiver onMessage="-> body| resetComponentContent: {R.itemId}: {R.projectId}:{R.resetUI}"
     eventType="body" />
 
-  <Dynamic As="ItemPreview.{R.itemId}" (...)="{props}" properties="{props}" />
+  <Dynamic As="ItemPreview.{R.itemId}" Props="{props}" properties="{props}" />
 
 </component>

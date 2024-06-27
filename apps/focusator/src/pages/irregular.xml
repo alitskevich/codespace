@@ -1,6 +1,6 @@
 <component id="Page.Irregular">
-  <IndexedDbService Ref="irrDb" (...)="{R.irrDb}" />
-  <IndexedDbQuery Ref="query" db="<-irrDb" store="items" index="level" value="{level=='all'?'':level}*" />
+  <IndexedDbService Ref="irrDb" Props="{R.irrDb}" />
+  <IndexedDbQuery Ref="query" db="<-irrDb.This" store="items" index="level" value="{level=='all'?'':level}*" />
 
   <Connector data="<- localStorage.irregularVerbsMode" change="-> quizMode = it ?? false" />
   <Connector data="<- localStorage.irregularVerbsLevel" change="-> level = it ?? 'all'" />
@@ -50,7 +50,7 @@
       <Else>
         <Table class="" noHeader="true" groupCaptionType="IrregularVerbTableGroupCaption"
           data="{data| adaptIrregularVerbItems : language : mode| arraySortBy:'name'| arrayGroupBy:'id'}"
-          columns="{columns}" cellChange="-> irrDb.upsertLocally()" sortBy="{sortBy}">
+          columns="{columns}" cellChange="-> irrDb.upsert(it)" sortBy="{sortBy}">
         </Table>
       </Else>
     </Fragment>

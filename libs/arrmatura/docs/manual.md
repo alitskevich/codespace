@@ -20,7 +20,7 @@
 <component id="NavTree">
   <ul class="nav">
     <li class="nav-item {item.class}" Each="item of data">
-      <NavTreeItem (...)="{item}">
+      <NavTreeItem Props="{item}">
       <NavTree If="item.subs" data="{item.subs}" />
     </li>
   </ul>
@@ -105,7 +105,7 @@ Updating data is compared with existing state values for 'sameness' (same set of
 
 `prop="{!prop2}"` assigns inverted value of `prop2`
 
-`(...)="{data}"` special `(...)` notation used to spread keys/values of `data` into properties of a target entity.
+`Props="{data}"` special `Props` property used to spread keys/values of `data` into properties of a target entity.
 
 ### with result of chain of pipes
 

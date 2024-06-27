@@ -22,7 +22,7 @@ export class NewItemController extends Component {
       busy: true,
       error: null,
       "...": new Promise((resolve) => {
-        this.emit(`${this.upsertOperationId ?? "db.upsert"}()`, {
+        this.emit(`${this.upsertOperationId ?? "db.upsertItem"}()`, {
           ...this.data,
           $callback: ({ error = null, item }) => {
             console.log(error, item);

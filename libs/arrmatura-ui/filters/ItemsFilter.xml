@@ -43,7 +43,7 @@
           </div>
           <ul class="flex flex-col my-2 gap-0 w-full overflow-x-hidden"
             style="overflow-y: auto;max-height:30rem;min-width:10rem;list-style: none;">
-            <ItemsFilter.FieldOption Each="option of field.histogram" (...)="{option}" field="{field}"
+            <ItemsFilter.FieldOption Each="option of field.histogram" Props="{option}" field="{field}"
               close="-> opened=false" />
           </ul>
         </div>

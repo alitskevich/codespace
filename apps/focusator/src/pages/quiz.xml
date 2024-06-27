@@ -24,7 +24,7 @@
   <component id="QStepsList">
     <Progress step="{step}" data="<-quiz.progress" />
     <div class="flex flex-col flex-1 op" style="position: relative;">
-      <QuizItem (...)="{item}" />
+      <QuizItem Props="{item}" />
     </div>
     <div class="m-4 p-2 flex flex-row justify-center items-center">
       <Btn disabled="{!item.value}" title="item.confirmed ? {R.strings.nextQuestion} : {R.strings.confirm}"

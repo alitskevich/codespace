@@ -101,13 +101,13 @@
       hover:bg-gray-300 hover:dark:bg-gray-600 
       cursor-pointer 
       line-clamp-2">
-      <Dynamic As="TableCell.{col1.type ?? 'FirstCol' | capitalize}" (...)="{data}" value="{data | dot:col1.id}"
+      <Dynamic As="TableCell.{col1.type ?? 'FirstCol' | capitalize}" Props="{data}" value="{data | dot:col1.id}"
         data="{data}" change="{cellChange}" />
     </div>
 
     <div class="border border-dotted border-gray-300 snap-start p-0 overflow-hidden line-clamp-4 {col.class}"
       Each="col of cols" title="data| dot:col.id">
-      <Dynamic As="TableCell.{col.type | capitalize}" (...)="{col}" value="{data | dot:col.id}" data="{data}"
+      <Dynamic As="TableCell.{col.type | capitalize}" Props="{col}" value="{data | dot:col.id}" data="{data}"
         change="{cellChange}" />
     </div>
   </div>

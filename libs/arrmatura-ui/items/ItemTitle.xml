@@ -10,7 +10,7 @@
   <Connector data="{R.enums.gender | find: gender:'id'}" change="-> genderItem" />
   <div class="inline-flex items-center gap-1">
     <span class="truncate break-words">👤 {lname ?? '--'} {fname} {mname}</span>
-    <StyledText (...)="{genderItem}" def="{gender??'-'}" />
+    <StyledText Props="{genderItem}" def="{gender??'-'}" />
     <span class="truncate break-words">{bdate}</span>
   </div>
 </component>
@@ -25,7 +25,7 @@
 
 <component id="ItemLink">
   <Fragment If="id">
-    <IndexedDbQuery Ref="query" db="<-db" value="{id}" />
+    <IndexedDbQuery Ref="query" db="<-db.This" value="{id}" />
 
     <Connector data="<-query.data|dot:0" change="-> item" />
 
@@ -35,7 +35,7 @@
       </Then>
       <Else>
         <NavLink href="/items/{id|strHead:':'}?itemId={id}" class="{class} p-2">
-          <Dynamic As="ItemTitle.{item.kind | capitalize}" (...)="{item}" class="truncate" />
+          <Dynamic As="ItemTitle.{item.kind | capitalize}" Props="{item}" class="truncate" />
         </NavLink>
       </Else>
     </Fragment>

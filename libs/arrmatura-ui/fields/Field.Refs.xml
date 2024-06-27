@@ -1,33 +1,33 @@
 <component id="Field.Refs">
   <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}">
     <div class="flex-1 flex flex-col flex-wrap">
-      <ItemLink (...)="{item}" class="flex-1 flex flex-wrap px-2 border border-1" Each="item of value" />
+      <ItemLink Props="{item}" class="flex-1 flex flex-wrap px-2 border border-1" Each="item of value" />
     </div>
   </FieldItem>
 </component>
 
 <component id="Field.BackRefs">
-  <IndexedDbQuery Ref="query" db="<-db" index="links" value="{data.id}" />
+  <IndexedDbQuery Ref="query" db="<-db.This" index="links" value="{data.id}" />
 
   <Connector data="<-query.data" change="-> items" />
 
   <FieldItem caption="{caption}" error="{error}" required="{required}" hint="{hint}">
     <div class="flex-1 flex flex-col flex-wrap">
-      <ItemLink (...)="{item}" class="flex-1 flex flex-wrap px-2 border border-1" Each="item of items" />
+      <ItemLink Props="{item}" class="flex-1 flex flex-wrap px-2 border border-1" Each="item of items" />
     </div>
   </FieldItem>
 </component>
 
 <component id="RefTitle">
   <Fragment If="value">
-    <IndexedDbQuery Ref="query" db="<-db" value="{value}" />
+    <IndexedDbQuery Ref="query" db="<-db.This" value="{value}" />
 
     <Connector data="<-query.data|dot:0" change="-> item" />
 
     <div class="{class}">
       <Svg.Spinner size="6" title="{value ?? 'Loading...'}" If="!item" />
-      <Dynamic As="{as}" (...)="{item}" If="item && as" />
-      <Dynamic As="ItemTitle.{item.kind | capitalize}" (...)="{item}" If="item && !as" />
+      <Dynamic As="{as}" Props="{item}" If="item && as" />
+      <Dynamic As="ItemTitle.{item.kind | capitalize}" Props="{item}" If="item && !as" />
     </div>
   </Fragment>
 </component>
@@ -41,7 +41,7 @@
 
     <Fragment If="opened">
 
-      <IndexedDbQuery Ref="query" db="<-db" value="{typeSpec}:{kliuq|slice:0:3}*" />
+      <IndexedDbQuery Ref="query" db="<-db.This" value="{typeSpec}:{kliuq|slice:0:3}*" />
       <Connector data="<-query.data" change="-> options" />
 
       <DropdownOptionsList If="opened" caption="{caption}" options="{options}" close="-> opened=false"

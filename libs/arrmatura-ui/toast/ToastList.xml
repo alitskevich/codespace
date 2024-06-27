@@ -2,7 +2,7 @@
   <Connector data="<-toaster.items" change="-> items" />
   <div class="fixed top-6 max-sm:left-4 sm:right-4 z-50 {class}" style="{style}" portal="toasts" If="items.length">
     <div style="max-width: 600px;margin: auto;">
-      <ToastListItem (...)="{toast}" Each="toast of items" />
+      <ToastListItem Props="{toast}" Each="toast of items" />
     </div>
   </div>
 </component>

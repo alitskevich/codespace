@@ -6,7 +6,7 @@
 
 <component id="PageRouter">
   <Dynamic As="Page.{page ?? 'main' | capitalize}.{subpage ?? 'default' | capitalize}" path="{path}" page="{page}"
-    subpage="{subpage}" (...)="{params}" params="{params}" />
+    subpage="{subpage}" Props="{params}" params="{params}" />
 </component>
 
 <component id="NavTree">

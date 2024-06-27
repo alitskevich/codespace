@@ -13,7 +13,7 @@
 
     <NavigationService Ref="nav" />
 
-    <IndexedDbService Ref="db" (...)="{R.db}" />
+    <IndexedDbService Ref="db" Props="{R.db}" />
 
     <WordsStore Ref="words" concepts="<-db.allConcepts" interview="<-db.allInterview"
       level="<-localStorage.level ?? 'A'" acquired="<-db.allAcquired|arrayToObject" />
@@ -22,7 +22,7 @@
 
     <Connector Ref="idiomsHash" data="<-db.allIdioms|idiomsHash" />
 
-    <Dynamic As="Page.{route.page ?? 'Loading' | capitalize}" (...)="{route}" />
+    <Dynamic As="Page.{route.page ?? 'Loading' | capitalize}" Props="{route}" />
 
   </ToastFacility>
 </component>

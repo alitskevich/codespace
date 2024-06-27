@@ -4,10 +4,10 @@ import { scalarParse } from "../scalar/scalarParse";
 import { decodeXmlEntities, skipQoutes } from "./utils";
 
 const defaultOpts = {
-  RE_ATTRS: /([a-zA-Z{()][a-zA-Z0-9-:<.})@]*)(="[^"]*")?/g,
+  RE_ATTRS: /([a-zA-Z][a-zA-Z0-9-:]*)(="[^"]*")?/g,
   RE_EMPTY: /^\s*$/,
   RE_XML_COMMENT: /<!--((?!-->)[\s\S])*-->/g,
-  RE_XML_TAG: /(<)(\/?)([a-z][a-z0-9\-_:.]*)((?:\s+[a-zA-Z{()][a-z0-9-:<.})@]*(?:="[^"]*")?)*)\s*(\/?)>/gi,
+  RE_XML_TAG: /(<)(\/?)([a-z][a-z0-9\-_:.]*)((?:\s+[a-zA-Z][a-z0-9-:]*(?:="[^"]*")?)*)\s*(\/?)>/gi,
   SINGLE_TAGS: { img: 1, input: 1, br: 1, hr: 1, col: 1, source: 1 } as Hash,
 };
 
@@ -28,12 +28,8 @@ export function xmlParserFactory(opts?: Partial<typeof defaultOpts>) {
     if (!s) return;
     node.attrs = {};
     for (let e = RE_ATTRS.exec(s); e; e = RE_ATTRS.exec(s)) {
-      if (e[1].startsWith('{...')) {
-        node.attrs['(...)'] = e[1].slice(4, -1);
-      } else {
-        const value = !e[2] ? true : scalarParse(decodeXmlEntities(skipQoutes(e[2].slice(1))));
-        node.attrs[e[1]] = value;
-      }
+      const value = !e[2] ? true : scalarParse(decodeXmlEntities(skipQoutes(e[2].slice(1))));
+      node.attrs[e[1]] = value;
     }
   };
   return (_s?: string): XmlNode[] => {

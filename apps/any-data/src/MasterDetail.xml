@@ -8,7 +8,7 @@
       bg-gradient-to-r from-gray-300  dark:from-purple-900/50 to-40%
       ">
 
-      <ItemController Ref="controller" db="<-db" itemId="{itemId}" />
+      <ItemController Ref="controller" db="<-db.This" itemId="{itemId}" />
 
       <Connector data="<-controller.data" change="-> item" />
 

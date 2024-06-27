@@ -5,7 +5,10 @@ import { fetchApiData } from "./fetchApiData";
 import { loadFigmaFileSource } from "./loadFigmaFileSource";
 
 export const resolveProjectMetadata = async (key: string, url: string) => {
-  const { props, components, enums, consts, datasets, types, classes } = await fetchApiData(`project:${key}`, url);
+  const { props, components, enums, consts, datasets, types, classes } = await fetchApiData(
+    `project:${key}`,
+    url
+  );
 
   const propsHash = arrayGroupBy(
     props.map(({ prop, id: _, ...e }: Hash) => ({ ...e, id: prop })),
@@ -26,63 +29,72 @@ export const resolveProjectMetadata = async (key: string, url: string) => {
   };
 
   const resolveItemTemplates = (item: any) => {
-    const { id, body, props, description = '', preview } = item;
+    const { id, body, props, description = "", preview } = item;
 
-    let cbody = body.startsWith("<component") ? body : `
+    let cbody = body.startsWith("<component")
+      ? body
+      : `
 <component id="${id}">
 ${body}
-</component>`
+</component>`;
 
     if (!cbody.includes("<Meta>")) {
-      cbody = cbody.replace('</component>', `
+      cbody = cbody.replace(
+        "</component>",
+        `
   <Meta>
     <Description>${description}</Description>
     <Properties>
-      ${props?.map(({ type, id }: Hash) => `<Property id="${id}" type="${type}" />`).join("\n\t\t") ?? ""}
+      ${
+        props
+          ?.map(({ type, id }: Hash) => `<Property id="${id}" type="${type}" />`)
+          .join("\n\t\t") ?? ""
+      }
     </Properties>
   </Meta>
   </component>
-    `)
+    `
+      );
     }
 
     data.templates.push(
       `
 ${cbody}
 <component id="ItemPreview.${id}">
-${preview ?? `<div class="p-4 relative">\n<${id} (...)="@properties" />\n</div>`}
+${preview ?? `<div class="p-4 relative">\n<${id} Props="@properties" />\n</div>`}
 </component>
-`);
+`
+    );
 
     data.components.push(Object.assign(item, {}));
   };
 
   // const input = await loadFigmaFileSource('bXt9NPqRZ82YO4IUCIdrpO')//data.figmaFile); S1
-  const input = await loadFigmaFileSource(data.figmaFile)//data.figmaFile); finance templates
+  const input = await loadFigmaFileSource(data.figmaFile); //data.figmaFile); finance templates
   // const input = await loadFigmaFileSource('9cIvlac9wqgXDNewmxPh3X')//data.figmaFile); banking templates
 
   const { nodes } = normalizeInput(input);
-
 
   const root = buildTree({ nodes });
 
   // console.log(JSON.stringify(nodes, null, 2));
 
-  arraySortBy<ANode>(root.nodes as any).map((n) => ({
-    ...n,
-    body: n.toHtml(),
-    id: n.componentName ?? n.name ?? n.tag,
-    name: n.componentName ?? n.name ?? n.tag,
-    group: n.name.split(/\W/)[0],
-    node: nodes.find(({ id }) => id === n.id),
-  }))
+  arraySortBy<ANode>(root.nodes as any)
+    .map((n) => ({
+      ...n,
+      body: n.toHtml(),
+      id: n.componentName ?? n.name ?? n.tag,
+      name: n.componentName ?? n.name ?? n.tag,
+      group: n.name.split(/\W/)[0],
+      node: nodes.find(({ id }) => id === n.id),
+    }))
     .map(resolveItemTemplates);
 
   components
     .map((e: StringHash) => ({ ...e, props: propsHash[e.id]?.items }))
     .map(resolveItemTemplates);
 
-  data.componentsTree = Object.values(arrayGroupBy(data.components, 'type'))
+  data.componentsTree = Object.values(arrayGroupBy(data.components, "type"));
 
-  return data
+  return data;
 };
-

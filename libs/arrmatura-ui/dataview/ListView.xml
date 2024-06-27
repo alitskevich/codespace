@@ -1,7 +1,7 @@
 <component id="ListView">
   <Connector data="<-items.sortBy" change="-> sortBy" />
   <ul role="list" class="w-full max-md:divide-y md:space-y-4  divide-gray-200 dark:divide-gray-700">
-    <ListItem (...)="{item}" item="{item}" sortBy="{sortBy}" Each="item of data" />
+    <ListItem Props="{item}" item="{item}" sortBy="{sortBy}" Each="item of data" />
     <li class="h-48"></li>
   </ul>
 </component>

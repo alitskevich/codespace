@@ -1,5 +1,5 @@
 import { Component } from "arrmatura";
-import { arrayGroupBy, arraySortBy, arrayToObject, mapEntries } from "ultimus";
+import { arrayGroupBy, arraySortBy, arrayToObject, mapEntries, parseJson } from "ultimus";
 
 import { IndexedDb } from "../idb/IndexedDb";
 import { ClientStorage, loadJson } from "../support";
@@ -107,7 +107,7 @@ export class GreenAppService extends Component {
     const handler = (event) => {
       if (this.eventOrigin && event.origin !== this.eventOrigin) return;
 
-      const { type, data } = JSON.parse(event.data);
+      const { type, data } = parseJson(event.data);
       if (type === this.eventType) {
         this.log("onMessage:", type, data);
       }

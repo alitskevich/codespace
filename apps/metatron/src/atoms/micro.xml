@@ -36,5 +36,5 @@
 </component>
 
 <component id="DynamicComponent">
-  <Dynamic As="{as}" (...)="{props}" />
+  <Dynamic As="{as}" Props="{props}" />
 </component>

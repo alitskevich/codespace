@@ -7,5 +7,7 @@ tmp
 *.log
 .firebase
 .env.local
+.keys
 
-firebase-adminsdk.config.json
+firebase-adminsdk.*config.json
+apps/firetron/.firebaserc

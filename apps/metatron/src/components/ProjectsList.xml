@@ -16,7 +16,7 @@
 <component id="ProjectsList">
   <div class="grid grid-cols-1 grid-rows-none sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
     <div class="h-full" Each="item of R.projects">
-      <ProjectCard (...)="{item}" />
+      <ProjectCard Props="{item}" />
     </div>
   </div>
 </component>
@@ -37,7 +37,7 @@
 <component id="ProjectsSelector">
   <div class="flex flex-col gap-2 mt-4">
     <div class="min-h-max" Each="item of R.projects">
-      <ProjectOption (...)="{item}" />
+      <ProjectOption Props="{item}" />
     </div>
   </div>
 </component>

@@ -1,3 +1,6 @@
+import { FirebaseAppService } from "./FirebaseAppService";
+import { FirebaseAuthService } from "./FirebaseAuthService";
+import { FirestoreService } from "./FirestoreService";
 import ListItem from "./ListItem.xml";
 import MasterDetail from "./MasterDetail.xml";
 import PageItems from "./PageItems.xml";
@@ -8,4 +11,7 @@ export default [
   PageItems,
   ListItem,
   MasterDetail,
-]
+  FirebaseAppService,
+  FirebaseAuthService,
+  FirestoreService,
+];

@@ -43,7 +43,7 @@
             </ItemsFilter>
           </div>
           <div class="pl-2 flex flex-no-wrap items-center gap-2">
-            <SearchBar.Suggestions (...)="<-itemsSearch.info" />
+            <SearchBar.Suggestions Props="<-itemsSearch.info" />
             <ListSortBy options="{R.enums.sortBy}" value="<-items.sortBy" dir="<-items.sortDir"
               onChange="-> items.onSortBy()" onChangeDir="-> items.onSortDir()" If="viewMode != 'pivot'" />
           </div>
@@ -62,7 +62,7 @@
               <Container class="h-full sm:flex-1 min-h-0 overflow-y-auto" scrolledDown="-> items.showMore()"
                 scroll="-> showScrollToTopButton = it.value > 120">
                 <ul role="list" class="w-full flex flex-col gap-2">
-                  <DomainItemInterview (...)="{item}" item="{item}" selectedId="{params.itemId}" sortBy="{sortBy}"
+                  <DomainItemInterview Props="{item}" item="{item}" selectedId="{params.itemId}" sortBy="{sortBy}"
                     Each="item of sortedData" />
                   <li class="h-48"></li>
                 </ul>
@@ -122,7 +122,7 @@
       <footer class="p-2">
         <Container class="justify-between items-center">
           <div>
-            <NavListCursor (...)="<-controller.itemNavInfo" href="#/main?itemId=" />
+            <NavListCursor Props="<-controller.itemNavInfo" href="#/main?itemId=" />
           </div>
           <!-- <Btn icon="upload" title="Submit" mode="primary" action="-> controller.onSave()" busy="<-db.isUploading"
             disabled="<-controller.touched | not" /> 
@@ -161,7 +161,7 @@
 <component id="ResultListInterview">
   <div class="flex-1 flex flex-col gap-2 max-w-7xl">
     <div class="grid grid-cols-4 gap-2 w-full">
-      <ListItem (...)="{item}" Each="item of data|slice:0:10">
+      <ListItem Props="{item}" Each="item of data|slice:0:10">
         <div class="w-6 h-6 bg-{ack.id|toColor}-700 rounded-full mx-2" Each="ack of R.enums.acquired"
           data-id="{item.id}" data-acquired="{ack.id}" title="{ack.name}" click="-> words.updateStemmAcquitance()">
         </div>
@@ -181,7 +181,7 @@
         {id}
       </div>
       <Fragment If="opened">
-        <WordItemInterview (...)="{item}" item="{item}" selectedId="{selectedId}" sortBy="{sortBy}"
+        <WordItemInterview Props="{item}" item="{item}" selectedId="{selectedId}" sortBy="{sortBy}"
           Each="item of items" />
       </Fragment>
     </div>
@@ -197,7 +197,7 @@
       </div>
       <div class=" text-gray-300" If="opened">
         <ul role="list" class=" flex flex-wrap gap-2 ">
-          <TopicItemInterview (...)="{item}" item="{item}" selectedId="{selectedId}" sortBy="{sortBy}"
+          <TopicItemInterview Props="{item}" item="{item}" selectedId="{selectedId}" sortBy="{sortBy}"
             Each="item of items" />
         </ul>
       </div>

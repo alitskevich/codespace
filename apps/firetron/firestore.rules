@@ -1,0 +1,61 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // required user signed in
+    function signedIn() {
+      return request.auth !=null && request.auth.uid != null;
+    }
+    // check if doc belongs to current user
+    function ownOnly(userId) {
+      return request.auth !=null && (request.auth.uid == userId || request.auth.uid == resource._id);
+    }
+  	// deny all not explicitly allowed
+    // NOTE: the access is allowed if any of the conditions is true!
+    // NOTE: Rules are not filters
+   	match /{document=**} {
+      allow read,write: if false;
+    }
+    match /users {
+      allow create: if signedIn();
+      allow read, update: if ownOnly(0);
+
+      match /{userId}/{document=**}{
+      	allow read,write: if ownOnly(userId);
+      }
+    }
+    
+    match /userData/{userId} {
+      allow read, write: if ownOnly(0);
+    }
+
+    match /profile/{storeKey} {
+      allow read, write: if request.auth != null && resource.data.allowAccess[request.auth.uid]
+    }
+  
+    match /profileEvents/{storeKey} {
+      allow read, write: if request.auth != null && resource.data.allowAccess[request.auth.uid]
+    }
+  
+    match /userStats/{userId} {
+      allow write: if ownOnly(0);
+      match /visits/{id} {
+        allow write: if ownOnly(0);
+      }
+    }
+    
+    match /authStats/{userId} {
+      allow write: if signedIn();
+    }
+    match /items/{docId} {
+      allow read: if signedIn();
+    }
+    match /items/{docId} {
+      allow read, write: if true;
+      match /{sub}/{document=**}{
+      	allow read,write: if signedIn();
+      }
+    }
+
+  }
+}

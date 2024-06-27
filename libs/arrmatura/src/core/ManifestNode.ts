@@ -114,7 +114,7 @@ export abstract class ManifestNode implements IManifestNode {
       this.addDataPropertyResolver(resolveExpression(v), k.slice(5));
     } else if (k === "Ref") {
       this.refId = String(v);
-    } else if (k === "(...)") {
+    } else if (k === "Props") {
       const sv = String(v);
       if (sv.startsWith("<-")) {
         this.addConnector(sv.slice(2), "");

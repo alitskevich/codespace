@@ -4,7 +4,7 @@
       <div class="sm:flex-1 min-w-0 max-sm:{selectedId?'hidden':''}">
         <NavLink href="/items/{kind}?itemId={id}"
           class="text-normal font-medium text-gray-900 truncate dark:text-white flex">
-          <Dynamic As="ItemTitle.{kind | capitalize}" (...)="{data}" />
+          <Dynamic As="ItemTitle.{kind | capitalize}" Props="{data}" />
         </NavLink>
         <p class="text text-gray-500 truncate dark:text-gray-300" If="sortBy">{sortBy}:
           {item[sortBy]}</p>
@@ -29,7 +29,7 @@
       <div class="sm:flex-1 min-w-0 max-sm:{selectedId?'hidden':''}">
         <NavLink href="/items/{kind}?itemId={id}"
           class="text-normal  text-base font-semibold text-gray-900 dark:text-white truncate flex">
-          <ItemTitle.Persons (...)="{data}" />
+          <ItemTitle.Persons Props="{data}" />
         </NavLink>
         <p class="text text-gray-500 truncate dark:text-gray-300" If="sortBy != 'title' && sortBy">{sortBy}:
           {item[sortBy]}</p>

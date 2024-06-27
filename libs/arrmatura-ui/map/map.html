@@ -41,7 +41,7 @@
           <div class="map"></div>
         </div>
       </div>
-      <InfoBoard (...)="<-map@plotItem" if="<- map@plotItem"/>
+      <InfoBoard Props="<-map@plotItem" if="<- map@plotItem"/>
     </component>
 
     <component id="ListItem">
@@ -65,7 +65,7 @@
             </header>
             <section class="pt-0" style="flex:1;overflow-y:auto;overflow-x:hidden;" if="item|not">
               <ul style="list-style-type: none; margin: 0;">
-                <ListItem for="p of items" (...)="@p"/>
+                <ListItem for="p of items" Props="@p"/>
               </ul>
             </section>
             <section style="flex:4;min-width:20rem;overflow:auto;" if="item">

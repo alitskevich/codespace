@@ -27,7 +27,7 @@ const configLocal = {
     isSignUpAllowed: true,
   },
   apiLocal: {
-    url: `http://localhost:3000/dev/api`,
+    url: `http://localhost:5001/mozart-389609/us-central1/api`,
   },
 };
 

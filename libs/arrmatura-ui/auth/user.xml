@@ -4,7 +4,7 @@
       <Else>
         <LoadingIndicator If="<-user.isLoading">
           <Else>
-            <UserPanel (...)="<-user.data" />
+            <UserPanel Props="<-user.data" />
           </Else>
         </LoadingIndicator>
       </Else>
@@ -29,7 +29,7 @@
 
       <div class="border-t"></div>
 
-      <a click="-> user.showProfile | truthy" afterClick="-> opened=false"
+      <a click="-> localStorage.showUserProfile = true" afterClick="-> opened=false"
         class="block px-4 py-2 text-sm cursor-pointer {R.styles.dropdown-item}" role="menuitem" tabindex="-1"
         id="user-menu-item-0">Profile</a>
 

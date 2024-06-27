@@ -5,7 +5,7 @@
   "source": "index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
-    "start": "parcel --no-cache --https",
+    "start": "parcel",
     "esbuild": "esbuild index.ts --bundle --outdir=./dist --platform=browser --format=esm --sourcemap --target=esnext --external:* --minify --watch --serve",
     "build": "rm -fdr dist && parcel build --no-scope-hoist",
     "deploy": "firebase deploy --project 373433080161 --only hosting"
@@ -13,6 +13,7 @@
   "dependencies": {
     "arrmatura-ui": "workspace:^1.0.2",
     "arrmatura-web": "workspace:^6.2.0",
+    "firebase": "^10.12.2",
     "ultimus": "workspace:^2.0.1"
   },
   "devDependencies": {

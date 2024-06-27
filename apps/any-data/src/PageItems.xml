@@ -1,8 +1,10 @@
 <component id="Page.Items">
 
-  <IndexedDbService Ref="db" (...)="{R.clientDb}" invokeApi="<-api.invoke" />
+  <IndexedDbService Ref="idb" Props="{R.clientDb}" />
 
-  <IndexedDbQuery Ref="query" db="<-db" index="kind" value="{subpage}" />
+  <DataApiService Ref="db" Props="{R.clientDb}" indexedDb="<-idb.This" invokeApi="<-api.invokeApi" />
+
+  <IndexedDbQuery Ref="query" db="<-idb.This" value="*" />
 
   <ItemSearchController Ref="itemsSearch" data="<-query.data" />
 
@@ -67,7 +69,7 @@
             </div>
 
             <div class="{R.styles.fline}">
-              <SearchBar.Suggestions (...)="<-itemsSearch.info" />
+              <SearchBar.Suggestions Props="<-itemsSearch.info" />
               <ListSortBy options="{R.enums.sortBy}" value="<-items.sortBy" dir="<-items.sortDir"
                 onChange="-> items.onSortBy()" onChangeDir="-> items.onSortDir()" If="viewMode != 'pivot'" />
               <ItemsFilter data="<-items.searchedData" value="<-items.filterBySignature" />
@@ -101,7 +103,7 @@
                   <Container class="h-full pt-2 {itemId?'!pr-0 !pl-2':''} sm:flex-1 min-h-0 overflow-y-auto"
                     scrolledDown="-> items.showMore()" scroll="-> showScrollToTopButton = it.value > 120">
                     <ul role="list" class="w-full max-md:divide-y md:space-y-4  divide-gray-200 dark:divide-gray-700">
-                      <Dynamic As="ListItem.{subpage | capitalize}" (...)="{item}" data="{item}" kind="{subpage}"
+                      <Dynamic As="ListItem.{subpage | capitalize}" Props="{item}" data="{item}" kind="{subpage}"
                         selectedId="{itemId}" sortBy="{sortBy}" Each="item of shownData" />
                       <li class="h-48"></li>
                     </ul>
@@ -157,7 +159,7 @@
   <Container class="flex-col gap-4 p-2 overflow-auto">
     <div role="list" class="w-full max-md:divide-y md:space-y-4  divide-gray-200 dark:divide-gray-700"
       style="position: relative">
-      <Pivot (...)="{data|pivotData:rowId:colId:form}" openConfig="-> showConfig=true" rowId="{rowId}" colId="{colId}"
+      <Pivot Props="{data|pivotData:rowId:colId:form}" openConfig="-> showConfig=true" rowId="{rowId}" colId="{colId}"
         rowFirstComponent="ItemLink" form="{form}" />
       <div class="h-48"></div>
     </div>

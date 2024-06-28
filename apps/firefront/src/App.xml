@@ -7,8 +7,8 @@
     <GreenAppFacility Props="{R.green}">
       <BrowserService Ref="browser" title="{R.name}" />
       <NavigationService Ref="nav" />
-      <FirebaseService Ref="api" Props="{R.firebaseConfig}" />
-      <SignInPage If="<-api.isAuthorized | not">
+      <FirebaseService Ref="api,auth,db" Props="{R.firebaseConfig}" />
+      <SignInPage If="<-auth.isAuthorized | not">
         <Else>
           <UserProfileService Ref="user" persistence="{R.auth.persistence}" api="<-api.This" />
           <AsyncLoader isLoading="<-user.isLoading" title="{R.strings.app_load_user_profile}"

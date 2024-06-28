@@ -12,11 +12,11 @@
             <h5 class="text-xl text-center font-medium text-gray-900 dark:text-white">{R.strings.app_sign_up}</h5>
             <hr />
             <div class="flex-1 overflow-y-auto">
-              <Forma meta="{R.forms.signUp}" data="{data}" change="-> data" disabled="<-api.busy" />
+              <Forma meta="{R.forms.signUp}" data="{data}" change="-> data" disabled="<-auth.busy" />
             </div>
             <Btn icon="upload" title="{R.strings.continue}" mode="primary" large="true"
               disabled2="data.password == data.password2 | and : data.username | and : data.password | not"
-              action="-> api.signUp(data)" busy="<-api.busy" />
+              action="-> auth.signUp(data)" busy="<-auth.busy" />
             <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
               <span>Have account?</span>
               <a click="-> signup=false"
@@ -27,11 +27,12 @@
           <Else>
             <h5 class="text-xl text-center font-medium text-gray-900 dark:text-white">{R.strings.app_sign_in}</h5>
             <hr />
-            <Forma meta="{R.forms.signIn}" data="{data}" change="-> data" disabled="<-api.busy" />
-            <ErrorMessage error="<-api.error" If="<-api.error" close="-> api.error=false" />
+            <Forma meta="{R.forms.signIn}" data="{data}" change="-> data" disabled="<-auth.busy" />
+            <ErrorMessage error="<-auth.error" If="<-auth.error" close="-> auth.error=false" />
             <Btn icon="upload" title="{R.strings.continue}" mode="primary" large="true"
-              disabled2="{data.username | and : data.password | not}" action="-> api.signIn(data)" busy="<-api.busy" />
-            <div class="text-sm font-medium text-gray-500 dark:text-gray-300" If="<-api.isSignUpAllowed">
+              disabled2="{data.username | and : data.password | not}" action="-> auth.signIn(data)"
+              busy="<-auth.busy" />
+            <div class="text-sm font-medium text-gray-500 dark:text-gray-300" If="<-auth.isSignUpAllowed">
               <span>Not registered?</span>
               <a click="-> signup=true"
                 class="ml-2 text-blue-700 hover:underline dark:text-blue-500">{R.strings.app_sign_up}</a>

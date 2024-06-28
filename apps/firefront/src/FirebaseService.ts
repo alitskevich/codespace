@@ -20,6 +20,7 @@ import {
   connectFirestoreEmulator,
   doc,
   getDoc,
+  getDocs,
   getFirestore,
   onSnapshot,
   query,
@@ -33,7 +34,9 @@ const DocConverter = {
     return value;
   },
   fromFirestore(snapshot: QueryDocumentSnapshot, options: SnapshotOptions) {
-    return snapshot.data(options);
+    const data = snapshot.data(options);
+    data.id = snapshot.id;
+    return data;
   },
 };
 export class FirebaseService extends Component {
@@ -162,12 +165,25 @@ export class FirebaseService extends Component {
     // return this.signInAnonymously()
     return this.auth.signOut();
   }
+
   // firestore
 
-  queryForValue(path: string, field, val: any) {
+  query(path: string, field, val: any) {
     const ref = collection(this.firestore, path).withConverter(DocConverter);
     const coll = field ? query(ref, where(field, "==", val)) : query(ref); //.withConverter(unpackDoc);
-    return coll; //.(unpackDoc);
+    return new Promise((resolve, reject) => {
+      getDocs(coll)
+        .then((snapshot) => {
+          const result: any[] = [];
+          snapshot.forEach((e) => {
+            const d = e.data();
+            d.id = e.id;
+            result.push(d);
+          });
+          resolve(result);
+        })
+        .catch(reject);
+    });
   }
 
   listenCollection(path, ts = 0, cb) {
@@ -184,15 +200,21 @@ export class FirebaseService extends Component {
     });
   }
 
-  nextId(coll) {
-    return doc(collection(this.firestore, coll)).id;
-  }
-
   getDoc(coll, id) {
     return getDoc(doc(collection(this.firestore, coll), id)).then((d) => d.data());
   }
 
-  writeBatch(delta) {
+  async upsertItem({ $callback, store = "items", ...delta }) {
+    await this.writeBatch({ [store]: [delta] });
+    $callback?.(delta);
+  }
+
+  async loadItem({ $callback, store = "items", ...delta }) {
+    const result = await this.getDoc(store, delta.id);
+    $callback?.(result);
+  }
+
+  async writeBatch(delta) {
     const now = Date.now().valueOf();
     // Get a new write batch
     const batch = writeBatch(this.firestore);
@@ -213,23 +235,6 @@ export class FirebaseService extends Component {
         }
       });
     });
-    return batch.commit();
-  }
-
-  async invokeApi({ body: { action = "realtime.downstream", data } }) {
-    if (action === "realtime.downstream") {
-      return this.getCollection("items", 0);
-    } else if (action === "realtime.upstream") {
-      return this.writeBatch(data);
-    } else if (action === "realtime.loadItem") {
-      const { store, id } = data;
-      const item = await this.getDoc(store, id);
-      return { item };
-    } else if (action === "realtime.upsertItem") {
-      await this.writeBatch({ items: [data] });
-      return { item: data };
-    }
-
-    return {};
+    await batch.commit();
   }
 }

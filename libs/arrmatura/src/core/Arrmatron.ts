@@ -39,7 +39,7 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
 
     if (this.refId) {
       // this.log('addReference', this.refId)
-      this.scope.addReference(this.refId, this);
+      this.refId.split(",").forEach((refId) => this.scope.addReference(refId, this));
     }
   }
 

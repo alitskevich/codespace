@@ -6,7 +6,7 @@
   <ItemsFilterController Ref="itemsFilter" meta="{R.forms.itemsFilter}" data="<-itemsSearch.actualData"
     value="<-nav.params" change="-> nav.onParams()" />
 
-  <ItemCollectionController Ref="items" data="<-itemsFilter.actualData" isLoaded="<-db.isLoaded" />
+  <ItemCollectionController Ref="items" data="<-itemsFilter.actualData" isLoaded="true" />
 
   <NewItemController Ref="newItem" initialData="{R.defaults.newItem}" />
 
@@ -38,7 +38,7 @@
 
         <div class="flex flex-1 gap-2 items-center">
           <h2 class="max-sm:hidden font-bold dark:text-white text-black truncate uppercase">{R.name}</h2>
-          <DbLoadingIndicator isLoading="<-db.busy" action="-> db.downstream()" />
+          <DbLoadingIndicator isLoading="<-api.busy" action="-> api.downstream()" />
         </div>
 
         <ViewModeSelector options="{R.enums| dot : subpage : '*ViewMode' ?? R.enums.viewMode}" value="{viewMode}"
@@ -51,8 +51,8 @@
     </nav>
 
     <div class="flex flex-auto  min-h-0 flex-col">
-      <AsyncLoader isLoading="<-db.isLoaded|not" title="Loading data" subtitle="🚀 initial dataset" error="<-db.error"
-        onError="-> db.downstream()">
+      <AsyncLoader isLoading="false" title="Loading data" subtitle="🚀 initial dataset" error="<-api.error"
+        onError="-> api.downstream()">
 
         <div class="bg-gray-200 dark:bg-gray-700  py-2">
           <Container class="w-full flex flex-no-wrap justify-between items-center gap-2

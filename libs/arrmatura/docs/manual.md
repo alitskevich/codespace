@@ -128,6 +128,8 @@ Add `Ref` attribute to any component to get refer it in `arrows` expressions.
 <UserService Ref="user" /> <UserAvatar data="<- user.profile" onSave="-> user.update" />
 ```
 
+> use comma to separate multiple aliases `Ref="api,db,auth"`
+
 ## Left arrow expression
 
 `data="<- ref.prop"` makes a hot subscription to any property of orbitrary component in the current or upper scopes.

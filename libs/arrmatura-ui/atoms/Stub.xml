@@ -20,7 +20,7 @@
       <a class="font-bold ml-2" href="{link}" If="link">open</a>
     </div>
     <div>
-      <Icon type="cross" size="4" class="rounded-sm" click="{close}" If="close" />
+      <Icon type="cross" class="rounded-sm" click="{close}" If="close" />
     </div>
   </div>
 </component>

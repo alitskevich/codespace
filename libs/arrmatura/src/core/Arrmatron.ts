@@ -350,35 +350,31 @@ export class Arrmatron<T extends IManifestNode = IManifestNode> implements IArrm
 
         const applicator = targetPropName ? (rr: any) => ({ [targetPropName]: rr }) : identity;
 
-        if (sourcePropName === "This") {
-          Object.assign(this.#initialState, applicator(pipes(ref, ref.$component)));
-        } else {
-          this.defer(
-            (() => {
-              let popre;
-              return ref.subscribe(async (source: Arrmatron) => {
-                try {
-                  const val = await source.get(sourcePropName);
-                  const fingerprint = objectFingerprint(val);
+        this.defer(
+          (() => {
+            let popre;
+            return ref.subscribe(async (source: Arrmatron) => {
+              try {
+                const val = await source.get(sourcePropName);
+                const fingerprint = objectFingerprint(val);
 
-                  if (popre !== undefined && popre === fingerprint) return;
+                if (popre !== undefined && popre === fingerprint) return;
 
-                  popre = fingerprint;
-                  const r = applicator(pipes(this, val));
-                  this.up(r as Delta);
-                } catch (ex) {
-                  source.logError("Notify ", ex);
-                }
-              });
-            })()
-          );
+                popre = fingerprint;
+                const r = applicator(pipes(this, val));
+                this.up(r as Delta);
+              } catch (ex) {
+                source.logError("Notify ", ex);
+              }
+            });
+          })()
+        );
 
-          // hot subscription
-          Object.assign(
-            this.#initialState,
-            applicator(pipes(ref, sourcePropName ? ref.get(sourcePropName) : ref.$component))
-          );
-        }
+        // hot subscription
+        Object.assign(
+          this.#initialState,
+          applicator(pipes(ref, sourcePropName ? ref.get(sourcePropName) : ref.$component))
+        );
       }
     }
   }

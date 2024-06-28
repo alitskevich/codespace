@@ -14,6 +14,6 @@
       {!mode ? R.styles.btn-default : '' } {R.styles | dot : mode : 'btn-*' } {class}
     " data="{data}" action="{action}">
     <Svg.Spinner size="4" If="busy" />
-    <Icon type="{icon}" size="4" If="!busy && icon" />
+    <Icon type="{icon}" size="8" If="!busy && icon" />
   </BtnUI>
 </component>

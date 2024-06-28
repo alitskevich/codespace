@@ -39,7 +39,7 @@
           If="opened">
           <div class="w-full flex items-center gap-1 pl-2 pr-1  py-1  border-b border-slate-900">
             <h3 class="text-gray-400 capitalize divide-b flex-1">Filter by {field.name}</h3>
-            <Icon type="cross" size="4" class="rounded-lg" click="-> opened=false" />
+            <Icon type="cross" class="rounded-lg" click="-> opened=false" />
           </div>
           <ul class="flex flex-col my-2 gap-0 w-full overflow-x-hidden"
             style="overflow-y: auto;max-height:30rem;min-width:10rem;list-style: none;">
@@ -62,7 +62,7 @@
         hover:bg-slate-300 dark:hover:bg-gray-700
         cursor-pointer
         {opened ? 'bg-gray-400':''}" click="-> opened = !opened">
-          <Icon type="filter" size="5" />
+          <Icon type="filter" />
         </div>
         <div class="relative">
           <DropdownOptionsList caption="Filter by..." options="{fields}" close="-> opened=false"

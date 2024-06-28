@@ -8,7 +8,7 @@
       {value ? 'text-gray-200 px-2' : 'text-gray-600'} 
       {opened ? 'bg-slate-400':''}">
 
-      <Icon type="sortAsc" class="rounded-lg p-1 transparent" click="-> opened=!opened" If="!value" />
+      <Icon type="sortAsc" class="rounded-lg transparent" click="-> opened=!opened" If="!value" />
 
       <Icon type="{dir == '-' ? 'sortDesc' : 'sortAsc'}" class="
         rounded-lg

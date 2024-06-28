@@ -1,5 +1,5 @@
 import { Component } from "arrmatura";
-import { arrayGroupBy, arraySortBy, arrayToObject, mapEntries, parseJson } from "ultimus";
+import { arrayGroupBy, arraySortBy, arrayToObject, mapEntries } from "ultimus";
 
 import { IndexedDb } from "../idb/IndexedDb";
 import { ClientStorage, loadJson } from "../support";
@@ -104,18 +104,18 @@ export class GreenAppService extends Component {
       });
   }
   initMetatronChannel() {
-    const handler = (event) => {
-      if (this.eventOrigin && event.origin !== this.eventOrigin) return;
+    // const _handler = (event) => {
+    //   if (this.eventOrigin && event.origin !== this.eventOrigin) return;
 
-      const { type, data } = parseJson(event.data);
-      if (type === this.eventType) {
-        this.log("onMessage:", type, data);
-      }
-    };
+    //   const { type, data } = parseJson(event.data);
+    //   if (type === this.eventType) {
+    //     this.log("onMessage:", type, data);
+    //   }
+    // };
 
-    window.addEventListener("message", handler, false);
+    // window.addEventListener("message", handler, false);
     this.defer(() => {
-      window.removeEventListener("message", handler, false);
+      // window.removeEventListener("message", handler, false);
     });
   }
 

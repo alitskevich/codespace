@@ -107,6 +107,8 @@ export class FingerprintMashine {
 
     if (x.uid) return x.uid;
 
+    if (x.$ctx) return x.$ctx.uid;
+
     this.r = 0;
     this.x = x;
     if (this.$path) {

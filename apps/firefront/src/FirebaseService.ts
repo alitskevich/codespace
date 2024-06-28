@@ -204,14 +204,14 @@ export class FirebaseService extends Component {
     return getDoc(doc(collection(this.firestore, coll), id)).then((d) => d.data());
   }
 
-  async upsertItem({ $callback, store = "items", ...delta }) {
-    await this.writeBatch({ [store]: [delta] });
-    $callback?.(delta);
+  async upsertItem({ $callback, store = "items", ...item }) {
+    await this.writeBatch({ [store]: [item] });
+    $callback?.({ item });
   }
 
   async loadItem({ $callback, store = "items", ...delta }) {
-    const result = await this.getDoc(store, delta.id);
-    $callback?.(result);
+    const item = await this.getDoc(store, delta.id);
+    $callback?.({ item });
   }
 
   async writeBatch(delta) {

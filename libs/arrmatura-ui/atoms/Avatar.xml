@@ -1,6 +1,5 @@
 <component id="Avatar">
   <figure class="relative rounded-full h-{size ?? '10'} w-{size ?? '10'} {class}">
-
     <div class="inline-flex overflow-hidden relative 
       justify-center items-center rounded-full  
       h-{size ?? '10'} w-{size ?? '10'}

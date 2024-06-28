@@ -11,9 +11,9 @@
       " type="text" autofocus="true" placeholder="{R.strings.kluq_poshuku}" keypress="{input}" value="{value}"
         focus="-> opened=true" />
 
-      <div class="absolute h-10 w-10 right-0">
-        <Icon type="cross" size="4" class="rounded-full h-10 w-10" click="{enter}" data-value="" If="value" />
-        <Icon type="cross" size="4" class="rounded-full h-10 w-10" click="-> active=false" If="!value" />
+      <div class="absolute h-10 w-10 right-0 flex items-center justify-center">
+        <Icon type="cross" class="rounded-full" click="{enter}" data-value="" If="value" />
+        <Icon type="cross" class="rounded-full" click="-> active=false" If="!value" />
       </div>
     </div>
 

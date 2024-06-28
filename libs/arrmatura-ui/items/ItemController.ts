@@ -1,20 +1,15 @@
 import { Component } from "arrmatura";
 import { Hash } from "ultimus/types";
 
-import { IndexedDbService } from "../idb/IndexedDbService";
-
 export class ItemController extends Component {
   data?: Hash | null;
   delta?: Hash | null;
-  preflightItems?: any[];
-  db?: IndexedDbService;
-  $itemId = null;
-  upsertItemKey = "db.upsertItem()";
-  loadItemKey = "db.loadItem()";
+  db?: any;
+  #itemId = null;
 
   invokeLoad(id) {
     return new Promise((resolve) => {
-      this.emit(this.loadItemKey, {
+      this.db.loadItem({
         id,
         $callback: ({ error = null, item, data = item }) => {
           // console.log(error, data);
@@ -29,24 +24,17 @@ export class ItemController extends Component {
   }
 
   getItemId() {
-    return this.$itemId;
+    return this.#itemId;
   }
 
   setItemId(id) {
-    this.$itemId = id;
+    this.#itemId = id;
     this.up({
-      // data: {},
       delta: {},
       isLoading: true,
       error: null,
       touched: false,
-      "...preflight": (async () => {
-        const result = (await this.db?.idb.queryForValue(id)) ?? null;
-        return {
-          data: result?.[0] ?? { id },
-          "...load": this.invokeLoad(id),
-        };
-      })(),
+      "...load": this.invokeLoad(id),
     });
   }
 
@@ -67,14 +55,14 @@ export class ItemController extends Component {
     };
   };
 
-  onSave(data = {}) {
+  onSave(delta = {}) {
     return {
       isLoading: true,
       error: null,
       "...save": new Promise((resolve) => {
-        this.emit(this.upsertItemKey, {
+        this.db.upsertItem({
           ...this.data,
-          ...data,
+          ...delta,
           $callback: ({ error = null, item, data = item }) => {
             if (error) {
               const msg = (error as Error)?.message;

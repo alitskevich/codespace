@@ -127,7 +127,12 @@ export abstract class ManifestNode implements IManifestNode {
       } else {
         if (!v.includes("{")) {
           if (v.startsWith("<-")) {
-            this.addConnector(v.slice(2), k);
+            if (v.endsWith(".This")) {
+              const refId = v.slice(2, -5).trim();
+              this.initialState[k] = (c) => c.getByRef(refId)?.$component;
+            } else {
+              this.addConnector(v.slice(2), k);
+            }
           } else if (v.startsWith("->")) {
             this.addEmitter(v.slice(2).trim() || "*", k);
           } else {

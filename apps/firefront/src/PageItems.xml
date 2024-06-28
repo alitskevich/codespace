@@ -29,7 +29,7 @@
   <div class="h-screen min-h-0 flex flex-col">
 
     <nav class="{R.styles.nav} nav {class ?? 'sticky'}" id="top">
-      <Container class="relative flex flex-no-wrap h-16 gap-2 sm:gap-4 items-center">
+      <Container class="relative flex flex-no-wrap h-16 gap-2 sm:gap-4 items-center px-4">
         <MenuButton click="-> viewSidebar=!viewSidebar" opened="{viewSidebar}" />
 
         <a href="/#/main" class="flex flex-shrink-0 items-center">
@@ -38,7 +38,7 @@
 
         <div class="flex flex-1 gap-2 items-center">
           <h2 class="max-sm:hidden font-bold dark:text-white text-black truncate uppercase">{R.name}</h2>
-          <DbLoadingIndicator isLoading="<-api.busy" action="-> api.downstream()" />
+          <!-- <DbLoadingIndicator isLoading="<-api.busy" action="-> api.downstream()" /> -->
         </div>
 
         <ViewModeSelector options="{R.enums| dot : subpage : '*ViewMode' ?? R.enums.viewMode}" value="{viewMode}"
@@ -55,7 +55,7 @@
         onError="-> api.downstream()">
 
         <div class="bg-gray-200 dark:bg-gray-700  py-2">
-          <Container class="w-full flex flex-no-wrap justify-between items-center gap-2
+          <Container class="w-full flex flex-no-wrap justify-between items-center gap-2 px-2
         " If="<-itemsSearch.data.length">
             <div class=" min-w-10 {R.styles.fline}">
               <h1 class="text-xl dark:text-white text-black truncate uppercase">{subpage ?? R.name}</h1>
@@ -152,7 +152,7 @@
   <StoredData name="{id}-rowId" data="{rowId}" action="-> rowId" />
   <StoredData name="{id}-colId" data="{colId}" action="-> colId" />
   <Connector data="{R.forms | dot: id ?? R.forms.itemsPivot ?? R.forms.item}" change="-> form" />
-  <Container class="flex-col gap-4 p-2 overflow-auto">
+  <Container class="flex-col gap-4 md:p-2 overflow-auto">
     <div role="list" class="w-full max-md:divide-y md:space-y-4  divide-gray-200 dark:divide-gray-700"
       style="position: relative">
       <Pivot Props="{data|pivotData:rowId:colId:form}" openConfig="-> showConfig=true" rowId="{rowId}" colId="{colId}"

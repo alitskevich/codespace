@@ -56,7 +56,7 @@
       <div opened="{cellDetails}" title="{cellDetails.name}" close="">
         <!-- <header class="p-2 flex flex-no-wrap items-center min-w-0 gap-1">
           <h2 class="flex-1 text-lg text-truncate">{cellDetails.name}</h2>
-          <Icon type="cross" size="3" class="rounded-lg text-slate-500 h-10 w-10 dark:text-gray-400" data-itemId=""
+          <Icon type="cross"  class="rounded-lg text-slate-500 h-10 w-10 dark:text-gray-400" data-itemId=""
             click="-> cellDetails=false" />
         </header> -->
         <ul role="list" class="flex flex-col md:gap-2 w-full divide-y divide-gray-200 dark:divide-gray-700">

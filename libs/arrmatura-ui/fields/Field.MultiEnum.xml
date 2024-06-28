@@ -29,7 +29,7 @@
       <div class="flex-1 flex flex-wrap space-x-2 px-2">
         <Chip title="{tag.name}" class="mb-1" isSelected="true" data-value="{tag.id}" click="{click}"
           Each="tag of tags">
-          <Icon type="cross" size="4" />
+          <Icon type="cross" />
         </Chip>
       </div>
       <Slot />

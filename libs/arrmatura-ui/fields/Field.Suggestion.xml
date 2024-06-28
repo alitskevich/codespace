@@ -4,7 +4,7 @@
       click="-> opened=!value">
       <Chip class="py-1 mb-1" title="{tags | find:value | dot:name ?? value}" isSelected="true"
         click="-> ctrl.doReset()" If="value">
-        <Icon type="cross" size="4" />
+        <Icon type="cross" />
       </Chip>
     </div>
 

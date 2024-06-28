@@ -89,14 +89,14 @@
       rounded-md
       border border-gray-200 dark:border-gray-700">
 
-      <ItemController Ref="controller" itemId="{itemId}" all="<-words.acquiredConcepts" />
+      <ItemController Ref="controller" db="<-db.This" itemId="{itemId}" />
       <Connector data="<-controller.item" change="-> item" />
 
       <Connector data="<-idiomsHash.data" trigger="{item.stem}" change="-> idioms[item.stem]" />
 
       <header class="p-2 flex flex-no-wrap items-center min-w-0 gap-1" title="{title}">
         <h2 class="flex-1 text-lg text-truncate">{item.title}</h2>
-        <Icon type="cross" size="3" class="rounded-lg text-slate-500 h-10 w-10 dark:text-gray-400" data-itemId=""
+        <Icon type="cross" size="8" class="rounded-lg text-slate-500 dark:text-gray-400" data-itemId=""
           click="-> nav.onParams()" />
       </header>
       <div class="flex flex-col flex-1 px-4 gap-4 overflow-y-auto">

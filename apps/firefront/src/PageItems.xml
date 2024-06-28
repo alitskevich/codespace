@@ -1,8 +1,5 @@
 <component id="Page.Items">
-
-  <IndexedDbService Ref="idb" Props="{R.clientDb}" />
-
-  <IndexedDbQuery Ref="query" db="<-idb.This" value="*" />
+  <FirebaseCollection Ref="query" api="<-api.This" value="*" />
 
   <ItemSearchController Ref="itemsSearch" data="<-query.data" />
 

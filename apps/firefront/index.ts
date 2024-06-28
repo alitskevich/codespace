@@ -4,8 +4,7 @@ import launchWeb from "arrmatura-web";
 import { urlParse } from "ultimus";
 
 import assets from "./assets";
-import templates from "./index.xml";
-import customComponents from "./src";
+import src from "./src";
 
 const { params } = urlParse(window.location.href);
 
@@ -39,7 +38,7 @@ const config = {
     green,
     ...configLocal,
   },
-  components: [...ui, templates, ...customComponents],
+  components: [...ui, ...src],
 };
 
 launchWeb(config);

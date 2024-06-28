@@ -13,6 +13,9 @@ import {
 } from "firebase/auth";
 import {
   Firestore,
+  QueryDocumentSnapshot,
+  SnapshotOptions,
+  WithFieldValue,
   collection,
   connectFirestoreEmulator,
   doc,
@@ -23,21 +26,16 @@ import {
   where,
   writeBatch,
 } from "firebase/firestore";
-// import { TArrmatron } from "arrmatura-web";
-// import { getAnalytics } from "firebase/analytics";
 import { Hash } from "ultimus";
-// type Doc = Hash;
-// type DocGet = { id: string; data: () => Doc };
 
-// const unpackDocs = (s: { docs: DocGet[] }) =>
-//   s.docs.reduce((r: Doc[], e) => {
-//     const d = e.data();
-//     d.id = e.id;
-//     r.push(d);
-//     return r;
-//   }, []);
-// const analytics = getAnalytics(app);
-
+const DocConverter = {
+  toFirestore(value: WithFieldValue<any>) {
+    return value;
+  },
+  fromFirestore(snapshot: QueryDocumentSnapshot, options: SnapshotOptions) {
+    return snapshot.data(options);
+  },
+};
 export class FirebaseService extends Component {
   firestore: Firestore;
   app: FirebaseApp;
@@ -166,9 +164,10 @@ export class FirebaseService extends Component {
   }
   // firestore
 
-  getCollection(path: string, since: number) {
-    const coll = collection(this.firestore, path);
-    return query(coll, where("ts", ">", since)); //.withConverter(unpackDoc);
+  queryForValue(path: string, field, val: any) {
+    const ref = collection(this.firestore, path).withConverter(DocConverter);
+    const coll = field ? query(ref, where(field, "==", val)) : query(ref); //.withConverter(unpackDoc);
+    return coll; //.(unpackDoc);
   }
 
   listenCollection(path, ts = 0, cb) {

@@ -1,0 +1,44 @@
+<component id="SignInPage">
+  <Container class="mt-4 px-4">
+    <div class="w-full max-w-sm mx-auto p-4 
+        bg-white border border-gray-200 rounded-lg 
+        shadow-md sm:p-6 md:p-8 
+        dark:bg-gray-800 dark:border-gray-700 
+        flex flex-col gap-4 items-center">
+      <Logo size="16" title="{R.strings.app_name}" />
+      <div class="space-y-6">
+        <Fragment If="signup">
+          <Then>
+            <h5 class="text-xl text-center font-medium text-gray-900 dark:text-white">{R.strings.app_sign_up}</h5>
+            <hr />
+            <div class="flex-1 overflow-y-auto">
+              <Forma meta="{R.forms.signUp}" data="{data}" change="-> data" disabled="<-api.busy" />
+            </div>
+            <Btn icon="upload" title="{R.strings.continue}" mode="primary" large="true"
+              disabled2="data.password == data.password2 | and : data.username | and : data.password | not"
+              action="-> api.signUp(data)" busy="<-api.busy" />
+            <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+              <span>Have account?</span>
+              <a click="-> signup=false"
+                class="ml-2 text-blue-700 hover:underline dark:text-blue-500 text-uppercase">{R.strings.app_sign_in}</a>
+            </div>
+          </Then>
+
+          <Else>
+            <h5 class="text-xl text-center font-medium text-gray-900 dark:text-white">{R.strings.app_sign_in}</h5>
+            <hr />
+            <Forma meta="{R.forms.signIn}" data="{data}" change="-> data" disabled="<-api.busy" />
+            <ErrorMessage error="<-api.error" If="<-api.error" close="-> api.error=false" />
+            <Btn icon="upload" title="{R.strings.continue}" mode="primary" large="true"
+              disabled2="{data.username | and : data.password | not}" action="-> api.signIn(data)" busy="<-api.busy" />
+            <div class="text-sm font-medium text-gray-500 dark:text-gray-300" If="<-api.isSignUpAllowed">
+              <span>Not registered?</span>
+              <a click="-> signup=true"
+                class="ml-2 text-blue-700 hover:underline dark:text-blue-500">{R.strings.app_sign_up}</a>
+            </div>
+          </Else>
+        </Fragment>
+      </div>
+    </div>
+  </Container>
+</component>

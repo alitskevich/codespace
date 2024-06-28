@@ -1,12 +1,16 @@
 <component id="Icon">
-  <span class="
+  <span aria-selected="{selected}" class="
         flex items-center justify-center rounded-md
         h-{size ?? '6'+2} w-{size ?? '6'+2}
         {click ? 'cursor-pointer 
           text-gray-500 dark:text-gray-400
-           hover:text-gray-500
+
+          aria-selected:text-gray-500 aria-selected:dark:text-slate-50
+          aria-selected:bg-gray-100 aria-selected:dark:bg-gray-700
+
+          hover:text-gray-500 hover:dark:text-slate-50
           hover:bg-gray-100 dark:hover:bg-gray-700
-           hover:dark:text-slate-50'} 
+           '} 
         {class}
         " title="{title ?? type}" data="{data}" click="{click}">
 

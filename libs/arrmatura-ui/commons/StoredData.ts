@@ -11,8 +11,10 @@ export class StoredData extends Component {
   #opened = false;
   local?: ClientStorage;
 
-  __created({ persistence, name = this.refId, defaults = null }) {
-    const storage = new ClientStorage(persistence ?? "local", name);
+  constructor({ persistence, name, defaults = null }, $) {
+    super({}, $);
+
+    const storage = new ClientStorage(persistence ?? "local", name ?? this.refId);
 
     Object.defineProperty(this, "data", {
       get: () => {

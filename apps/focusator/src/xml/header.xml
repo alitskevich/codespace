@@ -13,7 +13,8 @@
           </div>
           <div class="flex items-center justify-end gap-4">
             <Slot />
-            <Icon type="cog" click="-> localStorage.settings = !settings" size="8" />
+            <Icon type="cog" selected="{settings}" click="-> localStorage.settings = !settings" size="8"
+              class="transition duration-300 {settings ? 'rotate-90' :''}" />
           </div>
         </div>
       </Container>

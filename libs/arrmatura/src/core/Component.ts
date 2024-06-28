@@ -8,9 +8,11 @@ import type { TArrmatron, IArrmatron, IComponent } from "../../types";
 export abstract class Component implements IComponent {
   [key: string]: unknown;
 
-  constructor(_: Hash, private readonly $ctx: TArrmatron) {
-    //no-op
+  constructor(initials: Hash, private readonly $ctx: TArrmatron) {
+    this.__created(initials);
   }
+
+  __created(_: Hash) {}
 
   get refId() {
     return this.$ctx.refId;
@@ -25,7 +27,6 @@ export abstract class Component implements IComponent {
   __init(_: IArrmatron): Delta | null | undefined | unknown {
     return undefined;
   }
-
   // get from ctx state
   get(key: string) {
     return this.$ctx.get(key);

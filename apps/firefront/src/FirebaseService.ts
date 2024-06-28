@@ -43,7 +43,8 @@ export class FirebaseService extends Component {
   firestore: Firestore;
   app: FirebaseApp;
   auth: Auth;
-  constructor({ ...config }, ctx: any) {
+
+  constructor({ config }, ctx: any) {
     super(config, ctx);
 
     this.app = initializeApp(config);

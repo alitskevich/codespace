@@ -73,14 +73,21 @@ class Storage {
 class TodoStore extends Component {
   storage: Storage = new Storage();
 
-  constructor(_initials: Hash, ctx: any) {
-    super(_initials, ctx);
+  __created() {
     // generate action handlers
     Object.entries(REDUCERS).forEach(([key, fn]) => {
       this[key] = (data: Action) => ({
         state: Object.assign({}, this.state, fn(this.state, data)),
       });
     });
+
+    const onhash = () =>
+      this.emit("this.filter()", {
+        filterId: window.location.hash.slice(1) ?? FILTERS[0].id,
+      });
+    // use hash as a filter key. invoke immediately.
+    window.onhashchange = onhash;
+    onhash();
   }
 
   get state(): State {
@@ -95,16 +102,6 @@ class TodoStore extends Component {
 
   set state(state) {
     this.storage.state = state;
-  }
-
-  __init(ctx: any) {
-    const onhash = () =>
-      ctx.emit("this.filter()", {
-        filterId: window.location.hash.slice(1) ?? FILTERS[0].id,
-      });
-    // use hash as a filter key. invoke immediately.
-    window.onhashchange = onhash;
-    onhash();
   }
 
   getShownItems() {

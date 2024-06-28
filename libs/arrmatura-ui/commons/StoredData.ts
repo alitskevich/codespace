@@ -1,7 +1,5 @@
 import { Component } from "arrmatura";
-import { TArrmatron } from "arrmatura/types";
-import { PersistenceType } from "arrmatura-web/types";
-import type { Hash, Op } from "ultimus";
+import type { Op } from "ultimus";
 
 import { ClientStorage } from "../support";
 
@@ -11,15 +9,10 @@ export class StoredData extends Component {
   defaults = null;
   data: any = null;
   #opened = false;
-  persistence: PersistenceType = "local";
   local?: ClientStorage;
 
-  constructor(initials: Hash, $ctx: TArrmatron) {
-    super(initials, $ctx);
-
-    const { persistence = "local", name = this.refId, defaults = null } = initials;
-
-    const storage = new ClientStorage(persistence, name);
+  __created({ persistence, name = this.refId, defaults = null }) {
+    const storage = new ClientStorage(persistence ?? "local", name);
 
     Object.defineProperty(this, "data", {
       get: () => {

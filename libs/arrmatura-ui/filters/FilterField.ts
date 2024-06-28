@@ -18,15 +18,25 @@ export class FilterField {
 
   constructor(private readonly $ctrl, initials: any) {
     Object.assign(this, initials);
-    const { type = 'text', typeSpec } = initials;
+    const { type = "text", typeSpec } = initials;
 
     this.isMultiType = type.startsWith("multi");
     this.isDateType = type.startsWith("date");
 
-    this.names = (type === "enum" && typeSpec) ? arrayToObject(($ctrl.platform.getResource(`enums.${typeSpec}`) as Hash[]) || [], "id", "name") : {};
+    this.names =
+      type === "enum" && typeSpec
+        ? arrayToObject(
+            ($ctrl.platform.getResource(`enums.${typeSpec}`) as Hash[]) || [],
+            "id",
+            "name"
+          )
+        : {};
     this.toggleOption = (id) => {
       if (id in this.selections) {
-        this.selections = Object.keys(this.selections).filter((key) => key !== id).reduce((acc, val) => ({ ...acc, [val]: true }), {}) || {};
+        this.selections =
+          Object.keys(this.selections)
+            .filter((key) => key !== id)
+            .reduce((acc, val) => ({ ...acc, [val]: true }), {}) || {};
       } else {
         if (id === OPT_NON_EMPTY) {
           this.selections = { [OPT_NON_EMPTY]: true };
@@ -39,7 +49,8 @@ export class FilterField {
     };
 
     this.settleOption = (id) => {
-      this.selections = (Array.isArray(id) ? id : [id]).reduce((acc, val) => ({ ...acc, [val]: true }), {}) || {};
+      this.selections =
+        (Array.isArray(id) ? id : [id]).reduce((acc, val) => ({ ...acc, [val]: true }), {}) || {};
       this.$ctrl.touch();
     };
 
@@ -55,7 +66,7 @@ export class FilterField {
 
   matched(item: Hash) {
     const { id, isMultiType, isDateType, selections } = this;
-    const value = String(item[id] ?? '');
+    const value = String(item[id] ?? "");
 
     if (!value && selections[OPT_EMPTY]) return true;
     if (value && selections[OPT_NON_EMPTY]) return true;
@@ -93,7 +104,7 @@ export class FilterField {
     const items = data.filter((item: Hash) => !fields.some((field) => !field.matched(item)));
 
     items.forEach((item: Hash) => {
-      const val = String(item[this.id] ?? '');
+      const val = String(item[this.id] ?? "");
       incKey(!val ? OPT_EMPTY : OPT_NON_EMPTY);
       if (!val) return;
       if (isMultiType) {
@@ -103,17 +114,21 @@ export class FilterField {
         incKey(val.slice(0, 7));
       } else {
         incKey(val);
-
       }
     });
 
-    const histo: any[] = Object.entries(hash).filter(([key, count]) => key !== OPT_EMPTY && key !== OPT_NON_EMPTY && count > 0)
+    const histo: any[] = Object.entries(hash)
+      .filter(([key, count]) => key !== OPT_EMPTY && key !== OPT_NON_EMPTY && count > 0)
       .map(([id, count]) => ({ id, name: names?.[id] ?? id, count, isSelected: !!selections[id] }));
 
     this.$histo = [
       { ...OPT_NAMES[OPT_EMPTY], count: hash[OPT_EMPTY] ?? 0, isSelected: !!selections[OPT_EMPTY] },
-      { ...OPT_NAMES[OPT_NON_EMPTY], count: hash[OPT_NON_EMPTY] ?? 0, isSelected: !!selections[OPT_NON_EMPTY] },
-      ...arraySortBy(histo, "name")
+      {
+        ...OPT_NAMES[OPT_NON_EMPTY],
+        count: hash[OPT_NON_EMPTY] ?? 0,
+        isSelected: !!selections[OPT_NON_EMPTY],
+      },
+      ...arraySortBy(histo, "name"),
     ];
 
     return this.$histo;

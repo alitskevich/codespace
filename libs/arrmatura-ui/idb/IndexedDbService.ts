@@ -13,23 +13,15 @@ export class IndexedDbService extends Component {
   };
   triggers: any = {};
   initialData?: any;
-  indexedDb = new IndexedDb();
+  idb = new IndexedDb();
   local?: ClientStorage;
 
   async __init() {
-    await this.indexedDb.open(this.name, {
+    await this.idb.open(this.name, {
       version: this.version,
       stores: this.stores,
       initialData: this.initialData,
     });
-
-    // const threadUpId = setInterval(() => this.emit('this.upstream()', {}), 10000);
-    // const threadDownId = setInterval(() => this.emit('this.downstream()', {}), 5 * 60000);
-
-    // this.defer(() => {
-    //   clearInterval(threadUpId)
-    //   clearInterval(threadDownId)
-    // })
 
     Object.keys(this.stores).forEach((store) => {
       Object.defineProperty(this, `trigger${capitalize(store.toLowerCase())}`, {
@@ -40,22 +32,22 @@ export class IndexedDbService extends Component {
 
       this.defineCalculatedProperty(
         `all${capitalize(store.toLowerCase())}`,
-        () => this.indexedDb.getAll(store),
+        () => this.idb.getAll(store),
         [`trigger${capitalize(store.toLowerCase())}`]
       );
     });
   }
 
   queryForValue(value, options) {
-    return this.indexedDb.queryForValue(String(value ?? ""), options);
+    return this.idb.queryForValue(String(value ?? ""), options);
   }
 
   async deleteAll(store) {
-    await this.indexedDb.deleteAll(store);
+    await this.idb.deleteAll(store);
   }
 
-  async put(obj, store) {
-    await this.indexedDb.put(obj, store);
+  async put({ store, ...obj }: any = {}) {
+    await this.idb.put(obj, store);
   }
 
   async deleteDatabase(reload) {
@@ -70,9 +62,9 @@ export class IndexedDbService extends Component {
 
     const { id = `${now}`, store = "items", $callback, ...delta } = data;
 
-    await this.indexedDb.update({ ...delta, id, ts: now }, store);
+    const result = await this.idb.update({ ...delta, id, ts: now }, store);
 
-    $callback?.({});
+    $callback?.(result);
 
     return {
       triggers: {

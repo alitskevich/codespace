@@ -1,4 +1,5 @@
 <component id="Page.Main">
+
   <nav class="{R.styles.nav} nav {class ?? 'sticky'}" id="top">
     <Container class="relative flex flex-no-wrap h-16 gap-2 sm:gap-4 items-center">
       <NavLink href="/main" class=" flex flex-shrink-0 items-center">

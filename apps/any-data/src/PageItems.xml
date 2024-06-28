@@ -2,8 +2,6 @@
 
   <IndexedDbService Ref="idb" Props="{R.clientDb}" />
 
-  <DataApiService Ref="db" Props="{R.clientDb}" indexedDb="<-idb.This" invokeApi="<-api.invokeApi" />
-
   <IndexedDbQuery Ref="query" db="<-idb.This" value="*" />
 
   <ItemSearchController Ref="itemsSearch" data="<-query.data" />
@@ -16,6 +14,7 @@
   <NewItemController Ref="newItem" initialData="{R.defaults.newItem}" />
 
   <Connector data="<-items.info" change="->" />
+
   <StoredData Ref="mainPageState" name="viewMode" data="{viewMode}" defaults="list" action="-> viewMode" />
 
   <Container class="absolute" If="!itemId">

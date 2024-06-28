@@ -23,14 +23,10 @@ import Tabs from "./atoms/Tabs.xml";
 import fab from "./atoms/fab.xml";
 import svg from "./atoms/svg.xml";
 import typography from "./atoms/typography.xml";
-import Auth2Facility from "./auth/Auth2Facility.xml";
-import { Auth2Service } from "./auth/Auth2Service";
-import { AuthService } from "./auth/AuthService";
 import SignInPage from "./auth/SignInPage.xml";
 import UserProfileModal from "./auth/UserProfileModal.xml";
 import { UserProfileService } from "./auth/UserProfileService";
 import user from "./auth/user.xml";
-import { ApiEndpoint } from "./commons/ApiEndpoint";
 import { BrowserService } from "./commons/BrowserService";
 import { DarkModeService } from "./commons/DarkModeService";
 import { LocalStorage } from "./commons/LocalStorage";
@@ -68,9 +64,9 @@ import { FormController } from "./form/FormController";
 import Forma from "./form/Forma.xml";
 import GreenAppFacility from "./green/GreenAppFacility.xml";
 import { GreenAppService } from "./green/GreenAppService";
-import { DataApiService } from "./idb/DataApiService";
 import { IndexedDbQuery } from "./idb/IndexedDbQuery";
 import { IndexedDbService } from "./idb/IndexedDbService";
+import { DataApiService } from "./integration/DataApiService";
 import { TgWebAppService } from "./integration/TgWebAppService";
 import { ItemCollectionController } from "./items/ItemCollectionController";
 import { ItemController } from "./items/ItemController";
@@ -81,7 +77,7 @@ import { MapaelService } from "./map/MapaelService";
 import { LocationHashService } from "./nav/LocationHashService";
 import { NavigationService } from "./nav/NavigationService";
 import navigation from "./nav/navigation.xml";
-import * as commonWebTypes from "./plugins";
+import * as plugins from "./plugins";
 import { Item } from "./support/Item";
 import ToastFacility from "./toast/ToastFacility.xml";
 import ToastList from "./toast/ToastList.xml";
@@ -96,13 +92,9 @@ import ViewModeSelector from "./widgets/ViewModeSelector.xml";
 
 // all componets types:
 export default [
-  ...Object.values(commonWebTypes),
+  ...Object.values(plugins),
   typography,
-  ApiEndpoint,
   AsyncLoader,
-  AuthService,
-  Auth2Service,
-  Auth2Facility,
   Avatar,
   Backdrop,
   Badge,

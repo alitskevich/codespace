@@ -8,9 +8,9 @@ export class ItemController extends Component {
   delta?: Hash | null;
   preflightItems?: any[];
   db?: IndexedDbService;
-  $itemId = null
-  upsertItemKey = 'db.upsertItem()';
-  loadItemKey = 'db.loadItem()';
+  $itemId = null;
+  upsertItemKey = "db.upsertItem()";
+  loadItemKey = "db.loadItem()";
 
   invokeLoad(id) {
     return new Promise((resolve) => {
@@ -20,12 +20,12 @@ export class ItemController extends Component {
           // console.log(error, data);
           if (error) {
             const msg = (error as Error)?.message;
-            this.toast({ id: msg, level: "error", message: `Error: ${msg}`, });
+            this.toast({ id: msg, level: "error", message: `Error: ${msg}` });
           }
           resolve({ isLoading: false, data, error });
         },
       });
-    })
+    });
   }
 
   getItemId() {
@@ -40,22 +40,22 @@ export class ItemController extends Component {
       isLoading: true,
       error: null,
       touched: false,
-      '...preflight': (async () => {
-        const result = await this.db?.indexedDb.queryForValue(id) ?? null
+      "...preflight": (async () => {
+        const result = (await this.db?.idb.queryForValue(id)) ?? null;
         return {
           data: result?.[0] ?? { id },
-          '...load': this.invokeLoad(id),
-        }
-      })()
-    })
+          "...load": this.invokeLoad(id),
+        };
+      })(),
+    });
   }
 
   doReload() {
     this.up({
       isLoading: true,
       error: null,
-      '...reload': this.invokeLoad(this.$itemId),
-    })
+      "...reload": this.invokeLoad(this.$itemId),
+    });
   }
 
   // event handlers:
@@ -63,7 +63,7 @@ export class ItemController extends Component {
     return {
       touched: true,
       delta: { ...this.delta, ...delta },
-      data: { ...this.data, ...delta }
+      data: { ...this.data, ...delta },
     };
   };
 
@@ -78,11 +78,15 @@ export class ItemController extends Component {
           $callback: ({ error = null, item, data = item }) => {
             if (error) {
               const msg = (error as Error)?.message;
-              this.toast({ id: msg, level: "error", message: `Error: ${msg}`, });
+              this.toast({ id: msg, level: "error", message: `Error: ${msg}` });
               resolve({ isLoading: false, error });
               return null;
             }
-            this.toast({ message: "Updated successfully. ", timeout: 5000, link: `#/main?itemId=${data.id}`, });
+            this.toast({
+              message: "Updated successfully. ",
+              timeout: 5000,
+              link: `#/main?itemId=${data.id}`,
+            });
             resolve({ isLoading: false, touched: false, data });
           },
         });

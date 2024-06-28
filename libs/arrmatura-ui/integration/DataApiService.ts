@@ -1,7 +1,9 @@
 import { Component } from "arrmatura";
-import { Delta, assert } from "ultimus";
+import { PersistenceType } from "arrmatura-web/types";
+import { Delta, Hash, Proc, StringHash, assert } from "ultimus";
 
-import { ClientStorage } from "../support";
+import { IndexedDb } from "../idb/IndexedDb";
+import { ClientStorage, loadJson } from "../support";
 
 export class DataApiService extends Component {
   trigger: unknown;
@@ -14,6 +16,14 @@ export class DataApiService extends Component {
   initialData?: any;
   indexedDb?: any;
   local?: ClientStorage;
+  url = "/api";
+  onUnauthorized?: (error: Error) => void;
+
+  isSignUpAllowed = false;
+  isSignOutAllowed = true;
+  $info: unknown;
+  afterSignedOut?: Proc;
+  persistence: PersistenceType = "session";
 
   async __init() {
     // const threadUpId = setInterval(() => this.emit('this.upstream()', {}), 10000);
@@ -28,7 +38,18 @@ export class DataApiService extends Component {
   }
 
   get storage() {
-    return this.local ?? (this.local = new ClientStorage("local", `DataApiService:${this.name}`));
+    return (
+      this.local ??
+      (this.local = new ClientStorage(this.persistence, this.url.replace(/\W+/g, "_")))
+    );
+  }
+
+  get token(): any {
+    return this.storage.get("$auth_token");
+  }
+
+  set token(token: any) {
+    this.storage.set("$auth_token", token);
   }
 
   get isLoaded() {
@@ -99,6 +120,35 @@ export class DataApiService extends Component {
       action,
       data: [],
       item: {},
+    });
+  }
+
+  /**
+   * API invocation with options.
+   *
+   * @param {type} data - description of parameter
+   * @return {T} retrieved value object
+   */
+  invoke<T>(options) {
+    const url = options.url ?? this.url;
+
+    return loadJson<T>({
+      url,
+      ...options,
+      headers: {
+        Authorization: `Bearer ${this.token}`,
+        // work-around for `script.google.com`
+        "Content-Type": url.startsWith("https://script.google.com/macros/s/")
+          ? "text/plain"
+          : "application/json",
+        ...options.headers,
+      },
+    }).catch((error: any) => {
+      if (error?.code == 401 && this.onUnauthorized) {
+        this.onUnauthorized?.(error);
+      } else {
+        throw error;
+      }
     });
   }
 
@@ -233,5 +283,57 @@ export class DataApiService extends Component {
 
   updateUser(data: Delta) {
     return this.upsertItem({ body: { action: "user.sync", data } });
+  }
+
+  get isAuthorized() {
+    return !!this.token;
+  }
+
+  invalidateToken() {
+    return this.signOut();
+  }
+
+  signIn(data: StringHash) {
+    const { email, username = email, password } = data || {};
+    const body = {
+      action: "user.signin",
+      creds: `${username}:${password}`,
+      credentials: data,
+      data,
+    };
+
+    return {
+      busy: true,
+      error: null,
+      "...signIn": loadJson({ url: this.url, body })
+        .catch((error) => ({ busy: false, error }))
+        .then((result) => ({ busy: false, ...result })),
+    };
+  }
+
+  signUp(data: Hash) {
+    const body = { action: "user.signup", data };
+
+    if (!this.isSignUpAllowed) return null;
+
+    return {
+      busy: true,
+      error: null,
+      "...signUp": loadJson({ url: this.url, body })
+        .catch((error) => ({ busy: false, error }))
+        .then((result) => ({ busy: false, ...result })),
+    };
+  }
+
+  async signOut() {
+    if (!this.isSignOutAllowed) return;
+
+    await ClientStorage.clearAll();
+
+    await IndexedDb.deleteAll();
+
+    this.token = null;
+
+    await this.afterSignedOut?.();
   }
 }

@@ -1,16 +1,9 @@
-export const loadJson = <T = any>({ url, body, headers, ...opts }: any): Promise<T> =>
+export const loadJson = <T = any>({ url, body, ...opts }: any): Promise<T> =>
   fetch(url, {
     method: body ? "POST" : "GET",
     mode: "cors",
     redirect: "follow",
-    body: body ? JSON.stringify(body) : null,
-    headers: {
-      // work-around for `script.google.com`
-      "Content-Type": url.startsWith("https://script.google.com/macros/s/")
-        ? "text/plain"
-        : "application/json",
-      ...headers,
-    },
+    body: body && typeof body == "object" ? JSON.stringify(body) : body ?? null,
     ...opts,
   })
     .then((res) => res.json())

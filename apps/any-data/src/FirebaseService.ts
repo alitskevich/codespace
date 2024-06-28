@@ -1,4 +1,5 @@
 import { Component } from "arrmatura-web";
+import { initializeApp } from "firebase/app";
 // import { TArrmatron } from "arrmatura-web";
 // import { getAnalytics } from "firebase/analytics";
 import { FirebaseApp } from "firebase/app";
@@ -10,8 +11,21 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
+import {
+  Firestore,
+  collection,
+  connectFirestoreEmulator,
+  doc,
+  getDoc,
+  getFirestore,
+  onSnapshot,
+  query,
+  where,
+  writeBatch,
+} from "firebase/firestore";
+// import { TArrmatron } from "arrmatura-web";
+// import { getAnalytics } from "firebase/analytics";
 import { Hash } from "ultimus";
-
 // type Doc = Hash;
 // type DocGet = { id: string; data: () => Doc };
 
@@ -22,19 +36,32 @@ import { Hash } from "ultimus";
 //     r.push(d);
 //     return r;
 //   }, []);
-
-// Initialize Firebase
 // const analytics = getAnalytics(app);
 
-export class FirebaseAuthService extends Component {
-  _auth?: Auth;
-  app?: { instance: FirebaseApp };
+export class FirebaseService extends Component {
+  firestore: Firestore;
+  app: FirebaseApp;
+  auth: Auth;
   constructor({ ...config }, ctx: any) {
     super(config, ctx);
-  }
 
-  __init() {
-    this._auth = getAuth(this.app?.instance);
+    this.app = initializeApp(config);
+    this.firestore = getFirestore(this.app);
+    connectFirestoreEmulator(this.firestore, "127.0.0.1", 8888);
+
+    // this.firestore..enablePersistence({ synchronizeTabs: true }).catch(function (err: any) {
+    //   if (err.code === "failed-precondition") {
+    //     // Multiple tabs open, persistence can only be enabled
+    //     // in one tab at a time.
+    //     // ...
+    //   } else if (err.code === "unimplemented") {
+    //     // The current browser does not support all of the
+    //     // features required to enable persistence
+    //     // ...
+    //   }
+    // });
+
+    this.auth = getAuth(this.app);
     // this.auth.languageCode = "by";
 
     connectAuthEmulator(this.auth, "http://localhost:9099");
@@ -59,13 +86,6 @@ export class FirebaseAuthService extends Component {
     });
   }
 
-  get auth(): Auth {
-    if (!this._auth) {
-      throw new Error("auth is not initialized");
-    }
-    return this._auth;
-  }
-
   signInAnonymously() {
     // this.auth.signInAnonymously().catch((error: Error) => {
     //   this.logError(error);
@@ -74,10 +94,6 @@ export class FirebaseAuthService extends Component {
 
   listenUser(cb: () => void) {
     this.auth.onAuthStateChanged(cb);
-  }
-
-  async invoke() {
-    return this.currentUser;
   }
 
   get isAuthorized() {
@@ -149,4 +165,72 @@ export class FirebaseAuthService extends Component {
     return this.auth.signOut();
   }
   // firestore
+
+  getCollection(path: string, since: number) {
+    const coll = collection(this.firestore, path);
+    return query(coll, where("ts", ">", since)); //.withConverter(unpackDoc);
+  }
+
+  listenCollection(path, ts = 0, cb) {
+    const coll = collection(this.firestore, path);
+
+    return onSnapshot(query(coll, where("ts", ">", ts)), function (querySnapshot) {
+      const r: any[] = [];
+      querySnapshot.forEach(function (e) {
+        const d = e.data();
+        d.id = e.id;
+        r.push(d);
+      });
+      cb(null, { [path]: r });
+    });
+  }
+
+  nextId(coll) {
+    return doc(collection(this.firestore, coll)).id;
+  }
+
+  getDoc(coll, id) {
+    return getDoc(doc(collection(this.firestore, coll), id)).then((d) => d.data());
+  }
+
+  writeBatch(delta) {
+    const now = Date.now().valueOf();
+    // Get a new write batch
+    const batch = writeBatch(this.firestore);
+    Object.keys(delta).forEach((coll) => {
+      const c = collection(this.firestore, coll);
+      delta[coll].forEach((d) => {
+        d.ts = now;
+        if (!d.created_at) {
+          d.created_at = now;
+        }
+        if (d.id) {
+          const ref = doc(c, `${d.id}`);
+          batch.update(ref, d, { merge: true });
+        } else {
+          const ref = doc(c);
+          d.id = ref.id;
+          batch.set(ref, d, { merge: true });
+        }
+      });
+    });
+    return batch.commit();
+  }
+
+  async invokeApi({ body: { action = "realtime.downstream", data } }) {
+    if (action === "realtime.downstream") {
+      return this.getCollection("items", 0);
+    } else if (action === "realtime.upstream") {
+      return this.writeBatch(data);
+    } else if (action === "realtime.loadItem") {
+      const { store, id } = data;
+      const item = await this.getDoc(store, id);
+      return { item };
+    } else if (action === "realtime.upsertItem") {
+      await this.writeBatch({ items: [data] });
+      return { item: data };
+    }
+
+    return {};
+  }
 }

@@ -12,6 +12,7 @@ export abstract class Component implements IComponent {
     this.__created(initials);
   }
 
+  // Lifecycle method called within constructor.
   __created(_: Hash) {}
 
   get refId() {

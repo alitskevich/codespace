@@ -6,7 +6,7 @@
   <Connector data="<- localStorage.irregularVerbsMode" change="-> quizMode = it ?? false" />
   <Connector data="<- localStorage.irregularVerbsLevel" change="-> level = it ?? 'all'" />
   <Connector data="<- localStorage.language" change="-> language = it ?? 'en'" />
-  <Connector data="{data}" change="-> percent = it | calcIrregularVerbQuizProgress['percent']|log" />
+  <Connector data="{data}" change="-> percent = it | calcIrregularVerbQuizProgress['percent']" />
 
   <Connector data="<-query.data" change="-> data" />
 

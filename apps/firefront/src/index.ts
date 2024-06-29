@@ -1,6 +1,6 @@
 import App from "./App.xml";
-import { FirebaseCollection } from "./FirebaseCollection";
 import { FirebaseService } from "./FirebaseService";
+import { IndexedDbQuery } from "./IndexedDbQuery";
 import ListItem from "./ListItem.xml";
 import MasterDetail from "./MasterDetail.xml";
 import PageItems from "./PageItems.xml";
@@ -15,5 +15,5 @@ export default [
   SignInPage,
   App,
   FirebaseService,
-  FirebaseCollection,
+  IndexedDbQuery,
 ];

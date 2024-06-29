@@ -1,8 +1,8 @@
-import { MutableRefObject } from 'react';
-import WebView from 'react-native-webview';
+import { MutableRefObject } from "react";
+import WebView from "react-native-webview";
 
-import { Log } from 'services/logging';
-import { PostMessage } from 'types';
+import { Log } from "./logging";
+import { PostMessage } from "./types";
 
 const WEB_VIEW_REF: { current: WebView | undefined } = {
   current: undefined,
@@ -14,11 +14,9 @@ function postDatagram(webView: WebView, message: PostMessage) {
   try {
     Log.info(`>>>`, message.action);
     // webView.postMessage(message);
-    webView.injectJavaScript(
-      `window.postMessage(${JSON.stringify(message)}, window.origin)`,
-    );
+    webView.injectJavaScript(`window.postMessage(${JSON.stringify(message)}, window.origin)`);
   } catch (e) {
-    Log.error('>>>', e);
+    Log.error(">>>", e);
   }
 }
 
@@ -26,7 +24,7 @@ export const initPostMessaging = ({ current }: MutableRefObject<WebView>) => {
   WEB_VIEW_REF.current = current;
 
   if (current) {
-    deferred.forEach(datagram => postDatagram(current, datagram));
+    deferred.forEach((datagram) => postDatagram(current, datagram));
     deferred.clear();
   }
 };

@@ -1,5 +1,10 @@
 <component id="ListItem">
-  <li class="list-item p-2 { selectedId == id ? 'bg-blue-800 border border-1':''}" title="{title}">
+  <li aria-selected="{selectedId == id}" class="list-item 
+  p-2 
+  hover:bg-gray-100 dark:hover:bg-gray-700
+  aria-selected:bg-blue-800 aria-selected:border-gray-200
+  border border-transparent
+  " title="{title}">
     <div class="flex items-center space-x-4">
       <div class="sm:flex-1 min-w-0 max-sm:{selectedId?'hidden':''}">
         <NavLink href="/items/{kind}?itemId={id}"

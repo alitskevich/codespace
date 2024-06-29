@@ -16,7 +16,7 @@ export * from "./src/core/Component";
 export const launch = (platform: IPlatform, template: string): IArrmatronRoot => {
   const root = new CRootNode(template).createArrmatron(platform);
 
-  root.up({}, true);
+  root.touch();
 
   return root;
 };

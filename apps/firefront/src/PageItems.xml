@@ -1,5 +1,5 @@
 <component id="Page.Items">
-  <FirebaseCollection Ref="query" api="<-api.This" value="*" />
+  <IndexedDbQuery Ref="query" api="<-api.This" value="*" />
 
   <ItemSearchController Ref="itemsSearch" data="<-query.data" />
 
@@ -29,7 +29,7 @@
   <div class="h-screen min-h-0 flex flex-col">
 
     <nav class="{R.styles.nav} nav {class ?? 'sticky'}" id="top">
-      <Container class="relative flex flex-no-wrap h-16 gap-2 sm:gap-4 items-center px-4">
+      <Container class="relative flex flex-no-wrap h-16 gap-2 sm:gap-4 items-center px-2">
         <MenuButton click="-> viewSidebar=!viewSidebar" opened="{viewSidebar}" />
 
         <a href="/#/main" class="flex flex-shrink-0 items-center">
@@ -54,8 +54,9 @@
       <AsyncLoader isLoading="false" title="Loading data" subtitle="🚀 initial dataset" error="<-api.error"
         onError="-> api.downstream()">
 
-        <div class="bg-gray-200 dark:bg-gray-700  py-2">
-          <Container class="w-full flex flex-no-wrap justify-between items-center gap-2 px-2
+        <div class="bg-gray-200 dark:bg-gray-700 py-2">
+          <Container class="px-2 
+          flex flex-no-wrap justify-between items-center gap-2
         " If="<-itemsSearch.data.length">
             <div class=" min-w-10 {R.styles.fline}">
               <h1 class="text-xl dark:text-white text-black truncate uppercase">{subpage ?? R.name}</h1>
@@ -96,9 +97,11 @@
                 </Case>
 
                 <Case When="list">
-                  <Container class="h-full pt-2 {itemId?'!pr-0 !pl-2':''} sm:flex-1 min-h-0 overflow-y-auto"
+                  <Container class="h-full pt-2 {itemId?'!pr-0 !pl-2':''} sm:flex-1 min-h-0 overflow-y-auto md:px-2"
                     scrolledDown="-> items.showMore()" scroll="-> showScrollToTopButton = it.value > 120">
-                    <ul role="list" class="w-full max-md:divide-y md:space-y-4  divide-gray-200 dark:divide-gray-700">
+                    <ul role="list" class="w-full 
+                      max-md:divide-y md:space-y-4 
+                      divide-gray-200 dark:divide-gray-700">
                       <Dynamic As="ListItem.{subpage | capitalize}" Props="{item}" data="{item}" kind="{subpage}"
                         selectedId="{itemId}" sortBy="{sortBy}" Each="item of shownData" />
                       <li class="h-48"></li>
@@ -145,7 +148,8 @@
 
 <component id="ItemsTableView">
   <Table class="" data="{data}" columns="{R.forms | dot: id ?? R.forms.itemsTable ?? R.forms.item}"
-    rowFirstComponent="ItemTitle" scrolledDown="-> items.showMore()" cellChange="-> items.changeField()" />
+    rowFirstComponent="ItemTitle" onItem="-> nav.onParams(it['id'] | pack:'itemId')" scrolledDown="-> items.showMore()"
+    cellChange="-> items.changeField()" />
 </component>
 
 <component id="ItemsPivotView">

@@ -1,5 +1,5 @@
 import { Component } from "arrmatura-web";
-export class FirebaseCollection extends Component {
+export class IndexedDbQuery extends Component {
   __created({ api, field }) {
     this.defineCalculatedProperty(
       `data`,

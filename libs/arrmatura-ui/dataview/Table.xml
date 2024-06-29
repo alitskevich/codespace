@@ -16,6 +16,14 @@
   <span class=" px-2 py-1" style="padding-left: 0px">{value | date}</span>
 </component>
 
+<component id="TableCell.FirstCol">
+  <div class="truncate max-w-40 px-2 py-1" data="{data}" click="{onItem}">{value}</div>
+</component>
+
+<component id="TableRowGroupCaption">
+  <div>{value}</div>
+</component>
+
 <component id="Table">
   <Connector data="{columns|slice:1}" change="-> cols" />
   <div class="flex-auto flex-grow-0 min-h-0 grid auto-cols-auto overflow-auto {class}" style="
@@ -28,7 +36,7 @@
     <div class="grid grid-cols-subgrid gap-0 col-span-full" style="order: 1; grid-auto-rows: auto;">
       <Dynamic As="TableRow{item.items ? 'Group' : ''}" Each="item of data" data="{item}" selected="{item.selected}"
         selectable="{selectable}" noHeader="{noHeader}" expander="{groupExpander}" col1="{columns.0}" cols="{cols}"
-        kind="{kind}" cellChange="{cellChange}" rowFirstComponent="{rowFirstComponent}"
+        kind="{kind}" cellChange="{cellChange}" onItem="{onItem}" rowFirstComponent="{rowFirstComponent}"
         groupCaptionType="{groupCaptionType}" />
     </div>
 
@@ -59,14 +67,6 @@
   </div>
 </component>
 
-<component id="TableCell.FirstCol">
-  <div class="truncate max-w-40 px-2 py-1">{value}</div>
-</component>
-
-<component id="TableRowGroupCaption">
-  <div>{value}</div>
-</component>
-
 <component id="TableRowGroup">
   <div class="col-span-full {expander ? 'cursor-pointer'} bg-gray-400 dark:bg-slate-800 flex sticky z-20"
     style="top:{noHeader ? '0' : '2.125rem;'}" data-id="{data.id}" click="{expander.toggle}">
@@ -85,7 +85,8 @@
 
   <Fragment If="expander.all | dot : data.id | not">
     <TableRow Each="item of data.items" data="{item}" selected="{item.selected}" col1="{col1}" cols="{cols}"
-      selectable="{selectable}" kind="{kind}" cellChange="{cellChange}" rowFirstComponent="{rowFirstComponent}" />
+      selectable="{selectable}" kind="{kind}" onItem="{onItem}" cellChange="{cellChange}"
+      rowFirstComponent="{rowFirstComponent}" />
   </Fragment>
 </component>
 
@@ -105,7 +106,7 @@
       cursor-pointer 
       line-clamp-2">
       <Dynamic As="TableCell.{col1.type ?? 'FirstCol' | capitalize}" Props="{data}" value="{data | dot:col1.id}"
-        data="{data}" change="{cellChange}" />
+        data="{data}" change="{cellChange}" onItem="{onItem}" />
     </div>
 
     <div class="border border-dotted border-gray-300 snap-start p-0 overflow-hidden line-clamp-4 {col.class}"

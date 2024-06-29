@@ -6,9 +6,8 @@ import {
   WebViewTerminatedEvent,
 } from "react-native-webview/lib/WebViewTypes";
 
+import { DEFAULT_ERROR } from "./consts";
 import { Log } from "./logging";
-
-const DEFAULT_ERROR = "Error encountered while loading page";
 
 export const useWebViewErrorHandler = () => {
   const [error, setError] = useState("");

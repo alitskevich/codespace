@@ -25,11 +25,11 @@ to build web applications that are scalable, maintainable, and responsive.
 
 ## Documentation
 
-- [Manual](docs/manual.md)
-- [Hello, world](docs/HELLO.md)
+- [Manual](./docs/manual.md)
 
 ## Examples
 
 - [Emoji List](https://emojis-list.web.app/)
+- [Focusator](https://focusator.web.app/)
 - [Countries List](https://countries-list.web.app/)
 - [Game Solver](https://dlitskevich.github.io/solver/) ([source](https://github.com/dlitskevich/solver/tree/master/app))

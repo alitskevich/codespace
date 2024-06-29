@@ -1,12 +1,12 @@
 <component id="ListSortBy">
   <div class="">
-    <div class="
-      min-w-10 max-w-40 overflow-hidden h-10 py-2 rounded-lg
+    <div aria-selected="{opened}" class="
+      min-w-8 max-w-40 overflow-hidden h-10 py-2 rounded-lg
       inline-flex gap-1 items-center
       font-semibold text-sm
       hover:bg-slate-300 dark:hover:bg-gray-700
-      {value ? 'text-gray-200 px-2' : 'text-gray-600'} 
-      {opened ? 'bg-slate-400':''}">
+      {value ? 'text-gray-200' : 'text-gray-600'} 
+      aria-selected:bg-slate-400">
 
       <Icon type="sortAsc" class="rounded-lg transparent" click="-> opened=!opened" If="!value" />
 

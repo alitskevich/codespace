@@ -5,7 +5,7 @@
   <ItemsFilterController Ref="itemsFilter" meta="{R.forms.filter}" data="<-itemsSearch.actualData"
     value="<-nav.params.filter" />
 
-  <Connector data="<-itemsFilter.value" change="-> nav.onParams(* | pack:'filter')" />
+  <Connector data="<-itemsFilter.value" change="-> nav.onParams(it | pack:'filter')" />
 
   <ItemCollectionController Ref="items" data="<-itemsFilter.actualData" isLoaded="<-db.isLoaded" />
 

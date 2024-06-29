@@ -1,21 +1,25 @@
 rules_version = '2';
 
 service cloud.firestore {
+
   match /databases/{database}/documents {
+
     // required user signed in
     function signedIn() {
       return request.auth !=null && request.auth.uid != null;
     }
+
     // check if doc belongs to current user
     function ownOnly(userId) {
       return request.auth !=null && (request.auth.uid == userId || request.auth.uid == resource._id);
     }
+
   	// deny all not explicitly allowed
-    // NOTE: the access is allowed if any of the conditions is true!
-    // NOTE: Rules are not filters
+    // NOTE: Rules are not filters. The access is allowed if any of the conditions is true!
    	match /{document=**} {
       allow read,write: if false;
     }
+
     match /users {
       allow create: if signedIn();
       allow read, update: if ownOnly(0);
@@ -47,15 +51,16 @@ service cloud.firestore {
     match /authStats/{userId} {
       allow write: if signedIn();
     }
+
     match /items/{docId} {
       allow read: if signedIn();
     }
+
     match /items/{docId} {
       allow read, write: if true;
       match /{sub}/{document=**}{
       	allow read,write: if signedIn();
       }
     }
-
   }
 }

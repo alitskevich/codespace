@@ -1,5 +1,5 @@
 import { Component } from "arrmatura";
-import type { TArrmatron } from "arrmatura/types";
+import type { IComponentContext } from "arrmatura/types";
 import type { Hash } from "ultimus/types";
 
 import { FilterField } from "./FilterField";
@@ -10,7 +10,7 @@ export class ItemsFilterController extends Component {
   change?: (data: any) => void;
   data: Hash[] = [];
 
-  constructor(initials: Hash<unknown>, ctx: TArrmatron) {
+  constructor(initials: Hash<unknown>, ctx: IComponentContext) {
     super(initials, ctx);
 
     this.fields =

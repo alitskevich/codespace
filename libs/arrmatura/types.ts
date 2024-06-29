@@ -13,7 +13,7 @@ export type IComponent = {
   [key: string]: unknown;
 };
 
-export type TArrmatron = {
+export type IComponentContext = {
   platform: IPlatform;
 
   // state access
@@ -31,7 +31,7 @@ export type TArrmatron = {
   toast(t: LogEntry): void;
 };
 
-export type IArrmatron = TArrmatron & {
+export type IArrmatron = IComponentContext & {
   readonly uid: Uid;
   parent?: IArrmatron;
   children?: Map<Uid, Arrmatron>;
@@ -73,11 +73,11 @@ export type IPlatform = {
   createComponent(
     def: IComponentDescriptor | string,
     initials: Hash,
-    ctx: TArrmatron
+    ctx: IComponentContext
   ): IComponent | Hash;
 };
 
-export type ComponentConstructor = new (initials: Hash, c: TArrmatron) => IComponent;
+export type ComponentConstructor = new (initials: Hash, ctx: IComponentContext) => IComponent;
 
 export type IComponentDescriptor = {
   tag?: string;

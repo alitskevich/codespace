@@ -6,10 +6,7 @@
   <Connector data="<- localStorage.irregularVerbsMode" change="-> quizMode = it ?? false" />
   <Connector data="<- localStorage.irregularVerbsLevel" change="-> level = it ?? 'all'" />
   <Connector data="<- localStorage.language" change="-> language = it ?? 'en'" />
-  <Connector data="{data}" change="-> percent = it | calcIrregularVerbQuizProgress['percent']" />
-
-  <Connector data="<-query.data" change="-> data" />
-
+  <Connector data="<- query.data" change="-> percent = it | calcIrregularVerbQuizProgress['percent']" />
 
   <div class="fixed inset-0 pt-20">
     <Container class="flex flex-col items-stretch gap-4 h-full">
@@ -19,7 +16,7 @@
             <div class="text-3xl text-center">🎉 Done! 🎉</div>
           </div>
           <Else>
-            <IrregularVerbTable data="{data}" language="{language}" mode="{quizMode ? 'quiz' : 'table'}"
+            <IrregularVerbTable data="<-query.data" language="{language}" mode="{quizMode ? 'quiz' : 'table'}"
               columns="{quizMode ? R.columns.irregularQuiz : R.columns.irregular}" />
           </Else>
         </Fragment>
@@ -29,12 +26,8 @@
 
   <Header>
     <TopListSelector data="{R.enums.levels4}" change="-> localStorage.irregularVerbsLevel = it.value" value="{level}" />
-    <Fragment If="percent==100">
-      <Else>
-        <Btn title="{quizMode ? R.strings.stop : R.strings.quiz} ({percent}%)"
-          class="{quizMode ? '!text-white !bg-red-700' : ''}" action="-> localStorage.irregularVerbsMode = !quizMode" />
-      </Else>
-    </Fragment>
+    <Btn If="percent!=100" title="{quizMode ? R.strings.stop : R.strings.quiz} ({percent}%)"
+      class="{quizMode ? '!text-white !bg-red-700' : ''}" action="-> localStorage.irregularVerbsMode = !quizMode" />
   </Header>
 
   <Settings If="<- localStorage.settings">
@@ -125,7 +118,6 @@
 </component>
 
 <component id="TableCell.IrregularVerbExample">
-
   <div class="inline-block p-2 grid grid-cols-1 gap-2 auto-cols-auto" style="grid-template-columns: 1fr;">
     <div>
       <span>{data.s1|strHead:data.f1}</span>

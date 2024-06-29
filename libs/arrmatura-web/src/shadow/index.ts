@@ -1,5 +1,5 @@
 import { launch } from "arrmatura";
-import { TArrmatron } from "arrmatura/types";
+import { IComponentContext } from "arrmatura/types";
 import * as lib from "ultimus";
 
 import { LaunchWebOptions } from "../../types";
@@ -20,7 +20,7 @@ export function defineCustomElement(
     .join(" ")}/>`;
 
   class Custom extends HTMLElement {
-    top: TArrmatron;
+    top: IComponentContext;
     rootElement: ShadowRoot;
     static get observedAttributes() {
       return rattributes;

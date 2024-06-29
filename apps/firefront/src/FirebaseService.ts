@@ -1,7 +1,5 @@
 import { Component } from "arrmatura-web";
 import { initializeApp } from "firebase/app";
-// import { TArrmatron } from "arrmatura-web";
-// import { getAnalytics } from "firebase/analytics";
 import { FirebaseApp } from "firebase/app";
 import {
   getAuth,

@@ -1,5 +1,5 @@
 import { Component } from "arrmatura";
-import type { TArrmatron } from "arrmatura/types";
+import type { IComponentContext } from "arrmatura/types";
 import { defineObjectRef } from "ultimus";
 import type { Hash } from "ultimus/types";
 
@@ -15,7 +15,7 @@ export class DomElement extends Component implements IElement {
 
   [key: string]: unknown;
 
-  constructor(tag: string, initials: Hash<any>, private readonly $: TArrmatron) {
+  constructor(tag: string, initials: Hash, private readonly $: IComponentContext) {
     super(initials, $);
     defineObjectRef(this, "$", $);
 

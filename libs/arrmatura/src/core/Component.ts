@@ -1,14 +1,16 @@
 import type { Delta, Hash, LogEntry } from "ultimus/types";
 
-import type { TArrmatron, IArrmatron, IComponent } from "../../types";
+import type { IComponentContext, IArrmatron, IComponent } from "../../types";
 
 /**
  * Base Ancestor for custom components.
  */
 export abstract class Component implements IComponent {
   [key: string]: unknown;
+  readonly #ctx: IComponentContext;
 
-  constructor(initials: Hash, private readonly $ctx: TArrmatron) {
+  constructor(initials: Hash, ctx: IComponentContext) {
+    this.#ctx = ctx;
     this.__created(initials);
   }
 
@@ -16,11 +18,11 @@ export abstract class Component implements IComponent {
   __created(_: Hash) {}
 
   get refId() {
-    return this.$ctx.refId;
+    return this.#ctx.refId;
   }
 
   get platform() {
-    return this.$ctx.platform;
+    return this.#ctx.platform;
   }
 
   // hook on initialization
@@ -28,28 +30,28 @@ export abstract class Component implements IComponent {
   __init(_: IArrmatron): Delta | null | undefined | unknown {
     return undefined;
   }
-  // get from ctx state
+  // get from#ctx state
   get(key: string) {
-    return this.$ctx.get(key);
+    return this.#ctx.get(key);
   }
 
-  // update ctx state
+  // update#ctx state
   up(d) {
-    return this.$ctx.up(d);
+    return this.#ctx.up(d);
   }
 
   touch() {
-    return this.$ctx.touch();
+    return this.#ctx.touch();
   }
 
   // emit action event to another component by key
   emit(key: string, data: Delta = {}) {
-    return this.$ctx.emit(key, data);
+    return this.#ctx.emit(key, data);
   }
 
   // register callback to be called on done
   defer(fn: () => void) {
-    this.$ctx.defer(fn);
+    this.#ctx.defer(fn);
   }
 
   defineCalculatedProperty(key, fn: (...args: any[]) => any, deps?: string[]) {
@@ -57,7 +59,7 @@ export abstract class Component implements IComponent {
     let depValue = undefined;
     Object.defineProperty(this, key, {
       get() {
-        const args: any[] = deps?.length ? deps.map((k) => this.$ctx.get(k)) : [];
+        const args: any[] = deps?.length ? deps.map((k) => this.#ctx.get(k)) : [];
         const newKey = args.join(":");
         if (depKey !== newKey) {
           depKey = newKey;
@@ -69,18 +71,18 @@ export abstract class Component implements IComponent {
   }
 
   toast(entry: LogEntry) {
-    this.$ctx.toast(entry);
+    this.#ctx.toast(entry);
   }
 
   log(val: unknown, ...args: unknown[]) {
-    this.$ctx.log(val, ...args);
+    this.#ctx.log(val, ...args);
   }
 
   logError(val: unknown, ...args: unknown[]) {
-    this.$ctx.logError(val, ...args);
+    this.#ctx.logError(val, ...args);
   }
 
   toString() {
-    return `${this.$ctx.toString()}${this.name ? `(${this.name})` : ""}`;
+    return `${this.#ctx.toString()}${this.name ? `(${this.name})` : ""}`;
   }
 }

@@ -242,7 +242,7 @@ While designing custom components you can
 ```typescript
 class MyService extends Component {
 
-    constructor(initials: Hash, ctx: TArrmatron) {
+    constructor(initials: Hash, ctx: IComponentContext) {
         Object.asign(this, initials);
         this.ctx = ctx;
     }

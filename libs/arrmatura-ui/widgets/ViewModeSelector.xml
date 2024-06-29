@@ -1,5 +1,5 @@
 <component id="ViewModeSelector">
-  <div class="flex flex-no-wrap items-center mt-1 gap-0 px-2 rounded-md {class}" role="group">
+  <div class="flex flex-no-wrap items-center gap-0 px-2 rounded-md {class}" role="group">
     <label Each="option of options" class="py-1 px-2
     first:rounded-l-lg last:rounded-r-lg  
     cursor-pointer

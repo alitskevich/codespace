@@ -42,7 +42,7 @@ export class ItemController extends Component {
     this.up({
       isLoading: true,
       error: null,
-      "...reload": this.invokeLoad(this.$itemId),
+      "...reload": this.invokeLoad(this.#itemId),
     });
   }
 

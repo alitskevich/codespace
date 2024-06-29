@@ -5,15 +5,14 @@
     " click="-> active=true" If="active ?? value | not" />
     <div
       class="flex relative flex-no-wrap w-max items-center {active ?? value ? 'w-24' : 'w-8 hidden'} transition duration-300 ease">
-      <input class="
-      h-10 py-1
-      input rounded-full pl-4 pr-7 w-full
+      <input class="  input rounded-full w-full
+      h-10 py-1 pl-4 pr-7 
       " type="text" autofocus="true" placeholder="{R.strings.kluq_poshuku}" keypress="{input}" value="{value}"
         focus="-> opened=true" />
 
       <div class="absolute h-10 w-10 right-0 flex items-center justify-center">
-        <Icon type="cross" class="rounded-full" click="{enter}" data-value="" If="value" />
-        <Icon type="cross" class="rounded-full" click="-> active=false" If="!value" />
+        <Icon type="cross" size="6" class="!rounded-full" click="{enter}" data-value="" If="value" />
+        <Icon type="cross" size="6" class="!rounded-full" click="-> active=false" If="!value" />
       </div>
     </div>
 

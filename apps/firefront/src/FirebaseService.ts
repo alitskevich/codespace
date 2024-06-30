@@ -11,9 +11,6 @@ import {
 } from "firebase/auth";
 import {
   Firestore,
-  QueryDocumentSnapshot,
-  SnapshotOptions,
-  WithFieldValue,
   collection,
   connectFirestoreEmulator,
   doc,
@@ -27,16 +24,8 @@ import {
 } from "firebase/firestore";
 import { Hash } from "ultimus";
 
-const DocConverter = {
-  toFirestore(value: WithFieldValue<any>) {
-    return value;
-  },
-  fromFirestore(snapshot: QueryDocumentSnapshot, options: SnapshotOptions) {
-    const data = snapshot.data(options);
-    data.id = snapshot.id;
-    return data;
-  },
-};
+import { DocConverter } from "./DocConverter";
+
 export class FirebaseService extends Component {
   firestore: Firestore;
   app: FirebaseApp;
@@ -185,18 +174,10 @@ export class FirebaseService extends Component {
     });
   }
 
-  listenCollection(path, ts = 0, cb) {
-    const coll = collection(this.firestore, path);
+  listenCollection(path, cb) {
+    const coll = collection(this.firestore, path).withConverter(DocConverter);
 
-    return onSnapshot(query(coll, where("ts", ">", ts)), function (querySnapshot) {
-      const r: any[] = [];
-      querySnapshot.forEach(function (e) {
-        const d = e.data();
-        d.id = e.id;
-        r.push(d);
-      });
-      cb(null, { [path]: r });
-    });
+    return onSnapshot(coll, cb);
   }
 
   getDoc(coll, id) {

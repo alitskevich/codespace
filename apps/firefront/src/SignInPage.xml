@@ -1,15 +1,17 @@
 <component id="SignInPage">
-  <div class="fixed inset-0 px-4 flex flex-col gap-4 items-center justify-center">
+  <div class="fixed inset-0 px-4 
+  flex flex-col gap-4 items-center justify-center 
+  bg-fixed bg-cover" style="background-image: url({R.assets.bg})">
     <div class="w-full max-w-sm mx-auto p-4 
-        bg-white border border-gray-200 rounded-lg 
+        bg-white/[0.8] border border-gray-200 rounded-lg 
         shadow-md sm:p-6 md:p-8 
         dark:bg-gray-800 dark:border-gray-700 
-        flex flex-col gap-4 items-center">
+        flex flex-col gap-8 items-center">
 
-      <h5 class="text-xl font-medium text-gray-900 dark:text-white">{R.name}</h5>
-      <Logo size="16" title="{R.strings.app_name}" />
+      <h5 class="text-5xl font-medium text-gray-900 dark:text-white uppercase">{R.app.name}</h5>
+      <Logo size="16" title="{R.app.name}" />
       <div class="space-y-6">
-        <Btn icon="User" title="Google sign in" mode="primary" large="true"
+        <Btn icon="User" title="Enter" mode="primary" large="true" class="uppercase"
           disabled2="{data.username | and : data.password | not}" action="-> auth.signIn(data)" busy="<-auth.busy" />
       </div>
     </div>

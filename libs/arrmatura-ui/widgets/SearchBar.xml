@@ -1,5 +1,5 @@
 <component id="SearchBar.Suggestions">
-  <div class="relative h-10">
+  <div class="relative">
     <Icon type="search" class="rounded-full p-1
     text-gray-500 dark:text-gray-300 
     " click="-> active=true" If="active ?? value | not" />
@@ -11,8 +11,8 @@
         focus="-> opened=true" />
 
       <div class="absolute h-10 w-10 right-0 flex items-center justify-center">
-        <Icon type="cross" size="6" class="!rounded-full" click="{enter}" data-value="" If="value" />
-        <Icon type="cross" size="6" class="!rounded-full" click="-> active=false" If="!value" />
+        <Icon type="cross" class="!rounded-full" click="{enter}" data-value="" If="value" />
+        <Icon type="cross" class="!rounded-full" click="-> active=false" If="!value" />
       </div>
     </div>
 

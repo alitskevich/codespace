@@ -24,7 +24,7 @@ export class FilterField {
     this.isDateType = type.startsWith("date");
 
     this.names =
-      type === "enum" && typeSpec
+      type === "enum" || (type === "multiEnum" && typeSpec)
         ? arrayToObject(
             ($ctrl.platform.getResource(`enums.${typeSpec}`) as Hash[]) || [],
             "id",

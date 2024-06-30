@@ -55,17 +55,16 @@
     <div class="flex flex-no-wrap {class}">
       <Connector data="<-itemsFilter.fields" change="-> fields" />
       <div class="relative flex flex-col" If="fields.length">
-        <div class="
+        <div aria-selected="{opened}" class="
         inline-flex items-center gap-1 px-2 py-2 rounded-lg
         min-w-10 max-w-40 overflow-hidden
         font-semibold text-sm
-        hover:bg-slate-300 dark:hover:bg-gray-700
-        cursor-pointer
-        {opened ? 'bg-gray-400':''}" click="-> opened = !opened">
+        {R.styles.klikable}
+        " click="-> opened = !opened">
           <Icon type="filter" />
         </div>
         <div class="relative">
-          <DropdownOptionsList caption="Filter by..." options="{fields}" close="-> opened=false"
+          <DropdownOptionsList caption="Filter by..." options="{fields}" close="-> opened = false"
             multiItemClick="-> itemsFilter.toggleField(it.value)" If="opened" />
         </div>
       </div>

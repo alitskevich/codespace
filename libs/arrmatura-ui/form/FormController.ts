@@ -46,7 +46,8 @@ export class FormController extends Component {
         items: getFieldsGroups(items, this.groups),
       })
     );
-    const fixedTab = this.fixFirstTab || tabs.length === 1 ? tabs.shift() : null;
+    const fixedTab =
+      this.fixFirstTab || tabs.length === 1 || tabs[0].id === "top" ? tabs.shift() : null;
     return { fixedTab, initialTab: tabs?.[0]?.id, tabs };
   }
 

@@ -15,7 +15,6 @@ import Meta from "./atoms/Meta.xml";
 import Modal from "./atoms/Modal.xml";
 import Popover from "./atoms/Popover.xml";
 import RadioGroup from "./atoms/RadioGroup.xml";
-import SearchBar from "./atoms/SearchBar.xml";
 import Select from "./atoms/Select.xml";
 import Skeleton from "./atoms/Skeleton.xml";
 import Stub from "./atoms/Stub.xml";
@@ -88,6 +87,7 @@ import DbLoadingIndicator from "./widgets/DbLoadingIndicator.xml";
 import LoadingIndicator from "./widgets/LoadingIndicator.xml";
 import MenuButton from "./widgets/MenuButton.xml";
 import ScrollToTopButton from "./widgets/ScrollToTopButton.xml";
+import SearchBar from "./widgets/SearchBar.xml";
 import ViewModeSelector from "./widgets/ViewModeSelector.xml";
 
 // all componets types:

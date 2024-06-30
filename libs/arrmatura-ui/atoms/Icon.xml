@@ -1,20 +1,12 @@
 <component id="Icon">
   <span aria-selected="{selected}" class="
         flex items-center justify-center rounded-md
-        h-{size ?? '6'+2} w-{size ?? '6'+2}
-        {click ? 'cursor-pointer 
-          text-gray-500 dark:text-gray-400
-
-          aria-selected:text-gray-500 aria-selected:dark:text-slate-50
-          aria-selected:bg-gray-100 aria-selected:dark:bg-gray-700
-
-          hover:text-gray-500 hover:dark:text-slate-50
-          hover:bg-gray-100 dark:hover:bg-gray-700
-           '} 
+        h-{size ?? 6 | plus: 2} w-{size ?? 6 | plus: 2}
+        {click ? R.styles.klikable} 
         {class}
         " title="{title ?? type}" data="{data}" click="{click}">
 
-    <Dynamic As="{ns??'Svg'}.{type|capitalize}" class="h-{size ?? '6'} w-{size ?? '6'} m-1 {iconClass}" />
+    <Dynamic As="{ns ?? 'Svg'}.{type | capitalize}" class="h-{size ?? 6} w-{size ?? 6} {iconClass}" />
 
     <span class="sr-only">{title ?? type}</span>
 

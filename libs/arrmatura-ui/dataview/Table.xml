@@ -1,15 +1,28 @@
 <component id="TableCell">
-  <div class="w-full  bg-gray-200 dark:bg-gray-900 truncate max-w-40 px-2 py-1">{value}</div>
+  <div class="w-full  truncate max-w-40 px-2 py-1">{value}</div>
 </component>
 
 <component id="TableCell.Enum">
-  <div class="w-full  bg-gray-200 dark:bg-gray-900 truncate max-w-40 px-2 py-1">{R.enums| dot:typeSpec| resolveNameById:
-    value}
-  </div>
+  <Connector data="{R.enums[typeSpec] | find:value}" change="-> item" />
+  <Fragment If="change">
+    <Then>
+      <Dropdown options="{R.enums[typeSpec]}" value="{value}" id="{data.id}" data-field="{id}" change="{change}"
+        triggerClass="!rounded-none" />
+    </Then>
+    <Else>
+      <div class="w-full truncate max-w-40 px-2 py-1 {item.style}">
+        {item.symbol} {item.name ?? value}
+      </div>
+    </Else>
+  </Fragment>
 </component>
 
 <component id="TableCell.Url">
-  <a class=" px-2 py-1" target="_blank" href="{value}" style="padding-left: 0px">{value}</a>
+  <div class="w-full  truncate max-w-40 px-2 py-1">
+    <a class=" px-2 py-1" target="_blank" href="{value}" style="padding-left: 0px">
+      {value| strReplace:'https://':'' || ''}
+    </a>
+  </div>
 </component>
 
 <component id="TableCell.Date">
@@ -41,20 +54,24 @@
     </div>
 
     <div class="col-span-full order-3" style="order: 3;">
-      <div style=" height:5rem;"></div>
+      <div style="height:5rem;"></div>
     </div>
 
     <div class="sticky top-0 left-0 right-0 z-10  box-border
     grid grid-cols-subgrid gap-0 col-span-full" style="order:0; box-sizing: border-box;" If="!noHeader">
-      <div
-        class="border p-2 snap-start sticky left-0 z-50 top-0 bg-gray-200 dark:bg-gray-600 flex items-start p-2 justify-center">
+      <div class="p-2 snap-start sticky left-0 z-50 top-0 
+        bg-gray-200 dark:bg-gray-600 
+        border border-gray-400
+        flex items-start p-2 justify-center">
         <input type="checkbox" If="selectable" />
       </div>
-      <div class="border p-2 snap-start sticky z-50 left-8 top-0 bg-gray-200 dark:bg-gray-600 flex items-center">
+      <div
+        class="border border-gray-400 p-2 snap-start sticky z-50 left-8 top-0 bg-gray-200 dark:bg-gray-600 flex items-center">
         <Slot />
         <span></span>
       </div>
-      <div class="font-bold border p-2 snap-start p-2 top-0 z-20 bg-gray-200 dark:bg-gray-600" Each="item of cols">
+      <div class="font-bold border border-gray-400  p-2 snap-start p-2 top-0 z-20 bg-gray-200 dark:bg-gray-600"
+        Each="item of cols">
         <span>{item.name ?? item.id}</span>
         <div class="table-column-sorter" If="item.sortable && doSort">
           <span class="table-column-sorter-up off" title="↑" data-id="-{item.id}" click="{doSort}">
@@ -92,16 +109,17 @@
 
 <component id="TableRow">
   <div class="grid grid-cols-subgrid gap-0 col-span-full">
-    <div class="border border-dotted border-gray-400
+    <div class="
+      border border-dotted border-gray-400
       relative z-10
       sticky left-0 bg-gray-300 dark:bg-gray-700 
       snap-start flex items-start p-2 justify-center" click="->">
       <input type="checkbox" If="selectable" />
     </div>
-    <div class="border border-dotted 
+    <div class="border border-dotted border-gray-400
       relative z-10 sticky left-8 
       snap-start 
-      bg-gray-200 dark:bg-gray-700 border-gray-400
+      bg-gray-200 dark:bg-gray-700 
       hover:bg-gray-300 hover:dark:bg-gray-600 
       cursor-pointer 
       line-clamp-2">
@@ -109,9 +127,10 @@
         data="{data}" change="{cellChange}" onItem="{onItem}" />
     </div>
 
-    <div class="border border-dotted border-gray-300 snap-start p-0 overflow-hidden line-clamp-4 {col.class}"
-      Each="col of cols" title="data| dot:col.id">
-      <Dynamic As="TableCell.{col.type | capitalize}" Props="{col}" value="{data | dot:col.id}" data="{data}"
+    <div class="
+    border border-dotted border-gray-100 dark:border-gray-700 
+    snap-start p-0 overflow-hidden line-clamp-4 {col.class}" Each="col of cols" title="{data[col.id]}">
+      <Dynamic As="TableCell.{col.type | capitalize}" Props="{col}" value="{data[col.id]}" data="{data}"
         change="{cellChange}" />
     </div>
   </div>

@@ -32,7 +32,7 @@ export class SmartareaController extends TagsValueController {
     return options.slice(0, 100);
   }
 
-  onAppend({ value = "" }) {
+  append({ value = "" }) {
     const bits = this.values;
     if (!this.lastBitIncluded) {
       bits.pop();
@@ -40,13 +40,13 @@ export class SmartareaController extends TagsValueController {
     this.change({ value: [...bits, value].join(", ") });
   }
 
-  onCutLast() {
+  cutLast() {
     const bits = this.values;
     bits.pop();
     this.change({ value: [...bits].join(", ") });
   }
 
-  onChange({ value = "" }) {
+  change({ value = "" }) {
     this.change({ value });
     return { opened: false };
   }

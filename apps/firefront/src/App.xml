@@ -5,7 +5,7 @@
 
   <ToastFacility>
     <GreenAppFacility Props="{R.green}">
-      <BrowserService Ref="browser" title="{R.name}" />
+      <BrowserService Ref="browser" title="{R.app.name}" />
       <NavigationService Ref="nav" />
       <FirebaseService Ref="api,auth,db" config="{R.firebaseConfig}" />
       <SignInPage If="<-auth.isAuthorized | not">

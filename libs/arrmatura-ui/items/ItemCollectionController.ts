@@ -19,10 +19,13 @@ export class ItemCollectionController extends Component {
   inputKluqPoshuku = "";
   newEntry: any;
   entry: any;
+  db: any;
   initials = "";
 
   setData(data: Hash[]) {
-    this.data = !data ? null : (Array.isArray(data) ? data : Object.values(data)).map((e: any) => new Item(e));
+    this.data = !data
+      ? null
+      : (Array.isArray(data) ? data : Object.values(data)).map((e: any) => new Item(e));
   }
 
   get sortedData() {
@@ -56,7 +59,7 @@ export class ItemCollectionController extends Component {
         .map(([k]) => k),
 
       counts: !this.isLoaded ? {} : counts,
-      countsInfo: !this.isLoaded ? '...' : showCounts(counts),
+      countsInfo: !this.isLoaded ? "..." : showCounts(counts),
     };
   }
 
@@ -67,9 +70,9 @@ export class ItemCollectionController extends Component {
       selection: !id
         ? {}
         : {
-          ...this.selection,
-          [id]: !this.selection[id],
-        },
+            ...this.selection,
+            [id]: !this.selection[id],
+          },
     };
   }
 
@@ -94,31 +97,29 @@ export class ItemCollectionController extends Component {
       sortDir: value || "",
     };
   }
-  changeField({ collection, itemId, field, value }: Delta) {
-    return !collection
-      ? null
-      : {
-        "...": new Promise((resolve) => {
-          this.emit(`${this.upsertOperationId ?? 'db.upsertOptimistic'}()`, {
-            collection: collection,
-            id: itemId,
-            [field]: value,
-            $callback: ({ error = null, ...rest }) => {
-              console.log(error, rest);
-              if (error) {
-                const msg = (error as Error)?.message;
-                this.toast({
-                  id: msg,
-                  level: "error",
-                  message: `Error: ${msg}`,
-                });
-                return null;
-              }
-              resolve({ counter: NaN });
-            },
-          });
-        }),
-      };
+  changeField({ id, field, value }: Delta) {
+    return {
+      "...": new Promise((resolve) => {
+        this.db.upsertItem({
+          collection: this.collection ?? "items",
+          id,
+          [field]: value,
+          $callback: ({ error = null, ...rest }) => {
+            console.log(error, rest);
+            if (error) {
+              const msg = (error as Error)?.message;
+              this.toast({
+                id: msg,
+                level: "error",
+                message: `Error: ${msg}`,
+              });
+              return null;
+            }
+            resolve({ counter: NaN });
+          },
+        });
+      }),
+    };
   }
   showMore({ size = 50 }) {
     return {

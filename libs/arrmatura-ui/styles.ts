@@ -1,5 +1,14 @@
 export default {
+  klikable: `cursor-pointer 
+text-gray-500 dark:text-gray-400
 
+focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-700 
+
+aria-selected:text-gray-500 aria-selected:dark:text-slate-50
+aria-selected:bg-gray-100 aria-selected:dark:bg-gray-700
+
+hover:text-gray-500 hover:dark:text-slate-50
+hover:bg-gray-100 dark:hover:bg-gray-700`,
 
   fline: `flex flex-no-wrap items-center gap-2`,
 
@@ -7,9 +16,9 @@ export default {
   text-gray-700 bg-slate-100 dark:bg-slate-600 dark:text-gray-200`,
 
   "dropdown-item": `hover:bg-slate-300 dark:hover:bg-slate-700`,
-  'dropdown-item-selected': `bg-slate-400 dark:bg-slate-800;`,
+  "dropdown-item-selected": `bg-slate-400 dark:bg-slate-800;`,
 
-  "input": ` 
+  input: ` 
     w-full px-2 py-1 min-h-10
     text-lg 
     border border-solid border-gray-300 rounded-lg
@@ -39,14 +48,14 @@ export default {
   "disabled:btn": `text-gray-500 bg-gray-100 border border-gray-200
   dark:bg-gray-700 dark:border-gray-600 dark:text-slate-100`,
 
-  "tab": `border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300`,
+  tab: `border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300`,
   "tab-active": `text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500`,
 
-  "nav": `bg-gray-300 dark:bg-gray-800 text-gray-800 dark:text-gray-300 z-10`,
+  nav: `bg-gray-300 dark:bg-gray-800 text-gray-800 dark:text-gray-300 z-10`,
   "nav-item": `text-gray-800 dark:text-gray-300 hover:bg-gray-700 hover:text-white text-base font-medium`,
   "nav-item--active": `bg-gray-900 text-white`,
 
-  "list": `flex flex-col md:gap-2`,
+  list: `flex flex-col md:gap-2`,
   "list-item": `block p-6
         md:rounded-lg border-b md:border-b-0 md:shadow-md
         bg-white hover:bg-gray-100
@@ -63,5 +72,5 @@ export default {
               font-bold rounded ml-2 
               bg-gray-200 text-gray-600
               dark:bg-gray-600 dark:text-gray-300
-`
-}
+`,
+};

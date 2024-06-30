@@ -7,7 +7,7 @@ export default {
     "text-2xl",
     "text-3xl",
     {
-      pattern: /(text|bg)-(red|green|yellow|blue|gray|amber|sky)-(500|700)/,
+      pattern: /(text|bg)-(red|green|yellow|blue|gray|amber|sky|purple)-(300|500|700)/,
     },
     {
       pattern: /(-|)rotate-90/,

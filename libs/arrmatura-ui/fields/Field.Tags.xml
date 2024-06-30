@@ -1,6 +1,6 @@
 <components>
   <component id="FieldTags.UI">
-    <div class="flex-1 flex flex-wrap input min-h-max pt-2 px-2 space-x-2 rounded-lg">
+    <div class="{R.styles.input} flex-1 flex flex-wrap min-h-max pt-2 px-2 space-x-2 rounded-lg">
       <Chip title="{tag.name}" isSelected="{tag.isSelected}" data-value="{tag.id}" click="{click}" Each="tag of tags" />
     </div>
   </component>

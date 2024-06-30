@@ -4,12 +4,12 @@
   <FieldItem caption="{caption}" error="{error}" required="{required}">
     <Fragment If="disabled">
       <Then>
-        <div class="input w-full p-2 rounded-lg text-gray-400"
+        <div class="{R.styles.input} w-full p-2 rounded-lg text-gray-400"
           style="height: auto;min-height:1.5rem;white-space: pre-wrap">{value}
         </div>
       </Then>
       <Else>
-        <div class="input w-full p-2 rounded-lg 
+        <div class="{R.styles.input} w-full p-2 rounded-lg 
         text-{value ? :gray-400}" click="-> opened=true" style="min-height: 2.5rem;white-space: pre-wrap; ">{value ??
           placeholder}
         </div>
@@ -20,10 +20,11 @@
       <Modal:header>
         <h6>{caption}</h6>
       </Modal:header>
-      <textarea autofocus="true" class="input w-full px-2 rounded-lg h-48" keypress="-> ctrl.change" value="{value}" />
+      <textarea autofocus="true" class="{R.styles.input} w-full px-2 rounded-lg h-48" keypress="-> ctrl.change()"
+        value="{value}" />
       <div style="overflow-y: auto;height:10rem;margin:0.5rem 0;">
-        <div class="flex w-full flex-wrap gap-2">
-          <Chip title="{item.name}" Each="item of <-ctrl.smartOptions" data-value="{item.id}" click="-> ctrl.append" />
+        <div class="flex w-full flex-wrap gap-2 p-2 bg-gray-200">
+          <Chip title="{item.name}" Each="item of <-ctrl.smartOptions" click="-> ctrl.append(item.id| pack:'value')" />
         </div>
       </div>
       <Modal:footer>

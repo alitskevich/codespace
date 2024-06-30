@@ -1,21 +1,21 @@
 <component id="Chip">
-  <span data="{data}" click="{click}" class="
-    h-10 min-w-10 px-2 py-2
+  <span data="{data}" click="{click}" aria-selected="{isSelected}" class="
+    min-w-10 px-2 py-2
     inline-flex gap-1 items-center
-  
     rounded-lg
     font-semibold text-sm
     transition duration-300
-    hover:bg-slate-300 dark:hover:bg-slate-700
     
-    bg-gray-400 text-gray-100
-    dark:bg-gray-500 dark:text-gray-200
+    bg-gray-400 dark:bg-gray-500
+    text-gray-100 dark:text-gray-200
 
-    {isSelected ? 'bg-purple-600 text-white dark:bg-purple-600 dark:text-white'}
-    {click ? cursor-pointer} 
-    {class}
+    hover:bg-slate-300 dark:hover:bg-slate-700
+
+    aria-selected:bg-purple-600 aria-selected:text-white
+
+    {click ? 'cursor-pointer'} {class}
     ">
-    <Icon type="{icon}" If="icon" size="6" />
+    <Icon type="{icon}" If="icon" />
     <span class="mx-1" If="title">{title}</span>
     <Slot />
     <span If="badge" class="inline-block py-0 px-1 ml-1 

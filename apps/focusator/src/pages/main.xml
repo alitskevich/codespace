@@ -1,43 +1,57 @@
 <component id="Page.Main">
-  <div class="flex flex-col h-screen">
-    <Header />
-    <div class="flex-1 flex flex-col overflow-y-auto pt-20">
-      <div class="flex-1 flex flex-col
-      ">
-        <div class=" flex-1 flex flex-col items-center gap-4">
-          <div class="w-full flex-1 flex flex-col items-center gap-4 pt-4
-        bg-gradient-to-b from-gray-10 dark:from-gray-800 to-40%">
-
-            <!-- <div class="text-small text-center max-w-prose mx-4 p-4">
-              <p class="text-gray-600 text-4xl text-center mt-2 dark:text-gray-400">{R.app.slogan}:</p>
-            </div> -->
-
-            <div class="flex-1 flex flex-wrap flex-col items-stretch lg:justify-around px-4">
-
-              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="{R.styles.card} lg:flex-1 flex flex-col items-stretch gap-4 min-h-max
-                         border-neutral-500 bg-slate-900 rounded-md p-4" Each="nav of R.nav">
-                  <h3 class="text-lg flex-1 text-center">{nav.caption}</h3>
-                  <div class="flex items-center justify-around gap-4">
-                    <Btn mode="primary" class=" px-4 py-4 text-xl uppercase" title="{nav.name}"
-                      action="-> nav.hash=nav.id|strEnhance:'/*'" />
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-          <!-- <img class="mx-auto radial-gradient rounded-3xl hover:drop-shadow-2xl hover:backdrop-hue-rotate-30"
-            loading="lazy" height="400" decoding="async" data-nimg="1" src="{R.app.pictureUrl}"
-            style="color: transparent;" /> -->
-
-        </div>
-        <Footer />
-      </div>
-    </div>
+  <div class="fixed flex flex-col inset-0 pt-20">
+    <MainContent2 />
+    <Footer />
   </div>
-  <Settings If="<- localStorage.settings" />
 
+  <Header />
+  <Settings If="<- localStorage.settings" />
+</component>
+
+<component id="MainContent">
+  <div class="relative flex-auto min-h-0 flex flex-col overflow-y-auto"
+    scroll="-> zoom = it.value | plus: 100 |log:'zoom'">
+    <div class="sticky top-0 left-0 right-0">
+      <img class="" loading="lazy" decoding="async" data-nimg="1" src="{R.assets.jumbo}" width="{zoom??100}"
+        height="{zoom??100}" />
+    </div>
+
+    <div style="min-height: 200vh;">
+      edwedwe
+    </div>
+
+  </div>
+</component>
+
+
+<component id="MainContent2">
+  <div class=" flex-1 flex flex-col items-center gap-4">
+    <div class="w-full flex-1 flex flex-col items-center gap-4 pt-4
+                  bg-gradient-to-b from-gray-10 dark:from-gray-800 to-40%">
+
+      <!-- <div class="text-small text-center max-w-prose mx-4 p-4">
+                        <p class="text-gray-600 text-4xl text-center mt-2 dark:text-gray-400">{R.app.slogan}:</p>
+                      </div> -->
+
+      <div class="flex-1 flex flex-wrap flex-col items-stretch lg:justify-around px-4">
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="{R.styles.card} lg:flex-1 flex flex-col items-stretch gap-4 min-h-max
+                                   border-neutral-500 bg-slate-900 rounded-md p-4" Each="nav of R.nav">
+            <h3 class="text-lg flex-1 text-center">{nav.caption}</h3>
+            <div class="flex items-center justify-around gap-4">
+              <Btn mode="primary" class=" px-4 py-4 text-xl uppercase" title="{nav.name}"
+                action="-> nav.hash=nav.id|strEnhance:'/*'" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <img class="mx-auto radial-gradient rounded-3xl hover:drop-shadow-2xl hover:backdrop-hue-rotate-30" loading="lazy"
+      height="400" decoding="async" data-nimg="1" src="{R.app.pictureUrl}" style="color: transparent;" />
+
+  </div>
 </component>

@@ -77,7 +77,7 @@ export const strHeadOrSelf = (x: string, sep = /[\s:/]/) => {
 };
 
 export const strReplace = (x: string, rep, by, def = "") => {
-  return String(x).replace(rep, by ?? def);
+  return x == null ? "" : String(x).replace(rep, by ?? def);
 };
 
 export const abbreviate = (x: string, sep = " ") =>

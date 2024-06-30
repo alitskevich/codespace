@@ -1,9 +1,8 @@
 <component id="DarkModeToggler">
   <button id="theme-toggle" data-tooltip-target="tooltip-toggle" type="button" click="{on}" class="
-  text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 
-  focus:outline-none 
-    focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 
-    rounded-md text-sm p-1 {class}">
+  focus:outline-none rounded-md text-sm p-1 
+  {R.styles.klikable}
+  {class}">
     <svg id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg">
       <Fragment If="!value">

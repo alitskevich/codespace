@@ -1,12 +1,12 @@
 <component id="Page.Items">
-  <IndexedDbQuery Ref="query" api="<-api.This" value="*" />
+  <IndexedDbQuery Ref="query" db="<-db.This" value="*" />
 
   <ItemSearchController Ref="itemsSearch" data="<-query.data" />
 
   <ItemsFilterController Ref="itemsFilter" meta="{R.forms.itemsFilter}" data="<-itemsSearch.actualData"
     value="<-nav.params" change="-> nav.onParams()" />
 
-  <ItemCollectionController Ref="items" data="<-itemsFilter.actualData" isLoaded="true" />
+  <ItemCollectionController Ref="items" db="<-db.This" data="<-itemsFilter.actualData" isLoaded="true" />
 
   <NewItemController Ref="newItem" initialData="{R.defaults.newItem}" />
 
@@ -37,7 +37,7 @@
         </a>
 
         <div class="flex flex-1 gap-2 items-center">
-          <h2 class="max-sm:hidden font-bold dark:text-white text-black truncate uppercase">{R.name}</h2>
+          <h2 class="max-sm:hidden font-bold dark:text-white text-black truncate uppercase">{R.app.name}</h2>
           <!-- <DbLoadingIndicator isLoading="<-api.busy" action="-> api.downstream()" /> -->
         </div>
 
@@ -52,14 +52,17 @@
 
     <div class="flex flex-auto  min-h-0 flex-col">
       <AsyncLoader isLoading="false" title="Loading data" subtitle="🚀 initial dataset" error="<-api.error"
-        onError="-> api.downstream()">
+        onError="-> browser.reload()">
 
         <div class="bg-gray-200 dark:bg-gray-700 py-2">
           <Container class="px-2 
           flex flex-no-wrap justify-between items-center gap-2
         " If="<-itemsSearch.data.length">
             <div class=" min-w-10 {R.styles.fline}">
-              <h1 class="text-xl dark:text-white text-black truncate uppercase">{subpage ?? R.name}</h1>
+              <h1 class="text-xl dark:text-white text-black truncate uppercase flex items-center gap-2">
+                <span class="text-xl">{R.enums.type | find:subpage | dot:'symbol'}</span>
+                <span>{R.enums.type| find:subpage | dot:'name' ?? R.app.name}</span>
+              </h1>
               <div class="{R.styles.badge} px-2" If="countsInfo">
                 {countsInfo}
               </div>
@@ -74,7 +77,7 @@
           </Container>
         </div>
 
-        <Connector data="<-itemsFilter.fields|filter:'isSelected'" change="-> selectedFilterItems" />
+        <Connector data="<-itemsFilter.fields" change="-> selectedFilterItems = it | filter:'isSelected'" />
         <div class="bg-gray-200 dark:bg-gray-700 py-2" If="selectedFilterItems.length">
           <Container class="flex flex-wrap space-x-2 px-2 items-center gap-2">
             <ItemsFilter.Field field="{tag}" Each="tag of selectedFilterItems" />
@@ -90,7 +93,7 @@
           </Then>
           <Else>
             <MasterDetail data="{sortedData}" itemId="{params.itemId}" viewMode="{viewMode}" kind="{subpage}"
-              form="{R.forms | dot:subpage ?? R.forms.item}">
+              form="{R.forms.item[subpage] ?? R.forms.item}">
               <Selector On="{viewMode}">
                 <Case When="table">
                   <ItemsTableView data="{shownData}" id="itemsTable{subpage|capitalize}" />
@@ -132,13 +135,13 @@
       bg-gray-400 dark:bg-gray-600 
       border-1 rounded-sm border-gray-300 dark:border-slate-800
       ">
-        <NavLink Each="item of R.enums.entities" href="/items/{item.id}?reset=true"
+        <NavLink Each="item of R.enums.type" href="/items/{item.id}?reset=true"
           aria-current="subpage == item.id ? 'page'" class="
             flex flex-row gap-2 items-center
-            font-medium text-lg px-3 py-2 rounded-md 
+            font-medium text-lg uppercase px-3 py-2 rounded-md 
             {subpage == item.id ? 'nav-item--active' : 'nav-item'}
           ">
-          <span>{item.symbol}</span>
+          <span class="text-3xl">{item.symbol}</span>
           <span>{item.name}</span>
         </NavLink>
       </div>

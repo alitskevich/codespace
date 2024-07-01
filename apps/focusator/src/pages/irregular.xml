@@ -27,10 +27,11 @@
   <Header>
     <TopListSelector data="{R.enums.levels4}" change="-> localStorage.irregularVerbsLevel = it.value" value="{level}" />
     <Btn If="percent!=100" title="{quizMode ? R.strings.stop : R.strings.quiz} ({percent}%)"
-      class="{quizMode ? '!text-white !bg-red-700' : ''}" action="-> localStorage.irregularVerbsMode = !quizMode" />
+      class="{quizMode ? '!text-white !bg-red-700' : '!bg-transparent'}"
+      action="-> localStorage.irregularVerbsMode = !quizMode" />
   </Header>
 
-  <Settings If="<- localStorage.settings">
+  <Settings If="<- localStorage.showSettings">
     <Btn title="{R.strings.reset} {R.strings.quiz}" class="!bg-orange-700 !text-white"
       action="-> irrDb.deleteDatabase(true)" />
   </Settings>

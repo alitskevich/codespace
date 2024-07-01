@@ -1,9 +1,9 @@
 import back from "./back.png";
+import bg from "./bg.webp";
 import bruh from "./bruh.m4a";
 import checkmark from "./checkmark.png";
 import football from "./football.png";
 import info from "./info.png";
-import jumbo from "./jumbo8.webp";
 import logo from "./logo.svg";
 import nice from "./nice.m4a";
 import picture2 from "./picture.jpg";
@@ -17,7 +17,7 @@ export default {
   checkmark,
   thumbsup,
   logo,
-  jumbo,
+  bg,
   picture2,
   nice,
   bruh,

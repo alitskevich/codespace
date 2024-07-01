@@ -31,7 +31,7 @@
 
     <AddText />
     <Header />
-    <Settings If="<- localStorage.settings" />
+    <Settings If="<- localStorage.showSettings" />
 
   </component>
 

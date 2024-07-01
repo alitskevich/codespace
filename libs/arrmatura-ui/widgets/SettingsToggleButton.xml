@@ -1,0 +1,6 @@
+<component id="SettingsToggleButton">
+  <Connector data="<- localStorage.showSettings" change="-> settings = it ?? false" />
+
+  <Icon type="cog" selected="{settings}" click="-> localStorage.showSettings = !settings"
+    class="transition duration-300 {settings ? 'rotate-90' :''}" />
+</component>

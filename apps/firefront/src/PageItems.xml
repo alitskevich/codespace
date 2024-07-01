@@ -44,7 +44,7 @@
         <ViewModeSelector options="{R.enums| dot : subpage : '*ViewMode' ?? R.enums.viewMode}" value="{viewMode}"
           change="-> viewMode | dot: 'value'" If="data.length" />
 
-        <DarkModeToggler value="<-dark.isDarkMode" on="-> dark.toggle()" />
+        <DarkModeToggler />
 
         <UserBar />
       </Container>

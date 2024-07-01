@@ -1,9 +1,8 @@
 <components>
 
   <component id="Header">
-    <Connector data="<- localStorage.settings" change="-> settings = it ?? false" />
 
-    <nav class="bg-gray-300 dark:bg-gray-800 block w-full fixed top-0 h-20 " id="top">
+    <nav class="bg-gray-800 block w-full fixed top-0 h-20 " id="top">
       <Container class="p-4 flex w-full">
         <div class="flex flex-1 items-center justify-between">
           <div class="flex items-center gap-4 justify-start">
@@ -13,8 +12,7 @@
           </div>
           <div class="flex items-center justify-end gap-4">
             <Slot />
-            <Icon type="cog" selected="{settings}" click="-> localStorage.settings = !settings" size="8"
-              class="transition duration-300 {settings ? 'rotate-90' :''}" />
+            <SettingsToggleButton />
           </div>
         </div>
       </Container>
@@ -43,7 +41,7 @@
       <div class="flex items-center justify-between">
         <span>Theme</span>
         <div class="border hover:border-transparent rounded-md">
-          <DarkModeToggler value="<-dark.isDarkMode" on="-> dark.toggle()" />
+          <DarkModeToggler />
         </div>
 
       </div>

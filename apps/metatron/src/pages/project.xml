@@ -115,7 +115,7 @@
     <Nav>
       <Nav:right>
         <ViewportSizesSelector value="{viewportSize}" on="-> viewportSize=it.value" />
-        <DarkModeToggler value="{darkMode}" on="-> darkMode=!darkMode" />
+        <DarkModeToggler />
         <LanguageSelector value="{locale}" on="-> locale" />
         <ShowHtmlTrigger value="{showHtml}" on="-> showHtml=!showHtml" />
       </Nav:right>

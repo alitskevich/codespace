@@ -88,6 +88,7 @@ import LoadingIndicator from "./widgets/LoadingIndicator.xml";
 import MenuButton from "./widgets/MenuButton.xml";
 import ScrollToTopButton from "./widgets/ScrollToTopButton.xml";
 import SearchBar from "./widgets/SearchBar.xml";
+import SettingsToggleButton from "./widgets/SettingsToggleButton.xml";
 import ViewModeSelector from "./widgets/ViewModeSelector.xml";
 
 // all componets types:
@@ -95,6 +96,7 @@ export default [
   ...Object.values(plugins),
   typography,
   AsyncLoader,
+  SettingsToggleButton,
   Avatar,
   Backdrop,
   Badge,

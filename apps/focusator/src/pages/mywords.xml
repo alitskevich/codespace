@@ -13,7 +13,7 @@
   <Header>
     <TopListSelector data="{domains|keysOf}" change="-> localStorage.domainId = it.value" value="{domainId}" />
   </Header>
-  <Settings If="<- localStorage.settings" />
+  <Settings If="<- localStorage.showSettings" />
 </component>
 
 <component id="MResultList">

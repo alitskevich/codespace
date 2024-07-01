@@ -32,9 +32,10 @@
       </Container>
     </div>
     <Header>
-      <TopListSelector data="{R.enums.ctest}" change="-> localStorage.ctest = it.value" value="<-localStorage.ctest" />
+      <TopListSelector data="{R.enums.ctest}" change="-> localStorage.ctest = it.value"
+        value="<-localStorage.ctest ?? 'basic'" />
     </Header>
-    <Settings If="<- localStorage.settings" />
+    <Settings If="<- localStorage.showSettings" />
   </component>
 
   <component id="StepsList">

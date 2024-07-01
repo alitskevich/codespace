@@ -15,7 +15,7 @@
       <h5 class="font-bold">Preview</h5>
       <div class="flex flex-row  items-center">
         <ViewportSizesSelector value="{viewportSize}" on="-> viewportSize=it.value" />
-        <DarkModeToggler value="{darkMode}" on="-> darkMode=!darkMode" />
+        <DarkModeToggler />
         <LanguageSelector value="{locale}" on="-> locale" class="rounded-none" />
         <Dropdown value="{modifiers}" change="-> modifiers=it.value" id="modifiers" placeholder="modifiers"
           options="{R.project.modifiers}" />
